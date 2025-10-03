@@ -223,7 +223,7 @@ export default function LoanProductsPage() {
 
       container.innerHTML = html || '<div class="no-data-message">No pricing grids available.</div>'
     } catch (err) {
-      container.innerHTML = `<div class="error-message">Unable to load rates: ${err.message}</div>`
+      container.innerHTML = `<div class="error-message">Unable to load rates: ${err instanceof Error ? err.message : "Unknown error"}</div>`
     }
   }
 
@@ -427,7 +427,7 @@ export default function LoanProductsPage() {
                         less-than-perfect credit histories.
                       </p>
                     </div>
-                    <div className="flex gap-3 pt-4">
+                    <div className="flex flex-wrap gap-3 pt-4">
                       <Button
                         onClick={() => openMatrixModal("FHA")}
                         className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
@@ -545,7 +545,7 @@ export default function LoanProductsPage() {
                         <li>• Surviving spouses (under certain conditions)</li>
                       </ul>
                     </div>
-                    <div className="flex gap-3 pt-4">
+                    <div className="flex flex-wrap gap-3 pt-4">
                       <Button
                         onClick={() => openMatrixModal("VA")}
                         className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
