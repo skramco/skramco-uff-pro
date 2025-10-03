@@ -73,7 +73,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-red-600 mb-2">$2B+</div>
+              <div className="text-4xl font-bold text-red-600 mb-2">$10B+</div>
               <div className="text-gray-600">Loans Funded</div>
             </div>
             <div className="text-center">

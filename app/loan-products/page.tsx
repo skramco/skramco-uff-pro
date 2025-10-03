@@ -23,22 +23,27 @@ import {
   TrendingDown,
 } from "lucide-react"
 import Link from "next/link"
-import NonQMGuidelines from "@/components/non-qm-guidelines" // Import the new component
+import NonQMGuidelines from "@/components/non-qm-guidelines"
+import FannieMaeMatrix from "@/components/fannie-mae-matrix"
+import FreddieMacMatrix from "@/components/freddie-mac-matrix"
+import FHAMatrix from "@/components/fha-matrix"
+import VAMatrix from "@/components/va-matrix"
 
 export default function LoanProductsPage() {
   const [isMatrixModalOpen, setIsMatrixModalOpen] = useState(false)
   const [isRatesModalOpen, setIsRatesModalOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState("")
+  const [selectedMatrixType, setSelectedMatrixType] = useState<"fannie" | "freddie" | "">("")
 
-  const openMatrixModal = (productType: string) => {
+  const openMatrixModal = (productType: string, matrixType: "fannie" | "freddie" | "" = "") => {
     setSelectedProduct(productType)
+    setSelectedMatrixType(matrixType)
     setIsMatrixModalOpen(true)
   }
 
   const openRatesModal = (productType: string) => {
     setSelectedProduct(productType)
     setIsRatesModalOpen(true)
-    // Trigger the pricing fetch after modal opens
     setTimeout(() => {
       if (typeof window !== "undefined") {
         fetchPricing(productType)
@@ -46,7 +51,6 @@ export default function LoanProductsPage() {
     }, 100)
   }
 
-  // Pricing calculation and fetch functions
   const calculateAPR = (loanAmount: number, closingCosts: number, nominalRate: number, loanTermYears = 30) => {
     const loanTermMonths = loanTermYears * 12
     const monthlyNominalRate = nominalRate / 100 / 12
@@ -77,7 +81,6 @@ export default function LoanProductsPage() {
     const container = document.getElementById("wp-pricing-grid")
     if (!container) return
 
-    // Base payload that stays the same
     const payload = {
       loan: {
         loanPurpose: "Purchase",
@@ -112,7 +115,6 @@ export default function LoanProductsPage() {
       },
     }
 
-    // Modify productFamilies and productShortNames based on product type
     switch (productType) {
       case "FHA":
         payload.options.productFamilies = ["FHA"]
@@ -132,12 +134,11 @@ export default function LoanProductsPage() {
         break
       case "Conventional":
       default:
-        // Keep the default values already set
         break
     }
 
     try {
-      const res = await fetch("https://pricing-engine-service.dev.ratesboard.com/product-pricing", {
+      const res = await fetch("https://pricing-engine-service.ratesboard.com/product-pricing", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -198,7 +199,6 @@ export default function LoanProductsPage() {
 
         html += `</tbody></table></div>`
 
-        // Show visible adjustments
         const visibleAdjustments = Array.isArray(adjustments) ? adjustments.filter((adj) => adj.isHidden === false) : []
 
         if (visibleAdjustments.length > 0) {
@@ -310,13 +310,20 @@ export default function LoanProductsPage() {
                         homebuyers and repeat buyers looking for competitive rates.
                       </p>
                     </div>
-                    <div className="flex gap-3 pt-4">
+                    <div className="flex flex-wrap gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixModal("Conventional")}
+                        onClick={() => openMatrixModal("Conventional", "fannie")}
                         className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
-                        View Matrix
+                        View Matrix - Fannie
+                      </Button>
+                      <Button
+                        onClick={() => openMatrixModal("Conventional", "freddie")}
+                        className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
+                      >
+                        <Grid3X3 className="h-4 w-4" />
+                        View Matrix - Freddie
                       </Button>
                       <Button
                         onClick={() => openRatesModal("Conventional")}
@@ -934,24 +941,34 @@ export default function LoanProductsPage() {
 
       {/* Matrix Modal */}
       <Dialog open={isMatrixModalOpen} onOpenChange={setIsMatrixModalOpen}>
-        <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
+        <DialogContent className="max-w-6xl max-h-[90vh] overflow-hidden flex flex-col">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Grid3X3 className="h-5 w-5 text-red-600" />
               {selectedProduct} Loan Matrix
+              {selectedMatrixType && ` - ${selectedMatrixType === "fannie" ? "Fannie Mae" : "Freddie Mac"}`}
             </DialogTitle>
-            <DialogDescription>Detailed product matrix and guidelines for {selectedProduct} loans</DialogDescription>
+            <DialogDescription>
+              Detailed product matrix and guidelines for {selectedProduct} loans
+              {selectedMatrixType && ` (${selectedMatrixType === "fannie" ? "Fannie Mae" : "Freddie Mac"})`}
+            </DialogDescription>
           </DialogHeader>
-          <div className="py-6">
+          <div className="flex-1 overflow-y-auto">
             {selectedProduct === "Non-QM" ? (
               <NonQMGuidelines />
+            ) : selectedProduct === "Conventional" && selectedMatrixType === "fannie" ? (
+              <FannieMaeMatrix />
+            ) : selectedProduct === "Conventional" && selectedMatrixType === "freddie" ? (
+              <FreddieMacMatrix />
+            ) : selectedProduct === "FHA" ? (
+              <FHAMatrix />
+            ) : selectedProduct === "VA" ? (
+              <VAMatrix />
             ) : (
-              <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
-                <FileText className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-700 mb-2">PDF Document Will Load Here</h3>
-                <p className="text-gray-600">
-                  The {selectedProduct} loan matrix PDF will be displayed in this modal when provided.
-                </p>
+              <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center h-full flex flex-col items-center justify-center">
+                <FileText className="h-16 w-16 text-gray-400 mb-4" />
+                <h3 className="text-lg font-semibold text-gray-700 mb-2">Matrix Guidelines</h3>
+                <p className="text-gray-600">The {selectedProduct} loan matrix guidelines will be displayed here.</p>
               </div>
             )}
           </div>
