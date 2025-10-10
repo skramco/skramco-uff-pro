@@ -29,7 +29,7 @@ import { MortgageCalculator } from "@/components/mortgage-calculator"
 import { FHACaseNumberForm } from "@/components/fha-case-number-form"
 import { RateSheetPasswordModal } from "@/components/rate-sheet-password-modal"
 
-// Form data structure - verified government URLs only
+// Form data structure
 const formSections = [
   {
     id: "general",
@@ -43,6 +43,27 @@ const formSections = [
           "Standard mortgage application form required by Fannie Mae and Freddie Mac for all residential loan applications",
         url: "https://selling-guide.fanniemae.com/Selling-Guide/Origination-thru-Closing/Subpart-B3-Underwriting-Borrowers/Chapter-B3-6-Underwriting-Property/1032999861/B3-6-05-Freddie-Mac-Form-65-Uniform-Residential-Loan-Application-07-05-2021.htm",
         source: "Fannie Mae",
+      },
+      {
+        name: "Broker Compensation Acknowledgement & Agreement",
+        description:
+          "Agreement form for borrower to elect whether broker compensation will be paid by borrower or lender, including certification of compensation disclosure",
+        pdfUrl: "/pdfs/Form-Broker-Comp-Agreement.pdf",
+        source: "UFF",
+      },
+      {
+        name: "Inquiry Letter",
+        description:
+          "Letter template for brokers to formally inquire about loan products, programs, or specific transaction scenarios with United Fidelity Funding",
+        pdfUrl: "/pdfs/Inquiry-Letter.pdf",
+        source: "UFF",
+      },
+      {
+        name: "Borrower Acknowledgment of Intent to Proceed",
+        description:
+          "Borrower certification confirming receipt of Loan Estimate and intent to proceed with the loan application according to disclosed terms",
+        pdfUrl: "/pdfs/Borrower-Acknowledgment-of-Intent-to-Proceed.pdf",
+        source: "UFF",
       },
       {
         name: "Initial Borrower Contact Form",
@@ -122,7 +143,9 @@ const formSections = [
         name: "FHA Case Number Request Form",
         description:
           "Submit request to obtain an FHA case number for new loan applications through United Fidelity Funding",
+        pdfUrl: "/pdfs/FHA-Case-Number-Request.pdf",
         isForm: true,
+        source: "UFF",
       },
       {
         name: "FHA Borrower Certification & Authorization",
@@ -162,6 +185,27 @@ const formSections = [
         source: "VA",
       },
       {
+        name: "VA Nearest Living Relative Statement",
+        description:
+          "Required form for veterans to provide name, address, and contact information of their nearest living relative for VA loan processing",
+        pdfUrl: "/pdfs/VA-Nearest-Relative-Statement.pdf",
+        source: "UFF",
+      },
+      {
+        name: "VA Allowable Closing Costs",
+        description:
+          "Comprehensive guide detailing allowable and unallowable closing costs for VA loans, including fee limitations and restrictions based on origination fee",
+        pdfUrl: "/pdfs/VA-Allowable-Closing-Costs.pdf",
+        source: "UFF",
+      },
+      {
+        name: "VA Sponsorship Form",
+        description:
+          "Application form for mortgage brokers to obtain VA sponsorship through United Fidelity Funding, including state licensing information and $100 fee",
+        pdfUrl: "/pdfs/VA-Sponsorship-Form.pdf",
+        source: "UFF",
+      },
+      {
         name: "VA Occupancy Certification",
         description: "Borrower certifies intent to occupy the property as primary residence for VA loan eligibility",
         comingSoon: true,
@@ -179,6 +223,13 @@ const formSections = [
         description: "Standard appraisal form for single-family properties, detailing property value and condition",
         url: "https://singlefamily.fanniemae.com/appraisal-forms-and-documents",
         source: "Fannie Mae",
+      },
+      {
+        name: "Appraisal Transfer & Independence Certification",
+        description:
+          "Lender certification form confirming compliance with appraisal independence regulations (AIR) and federal/state laws, including attestation of no improper influence on appraisal process",
+        pdfUrl: "/pdfs/Appraisal-Transfer.pdf",
+        source: "UFF",
       },
       {
         name: "Appraisal Order Form",
@@ -227,11 +278,33 @@ const formSections = [
     ],
   },
   {
+    id: "nonqm",
+    title: "Non-QM Forms",
+    icon: TrendingUp,
+    color: "teal",
+    forms: [
+      {
+        name: "Business Narrative Form",
+        description:
+          "Required form for self-employed borrowers to document their business profile, operations, revenue generation, and any recent disruptions for Ability to Repay (ATR) calculation",
+        pdfUrl: "/pdfs/NonQM-Business-Narrative-Form.pdf",
+        source: "UFF",
+      },
+    ],
+  },
+  {
     id: "other",
     title: "Other Forms",
     icon: File,
     color: "gray",
     forms: [
+      {
+        name: "Credit Report Inquiry Certification",
+        description:
+          "Borrower certification form documenting all recent credit inquiries within 120 days, including creditor names, dates, purposes, and whether new accounts were opened",
+        pdfUrl: "/pdfs/Credit-Report-Inquiry-Certification.pdf",
+        source: "UFF",
+      },
       {
         name: "Power of Attorney (POA) Form",
         description: "Legal document authorizing someone to act on borrower's behalf during loan closing process",
@@ -287,6 +360,11 @@ export default function ResourcesPage() {
     window.open(url, "_blank", "noopener,noreferrer")
   }
 
+  const handlePDFDownload = (pdfUrl: string, formName: string) => {
+    // Open PDF in a new tab
+    window.open(pdfUrl, "_blank", "noopener,noreferrer")
+  }
+
   const handleFormClick = (formName: string) => {
     if (formName === "FHA Case Number Request Form") {
       setIsFHAFormOpen(true)
@@ -313,6 +391,7 @@ export default function ResourcesPage() {
       purple: "bg-purple-100 text-purple-800 border-purple-200",
       orange: "bg-orange-100 text-orange-800 border-orange-200",
       indigo: "bg-indigo-100 text-indigo-800 border-indigo-200",
+      teal: "bg-teal-100 text-teal-800 border-teal-200",
       gray: "bg-gray-100 text-gray-800 border-gray-200",
     }
     return colors[color as keyof typeof colors] || colors.gray
@@ -326,6 +405,7 @@ export default function ResourcesPage() {
       purple: "text-purple-600",
       orange: "text-orange-600",
       indigo: "text-indigo-600",
+      teal: "text-teal-600",
       gray: "text-gray-600",
     }
     return colors[color as keyof typeof colors] || colors.gray
@@ -507,6 +587,15 @@ export default function ResourcesPage() {
                                 <Badge variant="secondary" className="text-gray-600">
                                   Coming Soon
                                 </Badge>
+                              ) : form.pdfUrl ? (
+                                <Button
+                                  size="sm"
+                                  onClick={() => handlePDFDownload(form.pdfUrl!, form.name)}
+                                  className="bg-red-600 hover:bg-red-700"
+                                >
+                                  <Download className="mr-2 h-4 w-4" />
+                                  Download
+                                </Button>
                               ) : form.url ? (
                                 <Button
                                   size="sm"
