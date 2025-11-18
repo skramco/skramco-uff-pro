@@ -117,7 +117,7 @@ export default function LoanProductsPage() {
       const res = await fetch("https://pricing-engine-service.ratesboard.com/product-pricing", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.JSON.stringify(payload),
+        body: JSON.stringify(payload),
       })
 
       if (!res.ok) {
