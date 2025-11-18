@@ -48,21 +48,21 @@ const formSections = [
         name: "Broker Compensation Acknowledgement & Agreement",
         description:
           "Agreement form for borrower to elect whether broker compensation will be paid by borrower or lender, including certification of compensation disclosure",
-        pdfUrl: "/pdfs/Form-Broker-Comp-Agreement.pdf",
+        apiUrl: "/api/forms/broker-comp-agreement",
         source: "UFF",
       },
       {
         name: "Inquiry Letter",
         description:
           "Letter template for brokers to formally inquire about loan products, programs, or specific transaction scenarios with United Fidelity Funding",
-        pdfUrl: "/pdfs/Inquiry-Letter.pdf",
+        apiUrl: "/api/forms/inquiry-letter",
         source: "UFF",
       },
       {
         name: "Borrower Acknowledgment of Intent to Proceed",
         description:
           "Borrower certification confirming receipt of Loan Estimate and intent to proceed with the loan application according to disclosed terms",
-        pdfUrl: "/pdfs/Borrower-Acknowledgment-of-Intent-to-Proceed.pdf",
+        apiUrl: "/api/forms/borrower-acknowledgment",
         source: "UFF",
       },
       {
@@ -143,7 +143,7 @@ const formSections = [
         name: "FHA Case Number Request Form",
         description:
           "Submit request to obtain an FHA case number for new loan applications through United Fidelity Funding",
-        pdfUrl: "/pdfs/FHA-Case-Number-Request.pdf",
+        apiUrl: "/api/forms/fha-case-number",
         isForm: true,
         source: "UFF",
       },
@@ -188,21 +188,21 @@ const formSections = [
         name: "VA Nearest Living Relative Statement",
         description:
           "Required form for veterans to provide name, address, and contact information of their nearest living relative for VA loan processing",
-        pdfUrl: "/pdfs/VA-Nearest-Relative-Statement.pdf",
+        apiUrl: "/api/forms/va-nearest-relative",
         source: "UFF",
       },
       {
         name: "VA Allowable Closing Costs",
         description:
           "Comprehensive guide detailing allowable and unallowable closing costs for VA loans, including fee limitations and restrictions based on origination fee",
-        pdfUrl: "/pdfs/VA-Allowable-Closing-Costs.pdf",
+        apiUrl: "/api/forms/va-allowable-closing-costs",
         source: "UFF",
       },
       {
         name: "VA Sponsorship Form",
         description:
           "Application form for mortgage brokers to obtain VA sponsorship through United Fidelity Funding, including state licensing information and $100 fee",
-        pdfUrl: "/pdfs/VA-Sponsorship-Form.pdf",
+        apiUrl: "/api/forms/va-sponsorship",
         source: "UFF",
       },
       {
@@ -228,7 +228,7 @@ const formSections = [
         name: "Appraisal Transfer & Independence Certification",
         description:
           "Lender certification form confirming compliance with appraisal independence regulations (AIR) and federal/state laws, including attestation of no improper influence on appraisal process",
-        pdfUrl: "/pdfs/Appraisal-Transfer.pdf",
+        apiUrl: "/api/forms/appraisal-transfer",
         source: "UFF",
       },
       {
@@ -287,7 +287,7 @@ const formSections = [
         name: "Business Narrative Form",
         description:
           "Required form for self-employed borrowers to document their business profile, operations, revenue generation, and any recent disruptions for Ability to Repay (ATR) calculation",
-        pdfUrl: "/pdfs/NonQM-Business-Narrative-Form.pdf",
+        apiUrl: "/api/forms/business-narrative",
         source: "UFF",
       },
     ],
@@ -302,7 +302,7 @@ const formSections = [
         name: "Credit Report Inquiry Certification",
         description:
           "Borrower certification form documenting all recent credit inquiries within 120 days, including creditor names, dates, purposes, and whether new accounts were opened",
-        pdfUrl: "/pdfs/Credit-Report-Inquiry-Certification.pdf",
+        apiUrl: "/api/forms/credit-inquiry",
         source: "UFF",
       },
       {
@@ -360,9 +360,9 @@ export default function ResourcesPage() {
     window.open(url, "_blank", "noopener,noreferrer")
   }
 
-  const handlePDFDownload = (pdfUrl: string, formName: string) => {
-    // Open PDF in a new tab
-    window.open(pdfUrl, "_blank", "noopener,noreferrer")
+  const handlePDFDownload = (apiUrl: string, formName: string) => {
+    // Open API-generated PDF in a new tab
+    window.open(apiUrl, "_blank", "noopener,noreferrer")
   }
 
   const handleFormClick = (formName: string) => {
@@ -587,10 +587,10 @@ export default function ResourcesPage() {
                                 <Badge variant="secondary" className="text-gray-600">
                                   Coming Soon
                                 </Badge>
-                              ) : form.pdfUrl ? (
+                              ) : form.apiUrl ? (
                                 <Button
                                   size="sm"
-                                  onClick={() => handlePDFDownload(form.pdfUrl!, form.name)}
+                                  onClick={() => handlePDFDownload(form.apiUrl!, form.name)}
                                   className="bg-red-600 hover:bg-red-700"
                                 >
                                   <Download className="mr-2 h-4 w-4" />

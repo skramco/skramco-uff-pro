@@ -6,39 +6,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
-import {
-  Shield,
-  Users,
-  Star,
-  TrendingUp,
-  Zap,
-  CheckCircle,
-  ArrowRight,
-  Home,
-  DollarSign,
-  FileText,
-  Calculator,
-  Clock,
-  Grid3X3,
-  TrendingDown,
-} from "lucide-react"
+import { Shield, Users, Star, TrendingUp, Zap, CheckCircle, ArrowRight, Home, DollarSign, FileText, Calculator, Clock, Grid3X3, TrendingDown } from 'lucide-react'
 import Link from "next/link"
-import NonQMGuidelines from "@/components/non-qm-guidelines"
-import FannieMaeMatrix from "@/components/fannie-mae-matrix"
-import FreddieMacMatrix from "@/components/freddie-mac-matrix"
-import FHAMatrix from "@/components/fha-matrix"
-import VAMatrix from "@/components/va-matrix"
 
 export default function LoanProductsPage() {
-  const [isMatrixModalOpen, setIsMatrixModalOpen] = useState(false)
   const [isRatesModalOpen, setIsRatesModalOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState("")
-  const [selectedMatrixType, setSelectedMatrixType] = useState<"fannie" | "freddie" | "">("")
 
-  const openMatrixModal = (productType: string, matrixType: "fannie" | "freddie" | "" = "") => {
-    setSelectedProduct(productType)
-    setSelectedMatrixType(matrixType)
-    setIsMatrixModalOpen(true)
+  const openMatrixPDF = (pdfPath: string) => {
+    window.open(pdfPath, '_blank', 'noopener,noreferrer')
   }
 
   const openRatesModal = (productType: string) => {
@@ -141,7 +117,7 @@ export default function LoanProductsPage() {
       const res = await fetch("https://pricing-engine-service.ratesboard.com/product-pricing", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.JSON.stringify(payload),
       })
 
       if (!res.ok) {
@@ -312,14 +288,14 @@ export default function LoanProductsPage() {
                     </div>
                     <div className="flex flex-wrap gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixModal("Conventional", "fannie")}
+                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-conventional-fanniemae-2025.pdf')}
                         className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
                         View Matrix - Fannie
                       </Button>
                       <Button
-                        onClick={() => openMatrixModal("Conventional", "freddie")}
+                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-conventional-freddiemac-2025.pdf')}
                         className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
@@ -429,7 +405,7 @@ export default function LoanProductsPage() {
                     </div>
                     <div className="flex flex-wrap gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixModal("FHA")}
+                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-fha-2025.pdf')}
                         className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
@@ -467,13 +443,10 @@ export default function LoanProductsPage() {
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600">Minimum Credit Score:</span>
-                          <span className="font-semibold">580 (3.5% down)</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span className="text-gray-600">500-579 Credit:</span>
-                          <span className="font-semibold">10% down required</span>
+                          <span className="font-semibold">580 (3.5% down)*</span>
                         </div>
                       </div>
+                      <p className="text-xs text-gray-500 mt-4 italic">* Some restrictions may apply</p>
                     </CardContent>
                   </Card>
 
@@ -547,7 +520,7 @@ export default function LoanProductsPage() {
                     </div>
                     <div className="flex flex-wrap gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixModal("VA")}
+                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-va-2025.pdf')}
                         className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
@@ -661,7 +634,7 @@ export default function LoanProductsPage() {
                     </div>
                     <div className="flex gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixModal("USDA")}
+                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-usda-2025.pdf')}
                         className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
@@ -775,7 +748,7 @@ export default function LoanProductsPage() {
                     </div>
                     <div className="flex gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixModal("Non-QM")}
+                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-nonqm-2025.pdf')}
                         className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
@@ -939,42 +912,6 @@ export default function LoanProductsPage() {
         </div>
       </section>
 
-      {/* Matrix Modal */}
-      <Dialog open={isMatrixModalOpen} onOpenChange={setIsMatrixModalOpen}>
-        <DialogContent className="max-w-6xl max-h-[90vh] overflow-hidden flex flex-col">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <Grid3X3 className="h-5 w-5 text-red-600" />
-              {selectedProduct} Loan Matrix
-              {selectedMatrixType && ` - ${selectedMatrixType === "fannie" ? "Fannie Mae" : "Freddie Mac"}`}
-            </DialogTitle>
-            <DialogDescription>
-              Detailed product matrix and guidelines for {selectedProduct} loans
-              {selectedMatrixType && ` (${selectedMatrixType === "fannie" ? "Fannie Mae" : "Freddie Mac"})`}
-            </DialogDescription>
-          </DialogHeader>
-          <div className="flex-1 overflow-y-auto">
-            {selectedProduct === "Non-QM" ? (
-              <NonQMGuidelines />
-            ) : selectedProduct === "Conventional" && selectedMatrixType === "fannie" ? (
-              <FannieMaeMatrix />
-            ) : selectedProduct === "Conventional" && selectedMatrixType === "freddie" ? (
-              <FreddieMacMatrix />
-            ) : selectedProduct === "FHA" ? (
-              <FHAMatrix />
-            ) : selectedProduct === "VA" ? (
-              <VAMatrix />
-            ) : (
-              <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-lg p-12 text-center h-full flex flex-col items-center justify-center">
-                <FileText className="h-16 w-16 text-gray-400 mb-4" />
-                <h3 className="text-lg font-semibold text-gray-700 mb-2">Matrix Guidelines</h3>
-                <p className="text-gray-600">The {selectedProduct} loan matrix guidelines will be displayed here.</p>
-              </div>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
-
       {/* Rates Modal */}
       <Dialog open={isRatesModalOpen} onOpenChange={setIsRatesModalOpen}>
         <DialogContent className="max-w-6xl max-h-[80vh] overflow-y-auto">
@@ -985,6 +922,12 @@ export default function LoanProductsPage() {
             </DialogTitle>
             <DialogDescription>Live pricing for {selectedProduct} loan products</DialogDescription>
           </DialogHeader>
+          {/* Scenario Disclosure Section */}
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4">
+            <p className="text-xs text-gray-600 leading-relaxed">
+              <span className="font-semibold">Scenario:</span> Loan Purpose: Purchase | Loan Amount: $375,000 | LTV/CLTV: 70% | Occupancy: Owner Occupied | State: CA | Lock Term: 30 Days | Credit Score: 780
+            </p>
+          </div>
           <div className="py-6">
             <div id="wp-pricing-grid" className="pricing-container">
               <div className="loading-message">

@@ -2,38 +2,110 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Shield, Zap, Users, TrendingUp, CheckCircle, Star } from "lucide-react"
+import { ArrowRight, Shield, Zap, Users, TrendingUp, CheckCircle, Star } from 'lucide-react'
 import Link from "next/link"
 import { ProPortalLoginModal } from "@/components/pro-portal-login-modal"
 
+const heroSlides = [
+  {
+    id: 1,
+    background: "/professional-mortgage-broker-meeting-with-happy-cl.jpg",
+    tagline: "Trusted by Mortgage Professionals Nationwide",
+    headline: "Your Gateway to Faster Closings and Better Rates",
+    subheadline: "Partner with UFF for competitive rates, fast closings, and comprehensive loan solutions. Access our PRO Portal for seamless loan management.",
+  },
+  {
+    id: 2,
+    background: "/diverse-team-of-mortgage-professionals-collaborati.jpg",
+    tagline: "Leading the Industry Since 2010",
+    headline: "Build Your Success with America's Fastest Growing Wholesale Lender",
+    subheadline: "Join 500+ broker partners who trust UFF for competitive pricing, cutting-edge technology, and unmatched support.",
+  },
+  {
+    id: 3,
+    background: "/modern-business-handshake-partnership-deal-mortgag.jpg",
+    tagline: "Innovation Meets Excellence",
+    headline: "Close More Deals with Our Advanced PRO Portal Technology",
+    subheadline: "Streamline your workflow with instant rate quotes, real-time status updates, and 24/7 support that keeps your business moving.",
+  },
+  {
+    id: 4,
+    background: "/happy-family-receiving-house-keys-from-mortgage-br.jpg",
+    tagline: "Your Success is Our Mission",
+    headline: "Turn More Applications into Funded Loans",
+    subheadline: "With 15-day average closings, flexible loan programs, and dedicated support, we help you win more business and grow your pipeline.",
+  },
+]
+
 export default function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   const handleProPortalClick = (e: React.MouseEvent) => {
     e.preventDefault()
     setIsModalOpen(true)
   }
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length)
+    }, 6000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  const currentHero = heroSlides[currentSlide]
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-700 text-white py-20">
-        <div className="container mx-auto px-4">
+      {/* Hero Section - Now with rotating content */}
+      <section className="relative bg-gradient-to-br from-red-600 via-red-500 to-red-700 text-white py-20 overflow-hidden">
+        {heroSlides.map((slide, index) => (
+          <div
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentSlide ? 'opacity-30' : 'opacity-0'
+            }`}
+            style={{
+              backgroundImage: `url('${slide.background}')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat"
+            }}
+          />
+        ))}
+        
+        {/* Gradient overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-red-600/70 via-red-500/70 to-red-700/70" />
+        
+        {/* Content - Now dynamically updating based on current slide */}
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/20 text-white border-white/30">
-              Trusted by Mortgage Professionals Nationwide
+            <Badge 
+              key={`badge-${currentSlide}`}
+              className="mb-6 bg-white/20 text-white border-white/30 animate-in fade-in slide-in-from-top-4 duration-700"
+            >
+              {currentHero.tagline}
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Empower Your Mortgage Business with <span className="text-red-100">United Fidelity Funding</span>
+            
+            <h1 
+              key={`headline-${currentSlide}`}
+              className="text-5xl md:text-6xl font-bold mb-6 leading-tight animate-in fade-in slide-in-from-bottom-4 duration-700"
+            >
+              {currentHero.headline}
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-red-100 leading-relaxed">
-              Partner with UFF for competitive rates, fast closings, and comprehensive loan solutions. Access our PRO
-              Portal for seamless loan management.
+            
+            <p 
+              key={`subheadline-${currentSlide}`}
+              className="text-xl md:text-2xl mb-8 text-red-100 leading-relaxed animate-in fade-in slide-in-from-bottom-4 duration-700 delay-150"
+            >
+              {currentHero.subheadline}
             </p>
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-white text-red-600 hover:bg-red-50 text-lg px-8 py-3">
                 <Link href="/get-approved">
@@ -48,6 +120,21 @@ export default function HomePage() {
               >
                 <Link href="/pro-portal">Explore PRO Portal</Link>
               </Button>
+            </div>
+
+            <div className="flex justify-center gap-2 mt-8">
+              {heroSlides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'w-8 bg-white' 
+                      : 'w-2 bg-white/40 hover:bg-white/60'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
 
             {/* Fancy PRO Portal Login CTA */}
