@@ -215,7 +215,7 @@ export default function LoanProductsPage() {
               From conventional to specialty programs, we offer the complete range of loan products your clients need
               with competitive rates and fast closings.
             </p>
-            <Button asChild size="lg" className="bg-white text-red-600 hover:bg-red-50 text-lg px-8 py-3">
+            <Button asChild size="lg" className="bg-white text-red-600 hover:bg-red-50 hover:text-red-700 text-lg px-8 py-3">
               <Link href="/get-approved">
                 Partner With Us Today <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
@@ -289,14 +289,14 @@ export default function LoanProductsPage() {
                     <div className="flex flex-wrap gap-3 pt-4">
                       <Button
                         onClick={() => openMatrixPDF('/pdfs/uff-matrix-conventional-fanniemae-2025.pdf')}
-                        className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
+                        className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
                         View Matrix - Fannie
                       </Button>
                       <Button
                         onClick={() => openMatrixPDF('/pdfs/uff-matrix-conventional-freddiemac-2025.pdf')}
-                        className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
+                        className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
                         View Matrix - Freddie
@@ -304,7 +304,7 @@ export default function LoanProductsPage() {
                       <Button
                         onClick={() => openRatesModal("Conventional")}
                         variant="outline"
-                        className="border-red-600 text-red-600 hover:bg-red-50 flex items-center gap-2"
+                        className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 flex items-center gap-2"
                       >
                         <TrendingDown className="h-4 w-4" />
                         Current Rates
@@ -406,7 +406,7 @@ export default function LoanProductsPage() {
                     <div className="flex flex-wrap gap-3 pt-4">
                       <Button
                         onClick={() => openMatrixPDF('/pdfs/uff-matrix-fha-2025.pdf')}
-                        className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
+                        className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
                         View Matrix
@@ -414,7 +414,7 @@ export default function LoanProductsPage() {
                       <Button
                         onClick={() => openRatesModal("FHA")}
                         variant="outline"
-                        className="border-red-600 text-red-600 hover:bg-red-50 flex items-center gap-2"
+                        className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 flex items-center gap-2"
                       >
                         <TrendingDown className="h-4 w-4" />
                         Current Rates
@@ -521,7 +521,7 @@ export default function LoanProductsPage() {
                     <div className="flex flex-wrap gap-3 pt-4">
                       <Button
                         onClick={() => openMatrixPDF('/pdfs/uff-matrix-va-2025.pdf')}
-                        className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
+                        className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
                         View Matrix
@@ -529,7 +529,7 @@ export default function LoanProductsPage() {
                       <Button
                         onClick={() => openRatesModal("VA")}
                         variant="outline"
-                        className="border-red-600 text-red-600 hover:bg-red-50 flex items-center gap-2"
+                        className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 flex items-center gap-2"
                       >
                         <TrendingDown className="h-4 w-4" />
                         Current Rates
@@ -635,7 +635,7 @@ export default function LoanProductsPage() {
                     <div className="flex gap-3 pt-4">
                       <Button
                         onClick={() => openMatrixPDF('/pdfs/uff-matrix-usda-2025.pdf')}
-                        className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
+                        className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
                         View Matrix
@@ -643,7 +643,7 @@ export default function LoanProductsPage() {
                       <Button
                         onClick={() => openRatesModal("USDA")}
                         variant="outline"
-                        className="border-red-600 text-red-600 hover:bg-red-50 flex items-center gap-2"
+                        className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 flex items-center gap-2"
                       >
                         <TrendingDown className="h-4 w-4" />
                         Current Rates
@@ -749,7 +749,7 @@ export default function LoanProductsPage() {
                     <div className="flex gap-3 pt-4">
                       <Button
                         onClick={() => openMatrixPDF('/pdfs/uff-matrix-nonqm-2025.pdf')}
-                        className="bg-red-600 hover:bg-red-700 flex items-center gap-2"
+                        className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
                         View Matrix
@@ -757,7 +757,7 @@ export default function LoanProductsPage() {
                       <Button
                         onClick={() => openRatesModal("Non-QM")}
                         variant="outline"
-                        className="border-red-600 text-red-600 hover:bg-red-50 flex items-center gap-2"
+                        className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 flex items-center gap-2"
                       >
                         <TrendingDown className="h-4 w-4" />
                         Current Rates
@@ -896,7 +896,7 @@ export default function LoanProductsPage() {
               competitive rates and exceptional service.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-red-600 hover:bg-red-50">
+              <Button asChild size="lg" className="bg-white text-red-600 hover:bg-red-50 hover:text-red-700">
                 <Link href="/get-approved">Get Approved Today</Link>
               </Button>
               <Button
@@ -914,13 +914,13 @@ export default function LoanProductsPage() {
 
       {/* Rates Modal */}
       <Dialog open={isRatesModalOpen} onOpenChange={setIsRatesModalOpen}>
-        <DialogContent className="max-w-6xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="max-w-6xl max-h-[80vh] overflow-y-auto bg-white text-gray-900">
           <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
+            <DialogTitle className="flex items-center gap-2 text-gray-900">
               <TrendingDown className="h-5 w-5 text-red-600" />
               Current {selectedProduct} Rates
             </DialogTitle>
-            <DialogDescription>Live pricing for {selectedProduct} loan products</DialogDescription>
+            <DialogDescription className="text-gray-600">Live pricing for {selectedProduct} loan products</DialogDescription>
           </DialogHeader>
           {/* Scenario Disclosure Section */}
           <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4">
