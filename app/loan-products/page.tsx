@@ -288,14 +288,14 @@ export default function LoanProductsPage() {
                     </div>
                     <div className="flex flex-wrap gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-conventional-fanniemae-2025.pdf')}
+                        onClick={() => window.open('/matrix/conventional-fannie', '_blank')}
                         className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
                         View Matrix - Fannie
                       </Button>
                       <Button
-                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-conventional-freddiemac-2025.pdf')}
+                        onClick={() => window.open('/matrix/conventional-freddie', '_blank')}
                         className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
@@ -405,7 +405,7 @@ export default function LoanProductsPage() {
                     </div>
                     <div className="flex flex-wrap gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-fha-2025.pdf')}
+                        onClick={() => window.open('/matrix/fha', '_blank')}
                         className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
@@ -520,7 +520,7 @@ export default function LoanProductsPage() {
                     </div>
                     <div className="flex flex-wrap gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-va-2025.pdf')}
+                        onClick={() => window.open('/matrix/va', '_blank')}
                         className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
@@ -634,7 +634,7 @@ export default function LoanProductsPage() {
                     </div>
                     <div className="flex gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-usda-2025.pdf')}
+                        onClick={() => window.open('/matrix/usda', '_blank')}
                         className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
@@ -748,7 +748,7 @@ export default function LoanProductsPage() {
                     </div>
                     <div className="flex gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-nonqm-2025.pdf')}
+                        onClick={() => window.open('/matrix/nonqm', '_blank')}
                         className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
