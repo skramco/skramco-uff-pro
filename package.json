@@ -30,7 +30,7 @@
     "d3": "latest",
     "jspdf": "latest",
     "lucide-react": "^0.454.0",
-    "next": "15.1.4",
+    "next": "15.1.11",
     "next-themes": "^0.4.4",
     "pdfkit": "latest",
     "react": "^19.0.0",
