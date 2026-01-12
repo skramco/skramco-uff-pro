@@ -96,7 +96,7 @@ export function ProPortalLoginModal({ isOpen, onClose }: ProPortalLoginModalProp
   if (isSubmitted) {
     return (
       <Dialog open={isOpen} onOpenChange={onClose}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-md bg-white text-gray-900">
           <div className="text-center py-6">
             <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="h-8 w-8 text-green-600" />
@@ -117,7 +117,7 @@ export function ProPortalLoginModal({ isOpen, onClose }: ProPortalLoginModalProp
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-white text-gray-900">
         <DialogHeader>
           <div className="flex items-center gap-3 mb-2">
             <div className="bg-red-100 w-12 h-12 rounded-full flex items-center justify-center">
