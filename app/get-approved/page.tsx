@@ -16,20 +16,88 @@ import Link from "next/link"
 import { Captcha } from "@/components/ui/captcha" // Import Captcha
 
 export default function GetApprovedPage() {
-  const [isCaptchaValid, setIsCaptchaValid] = useState(false) // New state for CAPTCHA validity
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleCaptchaChange = (isValid: boolean) => {
     setIsCaptchaValid(isValid)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    
     if (!isCaptchaValid) {
       alert("Please complete the CAPTCHA.")
       return
     }
-    // Handle form submission logic here
-    console.log("Form submitted!")
+
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const form = e.currentTarget
+      const formData = new FormData(form)
+      
+      // Collect checkbox values for loan types
+      const loanTypes: string[] = []
+      if (formData.get('conventional')) loanTypes.push('Conventional')
+      if (formData.get('fha')) loanTypes.push('FHA')
+      if (formData.get('va')) loanTypes.push('VA')
+      if (formData.get('usda')) loanTypes.push('USDA')
+      if (formData.get('nonqm')) loanTypes.push('Non-QM')
+      if (formData.get('jumbo')) loanTypes.push('Jumbo')
+
+      // Prepare data for email API
+      const emailData = {
+        companyName: formData.get('company-name'),
+        dba: formData.get('dba'),
+        licenseNumber: formData.get('license-number'),
+        yearsInBusiness: formData.get('years-in-business'),
+        businessAddress: formData.get('business-address'),
+        city: formData.get('city'),
+        state: formData.get('state'),
+        zip: formData.get('zip'),
+        firstName: formData.get('first-name'),
+        lastName: formData.get('last-name'),
+        title: formData.get('title'),
+        nmlsIndividual: formData.get('nmls-individual'),
+        phone: formData.get('phone'),
+        email: formData.get('email'),
+        monthlyVolume: formData.get('monthly-volume'),
+        loanOfficers: formData.get('loan-officers'),
+        loanTypes: loanTypes,
+        currentLenders: formData.get('current-lenders'),
+        additionalInfo: formData.get('additional-info'),
+        marketingConsent: formData.get('marketing') === 'on'
+      }
+
+      // Send to Resend API
+      const emailResponse = await fetch('/api/send-broker-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(emailData)
+      })
+
+      if (!emailResponse.ok) {
+        throw new Error('Failed to send email')
+      }
+
+      // Submit to Netlify Forms (form will handle this automatically with data-netlify attribute)
+      // The form submission will be captured by Netlify
+      
+      setSubmitStatus('success')
+      form.reset()
+      setIsCaptchaValid(false)
+      
+      // Scroll to top to show success message
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } catch (error) {
+      console.error('Form submission error:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -96,7 +164,45 @@ export default function GetApprovedPage() {
               <p className="text-xl text-gray-600">Complete the form below to start your partnership with UFF</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            {submitStatus === 'success' && (
+              <div className="mb-8 p-6 bg-green-50 border border-green-200 rounded-lg">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-6 w-6 text-green-600 mt-0.5" />
+                  <div>
+                    <h3 className="font-semibold text-green-900 mb-1">Application Submitted Successfully!</h3>
+                    <p className="text-green-800">
+                      Thank you for your interest in partnering with UFF. We've received your application and will review it within 24-48 hours. You'll receive a confirmation email shortly.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="mb-8 p-6 bg-red-50 border border-red-200 rounded-lg">
+                <div className="flex items-start gap-3">
+                  <div className="h-6 w-6 text-red-600 mt-0.5">✕</div>
+                  <div>
+                    <h3 className="font-semibold text-red-900 mb-1">Submission Failed</h3>
+                    <p className="text-red-800">
+                      We encountered an error submitting your application. Please try again or contact us directly at support@uff.loans.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <form 
+              onSubmit={handleSubmit} 
+              className="space-y-8"
+              name="broker-application"
+              method="POST"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+            >
+              {/* Netlify Forms hidden fields */}
+              <input type="hidden" name="form-name" value="broker-application" />
+              <input type="hidden" name="bot-field" />
               {/* Company Information */}
               <Card>
                 <CardHeader>
@@ -110,22 +216,22 @@ export default function GetApprovedPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="company-name">Company Name *</Label>
-                      <Input id="company-name" placeholder="Your Company Name" />
+                      <Input id="company-name" name="company-name" placeholder="Your Company Name" required />
                     </div>
                     <div>
                       <Label htmlFor="dba">DBA (if applicable)</Label>
-                      <Input id="dba" placeholder="Doing Business As" />
+                      <Input id="dba" name="dba" placeholder="Doing Business As" />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="license-number">NMLS License Number *</Label>
-                      <Input id="license-number" placeholder="NMLS #" />
+                      <Input id="license-number" name="license-number" placeholder="NMLS #" required />
                     </div>
                     <div>
                       <Label htmlFor="years-in-business">Years in Business *</Label>
-                      <Select>
+                      <Select name="years-in-business" required>
                         <SelectTrigger>
                           <SelectValue placeholder="Select years" />
                         </SelectTrigger>
@@ -142,17 +248,17 @@ export default function GetApprovedPage() {
 
                   <div>
                     <Label htmlFor="business-address">Business Address *</Label>
-                    <Input id="business-address" placeholder="Street Address" />
+                    <Input id="business-address" name="business-address" placeholder="Street Address" required />
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
                       <Label htmlFor="city">City *</Label>
-                      <Input id="city" placeholder="City" />
+                      <Input id="city" name="city" placeholder="City" required />
                     </div>
                     <div>
                       <Label htmlFor="state">State *</Label>
-                      <Select>
+                      <Select name="state" required>
                         <SelectTrigger>
                           <SelectValue placeholder="Select state" />
                         </SelectTrigger>
@@ -169,7 +275,7 @@ export default function GetApprovedPage() {
                     </div>
                     <div>
                       <Label htmlFor="zip">ZIP Code *</Label>
-                      <Input id="zip" placeholder="ZIP Code" />
+                      <Input id="zip" name="zip" placeholder="ZIP Code" required />
                     </div>
                   </div>
                 </CardContent>
@@ -188,33 +294,33 @@ export default function GetApprovedPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="first-name">First Name *</Label>
-                      <Input id="first-name" placeholder="First Name" />
+                      <Input id="first-name" name="first-name" placeholder="First Name" required />
                     </div>
                     <div>
                       <Label htmlFor="last-name">Last Name *</Label>
-                      <Input id="last-name" placeholder="Last Name" />
+                      <Input id="last-name" name="last-name" placeholder="Last Name" required />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="title">Title/Position *</Label>
-                      <Input id="title" placeholder="e.g., Owner, Manager, Loan Officer" />
+                      <Input id="title" name="title" placeholder="e.g., Owner, Manager, Loan Officer" required />
                     </div>
                     <div>
                       <Label htmlFor="nmls-individual">Individual NMLS # *</Label>
-                      <Input id="nmls-individual" placeholder="Your NMLS #" />
+                      <Input id="nmls-individual" name="nmls-individual" placeholder="Your NMLS #" required />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="phone">Phone Number *</Label>
-                      <Input id="phone" placeholder="(555) 123-4567" />
+                      <Input id="phone" name="phone" type="tel" placeholder="(555) 123-4567" required />
                     </div>
                     <div>
                       <Label htmlFor="email">Email Address *</Label>
-                      <Input id="email" type="email" placeholder="your@email.com" />
+                      <Input id="email" name="email" type="email" placeholder="your@email.com" required />
                     </div>
                   </div>
                 </CardContent>
@@ -233,7 +339,7 @@ export default function GetApprovedPage() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="monthly-volume">Monthly Loan Volume *</Label>
-                      <Select>
+                      <Select name="monthly-volume" required>
                         <SelectTrigger>
                           <SelectValue placeholder="Select volume range" />
                         </SelectTrigger>
@@ -248,7 +354,7 @@ export default function GetApprovedPage() {
                     </div>
                     <div>
                       <Label htmlFor="loan-officers">Number of Loan Officers *</Label>
-                      <Select>
+                      <Select name="loan-officers" required>
                         <SelectTrigger>
                           <SelectValue placeholder="Select number" />
                         </SelectTrigger>
@@ -267,27 +373,27 @@ export default function GetApprovedPage() {
                     <Label htmlFor="loan-types">Primary Loan Types (check all that apply)</Label>
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
                       <div className="flex items-center space-x-2">
-                        <Checkbox id="conventional" />
+                        <Checkbox id="conventional" name="conventional" />
                         <Label htmlFor="conventional">Conventional</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Checkbox id="fha" />
+                        <Checkbox id="fha" name="fha" />
                         <Label htmlFor="fha">FHA</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Checkbox id="va" />
+                        <Checkbox id="va" name="va" />
                         <Label htmlFor="va">VA</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Checkbox id="usda" />
+                        <Checkbox id="usda" name="usda" />
                         <Label htmlFor="usda">USDA</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Checkbox id="nonqm" />
+                        <Checkbox id="nonqm" name="nonqm" />
                         <Label htmlFor="nonqm">Non-QM</Label>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <Checkbox id="jumbo" />
+                        <Checkbox id="jumbo" name="jumbo" />
                         <Label htmlFor="jumbo">Jumbo</Label>
                       </div>
                     </div>
@@ -297,6 +403,7 @@ export default function GetApprovedPage() {
                     <Label htmlFor="current-lenders">Current Wholesale Lenders</Label>
                     <Textarea
                       id="current-lenders"
+                      name="current-lenders"
                       placeholder="List your current wholesale lending partners (optional)"
                       rows={3}
                     />
@@ -362,6 +469,7 @@ export default function GetApprovedPage() {
                 </CardHeader>
                 <CardContent>
                   <Textarea
+                    name="additional-info"
                     placeholder="Tell us about your business goals, specialties, or any questions you have about partnering with UFF..."
                     rows={4}
                   />
@@ -384,7 +492,7 @@ export default function GetApprovedPage() {
                 <CardContent className="pt-6">
                   <div className="space-y-4">
                     <div className="flex items-start space-x-2">
-                      <Checkbox id="terms" />
+                      <Checkbox id="terms" name="terms" required />
                       <Label htmlFor="terms" className="text-sm leading-relaxed">
                         I acknowledge that all information provided is true and accurate to the best of my knowledge. I
                         understand that UFF will review this application and may request additional documentation before
@@ -392,7 +500,7 @@ export default function GetApprovedPage() {
                       </Label>
                     </div>
                     <div className="flex items-start space-x-2">
-                      <Checkbox id="marketing" />
+                      <Checkbox id="marketing" name="marketing" />
                       <Label htmlFor="marketing" className="text-sm leading-relaxed">
                         I agree to receive marketing communications from United Fidelity Funding Corp regarding
                         products, services, and industry updates.
@@ -401,8 +509,13 @@ export default function GetApprovedPage() {
                   </div>
 
                   <div className="mt-8 text-center">
-                    <Button size="lg" className="bg-red-600 hover:bg-red-700 px-12 py-3" disabled={!isCaptchaValid}>
-                      Submit Application
+                    <Button 
+                      type="submit"
+                      size="lg" 
+                      className="bg-red-600 hover:bg-red-700 px-12 py-3" 
+                      disabled={!isCaptchaValid || isSubmitting}
+                    >
+                      {isSubmitting ? 'Submitting...' : 'Submit Application'}
                     </Button>
                     <p className="text-sm text-gray-600 mt-4">
                       We'll review your application and contact you within 24-48 hours

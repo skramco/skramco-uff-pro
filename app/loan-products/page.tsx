@@ -5,26 +5,19 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { Shield, Users, Star, TrendingUp, Zap, CheckCircle, ArrowRight, Home, DollarSign, FileText, Calculator, Clock, Grid3X3, TrendingDown } from 'lucide-react'
 import Link from "next/link"
+import { RatesheetPasswordDialog } from "@/components/RatesheetPasswordDialog"
 
 export default function LoanProductsPage() {
-  const [isRatesModalOpen, setIsRatesModalOpen] = useState(false)
-  const [selectedProduct, setSelectedProduct] = useState("")
+  const [isRatesheetDialogOpen, setIsRatesheetDialogOpen] = useState(false)
 
   const openMatrixPDF = (pdfPath: string) => {
     window.open(pdfPath, '_blank', 'noopener,noreferrer')
   }
 
-  const openRatesModal = (productType: string) => {
-    setSelectedProduct(productType)
-    setIsRatesModalOpen(true)
-    setTimeout(() => {
-      if (typeof window !== "undefined") {
-        fetchPricing(productType)
-      }
-    }, 100)
+  const openRatesheetDialog = () => {
+    setIsRatesheetDialogOpen(true)
   }
 
   const calculateAPR = (loanAmount: number, closingCosts: number, nominalRate: number, loanTermYears = 30) => {
@@ -302,7 +295,7 @@ export default function LoanProductsPage() {
                         View Matrix - Freddie
                       </Button>
                       <Button
-                        onClick={() => openRatesModal("Conventional")}
+                        onClick={openRatesheetDialog}
                         variant="outline"
                         className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 flex items-center gap-2"
                       >
@@ -412,7 +405,7 @@ export default function LoanProductsPage() {
                         View Matrix
                       </Button>
                       <Button
-                        onClick={() => openRatesModal("FHA")}
+                        onClick={openRatesheetDialog}
                         variant="outline"
                         className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 flex items-center gap-2"
                       >
@@ -527,7 +520,7 @@ export default function LoanProductsPage() {
                         View Matrix
                       </Button>
                       <Button
-                        onClick={() => openRatesModal("VA")}
+                        onClick={openRatesheetDialog}
                         variant="outline"
                         className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 flex items-center gap-2"
                       >
@@ -641,7 +634,7 @@ export default function LoanProductsPage() {
                         View Matrix
                       </Button>
                       <Button
-                        onClick={() => openRatesModal("USDA")}
+                        onClick={openRatesheetDialog}
                         variant="outline"
                         className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 flex items-center gap-2"
                       >
@@ -755,7 +748,7 @@ export default function LoanProductsPage() {
                         View Matrix
                       </Button>
                       <Button
-                        onClick={() => openRatesModal("Non-QM")}
+                        onClick={openRatesheetDialog}
                         variant="outline"
                         className="border-red-600 text-red-600 hover:bg-red-50 hover:text-red-700 flex items-center gap-2"
                       >
@@ -912,174 +905,11 @@ export default function LoanProductsPage() {
         </div>
       </section>
 
-      {/* Rates Modal */}
-      <Dialog open={isRatesModalOpen} onOpenChange={setIsRatesModalOpen}>
-        <DialogContent className="max-w-6xl max-h-[80vh] overflow-y-auto bg-white text-gray-900">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2 text-gray-900">
-              <TrendingDown className="h-5 w-5 text-red-600" />
-              Current {selectedProduct} Rates
-            </DialogTitle>
-            <DialogDescription className="text-gray-600">Live pricing for {selectedProduct} loan products</DialogDescription>
-          </DialogHeader>
-          {/* Scenario Disclosure Section */}
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-3 mb-4">
-            <p className="text-xs text-gray-600 leading-relaxed">
-              <span className="font-semibold">Scenario:</span> Loan Purpose: Purchase | Loan Amount: $375,000 | LTV/CLTV: 70% | Occupancy: Owner Occupied | State: CA | Lock Term: 30 Days | Credit Score: 780
-            </p>
-          </div>
-          <div className="py-6">
-            <div id="wp-pricing-grid" className="pricing-container">
-              <div className="loading-message">
-                <div className="flex items-center justify-center gap-3">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-red-600"></div>
-                  <p>Loading mortgage pricing...</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </DialogContent>
-      </Dialog>
-
-      <style jsx global>{`
-        .pricing-container {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-
-        .product-section {
-          margin-bottom: 2rem;
-          border: 1px solid #e5e7eb;
-          border-radius: 8px;
-          overflow: hidden;
-        }
-
-        .product-title {
-          background: linear-gradient(135deg, #dc2626, #b91c1c);
-          color: white;
-          padding: 1rem 1.5rem;
-          margin: 0;
-          font-size: 1.25rem;
-          font-weight: 600;
-        }
-
-        .pricing-table-container {
-          overflow-x: auto;
-        }
-
-        .pricing-table {
-          width: 100%;
-          border-collapse: collapse;
-          margin: 0;
-        }
-
-        .pricing-table thead {
-          background-color: #f9fafb;
-        }
-
-        .pricing-table th {
-          padding: 0.75rem 1rem;
-          text-align: left;
-          font-weight: 600;
-          color: #374151;
-          border-bottom: 2px solid #e5e7eb;
-        }
-
-        .pricing-table td {
-          padding: 0.75rem 1rem;
-          border-bottom: 1px solid #e5e7eb;
-        }
-
-        .pricing-table tbody tr:hover {
-          background-color: #f9fafb;
-        }
-
-        .rate-cell {
-          font-weight: 600;
-          color: #dc2626;
-        }
-
-        .price-cell {
-          font-weight: 500;
-        }
-
-        .apr-cell {
-          color: #059669;
-          font-weight: 500;
-        }
-
-        .payment-cell {
-          font-weight: 600;
-          color: #1f2937;
-        }
-
-        .adjustments-section {
-          padding: 1.5rem;
-          background-color: #f9fafb;
-          border-top: 1px solid #e5e7eb;
-        }
-
-        .adjustments-section h4 {
-          margin: 0 0 1rem 0;
-          color: #374151;
-          font-size: 1rem;
-          font-weight: 600;
-        }
-
-        .adjustments-table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-
-        .adjustments-table td {
-          padding: 0.5rem 0.75rem;
-          border-bottom: 1px solid #d1d5db;
-          font-size: 0.875rem;
-        }
-
-        .adjustments-table td:first-child {
-          color: #374151;
-        }
-
-        .adjustments-table td:last-child {
-          font-weight: 500;
-          text-align: right;
-        }
-
-        .last-updated {
-          padding: 1rem 1.5rem;
-          margin: 0;
-          font-size: 0.875rem;
-          color: #6b7280;
-          background-color: #f9fafb;
-          border-top: 1px solid #e5e7eb;
-        }
-
-        .loading-message {
-          padding: 3rem;
-          text-align: center;
-          color: #6b7280;
-        }
-
-        .error-message {
-          padding: 2rem;
-          text-align: center;
-          color: #dc2626;
-          background-color: #fef2f2;
-          border: 1px solid #fecaca;
-          border-radius: 6px;
-          margin: 1rem;
-        }
-
-        .no-data-message {
-          padding: 2rem;
-          text-align: center;
-          color: #6b7280;
-          background-color: #f9fafb;
-          border: 1px solid #e5e7eb;
-          border-radius: 6px;
-          margin: 1rem;
-        }
-      `}</style>
+      {/* Password-Protected Ratesheet Dialog */}
+      <RatesheetPasswordDialog 
+        open={isRatesheetDialogOpen} 
+        onOpenChange={setIsRatesheetDialogOpen} 
+      />
     </div>
   )
 }
