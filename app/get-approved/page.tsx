@@ -83,9 +83,6 @@ export default function GetApprovedPage() {
         throw new Error('Failed to send email')
       }
 
-      // Submit to Netlify Forms (form will handle this automatically with data-netlify attribute)
-      // The form submission will be captured by Netlify
-      
       setSubmitStatus('success')
       form.reset()
       setIsCaptchaValid(false)
@@ -195,14 +192,7 @@ export default function GetApprovedPage() {
             <form 
               onSubmit={handleSubmit} 
               className="space-y-8"
-              name="broker-application"
-              method="POST"
-              data-netlify="true"
-              data-netlify-honeypot="bot-field"
             >
-              {/* Netlify Forms hidden fields */}
-              <input type="hidden" name="form-name" value="broker-application" />
-              <input type="hidden" name="bot-field" />
               {/* Company Information */}
               <Card>
                 <CardHeader>
