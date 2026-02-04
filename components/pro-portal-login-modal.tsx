@@ -63,7 +63,18 @@ export function ProPortalLoginModal({ isOpen, onClose }: ProPortalLoginModalProp
     const webhookData = formData // Declare webhookData variable
 
     try {
-      // Send webhook to Zapier  ---  CORS-safe
+      // Send to Resend email API (primary notification)
+      const emailResponse = await fetch('/api/send-beta-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+
+      if (!emailResponse.ok) {
+        throw new Error('Failed to send email')
+      }
+
+      // Send webhook to Zapier (backup/integration)
       await fetch("https://hooks.zapier.com/hooks/catch/209660/u33ao2t/", {
         method: "POST",
         mode: "no-cors", // prevents CORS failures in browsers / Next.js
@@ -81,14 +92,9 @@ export function ProPortalLoginModal({ isOpen, onClose }: ProPortalLoginModalProp
         router.push("/")
       }, 3000)
     } catch (error) {
-      console.error("Webhook submission error:", error)
-      setIsSubmitted(true)
-      setTimeout(() => {
-        setIsSubmitted(false)
-        onClose()
-        router.push("/")
-      }, 3000)
-    } finally {
+      console.error("Submission error:", error)
+      // Show error to user instead of auto-redirecting
+      alert("There was an error submitting your request. Please try again or contact us directly at mark.ramirez@uff.loans")
       setIsSubmitting(false)
     }
   }
