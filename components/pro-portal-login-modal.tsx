@@ -60,10 +60,9 @@ export function ProPortalLoginModal({ isOpen, onClose }: ProPortalLoginModalProp
       return
     }
     setIsSubmitting(true)
-    const webhookData = formData // Declare webhookData variable
 
     try {
-      // Send to Resend email API (primary notification)
+      // Send to Resend email API
       const emailResponse = await fetch('/api/send-beta-signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -74,17 +73,6 @@ export function ProPortalLoginModal({ isOpen, onClose }: ProPortalLoginModalProp
         throw new Error('Failed to send email')
       }
 
-      // Send webhook to Zapier (backup/integration)
-      await fetch("https://hooks.zapier.com/hooks/catch/209660/u33ao2t/", {
-        method: "POST",
-        mode: "no-cors", // prevents CORS failures in browsers / Next.js
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(webhookData),
-      })
-
-      // If we reach this line the network request did not hard-fail
       setIsSubmitted(true)
       setTimeout(() => {
         setIsSubmitted(false)
@@ -93,7 +81,6 @@ export function ProPortalLoginModal({ isOpen, onClose }: ProPortalLoginModalProp
       }, 3000)
     } catch (error) {
       console.error("Submission error:", error)
-      // Show error to user instead of auto-redirecting
       alert("There was an error submitting your request. Please try again or contact us directly at mark.ramirez@uff.loans")
       setIsSubmitting(false)
     }
