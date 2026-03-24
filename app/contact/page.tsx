@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -11,17 +9,11 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Phone, Mail, MapPin, Clock, MessageSquare, Users, Headphones } from "lucide-react"
-import { ProPortalLoginModal } from "@/components/pro-portal-login-modal"
 import { Captcha } from "@/components/ui/captcha" // Import Captcha
+import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
 
 export default function ContactPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const [isCaptchaValid, setIsCaptchaValid] = useState(false) // New state for CAPTCHA validity
-
-  const handleProPortalClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    setIsModalOpen(true)
-  }
 
   const handleCaptchaChange = (isValid: boolean) => {
     setIsCaptchaValid(isValid)
@@ -233,10 +225,12 @@ export default function ContactPage() {
                     <div className="pt-4 border-t border-gray-200">
                       <h4 className="font-semibold text-gray-900 mb-2">PRO Portal Access</h4>
                       <Button
-                        onClick={handleProPortalClick}
+                        asChild
                         className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold rounded-full"
                       >
-                        🚀 Login to PRO Portal
+                        <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                          🚀 Login to PRO Portal
+                        </a>
                       </Button>
                     </div>
                   </div>
@@ -304,7 +298,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <ProPortalLoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   )
 }

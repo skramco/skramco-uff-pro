@@ -1,23 +1,13 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Target, Eye, Heart, Users, Award, TrendingUp } from "lucide-react"
 import Link from "next/link"
-import { ProPortalLoginModal } from "@/components/pro-portal-login-modal"
+import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
 
 export default function AboutPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
-  const handleProPortalClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    setIsModalOpen(true)
-  }
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -226,10 +216,12 @@ export default function AboutPage() {
                 <div className="text-center">
                   <p className="text-white font-semibold">Already a UFF partner?</p>
                   <Button
-                    onClick={handleProPortalClick}
+                    asChild
                     className="mt-2 bg-white text-red-600 hover:bg-red-50 font-semibold px-6 py-2 rounded-full shadow-lg"
                   >
-                    🚀 Access PRO Portal
+                    <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                      🚀 Access PRO Portal
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -238,7 +230,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <ProPortalLoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   )
 }

@@ -1,7 +1,5 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -24,7 +22,7 @@ import {
   ExternalLink,
 } from "lucide-react"
 import Link from "next/link"
-import { ProPortalLoginModal } from "@/components/pro-portal-login-modal"
+import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
 import { MortgageCalculator } from "@/components/mortgage-calculator"
 import { FHACaseNumberForm } from "@/components/fha-case-number-form"
 import { RateSheetPasswordModal } from "@/components/rate-sheet-password-modal"
@@ -336,16 +334,10 @@ const formSections = [
 ]
 
 export default function ResourcesPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false)
   const [isFHAFormOpen, setIsFHAFormOpen] = useState(false)
   const [isRateSheetPasswordOpen, setIsRateSheetPasswordOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
-
-  const handleProPortalClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    setIsModalOpen(true)
-  }
 
   const handleCalculatorClick = () => {
     setIsCalculatorOpen(true)
@@ -501,10 +493,12 @@ export default function ResourcesPage() {
               <CardContent>
                 <p className="text-gray-600 mb-4">Access your loan management platform</p>
                 <Button
-                  onClick={handleProPortalClick}
+                  asChild
                   className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold shadow-lg"
                 >
-                  🚀 Login to PRO Portal
+                  <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                    🚀 Login to PRO Portal
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -639,20 +633,16 @@ export default function ResourcesPage() {
               <Button asChild size="lg" className="bg-white text-red-600 hover:bg-red-50">
                 <Link href="/contact">Contact Support</Link>
               </Button>
-              <Button
-                onClick={handleProPortalClick}
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-red-600 bg-transparent"
-              >
-                Access PRO Portal
+              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-red-600 bg-transparent">
+                <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                  Access PRO Portal
+                </a>
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      <ProPortalLoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <MortgageCalculator isOpen={isCalculatorOpen} onClose={() => setIsCalculatorOpen(false)} />
       <FHACaseNumberForm isOpen={isFHAFormOpen} onClose={() => setIsFHAFormOpen(false)} />
       <RateSheetPasswordModal isOpen={isRateSheetPasswordOpen} onClose={() => setIsRateSheetPasswordOpen(false)} />

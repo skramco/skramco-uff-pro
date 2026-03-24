@@ -78,14 +78,14 @@ export default function RootLayout({
                   <Link href="/contact" className="text-gray-700 hover:text-red-600 transition-colors">
                     Contact
                   </Link>
-                  <Button asChild className="bg-red-600 hover:bg-red-700">
+                  <Button asChild className="bg-red-600 hover:bg-red-700 text-white hover:text-white">
                     <Link href="/get-approved">Get Approved</Link>
                   </Button>
                 </nav>
 
                 {/* Mobile menu button */}
                 <div className="lg:hidden">
-                  <Button asChild size="sm" className="bg-red-600 hover:bg-red-700">
+                  <Button asChild size="sm" className="bg-red-600 hover:bg-red-700 text-white hover:text-white">
                     <Link href="/get-approved">Get Approved</Link>
                   </Button>
                 </div>
@@ -201,7 +201,7 @@ export default function RootLayout({
                     Ready to partner with UFF? Get approved today and start accessing our competitive rates and PRO
                     Portal technology.
                   </p>
-                  <Button asChild className="bg-red-600 hover:bg-red-700 w-full mb-4">
+                  <Button asChild className="bg-red-600 hover:bg-red-700 text-white hover:text-white w-full mb-4">
                     <Link href="/get-approved">Apply Now</Link>
                   </Button>
                   <p className="text-xs text-gray-500">NMLS ID: 1234567 | Equal Housing Lender</p>

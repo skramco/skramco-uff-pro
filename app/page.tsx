@@ -1,14 +1,12 @@
 "use client"
 
-import type React from "react"
-
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Shield, Zap, Users, TrendingUp, CheckCircle, Star } from 'lucide-react'
 import Link from "next/link"
-import { ProPortalLoginModal } from "@/components/pro-portal-login-modal"
+import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
 
 const heroSlides = [
   {
@@ -42,13 +40,7 @@ const heroSlides = [
 ]
 
 export default function HomePage() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
-
-  const handleProPortalClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    setIsModalOpen(true)
-  }
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -143,10 +135,12 @@ export default function HomePage() {
                 <div className="text-center">
                   <p className="text-white/90 mb-2">Already a partner?</p>
                   <Button
-                    onClick={handleProPortalClick}
+                    asChild
                     className="bg-gradient-to-r from-red-700 to-red-600 hover:from-red-800 hover:to-red-700 text-white font-semibold px-6 py-2 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
                   >
-                    🚀 Login to PRO Portal
+                    <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                      🚀 Login to PRO Portal
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -382,10 +376,12 @@ export default function HomePage() {
                   <p className="text-gray-300 text-sm">Access your PRO Portal account</p>
                 </div>
                 <Button
-                  onClick={handleProPortalClick}
+                  asChild
                   className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold px-6 py-2 rounded-full shadow-lg"
                 >
-                  Login to PRO →
+                  <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                    Login to PRO →
+                  </a>
                 </Button>
               </div>
             </div>
@@ -393,7 +389,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <ProPortalLoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   )
 }

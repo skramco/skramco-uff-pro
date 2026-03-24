@@ -1,8 +1,5 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -26,21 +23,14 @@ import {
   Users,
 } from "lucide-react"
 import Link from "next/link"
-import { ProPortalLoginModal } from "@/components/pro-portal-login-modal"
+import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
 
 export default function ProPortalPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-
   const scrollToFeatures = () => {
     const element = document.getElementById("features")
     if (element) {
       element.scrollIntoView({ behavior: "smooth" })
     }
-  }
-
-  const handleProPortalClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    setIsModalOpen(true)
   }
 
   return (
@@ -83,10 +73,12 @@ export default function ProPortalPage() {
                   🎯 <strong>Existing Partners:</strong> Access your account now
                 </p>
                 <Button
-                  onClick={handleProPortalClick}
+                  asChild
                   className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-bold px-8 py-3 rounded-full shadow-xl transform hover:scale-105 transition-all duration-200 text-lg"
                 >
-                  🚀 Login to PRO Portal
+                  <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                    🚀 Login to PRO Portal
+                  </a>
                 </Button>
                 <p className="text-white/70 text-sm mt-2">Secure access to your loan pipeline</p>
               </div>
@@ -550,8 +542,8 @@ export default function ProPortalPage() {
 
             <div>
               <img
-                src="/images/loan-pipeline-dashboard.png"
-                alt="Screenshot of the PRO Portal loan pipeline dashboard"
+                src="/images/pro-portal-my-pipeline.png"
+                alt="PRO Portal My Pipeline dashboard with loan metrics, filters, and pipeline table"
                 className="rounded-lg shadow-lg w-full h-auto"
               />
             </div>
@@ -588,10 +580,12 @@ export default function ProPortalPage() {
                 <div className="text-center">
                   <p className="text-white font-semibold">Already approved? Login now!</p>
                   <Button
-                    onClick={handleProPortalClick}
+                    asChild
                     className="mt-2 bg-white text-red-600 hover:bg-red-50 font-semibold px-6 py-2 rounded-full"
                   >
-                    Access PRO Portal →
+                    <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                      Access PRO Portal →
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -600,7 +594,6 @@ export default function ProPortalPage() {
         </div>
       </section>
 
-      <ProPortalLoginModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   )
 }
