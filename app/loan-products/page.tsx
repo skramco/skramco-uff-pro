@@ -8,9 +8,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Shield, Users, Star, TrendingUp, Zap, CheckCircle, ArrowRight, Home, DollarSign, FileText, Calculator, Clock, Grid3X3, TrendingDown } from 'lucide-react'
 import Link from "next/link"
 import { RatesheetPasswordDialog } from "@/components/RatesheetPasswordDialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 
 export default function LoanProductsPage() {
   const [isRatesheetDialogOpen, setIsRatesheetDialogOpen] = useState(false)
+  const [isNonQmMatrixDialogOpen, setIsNonQmMatrixDialogOpen] = useState(false)
 
   const openMatrixPDF = (pdfPath: string) => {
     window.open(pdfPath, '_blank', 'noopener,noreferrer')
@@ -110,7 +112,7 @@ export default function LoanProductsPage() {
       const res = await fetch("https://pricing-engine-service.ratesboard.com/product-pricing", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.JSON.stringify(payload),
+        body: JSON.stringify(payload),
       })
 
       if (!res.ok) {
@@ -741,7 +743,7 @@ export default function LoanProductsPage() {
                     </div>
                     <div className="flex gap-3 pt-4">
                       <Button
-                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-nonqm-2025.pdf')}
+                        onClick={() => setIsNonQmMatrixDialogOpen(true)}
                         className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
                       >
                         <Grid3X3 className="h-4 w-4" />
@@ -910,6 +912,21 @@ export default function LoanProductsPage() {
         open={isRatesheetDialogOpen} 
         onOpenChange={setIsRatesheetDialogOpen} 
       />
+
+      <Dialog open={isNonQmMatrixDialogOpen} onOpenChange={setIsNonQmMatrixDialogOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Grid3X3 className="h-5 w-5 text-red-600" />
+              Non-QM matrix — Coming soon
+            </DialogTitle>
+            <DialogDescription>
+              The Non-QM guidelines matrix is not available yet. Check back soon or contact your UFF account executive for
+              program details.
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

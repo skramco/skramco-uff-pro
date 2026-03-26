@@ -283,7 +283,7 @@ export default function VAMatrix() {
           Licensed as a residential mortgage lender in almost every state. For state-specific licensing information,
           visit www.nmlsconsumeraccess.org.
         </p>
-        <p className="mt-2">© 2025 United Fidelity Funding Corp. All rights reserved.</p>
+        <p className="mt-2">© 2026 United Fidelity Funding Corp. All rights reserved.</p>
       </div>
     </div>
   )

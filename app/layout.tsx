@@ -204,13 +204,13 @@ export default function RootLayout({
                   <Button asChild className="bg-red-600 hover:bg-red-700 text-white hover:text-white w-full mb-4">
                     <Link href="/get-approved">Apply Now</Link>
                   </Button>
-                  <p className="text-xs text-gray-500">NMLS ID: 1234567 | Equal Housing Lender</p>
+                  <p className="text-xs text-gray-500">NMLS ID: 34381 | Equal Housing Lender</p>
                 </div>
               </div>
 
               <div className="border-t border-gray-800 mt-12 pt-8">
                 <div className="flex flex-col md:flex-row justify-between items-center mb-6">
-                  <div className="text-gray-400 text-sm">© 2025 United Fidelity Funding Corp. All rights reserved.</div>
+                  <div className="text-gray-400 text-sm">© 2026 United Fidelity Funding Corp. All rights reserved.</div>
                   <div className="flex space-x-6 mt-4 md:mt-0">
                     <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
                       Privacy Policy
