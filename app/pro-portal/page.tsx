@@ -48,13 +48,13 @@ export default function ProPortalPage() {
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-300 leading-relaxed">
               Our comprehensive loan management platform streamlines your entire process from application to closing,
-              giving you the tools to close more loans faster.
+              giving you the tools to close more loans faster. Brokers can self-sign up and gain access immediately.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-lg px-8 py-3">
-                <Link href="/get-approved">
-                  Get Portal Access <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
+                <a href="https://go.uff.pro/signup" target="_blank" rel="noopener noreferrer">
+                  Get Immediate Access <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
               </Button>
               <Button
                 onClick={scrollToFeatures}
@@ -65,6 +65,18 @@ export default function ProPortalPage() {
                 Explore Features
               </Button>
             </div>
+            <p className="text-sm text-red-300 mt-3">
+              New broker?{" "}
+              <a
+                href="https://go.uff.pro/signup"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-red-200"
+              >
+                Self-sign up in minutes
+              </a>{" "}
+              and get immediate PRO Portal access.
+            </p>
 
             {/* Existing Partner Login CTA */}
             <div className="mt-8 p-6 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-xl border border-white/20">
@@ -81,6 +93,17 @@ export default function ProPortalPage() {
                   </a>
                 </Button>
                 <p className="text-white/70 text-sm mt-2">Secure access to your loan pipeline</p>
+                <p className="text-white/80 text-sm mt-4">
+                  New to PRO Portal? Self-sign up here:{" "}
+                  <a
+                    href="https://go.uff.pro/signup"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-red-300 hover:text-red-200 underline underline-offset-2"
+                  >
+                    go.uff.pro/signup
+                  </a>
+                </p>
               </div>
             </div>
           </div>
