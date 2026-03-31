@@ -258,7 +258,7 @@ export default function LoanProductsPage() {
                         </li>
                         <li className="flex items-center gap-2">
                           <CheckCircle className="h-4 w-4 text-green-500" />
-                          Loan amounts up to $806,500 (2025 conforming)
+                          Loan amounts up to $832,750 (2026 conforming)
                         </li>
                         <li className="flex items-center gap-2">
                           <CheckCircle className="h-4 w-4 text-green-500" />
@@ -319,12 +319,16 @@ export default function LoanProductsPage() {
                     <CardContent>
                       <div className="space-y-3">
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Conforming Limit (2025):</span>
-                          <span className="font-semibold">$806,500</span>
+                          <span className="text-gray-600">Conforming Limit (2026):</span>
+                          <span className="font-semibold">$832,750</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">High Balance Limit:</span>
+                          <span className="font-semibold">$1,249,125</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600">High-Cost Areas:</span>
-                          <span className="font-semibold">Up to $1,209,750</span>
+                          <span className="font-semibold">Up to $1,249,125</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600">Minimum Down Payment:</span>
@@ -429,12 +433,16 @@ export default function LoanProductsPage() {
                     <CardContent>
                       <div className="space-y-3">
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Base Loan Limit:</span>
-                          <span className="font-semibold">$524,225</span>
+                          <span className="text-gray-600">Base Loan Limit (2026):</span>
+                          <span className="font-semibold">$541,287</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600">High-Cost Areas:</span>
-                          <span className="font-semibold">Up to $1,209,750</span>
+                          <span className="text-gray-600">High Balance Limit (2026):</span>
+                          <span className="font-semibold">$1,249,125</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">Special Exception Areas (2026):</span>
+                          <span className="font-semibold">Up to $1,873,625</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600">Minimum Credit Score:</span>
@@ -544,12 +552,16 @@ export default function LoanProductsPage() {
                     <CardContent>
                       <div className="space-y-3">
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Base Loan Limit:</span>
-                          <span className="font-semibold">$806,500</span>
+                          <span className="text-gray-600">Conforming Limit (2026):</span>
+                          <span className="font-semibold">$832,750</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600">High-Cost Areas:</span>
-                          <span className="font-semibold">Up to $1,209,750</span>
+                          <span className="text-gray-600">High Balance Limit (2026):</span>
+                          <span className="font-semibold">$1,249,125</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-600">Full Entitlement:</span>
+                          <span className="font-semibold">No VA Loan Limit</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600">VA Funding Fee:</span>
@@ -628,13 +640,6 @@ export default function LoanProductsPage() {
                       </ul>
                     </div>
                     <div className="flex gap-3 pt-4">
-                      <Button
-                        onClick={() => openMatrixPDF('/pdfs/uff-matrix-usda-2025.pdf')}
-                        className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
-                      >
-                        <Grid3X3 className="h-4 w-4" />
-                        View Matrix
-                      </Button>
                       <Button
                         onClick={openRatesheetDialog}
                         variant="outline"
@@ -742,13 +747,6 @@ export default function LoanProductsPage() {
                       </ul>
                     </div>
                     <div className="flex gap-3 pt-4">
-                      <Button
-                        onClick={() => setIsNonQmMatrixDialogOpen(true)}
-                        className="bg-red-600 hover:bg-red-700 text-white flex items-center gap-2"
-                      >
-                        <Grid3X3 className="h-4 w-4" />
-                        View Matrix
-                      </Button>
                       <Button
                         onClick={openRatesheetDialog}
                         variant="outline"
