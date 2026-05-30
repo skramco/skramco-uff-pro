@@ -73,6 +73,12 @@ export default function RootLayout({
                       >
                         Licensing
                       </Link>
+                      <Link
+                        href="/non-qm-income-analysis"
+                        className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
+                      >
+                        Non-QM Income Analysis
+                      </Link>
                     </div>
                   </div>
                   <Link href="/contact" className="text-gray-700 hover:text-red-600 transition-colors">
@@ -180,6 +186,11 @@ export default function RootLayout({
                     <li>
                       <Link href="/resources" className="hover:text-white transition-colors">
                         Resources
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/non-qm-income-analysis" className="hover:text-white transition-colors">
+                        Non-QM Income Analysis
                       </Link>
                     </li>
                     <li>

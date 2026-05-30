@@ -16,6 +16,26 @@ The application uses [Resend](https://resend.com) to send email notifications wh
 RESEND_API_KEY=re_your_api_key_here
 ```
 
+### Vesta MISMO Conversion API (Non-QM Income Analysis)
+
+The Non-QM Income Analysis tool (`/non-qm-income-analysis`) forwards uploaded MISMO 3.4 XML to the UFF Vesta API. If the API is unavailable, the site falls back to a built-in MISMO parser.
+
+```bash
+MISMO_CONVERSION_API_URL=https://uff.beta.vesta.com/api/v1/loans/convert-mismo
+MISMO_CONVERSION_API_KEY=your_vesta_api_token
+MISMO_CONVERSION_API_VERSION=26.2
+```
+
+**Request format (matches Vesta):**
+
+- `POST` with `Content-Type: application/xml`
+- `Authorization: Token <MISMO_CONVERSION_API_KEY>`
+- `X-Api-Version: 26.2` (or your `MISMO_CONVERSION_API_VERSION`)
+
+Aliases also supported: `VESTA_API_TOKEN`, `VESTA_API_URL`, `VESTA_API_VERSION`.
+
+Set `MISMO_CONVERSION_REQUIRE_EXTERNAL=true` to fail uploads when Vesta is down (instead of falling back to the local parser).
+
 ## Setup Instructions
 
 1. Create a `.env.local` file in the root of your project:

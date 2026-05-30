@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MESSAGE xmlns="http://www.mismo.org/residential/2009/schemas" MISMOReferenceModelIdentifier="3.4.032420160128">
+  <DEAL_SETS>
+    <DEAL_SET>
+      <DEALS>
+        <DEAL>
+          <ASSETS>
+            <ASSET>
+              <ASSET_DETAIL>
+                <AssetAccountIdentifier>123456</AssetAccountIdentifier>
+                <AssetCashOrMarketValueAmount>12000.00</AssetCashOrMarketValueAmount>
+                <AssetType>CheckingAccount</AssetType>
+              </ASSET_DETAIL>
+              <ASSET_HOLDER>
+                <NAME><FullName>Bank of Noosh</FullName></NAME>
+              </ASSET_HOLDER>
+            </ASSET>
+          </ASSETS>
+          <LOANS>
+            <LOAN>
+              <TERMS_OF_LOAN>
+                <BaseLoanAmount>300000.00</BaseLoanAmount>
+              </TERMS_OF_LOAN>
+            </LOAN>
+          </LOANS>
+          <PARTIES>
+            <PARTY>
+              <INDIVIDUAL>
+                <NAME><FirstName>Ken</FirstName><LastName>Customer</LastName></NAME>
+              </INDIVIDUAL>
+              <ROLES>
+                <ROLE>
+                  <BORROWER>
+                    <BORROWER_DETAIL><BorrowerBirthDate>1966-07-04</BorrowerBirthDate></BORROWER_DETAIL>
+                  </BORROWER>
+                  <ROLE_DETAIL><PartyRoleType>Borrower</PartyRoleType></ROLE_DETAIL>
+                </ROLE>
+              </ROLES>
+            </PARTY>
+          </PARTIES>
+        </DEAL>
+      </DEALS>
+    </DEAL_SET>
+  </DEAL_SETS>
+</MESSAGE>
