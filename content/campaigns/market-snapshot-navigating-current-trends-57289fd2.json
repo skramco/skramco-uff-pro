@@ -1,0 +1,47 @@
+{
+  "slug": "market-snapshot-navigating-current-trends-57289fd2",
+  "title": "Market Snapshot: Navigating Current Trends",
+  "subtitle": "Stay informed with the latest insights on market indicators affecting wholesale lending. Learn how to leverage current trends using UFF's PRO Portal.",
+  "campaignId": "57289fd2-947f-4245-a487-f1436be082ca",
+  "campaignType": "market_commentary",
+  "publishedAt": "2026-05-30T05:28:59.246Z",
+  "heroImageUrl": null,
+  "keyTakeaways": [
+    "Monitor live rate updates on the PRO Portal to optimize pricing strategies.",
+    "Use multiple pricing scenarios to tailor lock timing effectively.",
+    "Understand market indicators to better inform client discussions.",
+    "Utilize the PRO Portal's compliance checks for efficient loan application creation.",
+    "Stay agile with 24/7 PRO Portal access for loan management."
+  ],
+  "sections": [
+    {
+      "heading": "Current Market Overview",
+      "body": "As of May 28, 2026, the lending environment reflects stability with Freddie Mac reporting a 30-year fixed rate of 6.53%. The 10-Year Treasury yield at 4.45% supports a cautious yet steady economic outlook.",
+      "bullets": [
+        "30-year fixed mortgage rate: 6.53%",
+        "15-year fixed mortgage rate: 5.87%",
+        "10-Year Treasury yield: 4.45%"
+      ]
+    },
+    {
+      "heading": "Impact on Wholesale Lending",
+      "body": "With the Federal Funds Effective Rate at 3.64% and inflationary pressures indicated by a CPI of 332.407, brokers need to adapt strategies to meet borrower needs. Utilize the PRO Portal to efficiently manage loan applications and stay informed with live rate updates.",
+      "bullets": [
+        "Federal Funds Effective Rate: 3.64%",
+        "CPI: 332.407 indicating inflationary pressures"
+      ]
+    },
+    {
+      "heading": "Housing Market Resilience",
+      "body": "Despite an unemployment rate of 4.3%, housing starts at 1,465, and existing home sales at 4,020,000, the market shows resilience. Brokers should remain cautiously optimistic and use PRO Portal's pipeline management to track milestones and optimize client interactions.",
+      "bullets": [
+        "Unemployment rate: 4.3%",
+        "Housing starts: 1,465",
+        "Existing home sales: 4,020,000"
+      ]
+    }
+  ],
+  "ctaLabel": "Explore PRO Portal",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Explore current mortgage trends, Treasury yields, and housing activity. Use UFF's PRO Portal to optimize loan strategies."
+}
