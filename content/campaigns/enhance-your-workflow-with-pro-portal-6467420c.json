@@ -5,7 +5,7 @@
   "campaignId": "6467420c-5938-4e94-a747-37b674c251a2",
   "campaignType": "operational_tip",
   "publishedAt": "2026-05-30T05:19:05.578Z",
-  "heroImageUrl": null,
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/6467420c-5938-4e94-a747-37b674c251a2/openai-1780118368550.png",
   "keyTakeaways": [
     "Utilize the dashboard for real-time loan tracking.",
     "Set up automated alerts to stay updated on milestones.",
