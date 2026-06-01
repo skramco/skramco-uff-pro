@@ -1,5 +1,7 @@
+import { notFound } from "next/navigation"
 import NonQmIncomeAnalysisTool from "@/components/non-qm-income-analysis"
 import { Badge } from "@/components/ui/badge"
+import { isNonQmIncomeAnalysisEnabled } from "@/lib/feature-flags"
 import { Calculator, FileSpreadsheet, TrendingUp } from "lucide-react"
 
 export const metadata = {
@@ -9,6 +11,10 @@ export const metadata = {
 }
 
 export default function NonQmIncomeAnalysisPage() {
+  if (!isNonQmIncomeAnalysisEnabled()) {
+    notFound()
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-700 text-white py-16">

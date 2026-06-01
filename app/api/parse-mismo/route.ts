@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server"
+import { isNonQmIncomeAnalysisEnabled } from "@/lib/feature-flags"
 import { parseMismoXml } from "@/lib/mismo-parser"
 import { convertMismoWithVesta, getVestaMismoConfig } from "@/lib/vesta-mismo-client"
 import { mapVestaResponseToAnalysis } from "@/lib/vesta-loan-mapper"
@@ -9,6 +10,10 @@ export const runtime = "nodejs"
 const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024
 
 export async function POST(request: Request) {
+  if (!isNonQmIncomeAnalysisEnabled()) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 })
+  }
+
   try {
     const contentType = request.headers.get("content-type") ?? ""
     let xmlContent = ""

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Phone, Mail, MapPin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { isNonQmIncomeAnalysisEnabled } from "@/lib/feature-flags"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -22,6 +23,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const showNonQmIncomeAnalysis = isNonQmIncomeAnalysisEnabled()
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
@@ -73,12 +76,14 @@ export default function RootLayout({
                       >
                         Licensing
                       </Link>
-                      <Link
-                        href="/non-qm-income-analysis"
-                        className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
-                      >
-                        Non-QM Income Analysis
-                      </Link>
+                      {showNonQmIncomeAnalysis ? (
+                        <Link
+                          href="/non-qm-income-analysis"
+                          className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors"
+                        >
+                          Non-QM Income Analysis
+                        </Link>
+                      ) : null}
                     </div>
                   </div>
                   <Link href="/contact" className="text-gray-700 hover:text-red-600 transition-colors">
@@ -188,11 +193,13 @@ export default function RootLayout({
                         Resources
                       </Link>
                     </li>
-                    <li>
-                      <Link href="/non-qm-income-analysis" className="hover:text-white transition-colors">
-                        Non-QM Income Analysis
-                      </Link>
-                    </li>
+                    {showNonQmIncomeAnalysis ? (
+                      <li>
+                        <Link href="/non-qm-income-analysis" className="hover:text-white transition-colors">
+                          Non-QM Income Analysis
+                        </Link>
+                      </li>
+                    ) : null}
                     <li>
                       <Link href="/contact" className="hover:text-white transition-colors">
                         Contact Us

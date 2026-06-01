@@ -16,9 +16,20 @@ The application uses [Resend](https://resend.com) to send email notifications wh
 RESEND_API_KEY=re_your_api_key_here
 ```
 
+### Non-QM Income Analysis feature flag
+
+The broker tool at `/non-qm-income-analysis` is **hidden by default** in production. Navigation links and the page return 404 until enabled.
+
+```bash
+# Enable on uff.pro (Netlify env var — requires redeploy)
+NEXT_PUBLIC_FEATURE_NON_QM_INCOME_ANALYSIS=true
+```
+
+Omit the variable or set any value other than `true` to keep the tool off.
+
 ### Vesta MISMO Conversion API (Non-QM Income Analysis)
 
-The Non-QM Income Analysis tool (`/non-qm-income-analysis`) forwards uploaded MISMO 3.4 XML to the UFF Vesta API. If the API is unavailable, the site falls back to a built-in MISMO parser.
+When the feature flag is enabled, the Non-QM Income Analysis tool forwards uploaded MISMO 3.4 XML to the UFF Vesta API. If the API is unavailable, the site falls back to a built-in MISMO parser.
 
 ```bash
 MISMO_CONVERSION_API_URL=https://uff.beta.vesta.com/api/v1/loans/convert-mismo
