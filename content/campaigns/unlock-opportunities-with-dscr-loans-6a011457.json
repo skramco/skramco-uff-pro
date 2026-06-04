@@ -5,7 +5,7 @@
   "campaignId": "6a011457-6f1a-4e45-8539-cadc494fb496",
   "campaignType": "non_qm_product_spotlight",
   "publishedAt": "2026-06-04T23:34:51.189Z",
-  "heroImageUrl": null,
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/6a011457-6f1a-4e45-8539-cadc494fb496/openai-1780616040218.png",
   "keyTakeaways": [
     "Identify investor clients with multiple properties for DSCR loan suitability.",
     "Structure loans by evaluating the property's rental income versus debt service.",
