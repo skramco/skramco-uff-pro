@@ -1,0 +1,45 @@
+{
+  "slug": "weekly-broker-intelligence-market-product-and-operations-ins-72410da8",
+  "title": "Weekly Broker Intelligence: Market, Product, and Operations Insights",
+  "subtitle": "Gain an edge in the market with actionable insights and enhance your loan origination process using PRO Portal.",
+  "campaignId": "72410da8-c0e4-4e0a-b6df-e66212efab40",
+  "campaignType": "weekly_broker_newsletter",
+  "publishedAt": "2026-06-05T20:23:49.875Z",
+  "heroImageUrl": null,
+  "keyTakeaways": [
+    "Discuss rate lock strategies with clients for stability.",
+    "Use PRO Portal for pricing scenarios and client options.",
+    "Explore Non-QM bank statement programs for self-employed clients.",
+    "Streamline loan processes with PRO Portal's live updates.",
+    "Monitor loan progress using the visual pipeline dashboard."
+  ],
+  "sections": [
+    {
+      "heading": "Market Snapshot",
+      "body": "Stay informed with the latest market data. The 30-Year Fixed Mortgage Rate is currently at 6.48%. With the 10-Year Treasury Yield at 4.47%, anticipate conversations focused on long-term rate stability.",
+      "bullets": [
+        "Discuss rate lock strategies with clients.",
+        "Provide security against potential rate increases."
+      ]
+    },
+    {
+      "heading": "Product Scenario Tip",
+      "body": "For clients with unconventional income streams, consider Non-QM bank statement programs. These allow income calculation based on bank deposits, offering flexibility for self-employed clients.",
+      "bullets": [
+        "Identify clients who benefit from bank statement programs.",
+        "Gather comprehensive bank statement documentation."
+      ]
+    },
+    {
+      "heading": "PRO Portal Highlight",
+      "body": "Enhance your loan origination process with PRO Portal. Utilize live pricing scenarios and automated lock confirmations. Manage your pipeline efficiently with real-time updates and tracking.",
+      "bullets": [
+        "Log in to PRO Portal to create and price loans.",
+        "Use the visual pipeline dashboard to monitor progress."
+      ]
+    }
+  ],
+  "ctaLabel": "Log in to PRO Portal",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Enhance loan closures with market insights, product tips, and PRO Portal functions. Boost efficiency and client satisfaction."
+}
