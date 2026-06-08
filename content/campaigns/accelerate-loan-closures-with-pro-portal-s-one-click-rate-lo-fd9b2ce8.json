@@ -5,7 +5,7 @@
   "campaignId": "fd9b2ce8-2d02-44b7-b290-a913ad91a9c3",
   "campaignType": "pro_portal_feature_spotlight",
   "publishedAt": "2026-06-08T20:47:04.635Z",
-  "heroImageUrl": null,
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/fd9b2ce8-2d02-44b7-b290-a913ad91a9c3/openai-1780951557019.png",
   "keyTakeaways": [
     "Respond instantly to market changes with live rate updates and one-click locks.",
     "Reduce administrative tasks with automated lock confirmations.",
