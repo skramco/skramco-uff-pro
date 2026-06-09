@@ -5,7 +5,7 @@
   "campaignId": "15d87952-196c-45dd-b074-d5f7b836a3cd",
   "campaignType": "fha_product_spotlight",
   "publishedAt": "2026-06-09T15:09:39.196Z",
-  "heroImageUrl": null,
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/15d87952-196c-45dd-b074-d5f7b836a3cd/openai-1781017733149.png",
   "keyTakeaways": [
     "Identify FHA candidates with credit scores as low as 580.",
     "Structure loans with down payments as low as 3.5%.",
