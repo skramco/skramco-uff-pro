@@ -5,7 +5,7 @@
   "campaignId": "b456ed7c-8e8b-41af-b119-348ca7638b6e",
   "campaignType": "fha_product_spotlight",
   "publishedAt": "2026-06-17T16:32:06.005Z",
-  "heroImageUrl": null,
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/b456ed7c-8e8b-41af-b119-348ca7638b6e/openai-1781713889262.png",
   "keyTakeaways": [
     "Identify and assist credit-challenged borrowers with FHA loans.",
     "Utilize FHA Streamline Refinance for existing clients.",
