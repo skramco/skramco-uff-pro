@@ -5,7 +5,7 @@
   "campaignId": "acd6f8b4-fa8e-4872-9e94-624600bf9179",
   "campaignType": "non_qm_product_spotlight",
   "publishedAt": "2026-07-10T08:30:33.750Z",
-  "heroImageUrl": null,
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/acd6f8b4-fa8e-4872-9e94-624600bf9179/openai-1783628865227.png",
   "keyTakeaways": [
     "Identify borrowers with strong liquid assets but high DTI failures.",
     "Calculate potential income using asset depletion methodologies.",
