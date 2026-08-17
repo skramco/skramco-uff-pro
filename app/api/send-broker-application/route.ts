@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { detailRows, wrapUffBrokerEmail } from '@/lib/uffEmailLayout'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -7,53 +8,56 @@ export async function POST(request: NextRequest) {
   try {
     const formData = await request.json()
 
-    // Send email via Resend
+    const html = wrapUffBrokerEmail({
+      heading: "New broker partnership application",
+      preheader: `${formData.companyName || "A company"} submitted a broker application.`,
+      kicker: "INTERNAL NOTICE",
+      bodyHtml: `
+        <p style="font-family:Arial,Helvetica,sans-serif;font-size:16px;color:#37474f;margin:0 0 16px;line-height:1.65;">A new broker partnership application was submitted from uff.pro.</p>
+        <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#1f292e;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.08em;">Company</p>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+          ${detailRows([
+            ["Company name", formData.companyName || ""],
+            ["DBA", formData.dba || ""],
+            ["NMLS license", formData.licenseNumber || ""],
+            ["Years in business", String(formData.yearsInBusiness || "")],
+            ["Address", formData.businessAddress || ""],
+            ["City", formData.city || ""],
+            ["State", formData.state || ""],
+            ["ZIP", formData.zip || ""],
+          ])}
+        </table>
+        <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#1f292e;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.08em;">Primary contact</p>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+          ${detailRows([
+            ["Name", `${formData.firstName || ""} ${formData.lastName || ""}`.trim()],
+            ["Title", formData.title || ""],
+            ["Individual NMLS", formData.nmlsIndividual || ""],
+            ["Phone", formData.phone || ""],
+            ["Email", formData.email || ""],
+          ])}
+        </table>
+        <p style="font-family:Arial,Helvetica,sans-serif;font-size:13px;font-weight:700;color:#1f292e;margin:0 0 8px;text-transform:uppercase;letter-spacing:0.08em;">Business details</p>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+          ${detailRows([
+            ["Monthly volume", formData.monthlyVolume || ""],
+            ["Loan officers", String(formData.loanOfficers || "")],
+            ["Loan types", formData.loanTypes?.join(", ") || ""],
+            ["Current lenders", formData.currentLenders || ""],
+            ["Marketing consent", formData.marketingConsent ? "Yes" : "No"],
+            ["Submitted", new Date().toLocaleString()],
+          ])}
+        </table>
+        <p style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#37474f;line-height:1.65;">${formData.additionalInfo || "No additional information provided."}</p>
+      `,
+    })
+
     const { data, error } = await resend.emails.send({
       from: 'UFF Broker Applications <applications@uff.loans>',
-      to: ['mark.ramirez@uff.loans'], // Change this to your actual email
+      to: ['mark.ramirez@uff.loans'],
       replyTo: formData.email,
       subject: `New Broker Application: ${formData.companyName}`,
-      html: `
-        <h2>New Broker Partnership Application</h2>
-        
-        <h3>Company Information</h3>
-        <ul>
-          <li><strong>Company Name:</strong> ${formData.companyName}</li>
-          <li><strong>DBA:</strong> ${formData.dba || 'N/A'}</li>
-          <li><strong>NMLS License:</strong> ${formData.licenseNumber}</li>
-          <li><strong>Years in Business:</strong> ${formData.yearsInBusiness}</li>
-          <li><strong>Address:</strong> ${formData.businessAddress}</li>
-          <li><strong>City:</strong> ${formData.city}</li>
-          <li><strong>State:</strong> ${formData.state}</li>
-          <li><strong>ZIP:</strong> ${formData.zip}</li>
-        </ul>
-
-        <h3>Primary Contact</h3>
-        <ul>
-          <li><strong>Name:</strong> ${formData.firstName} ${formData.lastName}</li>
-          <li><strong>Title:</strong> ${formData.title}</li>
-          <li><strong>Individual NMLS:</strong> ${formData.nmlsIndividual}</li>
-          <li><strong>Phone:</strong> ${formData.phone}</li>
-          <li><strong>Email:</strong> ${formData.email}</li>
-        </ul>
-
-        <h3>Business Details</h3>
-        <ul>
-          <li><strong>Monthly Volume:</strong> ${formData.monthlyVolume}</li>
-          <li><strong>Number of Loan Officers:</strong> ${formData.loanOfficers}</li>
-          <li><strong>Loan Types:</strong> ${formData.loanTypes?.join(', ') || 'N/A'}</li>
-          <li><strong>Current Lenders:</strong> ${formData.currentLenders || 'N/A'}</li>
-        </ul>
-
-        <h3>Additional Information</h3>
-        <p>${formData.additionalInfo || 'None provided'}</p>
-
-        <h3>Marketing Consent</h3>
-        <p>${formData.marketingConsent ? 'Yes' : 'No'}</p>
-
-        <hr>
-        <p><small>Submitted: ${new Date().toLocaleString()}</small></p>
-      `,
+      html,
     })
 
     if (error) {
