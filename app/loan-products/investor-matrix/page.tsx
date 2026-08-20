@@ -108,7 +108,7 @@ export default function InvestorMatrixPage() {
         </div>
       </div>
 
-      <footer className="nqm-disclosures border-t-4 border-uff-red bg-uff-ink text-[#9C9CA3]">
+      <footer className="nqm-disclosures hidden border-t-4 border-uff-red bg-uff-ink text-[#9C9CA3] print:block">
         <div className="mx-auto max-w-[1180px] px-6 pb-9 pt-[30px]">
           <Image
             src="/images/uff-logo.png"

@@ -43,7 +43,7 @@ export function ProgramTabs({ dscrPanel, fullPanel }: Props) {
           >
             Full Doc — Residential NQM
             <span className="mt-[3px] block font-plex text-[11px] font-normal uppercase tracking-[0.04em] text-[#93939A]">
-              Investment &amp; second home
+              Primary, second home &amp; investment
             </span>
           </TabsTrigger>
         </TabsList>

@@ -20,6 +20,7 @@
   }
 
   .nqm-disclosures {
+    display: block !important;
     background: #fff !important;
     color: #333 !important;
     border-top: 2px solid #d5140f !important;
