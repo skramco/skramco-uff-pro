@@ -30,7 +30,7 @@ export default function RootLayout({
       <body className={inter.className} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {/* Header */}
-          <header className="bg-white shadow-sm border-b sticky top-0 z-50">
+          <header className="site-header bg-white shadow-sm border-b sticky top-0 z-50">
             <div className="container mx-auto px-4">
               <div className="flex items-center justify-between h-16">
                 <Link href="/" className="flex items-center space-x-3">
@@ -107,7 +107,7 @@ export default function RootLayout({
           <main>{children}</main>
 
           {/* Footer */}
-          <footer className="bg-gray-900 text-white py-16">
+          <footer className="site-footer bg-gray-900 text-white py-16">
             <div className="container mx-auto px-4">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>

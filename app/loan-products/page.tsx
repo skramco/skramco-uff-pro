@@ -8,11 +8,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Shield, Users, Star, TrendingUp, Zap, CheckCircle, ArrowRight, Home, DollarSign, FileText, Calculator, Clock, Grid3X3, TrendingDown } from 'lucide-react'
 import Link from "next/link"
 import { RatesheetPasswordDialog } from "@/components/RatesheetPasswordDialog"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
+import { NON_QM_MATRICES } from "@/lib/data/non-qm-products"
 
 export default function LoanProductsPage() {
   const [isRatesheetDialogOpen, setIsRatesheetDialogOpen] = useState(false)
-  const [isNonQmMatrixDialogOpen, setIsNonQmMatrixDialogOpen] = useState(false)
 
   const openMatrixPDF = (pdfPath: string) => {
     window.open(pdfPath, '_blank', 'noopener,noreferrer')
@@ -708,7 +707,10 @@ export default function LoanProductsPage() {
                       <Zap className="h-6 w-6 text-red-600" />
                       Non-QM Loans
                     </CardTitle>
-                    <CardDescription>Alternative documentation loans for unique borrower situations</CardDescription>
+                    <CardDescription>
+                      Alternative documentation loans across multiple investor programs, each with its own eligibility
+                      matrix and guidelines
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-6">
                     <div>
@@ -746,7 +748,7 @@ export default function LoanProductsPage() {
                         <li>• Complex income situations</li>
                       </ul>
                     </div>
-                    <div className="flex gap-3 pt-4">
+                    <div className="flex flex-wrap gap-3 pt-4">
                       <Button
                         onClick={openRatesheetDialog}
                         variant="outline"
@@ -806,6 +808,66 @@ export default function LoanProductsPage() {
                   </Card>
                 </div>
               </div>
+
+              <Card id="non-qm-matrices" className="mt-8">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Grid3X3 className="h-5 w-5 text-red-600" />
+                    Eligibility matrices
+                  </CardTitle>
+                  <CardDescription>
+                    Each Non-QM investor group has its own eligibility grid and program guidelines. Additional matrices
+                    will be added here as they are published.
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <ul className="divide-y divide-gray-200">
+                    {NON_QM_MATRICES.map((matrix) => (
+                      <li key={matrix.id}>
+                        {matrix.href && matrix.status === "live" ? (
+                          <Link
+                            href={matrix.href}
+                            className="flex flex-col gap-3 px-6 py-4 transition-colors hover:bg-red-50 sm:flex-row sm:items-center sm:justify-between"
+                          >
+                            <div>
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="font-semibold text-gray-900">{matrix.name}</span>
+                                <Badge className="bg-red-600 text-white hover:bg-red-600">Available</Badge>
+                              </div>
+                              <p className="mt-1 text-sm text-gray-600">{matrix.summary}</p>
+                            </div>
+                            <span className="inline-flex items-center gap-1 text-sm font-semibold text-red-600">
+                              View matrix <ArrowRight className="h-4 w-4" />
+                            </span>
+                          </Link>
+                        ) : (
+                          <div className="flex flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+                            <div>
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="font-semibold text-gray-900">{matrix.name}</span>
+                                <Badge variant="outline">Coming soon</Badge>
+                              </div>
+                              <p className="mt-1 text-sm text-gray-600">{matrix.summary}</p>
+                            </div>
+                          </div>
+                        )}
+                      </li>
+                    ))}
+                    <li className="flex flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-semibold text-gray-500">Additional investor programs</span>
+                          <Badge variant="outline">Coming soon</Badge>
+                        </div>
+                        <p className="mt-1 text-sm text-gray-500">
+                          More Non-QM investor matrices and guidelines will appear in this list as each group is
+                          released.
+                        </p>
+                      </div>
+                    </li>
+                  </ul>
+                </CardContent>
+              </Card>
             </TabsContent>
           </Tabs>
         </div>
@@ -910,21 +972,6 @@ export default function LoanProductsPage() {
         open={isRatesheetDialogOpen} 
         onOpenChange={setIsRatesheetDialogOpen} 
       />
-
-      <Dialog open={isNonQmMatrixDialogOpen} onOpenChange={setIsNonQmMatrixDialogOpen}>
-        <DialogContent className="sm:max-w-md">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <Grid3X3 className="h-5 w-5 text-red-600" />
-              Non-QM matrix — Coming soon
-            </DialogTitle>
-            <DialogDescription>
-              The Non-QM guidelines matrix is not available yet. Check back soon or contact your UFF account executive for
-              program details.
-            </DialogDescription>
-          </DialogHeader>
-        </DialogContent>
-      </Dialog>
     </div>
   )
 }

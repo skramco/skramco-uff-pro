@@ -64,6 +64,22 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "uff-red": "#D5140F",
+        "uff-red-ink": "#A50F0B",
+        "uff-red-tint": "#FDECEA",
+        "uff-ink": "#131313",
+        "uff-ink-2": "#26262A",
+      },
+      fontFamily: {
+        archivo: ["var(--font-archivo)", "Helvetica", "Arial", "sans-serif"],
+        plex: [
+          "var(--font-ibm-plex-mono)",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Consolas",
+          "monospace",
+        ],
       },
       borderRadius: {
         lg: "var(--radius)",

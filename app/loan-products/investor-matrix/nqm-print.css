@@ -1,0 +1,42 @@
+@media print {
+  body:has(.nqm-matrix-route) .site-header,
+  body:has(.nqm-matrix-route) .site-footer {
+    display: none !important;
+  }
+
+  .nqm-matrix-route {
+    background: #fff !important;
+    color: #131313;
+    font-size: 10.5px;
+  }
+
+  .nqm-panel.hidden {
+    display: block !important;
+  }
+
+  .nqm-panel {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .nqm-disclosures {
+    background: #fff !important;
+    color: #333 !important;
+    border-top: 2px solid #d5140f !important;
+  }
+
+  .nqm-disclosures h4 {
+    color: #000 !important;
+  }
+
+  .nqm-disclosures .nqm-knock {
+    filter: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nqm-matrix-route * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
