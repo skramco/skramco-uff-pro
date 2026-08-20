@@ -6,6 +6,15 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      {
+        source: "/loan-products/investor-matrix",
+        destination: "/loan-products/non-qm-core",
+        permanent: true,
+      },
+    ]
+  },
  
 }
 

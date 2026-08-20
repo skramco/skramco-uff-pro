@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function InvestorMatrixPage() {
   return (
-    <div className="bg-[#F3F3F4] text-[15px] leading-normal text-uff-ink antialiased">
+    <div className="bg-white text-[15px] leading-normal text-uff-ink antialiased">
       <div className="border-b-4 border-uff-red bg-white">
         <div className="mx-auto flex max-w-[1180px] flex-wrap items-center gap-3 px-6 py-3 min-[640px]:gap-[22px]">
           <Image

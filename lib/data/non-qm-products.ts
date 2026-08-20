@@ -14,7 +14,7 @@ export const NON_QM_MATRICES: NonQmMatrixListing[] = [
     id: "non-qm-core",
     name: "Non-QM Core",
     summary: "DSCR and Full Doc — investment property programs",
-    href: "/loan-products/investor-matrix",
+    href: "/loan-products/non-qm-core",
     status: "live",
   },
 ]
