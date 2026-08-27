@@ -440,13 +440,6 @@ export default function GetApprovedPage() {
                         <p className="text-sm text-gray-600">Recent business financial statements</p>
                       </div>
                     </div>
-                    <div className="flex items-start space-x-3">
-                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5" />
-                      <div>
-                        <p className="font-medium">Sample Loan Files</p>
-                        <p className="text-sm text-gray-600">2-3 recent closed loan files for review</p>
-                      </div>
-                    </div>
                   </div>
                 </CardContent>
               </Card>
