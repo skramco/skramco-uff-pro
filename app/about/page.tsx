@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Target, Eye, Heart, Users, Award, TrendingUp } from "lucide-react"
 import Link from "next/link"
 import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
+import { companyStats } from "@/content/company-stats"
 
 export default function AboutPage() {
   return (
@@ -165,24 +166,24 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center p-8 bg-white rounded-lg shadow-md">
-              <div className="text-5xl font-bold text-red-600 mb-4">15+</div>
+              <div className="text-2xl md:text-3xl font-bold text-red-600 mb-4">{companyStats.yearsInBusiness.value}</div>
               <div className="text-gray-600 font-medium">Years in Business</div>
-              <div className="text-sm text-gray-500 mt-2">Established expertise</div>
+              <div className="text-sm text-gray-500 mt-2">Founding year pending confirmation</div>
             </div>
             <div className="text-center p-8 bg-white rounded-lg shadow-md">
-              <div className="text-5xl font-bold text-red-600 mb-4">3000+</div>
+              <div className="text-2xl md:text-3xl font-bold text-red-600 mb-4">{companyStats.brokerPartners.value}</div>
               <div className="text-gray-600 font-medium">Broker Partners</div>
-              <div className="text-sm text-gray-500 mt-2">Nationwide network</div>
+              <div className="text-sm text-gray-500 mt-2">As of {companyStats.brokerPartners.asOf}</div>
             </div>
             <div className="text-center p-8 bg-white rounded-lg shadow-md">
-              <div className="text-5xl font-bold text-red-600 mb-4">$4B+</div>
+              <div className="text-2xl md:text-3xl font-bold text-red-600 mb-4">{companyStats.loansFunded.value}</div>
               <div className="text-gray-600 font-medium">Loans Funded</div>
-              <div className="text-sm text-gray-500 mt-2">Proven track record</div>
+              <div className="text-sm text-gray-500 mt-2">As of {companyStats.loansFunded.asOf}</div>
             </div>
             <div className="text-center p-8 bg-white rounded-lg shadow-md">
-              <div className="text-5xl font-bold text-red-600 mb-4">98%</div>
+              <div className="text-2xl md:text-3xl font-bold text-red-600 mb-4">{companyStats.satisfactionRate.value}</div>
               <div className="text-gray-600 font-medium">Satisfaction Rate</div>
-              <div className="text-sm text-gray-500 mt-2">Happy partners</div>
+              <div className="text-sm text-gray-500 mt-2">As of {companyStats.satisfactionRate.asOf}</div>
             </div>
           </div>
         </div>
@@ -220,7 +221,7 @@ export default function AboutPage() {
                     className="mt-2 bg-white text-red-600 hover:bg-red-50 font-semibold px-6 py-2 rounded-full shadow-lg"
                   >
                     <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
-                      🚀 Access PRO Portal
+                      Log in to PRO Portal
                     </a>
                   </Button>
                 </div>

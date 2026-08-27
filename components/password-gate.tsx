@@ -63,7 +63,7 @@ export function PasswordGate({ children }: PasswordGateProps) {
         <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
           <Card className="w-full max-w-md text-center">
             <CardHeader>
-              <CardTitle className="text-3xl font-bold text-red-600">Website Coming Soon!</CardTitle>
+              <CardTitle className="text-3xl font-bold text-red-600">Password required</CardTitle>
               <CardDescription className="text-gray-600">
                 This site is currently under construction. Please enter the password to access.
               </CardDescription>

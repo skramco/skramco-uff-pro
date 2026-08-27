@@ -1,10 +1,10 @@
-export type NonQmMatrixStatus = "live" | "coming-soon"
+export type NonQmMatrixStatus = "live"
 
 export type NonQmMatrixListing = {
   id: string
   name: string
   summary: string
-  href: string | null
+  href: string
   status: NonQmMatrixStatus
 }
 

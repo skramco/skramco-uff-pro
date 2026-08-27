@@ -2,6 +2,7 @@
 
 import { Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { formatUsd, loanLimits } from "@/content/loan-limits"
 
 export default function FHAMatrix() {
   return (
@@ -149,10 +150,11 @@ export default function FHAMatrix() {
         <div className="mt-4 bg-gray-50 p-4 rounded text-sm text-gray-700">
           <p>
             <strong>Notes:</strong> AUS (TOTAL Scorecard) allows higher DTI (up to 56.99%). High-balance follows same
-            LTV. County limits vary (2025 floor $524,225, ceiling $1,209,750 for 1-unit).
+            LTV. County limits vary ({loanLimits.year} floor {formatUsd(loanLimits.fhaLowCostFloor)}, ceiling{" "}
+            {formatUsd(loanLimits.highCostCeiling)} for 1-unit).
           </p>
           <p className="mt-2">
-            <strong>Source:</strong> HUD FHA Limits (2025)
+            <strong>Source:</strong> HUD FHA Limits ({loanLimits.year})
           </p>
         </div>
       </div>

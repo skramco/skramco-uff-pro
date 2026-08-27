@@ -198,9 +198,9 @@ export function USMap() {
           className={`mt-4 p-3 rounded-lg text-center ${licensedStates.has(selected) ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}
         >
           {licensedStates.has(selected) ? (
-            <p className="font-semibold text-lg">🎉 Great news! We are licensed in {stateNames[selected]}!</p>
+            <p className="font-semibold text-lg">We are licensed in {stateNames[selected]}.</p>
           ) : (
-            <p className="font-semibold text-lg">🚧 Currently, we are not licensed in {stateNames[selected]}.</p>
+            <p className="font-semibold text-lg">We are not licensed in {stateNames[selected]}.</p>
           )}
           <p className="text-sm mt-1">
             Selected: {stateNames[selected]} ({selected})

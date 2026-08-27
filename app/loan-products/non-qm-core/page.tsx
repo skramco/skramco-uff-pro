@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 import { EligibilityTable } from "@/components/nqm/eligibility-table"
@@ -23,18 +22,14 @@ import {
   PRODUCT_NAME,
 } from "@/lib/data/nqm-matrix"
 import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
+import { pageMetadata } from "@/lib/seo"
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: `Investor Eligibility Matrix | ${PRODUCT_NAME} | United Fidelity Funding Corp`,
   description:
     "UFF Non-QM Core investor eligibility matrix for DSCR and Full Doc investment property programs — max LTV grids, overlays, and program guidelines for mortgage professionals.",
-  openGraph: {
-    title: `Investor Eligibility Matrix | ${PRODUCT_NAME} | United Fidelity Funding Corp`,
-    description:
-      "DSCR and Full Doc investment property programs in one place: max LTV, overlays, and Non-QM Core guidelines.",
-    type: "website",
-  },
-}
+  path: "/loan-products/non-qm-core",
+})
 
 export default function InvestorMatrixPage() {
   return (

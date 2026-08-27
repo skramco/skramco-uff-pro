@@ -4,6 +4,13 @@ import { Button } from "@/components/ui/button"
 import { CheckCircle, ExternalLink, MapPin, Shield } from "lucide-react"
 import Link from "next/link"
 import { USMap } from "@/components/us-map"
+import {
+  COMPANY_ADDRESS_LINES,
+  COMPANY_PHONE,
+  FULL_DISCLOSURES,
+  NMLS_ID,
+  PROFESSIONAL_USE_NOTICE,
+} from "@/content/disclosures"
 
 const licensedStatesData = [
   {
@@ -727,6 +734,35 @@ export default function LicensingPage() {
                 </CardContent>
               </Card>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full legal disclosures — moved from the global footer */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto space-y-6 text-sm text-gray-700 leading-relaxed">
+            <h2 className="text-3xl font-bold text-gray-900">Legal Disclosures</h2>
+            <p className="text-gray-600">{PROFESSIONAL_USE_NOTICE}</p>
+            <p>
+              <strong>Licensing.</strong> {FULL_DISCLOSURES.licensing}
+            </p>
+            <p>
+              <strong>Federal compliance.</strong> {FULL_DISCLOSURES.federal}
+            </p>
+            <p>
+              <strong>Important.</strong> {FULL_DISCLOSURES.important}
+            </p>
+            <p>
+              <strong>Privacy.</strong> {FULL_DISCLOSURES.privacy}
+            </p>
+            <p className="font-semibold text-gray-900">
+              Corporate Headquarters: {COMPANY_ADDRESS_LINES[0]}, {COMPANY_ADDRESS_LINES[1]} | Phone: {COMPANY_PHONE} |
+              NMLS ID: #{NMLS_ID}
+            </p>
+            <p className="text-xs text-gray-500">
+              State-by-state license numbers and regulators are listed in the table above.
+            </p>
           </div>
         </div>
       </section>

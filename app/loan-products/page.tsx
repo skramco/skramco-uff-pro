@@ -9,6 +9,7 @@ import { Shield, Users, Star, TrendingUp, Zap, CheckCircle, ArrowRight, Home, Do
 import Link from "next/link"
 import { RatesheetPasswordDialog } from "@/components/RatesheetPasswordDialog"
 import { NON_QM_MATRICES } from "@/lib/data/non-qm-products"
+import { formatUsd, loanLimits } from "@/content/loan-limits"
 
 export default function LoanProductsPage() {
   const [isRatesheetDialogOpen, setIsRatesheetDialogOpen] = useState(false)
@@ -257,7 +258,7 @@ export default function LoanProductsPage() {
                         </li>
                         <li className="flex items-center gap-2">
                           <CheckCircle className="h-4 w-4 text-green-500" />
-                          Loan amounts up to $832,750 (2026 conforming)
+                          Loan amounts up to {formatUsd(loanLimits.conforming)} ({loanLimits.year} conforming)
                         </li>
                         <li className="flex items-center gap-2">
                           <CheckCircle className="h-4 w-4 text-green-500" />
@@ -318,16 +319,16 @@ export default function LoanProductsPage() {
                     <CardContent>
                       <div className="space-y-3">
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Conforming Limit (2026):</span>
-                          <span className="font-semibold">$832,750</span>
+                          <span className="text-gray-600">Conforming Limit ({loanLimits.year}):</span>
+                          <span className="font-semibold">{formatUsd(loanLimits.conforming)}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600">High Balance Limit:</span>
-                          <span className="font-semibold">$1,249,125</span>
+                          <span className="font-semibold">{formatUsd(loanLimits.highCostCeiling)}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600">High-Cost Areas:</span>
-                          <span className="font-semibold">Up to $1,249,125</span>
+                          <span className="font-semibold">Up to {formatUsd(loanLimits.highCostCeiling)}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600">Minimum Down Payment:</span>
@@ -432,16 +433,16 @@ export default function LoanProductsPage() {
                     <CardContent>
                       <div className="space-y-3">
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Base Loan Limit (2026):</span>
-                          <span className="font-semibold">$541,287</span>
+                          <span className="text-gray-600">Base Loan Limit ({loanLimits.year}):</span>
+                          <span className="font-semibold">{formatUsd(loanLimits.fhaLowCostFloor)}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600">High Balance Limit (2026):</span>
-                          <span className="font-semibold">$1,249,125</span>
+                          <span className="text-gray-600">High Balance Limit ({loanLimits.year}):</span>
+                          <span className="font-semibold">{formatUsd(loanLimits.highCostCeiling)}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Special Exception Areas (2026):</span>
-                          <span className="font-semibold">Up to $1,873,625</span>
+                          <span className="text-gray-600">Special Exception Areas ({loanLimits.year}):</span>
+                          <span className="font-semibold">Up to {formatUsd(loanLimits.fhaSpecialExceptionCeiling)}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600">Minimum Credit Score:</span>
@@ -551,12 +552,12 @@ export default function LoanProductsPage() {
                     <CardContent>
                       <div className="space-y-3">
                         <div className="flex justify-between">
-                          <span className="text-gray-600">Conforming Limit (2026):</span>
-                          <span className="font-semibold">$832,750</span>
+                          <span className="text-gray-600">Conforming Limit ({loanLimits.year}):</span>
+                          <span className="font-semibold">{formatUsd(loanLimits.conforming)}</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-gray-600">High Balance Limit (2026):</span>
-                          <span className="font-semibold">$1,249,125</span>
+                          <span className="text-gray-600">High Balance Limit ({loanLimits.year}):</span>
+                          <span className="font-semibold">{formatUsd(loanLimits.highCostCeiling)}</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-gray-600">Full Entitlement:</span>
@@ -816,55 +817,30 @@ export default function LoanProductsPage() {
                     Eligibility matrices
                   </CardTitle>
                   <CardDescription>
-                    Each Non-QM investor group has its own eligibility grid and program guidelines. Additional matrices
-                    will be added here as they are published.
+                    Each Non-QM investor group has its own eligibility grid and program guidelines.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="p-0">
                   <ul className="divide-y divide-gray-200">
-                    {NON_QM_MATRICES.map((matrix) => (
+                    {NON_QM_MATRICES.filter((matrix) => matrix.href && matrix.status === "live").map((matrix) => (
                       <li key={matrix.id}>
-                        {matrix.href && matrix.status === "live" ? (
-                          <Link
-                            href={matrix.href}
-                            className="flex flex-col gap-3 px-6 py-4 transition-colors hover:bg-red-50 sm:flex-row sm:items-center sm:justify-between"
-                          >
-                            <div>
-                              <div className="flex flex-wrap items-center gap-2">
-                                <span className="font-semibold text-gray-900">{matrix.name}</span>
-                                <Badge className="bg-red-600 text-white hover:bg-red-600">Available</Badge>
-                              </div>
-                              <p className="mt-1 text-sm text-gray-600">{matrix.summary}</p>
+                        <Link
+                          href={matrix.href!}
+                          className="flex flex-col gap-3 px-6 py-4 transition-colors hover:bg-red-50 sm:flex-row sm:items-center sm:justify-between"
+                        >
+                          <div>
+                            <div className="flex flex-wrap items-center gap-2">
+                              <span className="font-semibold text-gray-900">{matrix.name}</span>
+                              <Badge className="bg-red-600 text-white hover:bg-red-600">Available</Badge>
                             </div>
-                            <span className="inline-flex items-center gap-1 text-sm font-semibold text-red-600">
-                              View matrix <ArrowRight className="h-4 w-4" />
-                            </span>
-                          </Link>
-                        ) : (
-                          <div className="flex flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
-                            <div>
-                              <div className="flex flex-wrap items-center gap-2">
-                                <span className="font-semibold text-gray-900">{matrix.name}</span>
-                                <Badge variant="outline">Coming soon</Badge>
-                              </div>
-                              <p className="mt-1 text-sm text-gray-600">{matrix.summary}</p>
-                            </div>
+                            <p className="mt-1 text-sm text-gray-600">{matrix.summary}</p>
                           </div>
-                        )}
+                          <span className="inline-flex items-center gap-1 text-sm font-semibold text-red-600">
+                            View matrix <ArrowRight className="h-4 w-4" />
+                          </span>
+                        </Link>
                       </li>
                     ))}
-                    <li className="flex flex-col gap-3 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
-                      <div>
-                        <div className="flex flex-wrap items-center gap-2">
-                          <span className="font-semibold text-gray-500">Additional investor programs</span>
-                          <Badge variant="outline">Coming soon</Badge>
-                        </div>
-                        <p className="mt-1 text-sm text-gray-500">
-                          More Non-QM investor matrices and guidelines will appear in this list as each group is
-                          released.
-                        </p>
-                      </div>
-                    </li>
                   </ul>
                 </CardContent>
               </Card>

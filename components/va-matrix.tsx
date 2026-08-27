@@ -2,6 +2,7 @@
 
 import { Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { formatUsd, loanLimits } from "@/content/loan-limits"
 
 export default function VAMatrix() {
   return (
@@ -159,15 +160,15 @@ export default function VAMatrix() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="border border-gray-300 rounded-lg p-4">
-            <h4 className="font-semibold text-gray-900 mb-3">2025 Loan Limits</h4>
+            <h4 className="font-semibold text-gray-900 mb-3">{loanLimits.year} Loan Limits</h4>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-gray-600">Base Loan Limit:</span>
-                <span className="font-semibold">$806,500</span>
+                <span className="font-semibold">{formatUsd(loanLimits.conforming)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">High-Cost Areas:</span>
-                <span className="font-semibold">Up to $1,209,750</span>
+                <span className="font-semibold">Up to {formatUsd(loanLimits.highCostCeiling)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-600">Down Payment:</span>

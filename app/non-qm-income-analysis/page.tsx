@@ -2,13 +2,15 @@ import { notFound } from "next/navigation"
 import NonQmIncomeAnalysisTool from "@/components/non-qm-income-analysis"
 import { Badge } from "@/components/ui/badge"
 import { isNonQmIncomeAnalysisEnabled } from "@/lib/feature-flags"
+import { pageMetadata } from "@/lib/seo"
 import { Calculator, FileSpreadsheet, TrendingUp } from "lucide-react"
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Non-QM Income Analysis | United Fidelity Funding Corp",
   description:
     "Upload a MISMO 3.4 file to analyze asset depletion income, bank statement income, and No Ratio eligibility for Non-QM restructure scenarios.",
-}
+  path: "/non-qm-income-analysis",
+})
 
 export default function NonQmIncomeAnalysisPage() {
   if (!isNonQmIncomeAnalysisEnabled()) {

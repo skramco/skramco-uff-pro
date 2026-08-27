@@ -8,14 +8,24 @@ import { Phone, Mail, MapPin } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import { isNonQmIncomeAnalysisEnabled } from "@/lib/feature-flags"
+import {
+  COMPANY_ADDRESS_LINES,
+  COMPANY_PHONE,
+  NMLS_ID,
+  PROFESSIONAL_USE_NOTICE,
+} from "@/content/disclosures"
+import { pageMetadata } from "@/lib/seo"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "United Fidelity Funding Corp - Wholesale Mortgage Lender",
-  description:
-    "Partner with UFF for competitive rates, fast closings, and comprehensive loan solutions. Access our PRO Portal for seamless loan management.",
-    generator: 'v0.app'
+  ...pageMetadata({
+    title: "Wholesale Mortgage Lending for Brokers | United Fidelity Funding",
+    description:
+      "Wholesale mortgage lending for brokers: self-sign up, price scenarios, and register loans in PRO Portal. United Fidelity Funding Corp, NMLS 34381.",
+    path: "/",
+  }),
+  metadataBase: new URL("https://uff.pro"),
 }
 
 export default function RootLayout({
@@ -31,6 +41,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {/* Header */}
           <header className="site-header bg-white shadow-sm border-b sticky top-0 z-50">
+            <div className="bg-gray-900 text-gray-300 text-[11px] sm:text-xs text-center py-1.5 px-4 tracking-wide">
+              {PROFESSIONAL_USE_NOTICE}
+            </div>
             <div className="container mx-auto px-4">
               <div className="flex items-center justify-between h-16">
                 <Link href="/" className="flex items-center space-x-3">
@@ -106,28 +119,21 @@ export default function RootLayout({
 
           <main>{children}</main>
 
-          {/* Footer */}
-          <footer className="site-footer bg-gray-900 text-white py-16">
+          <footer className="site-footer bg-gray-900 text-white py-10">
             <div className="container mx-auto px-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                  <div className="mb-6">
-                    <Image
-                      src="/images/uff-logo.png"
-                      alt="United Fidelity Funding Corp"
-                      width={200}
-                      height={45}
-                      className="h-12 w-auto"
-                    />
-                  </div>
-                  <p className="text-gray-400 mb-6">
-                    Your trusted wholesale mortgage lending partner, providing competitive rates, fast closings, and
-                    exceptional service to mortgage brokers nationwide.
-                  </p>
-                  <div className="space-y-3 text-sm text-gray-400">
+                  <Image
+                    src="/images/uff-logo.png"
+                    alt="United Fidelity Funding Corp"
+                    width={200}
+                    height={45}
+                    className="h-10 w-auto mb-4"
+                  />
+                  <div className="space-y-2 text-sm text-gray-400">
                     <div className="flex items-center gap-2">
                       <Phone className="h-4 w-4" />
-                      <span>(855) 95-EAGLE</span>
+                      <span>{COMPANY_PHONE}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Mail className="h-4 w-4" />
@@ -136,56 +142,25 @@ export default function RootLayout({
                     <div className="flex items-start gap-2">
                       <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
                       <span>
-                        1300 NW Briarcliff Pkwy #275
+                        {COMPANY_ADDRESS_LINES[0]}
                         <br />
-                        Kansas City, MO 64116
+                        {COMPANY_ADDRESS_LINES[1]}
                       </span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <h3 className="font-semibold text-lg mb-4">Loan Products</h3>
-                  <ul className="space-y-2 text-gray-400">
-                    <li>
-                      <Link href="/loan-products" className="hover:text-white transition-colors">
-                        Conventional Loans
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/loan-products" className="hover:text-white transition-colors">
-                        FHA Loans
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/loan-products" className="hover:text-white transition-colors">
-                        VA Loans
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/loan-products" className="hover:text-white transition-colors">
-                        USDA Loans
-                      </Link>
-                    </li>
-                    <li>
-                      <Link href="/loan-products" className="hover:text-white transition-colors">
-                        Non-QM Loans
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-
-                <div>
                   <h3 className="font-semibold text-lg mb-4">Company</h3>
                   <ul className="space-y-2 text-gray-400">
                     <li>
-                      <Link href="/about" className="hover:text-white transition-colors">
-                        About UFF
+                      <Link href="/loan-products" className="hover:text-white transition-colors">
+                        Loan Products
                       </Link>
                     </li>
                     <li>
-                      <Link href="/licensing" className="hover:text-white transition-colors">
-                        Licensing
+                      <Link href="/about" className="hover:text-white transition-colors">
+                        About UFF
                       </Link>
                     </li>
                     <li>
@@ -202,7 +177,7 @@ export default function RootLayout({
                     ) : null}
                     <li>
                       <Link href="/contact" className="hover:text-white transition-colors">
-                        Contact Us
+                        Contact
                       </Link>
                     </li>
                     <li>
@@ -210,99 +185,30 @@ export default function RootLayout({
                         PRO Portal
                       </Link>
                     </li>
+                    <li>
+                      <Link href="/get-approved" className="hover:text-white transition-colors">
+                        Get Approved
+                      </Link>
+                    </li>
                   </ul>
                 </div>
 
-                <div>
-                  <h3 className="font-semibold text-lg mb-4">Get Started</h3>
-                  <p className="text-gray-400 mb-4">
-                    Ready to partner with UFF? Get approved today and start accessing our competitive rates and PRO
-                    Portal technology.
+                <div className="text-sm text-gray-400 space-y-3">
+                  <p className="font-semibold text-white">NMLS ID: #{NMLS_ID} | Equal Housing Lender</p>
+                  <p>{PROFESSIONAL_USE_NOTICE}</p>
+                  <p>
+                    <Link href="/licensing" className="text-white underline underline-offset-2 hover:text-red-300">
+                      Licensing &amp; full disclosures
+                    </Link>
                   </p>
-                  <Button asChild className="bg-red-600 hover:bg-red-700 text-white hover:text-white w-full mb-4">
+                  <Button asChild className="bg-red-600 hover:bg-red-700 text-white hover:text-white">
                     <Link href="/get-approved">Apply Now</Link>
                   </Button>
-                  <p className="text-xs text-gray-500">NMLS ID: 34381 | Equal Housing Lender</p>
                 </div>
               </div>
 
-              <div className="border-t border-gray-800 mt-12 pt-8">
-                <div className="flex flex-col md:flex-row justify-between items-center mb-6">
-                  <div className="text-gray-400 text-sm">© 2026 United Fidelity Funding Corp. All rights reserved.</div>
-                  <div className="flex space-x-6 mt-4 md:mt-0">
-                    <Link href="/privacy" className="text-gray-400 hover:text-white text-sm transition-colors">
-                      Privacy Policy
-                    </Link>
-                    <Link href="/terms" className="text-gray-400 hover:text-white text-sm transition-colors">
-                      Terms of Service
-                    </Link>
-                    <Link href="/licensing" className="text-gray-400 hover:text-white text-sm transition-colors">
-                      NMLS Consumer Access
-                    </Link>
-                  </div>
-                </div>
-
-                {/* NMLS and Regulatory Compliance */}
-                <div className="text-center mb-4">
-                  <p className="text-gray-400 text-sm font-semibold">NMLS ID: #34381 | Equal Housing Lender</p>
-                </div>
-
-                {/* Comprehensive Regulatory Compliance Language */}
-                <div className="text-xs text-gray-500 leading-relaxed space-y-2">
-                  <p className="text-center">
-                    <strong>United Fidelity Funding Corp</strong> is licensed as a mortgage lender/broker in multiple
-                    states. Not all products and services are available in all states. Credit and collateral are subject
-                    to approval. Terms and conditions apply. Programs, rates, terms and conditions are subject to change
-                    without notice.
-                  </p>
-
-                  <p className="text-center">
-                    <strong>State Licensing Information:</strong> Licensed by the Alabama State Banking Department |
-                    Arizona Department of Financial Institutions | Arkansas Securities Department | California
-                    Department of Financial Protection and Innovation under the California Financing Law | Colorado
-                    Division of Real Estate | Florida Office of Financial Regulation | Georgia Department of Banking and
-                    Finance | Idaho Department of Finance | Illinois Department of Financial and Professional Regulation
-                    | Indiana Department of Financial Institutions | Iowa Division of Banking | Kansas Office of the
-                    State Bank Commissioner | Kentucky Department of Financial Institutions | Louisiana Office of
-                    Financial Institutions | Maine Bureau of Consumer Credit Protection | Maryland Commissioner of
-                    Financial Regulation | Massachusetts Division of Banks | Michigan Department of Insurance and
-                    Financial Services | Minnesota Department of Commerce | Mississippi Department of Banking and
-                    Consumer Finance | Missouri Division of Finance | Nebraska Department of Banking and Finance |
-                    Nevada Division of Mortgage Lending | New Hampshire Banking Department | New Jersey Department of
-                    Banking and Insurance | New Mexico Regulation and Licensing Department | North Carolina Commissioner
-                    of Banks | North Dakota Department of Financial Institutions | Ohio Division of Financial
-                    Institutions | Oklahoma Department of Consumer Credit | Oregon Division of Financial Regulation |
-                    Pennsylvania Department of Banking and Securities | South Carolina Board of Financial Institutions |
-                    South Dakota Division of Banking | Tennessee Department of Financial Institutions | Texas Department
-                    of Savings and Mortgage Lending | Virginia State Corporation Commission | Washington Department of
-                    Financial Institutions | Wisconsin Department of Financial Institutions.
-                  </p>
-
-                  <p className="text-center">
-                    <strong>Federal Compliance:</strong> This company is an Equal Housing Lender. We do not discriminate
-                    on the basis of race, color, religion, national origin, sex, handicap, familial status, or age in
-                    the origination of mortgage loans. Complaints may be filed with the Consumer Financial Protection
-                    Bureau at consumerfinance.gov or by calling (855) 411-2372.
-                  </p>
-
-                  <p className="text-center">
-                    <strong>Important Disclosures:</strong> The information provided is for informational purposes only
-                    and is not an advertisement for products or services. This is not a commitment to lend. All loans
-                    subject to underwriting approval. Restrictions may apply. Interest rates and program terms are
-                    subject to change without notice. Other restrictions and limitations may apply.
-                  </p>
-
-                  <p className="text-center">
-                    <strong>Privacy Notice:</strong> We are committed to protecting your privacy. Information collected
-                    may be shared with affiliates and third parties as described in our Privacy Policy. By providing
-                    your information, you consent to be contacted regarding mortgage services.
-                  </p>
-
-                  <p className="text-center font-semibold">
-                    Corporate Headquarters: 1300 NW Briarcliff Pkwy #275, Kansas City, MO 64116 | Phone: (855) 95-EAGLE
-                    | NMLS ID: #34381
-                  </p>
-                </div>
+              <div className="border-t border-gray-800 mt-8 pt-6 text-gray-500 text-sm">
+                © 2026 United Fidelity Funding Corp. All rights reserved.
               </div>
             </div>
           </footer>

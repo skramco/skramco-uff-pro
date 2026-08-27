@@ -83,7 +83,7 @@ export function ProPortalCTA({ variant = "default", className = "" }: ProPortalC
         <div className="bg-white/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
           <Zap className="h-8 w-8 text-white" />
         </div>
-        <h3 className="text-xl font-bold mb-2">🚀 Access PRO Portal</h3>
+        <h3 className="text-xl font-bold mb-2">Access PRO Portal</h3>
         <p className="text-red-100 mb-4">Login to your loan management dashboard</p>
         <Button
           asChild

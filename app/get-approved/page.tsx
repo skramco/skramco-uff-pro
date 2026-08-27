@@ -511,7 +511,7 @@ export default function GetApprovedPage() {
                   {/* PRO Portal Preview CTA */}
                   <div className="mt-8 p-6 bg-gradient-to-r from-gray-50 to-gray-100 rounded-xl border border-gray-200">
                     <div className="text-center">
-                      <h3 className="text-lg font-bold text-gray-800 mb-2">🚀 Get a Preview</h3>
+                      <h3 className="text-lg font-bold text-gray-800 mb-2">Get a Preview</h3>
                       <p className="text-gray-600 mb-4">See what awaits you in the PRO Portal</p>
                       <Button
                         asChild

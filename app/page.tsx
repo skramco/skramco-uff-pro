@@ -7,6 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Shield, Zap, Users, TrendingUp, CheckCircle, Star } from 'lucide-react'
 import Link from "next/link"
 import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
+import { companyStats } from "@/content/company-stats"
+import { formatUsd, loanLimits } from "@/content/loan-limits"
 
 const heroSlides = [
   {
@@ -19,9 +21,9 @@ const heroSlides = [
   {
     id: 2,
     background: "/diverse-team-of-mortgage-professionals-collaborati.jpg",
-    tagline: "Leading the Industry Since 2010",
+    tagline: "Wholesale lending for mortgage professionals",
     headline: "Build Your Success with America's Fastest Growing Wholesale Lender",
-    subheadline: "Join 500+ broker partners who trust UFF for competitive pricing, cutting-edge technology, and unmatched support.",
+    subheadline: "Partner with UFF for pricing, technology, and dedicated broker support.",
   },
   {
     id: 3,
@@ -35,7 +37,7 @@ const heroSlides = [
     background: "/happy-family-receiving-house-keys-from-mortgage-br.jpg",
     tagline: "Your Success is Our Mission",
     headline: "Turn More Applications into Funded Loans",
-    subheadline: "With 15-day average closings, flexible loan programs, and dedicated support, we help you win more business and grow your pipeline.",
+    subheadline: "Flexible loan programs and dedicated support to help you win more business and grow your pipeline.",
   },
 ]
 
@@ -139,7 +141,7 @@ export default function HomePage() {
                     className="bg-gradient-to-r from-red-700 to-red-600 hover:from-red-800 hover:to-red-700 text-white font-semibold px-6 py-2 rounded-full shadow-lg transform hover:scale-105 transition-all duration-200"
                   >
                     <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
-                      🚀 Login to PRO Portal
+                      Log in to PRO Portal
                     </a>
                   </Button>
                 </div>
@@ -154,20 +156,24 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-red-600 mb-2">$10B+</div>
+              <div className="text-2xl md:text-3xl font-bold text-red-600 mb-2">{companyStats.loansFunded.value}</div>
               <div className="text-gray-600">Loans Funded</div>
+              <div className="text-xs text-gray-500 mt-1">As of {companyStats.loansFunded.asOf}</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-red-600 mb-2">500+</div>
+              <div className="text-2xl md:text-3xl font-bold text-red-600 mb-2">{companyStats.brokerPartners.value}</div>
               <div className="text-gray-600">Broker Partners</div>
+              <div className="text-xs text-gray-500 mt-1">As of {companyStats.brokerPartners.asOf}</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-red-600 mb-2">15</div>
-              <div className="text-gray-600">Day Average Close</div>
+              <div className="text-2xl md:text-3xl font-bold text-red-600 mb-2">{companyStats.avgDaysToClose.value}</div>
+              <div className="text-gray-600">Average Days to Close</div>
+              <div className="text-xs text-gray-500 mt-1">As of {companyStats.avgDaysToClose.asOf}</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-red-600 mb-2">98%</div>
+              <div className="text-2xl md:text-3xl font-bold text-red-600 mb-2">{companyStats.satisfactionRate.value}</div>
               <div className="text-gray-600">Client Satisfaction</div>
+              <div className="text-xs text-gray-500 mt-1">As of {companyStats.satisfactionRate.asOf}</div>
             </div>
           </div>
         </div>
@@ -200,7 +206,7 @@ export default function HomePage() {
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-500" />
-                    Loan amounts up to $806,500 (2025 conforming)
+                    Loan amounts up to {formatUsd(loanLimits.conforming)} ({loanLimits.year} conforming)
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-green-500" />

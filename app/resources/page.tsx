@@ -43,41 +43,18 @@ const formSections = [
         source: "Fannie Mae",
       },
       {
-        name: "Broker Compensation Acknowledgement & Agreement",
-        description:
-          "Agreement form for borrower to elect whether broker compensation will be paid by borrower or lender, including certification of compensation disclosure",
-        apiUrl: "/api/forms/broker-comp-agreement",
-        source: "UFF",
-      },
-      {
         name: "Inquiry Letter",
         description:
           "Letter template for brokers to formally inquire about loan products, programs, or specific transaction scenarios with United Fidelity Funding",
-        apiUrl: "/api/forms/inquiry-letter",
+        apiUrl: "/pdfs/Inquiry-Letter.pdf",
         source: "UFF",
       },
       {
         name: "Borrower Acknowledgment of Intent to Proceed",
         description:
           "Borrower certification confirming receipt of Loan Estimate and intent to proceed with the loan application according to disclosed terms",
-        apiUrl: "/api/forms/borrower-acknowledgment",
+        apiUrl: "/pdfs/Borrower-Acknowledgment-of-Intent-to-Proceed.pdf",
         source: "UFF",
-      },
-      {
-        name: "Initial Borrower Contact Form",
-        description: "Document initial contact with borrowers and capture preliminary loan information for processing",
-        comingSoon: true,
-      },
-      {
-        name: "Loan Estimate Request Form",
-        description:
-          "Request form for obtaining a Loan Estimate with detailed terms and estimated costs for the mortgage",
-        comingSoon: true,
-      },
-      {
-        name: "Income & Asset Documentation Checklist",
-        description: "Comprehensive list of required income and asset documents needed for loan underwriting",
-        comingSoon: true,
       },
     ],
   },
@@ -99,16 +76,6 @@ const formSections = [
           "Five-page form detailing the final terms and costs of the mortgage, provided at least 3 days before closing",
         url: "https://www.consumerfinance.gov/owning-a-home/closing-disclosure/",
         source: "CFPB",
-      },
-      {
-        name: "TRID Disclosure Forms Package",
-        description: "Complete package of TILA-RESPA Integrated Disclosure forms required for mortgage transactions",
-        comingSoon: true,
-      },
-      {
-        name: "Privacy Notice Template",
-        description: "Required notice explaining how borrower financial information is collected, used, and protected",
-        comingSoon: true,
       },
       {
         name: "ECOA/Adverse Action Notice Information",
@@ -145,16 +112,6 @@ const formSections = [
         isForm: true,
         source: "UFF",
       },
-      {
-        name: "FHA Borrower Certification & Authorization",
-        description: "Borrower certifies occupancy intent and authorizes FHA to verify information for loan approval",
-        comingSoon: true,
-      },
-      {
-        name: "FHA Identity of Interest Certification",
-        description: "Discloses any identity of interest relationships between parties in the transaction",
-        comingSoon: true,
-      },
     ],
   },
   {
@@ -186,27 +143,22 @@ const formSections = [
         name: "VA Nearest Living Relative Statement",
         description:
           "Required form for veterans to provide name, address, and contact information of their nearest living relative for VA loan processing",
-        apiUrl: "/api/forms/va-nearest-relative",
+        apiUrl: "/pdfs/VA-Nearest-Relative-Statement.pdf",
         source: "UFF",
       },
       {
         name: "VA Allowable Closing Costs",
         description:
           "Comprehensive guide detailing allowable and unallowable closing costs for VA loans, including fee limitations and restrictions based on origination fee",
-        apiUrl: "/api/forms/va-allowable-closing-costs",
+        apiUrl: "/pdfs/VA-Allowable-Closing-Costs.pdf",
         source: "UFF",
       },
       {
         name: "VA Sponsorship Form",
         description:
           "Application form for mortgage brokers to obtain VA sponsorship through United Fidelity Funding, including state licensing information and $100 fee",
-        apiUrl: "/api/forms/va-sponsorship",
+        apiUrl: "/pdfs/VA-Sponsorship-Form.pdf",
         source: "UFF",
-      },
-      {
-        name: "VA Occupancy Certification",
-        description: "Borrower certifies intent to occupy the property as primary residence for VA loan eligibility",
-        comingSoon: true,
       },
     ],
   },
@@ -226,23 +178,8 @@ const formSections = [
         name: "Appraisal Transfer & Independence Certification",
         description:
           "Lender certification form confirming compliance with appraisal independence regulations (AIR) and federal/state laws, including attestation of no improper influence on appraisal process",
-        apiUrl: "/api/forms/appraisal-transfer",
+        apiUrl: "/pdfs/Appraisal-Transfer.pdf",
         source: "UFF",
-      },
-      {
-        name: "Appraisal Order Form",
-        description: "Order professional property appraisal with detailed property information and loan requirements",
-        comingSoon: true,
-      },
-      {
-        name: "Property Inspection Waiver (PIW) Request",
-        description: "Request waiver of physical property inspection when eligible based on data and risk assessment",
-        comingSoon: true,
-      },
-      {
-        name: "Desktop Appraisal Request",
-        description: "Request desktop appraisal using public records and MLS data without physical property inspection",
-        comingSoon: true,
       },
     ],
   },
@@ -258,21 +195,6 @@ const formSections = [
         url: "https://www.fanniemae.com/singlefamily/condo-project-manager",
         source: "Fannie Mae",
       },
-      {
-        name: "Condo Project Questionnaire (Form 1076)",
-        description: "Detailed questionnaire about condo project for determining financing eligibility and approval",
-        comingSoon: true,
-      },
-      {
-        name: "Condo/PUD Rider",
-        description: "Mortgage addendum for condominium or planned unit development properties with specific terms",
-        comingSoon: true,
-      },
-      {
-        name: "HOA Certification Form",
-        description: "Homeowners association provides certification of fees, insurance, and project financial health",
-        comingSoon: true,
-      },
     ],
   },
   {
@@ -285,7 +207,7 @@ const formSections = [
         name: "Business Narrative Form",
         description:
           "Required form for self-employed borrowers to document their business profile, operations, revenue generation, and any recent disruptions for Ability to Repay (ATR) calculation",
-        apiUrl: "/api/forms/business-narrative",
+        apiUrl: "/pdfs/NonQM-Business-Narrative-Form.pdf",
         source: "UFF",
       },
     ],
@@ -300,34 +222,8 @@ const formSections = [
         name: "Credit Report Inquiry Certification",
         description:
           "Borrower certification form documenting all recent credit inquiries within 120 days, including creditor names, dates, purposes, and whether new accounts were opened",
-        apiUrl: "/api/forms/credit-inquiry",
+        apiUrl: "/pdfs/Credit-Report-Inquiry-Certification.pdf",
         source: "UFF",
-      },
-      {
-        name: "Power of Attorney (POA) Form",
-        description: "Legal document authorizing someone to act on borrower's behalf during loan closing process",
-        comingSoon: true,
-      },
-      {
-        name: "Gift Letter Template",
-        description: "Document verifying that down payment funds are a gift, not a loan, from family or approved donor",
-        comingSoon: true,
-      },
-      {
-        name: "Explanation of Credit Letter Template",
-        description:
-          "Template for borrowers to explain credit issues, late payments, or derogatory items on credit report",
-        comingSoon: true,
-      },
-      {
-        name: "Subordination Agreement",
-        description: "Legal agreement changing lien priority when refinancing with existing second mortgage or HELOC",
-        comingSoon: true,
-      },
-      {
-        name: "Rate Lock Agreement",
-        description: "Agreement securing specific interest rate for defined period during loan processing",
-        comingSoon: true,
       },
     ],
   },
@@ -497,7 +393,7 @@ export default function ResourcesPage() {
                   className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold shadow-lg"
                 >
                   <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
-                    🚀 Login to PRO Portal
+                    Log in to PRO Portal
                   </a>
                 </Button>
               </CardContent>
@@ -577,10 +473,6 @@ export default function ResourcesPage() {
                                   <Edit3 className="mr-2 h-4 w-4" />
                                   Fill Out Form
                                 </Button>
-                              ) : form.comingSoon ? (
-                                <Badge variant="secondary" className="text-gray-600">
-                                  Coming Soon
-                                </Badge>
                               ) : form.apiUrl ? (
                                 <Button
                                   size="sm"

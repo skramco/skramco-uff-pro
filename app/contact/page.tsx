@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
-import { Phone, Mail, MapPin, Clock, MessageSquare, Users, Headphones } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, Users, Headphones } from "lucide-react"
 import { Captcha } from "@/components/ui/captcha" // Import Captcha
 import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
 
@@ -229,7 +229,7 @@ export default function ContactPage() {
                         className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold rounded-full"
                       >
                         <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
-                          🚀 Login to PRO Portal
+                          Log in to PRO Portal
                         </a>
                       </Button>
                     </div>
@@ -252,24 +252,6 @@ export default function ContactPage() {
                   <p className="font-semibold text-red-600">(855) 95-EAGLE ext. 911</p>
                 </CardContent>
               </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <MessageSquare className="h-5 w-5 text-red-600" />
-                    Live Chat
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600 mb-3">Chat with our support team in real-time during business hours.</p>
-                  <Button
-                    variant="outline"
-                    className="w-full border-red-600 text-red-600 hover:bg-red-50 bg-transparent"
-                  >
-                    Start Live Chat
-                  </Button>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
@@ -290,7 +272,15 @@ export default function ContactPage() {
                   <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold text-gray-700 mb-2">Interactive Map</h3>
                   <p className="text-gray-600">1300 NW Briarcliff Pkwy #275, Kansas City, MO 64116</p>
-                  <Button className="mt-4 bg-red-600 hover:bg-red-700">Get Directions</Button>
+                  <Button asChild className="mt-4 bg-red-600 hover:bg-red-700">
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=1300+NW+Briarcliff+Pkwy+%23275%2C+Kansas+City%2C+MO+64116"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Get Directions
+                    </a>
+                  </Button>
                 </div>
               </div>
             </div>
