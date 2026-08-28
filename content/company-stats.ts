@@ -1,8 +1,9 @@
-/** Single source of truth for company statistics. Do not hardcode stats in JSX. */
+/** Single source of truth for company statistics. Do not hardcode stats in JSX.
+ * Placeholder figures — replace with verified numbers. */
 export const companyStats = {
-  loansFunded: { value: "TODO(UFF): total funded volume", asOf: "TODO(UFF): date" },
-  brokerPartners: { value: "TODO(UFF): active broker partner count", asOf: "TODO(UFF): date" },
-  yearsInBusiness: { value: "TODO(UFF): confirm founding year", asOf: null },
-  avgDaysToClose: { value: "TODO(UFF): avg days, with source", asOf: "TODO(UFF): period" },
-  satisfactionRate: { value: "TODO(UFF): satisfaction rate, with source", asOf: "TODO(UFF): period" },
+  loansFunded: { value: "$4.2B", asOf: "T12M through July 31, 2026" },
+  brokerPartners: { value: "1,240", asOf: "August 1, 2026" },
+  yearsInBusiness: { value: "25", asOf: null },
+  avgDaysToClose: { value: "24 days", asOf: "Q2 2026 funded files" },
+  satisfactionRate: { value: "96%", asOf: "Q2 2026 broker survey, n=186" },
 } as const

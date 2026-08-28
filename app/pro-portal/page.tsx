@@ -1,503 +1,64 @@
-"use client"
-
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import {
-  FileText,
-  DollarSign,
-  Lock,
-  Upload,
-  BarChart3,
-  Shield,
-  Eye,
-  Zap,
-  Clock,
-  CheckCircle,
-  ArrowRight,
-  Smartphone,
-  Globe,
-  Users,
-} from "lucide-react"
 import Link from "next/link"
-import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
+import { Button } from "@/components/ui/button"
+import { PageHero } from "@/components/page-hero"
+import { peoplePhotos } from "@/content/people-photos"
+import { PortalFeatures } from "@/components/portal-features"
+import { PRO_PORTAL_LOGIN_URL, PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-url"
 
 export default function ProPortalPage() {
-  const scrollToFeatures = () => {
-    const element = document.getElementById("features")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
-  }
-
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-red-900 text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-red-600 text-white">Proprietary Technology Platform</Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              PRO Portal
-              <span className="block text-red-400 text-3xl md:text-4xl font-normal mt-2">
-                Powering Real Originators
-              </span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-300 leading-relaxed">
-              Our comprehensive loan management platform streamlines your entire process from application to closing,
-              giving you the tools to close more loans faster. Brokers can self-sign up and gain access immediately.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-red-600 hover:bg-red-700 text-lg px-8 py-3">
-                <a href="https://go.uff.pro/signup" target="_blank" rel="noopener noreferrer">
-                  Get Immediate Access <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
-              <Button
-                onClick={scrollToFeatures}
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-gray-900 text-lg px-8 py-3 bg-transparent cursor-pointer"
-              >
-                Explore Features
-              </Button>
-            </div>
-            <p className="text-sm text-red-300 mt-3">
-              New broker?{" "}
-              <a
-                href="https://go.uff.pro/signup"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-2 hover:text-red-200"
-              >
-                Self-sign up in minutes
-              </a>{" "}
-              and get immediate PRO Portal access.
-            </p>
+    <div>
+      <PageHero
+        logo={{ src: "/images/pro-portal-logo.png", alt: "PRO Portal", width: 1132, height: 228 }}
+        title="From first price to funded."
+        image={peoplePhotos.collaborate}
+        actions={
+          <>
+            <Button asChild>
+              <a href={PRO_PORTAL_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+                Create your account
+              </a>
+            </Button>
+            <Button asChild variant="outline">
+              <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                Log in
+              </a>
+            </Button>
+            <Button asChild variant="outline">
+              <Link href="#features">Features</Link>
+            </Button>
+          </>
+        }
+      >
+        <p>
+          Create an account and start the same day. Price, lock, originate, upload, clear conditions, request a COC,
+          and take post-lock actions through funding. Piper is on the file the whole way.
+        </p>
+      </PageHero>
 
-            {/* Existing Partner Login CTA */}
-            <div className="mt-8 p-6 bg-gradient-to-r from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-xl border border-white/20">
-              <div className="text-center">
-                <p className="text-white/90 mb-3 text-lg">
-                  <strong>Existing Partners:</strong> Access your account now
-                </p>
-                <Button
-                  asChild
-                  className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-bold px-8 py-3 rounded-full shadow-xl transform hover:scale-105 transition-all duration-200 text-lg"
-                >
-                  <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
-                    Log in to PRO Portal
-                  </a>
-                </Button>
-                <p className="text-white/70 text-sm mt-2">Secure access to your loan pipeline</p>
-                <p className="text-white/80 text-sm mt-4">
-                  New to PRO Portal? Self-sign up here:{" "}
-                  <a
-                    href="https://go.uff.pro/signup"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-red-300 hover:text-red-200 underline underline-offset-2"
-                  >
-                    go.uff.pro/signup
-                  </a>
-                </p>
-              </div>
-            </div>
+      <PortalFeatures />
+
+      <section className="band-nav">
+        <div className="container mx-auto px-4">
+          <h2 className="text-white">Create your account</h2>
+          <p className="mt-3 max-w-[40rem] text-white/70">
+            UFF wholesale runs in PRO Portal. Self-sign up. Same-day access. Start a file today and take it through
+            funded.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild>
+              <a href={PRO_PORTAL_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+                Create your account
+              </a>
+            </Button>
+            <Button asChild variant="outline" className="btn-on-dark">
+              <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                Log in
+              </a>
+            </Button>
           </div>
         </div>
       </section>
-
-      {/* Key Benefits */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-white rounded-lg shadow-sm">
-              <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Zap className="h-8 w-8 text-red-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Lightning Fast</h3>
-              <p className="text-gray-600">Process loans in minutes, not hours, with our streamlined workflow</p>
-            </div>
-            <div className="text-center p-8 bg-white rounded-lg shadow-sm">
-              <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-8 w-8 text-red-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Bank-Level Security</h3>
-              <p className="text-gray-600">
-                Your data and your clients' information is protected with enterprise-grade security
-              </p>
-            </div>
-            <div className="text-center p-8 bg-white rounded-lg shadow-sm">
-              <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-8 w-8 text-red-600" />
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">24/7 Access</h3>
-              <p className="text-gray-600">Work on your loans anytime, anywhere with our cloud-based platform</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Team Image Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Built for Mortgage Professionals</h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                PRO Portal was designed by mortgage industry veterans who understand the challenges you face every day.
-                Our platform combines cutting-edge technology with practical functionality to help you close more loans
-                faster.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700">Intuitive interface designed for loan officers</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700">Real-time updates and notifications</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-green-500" />
-                  <span className="text-gray-700">Seamless integration with existing workflows</span>
-                </div>
-              </div>
-            </div>
-            <div className="relative">
-              <img
-                src="/images/smiling-man.png"
-                alt="Smiling man looking up, representing a successful mortgage professional"
-                className="rounded-lg shadow-lg w-full h-auto"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Features */}
-      <section id="features" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Complete Loan Management Suite</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Everything you need to manage your loan pipeline from start to finish, all in one powerful platform.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Create Loans */}
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-red-500">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <FileText className="h-6 w-6 text-red-600" />
-                  Create Loans
-                </CardTitle>
-                <CardDescription>Streamlined loan application creation and management</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Intuitive loan application interface
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Auto-populate borrower information
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Built-in compliance checks
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Save and resume functionality
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Price Loans */}
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-red-500">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="h-6 w-6 text-red-600" />
-                  Price Loans
-                </CardTitle>
-                <CardDescription>Real-time pricing with competitive rates</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Live rate updates throughout the day
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Multiple pricing scenarios
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Instant loan-to-value calculations
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Customizable pricing worksheets
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Lock Loans */}
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-red-500">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Lock className="h-6 w-6 text-red-600" />
-                  Lock Loans
-                </CardTitle>
-                <CardDescription>Secure rates with instant lock confirmations</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    One-click rate locks
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Flexible lock periods
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Lock extension options
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Automated confirmations
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Upload Documents */}
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-red-500">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Upload className="h-6 w-6 text-red-600" />
-                  Upload Documents
-                </CardTitle>
-                <CardDescription>Secure document management and sharing</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Drag-and-drop file uploads
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Automatic document categorization
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Version control and tracking
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Secure encrypted storage
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* Manage Pipeline */}
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-red-500">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <BarChart3 className="h-6 w-6 text-red-600" />
-                  Manage Pipeline
-                </CardTitle>
-                <CardDescription>Complete visibility into your loan pipeline</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Visual pipeline dashboard
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Milestone tracking
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Automated status updates
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Performance analytics
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            {/* View Conditions */}
-            <Card className="hover:shadow-lg transition-shadow border-l-4 border-l-red-500">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Eye className="h-6 w-6 text-red-600" />
-                  View Conditions
-                </CardTitle>
-                <CardDescription>Real-time condition tracking and updates</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Live condition updates
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Priority-based organization
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Condition resolution tracking
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
-                    Automated notifications
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Success Stories — testimonials withheld until verified */}
-      {/*
-        TODO(UFF): broker testimonials.
-        Required format: first name, company, city, and either a specific outcome or a date.
-        TypeScript-enforced component (Phase 2): <Testimonial name company city quote />
-        Do not invent names or quotes.
-      */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto border border-dashed border-gray-300 bg-white p-8 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-3">Broker testimonials</h2>
-            <p className="text-sm text-gray-600">
-              TODO(UFF): supply real quotes. Required format: first name, company, city, and either a specific outcome
-              or a date.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Platform Advantages */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose PRO Portal?</h2>
-            <p className="text-xl text-gray-600">Built by mortgage professionals, for mortgage professionals</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="flex items-start gap-4">
-                <div className="bg-red-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Smartphone className="h-6 w-6 text-red-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mobile Responsive</h3>
-                  <p className="text-gray-600">
-                    Access your loans and pipeline from any device, anywhere. Our mobile-optimized interface ensures you
-                    never miss a beat.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="bg-red-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Globe className="h-6 w-6 text-red-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Cloud-Based Platform</h3>
-                  <p className="text-gray-600">
-                    No software to install or maintain. Access PRO Portal from any web browser with automatic updates
-                    and backups.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="bg-red-100 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Users className="h-6 w-6 text-red-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Team Collaboration</h3>
-                  <p className="text-gray-600">
-                    Multiple users can work on the same loan file with role-based permissions and real-time
-                    collaboration features.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <img
-                src="/images/pro-portal-my-pipeline.png"
-                alt="PRO Portal My Pipeline dashboard with loan metrics, filters, and pipeline table"
-                className="rounded-lg shadow-lg w-full h-auto"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-red-600 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Transform Your Mortgage Business Today</h2>
-            <p className="text-xl mb-8 text-red-100">
-              Don't let outdated processes slow you down. Join the PRO Portal revolution and start closing more loans
-              faster.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-red-600 hover:bg-red-50">
-                <Link href="/get-approved">Apply for Access</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-red-600 bg-transparent"
-              >
-                <Link href="/about">Learn About UFF</Link>
-              </Button>
-            </div>
-
-            {/* PRO Portal Login CTA */}
-            <div className="mt-6 p-4 bg-red-700 rounded-lg">
-              <div className="flex items-center justify-center gap-4">
-                <div className="text-center">
-                  <p className="text-white font-semibold">Already approved? Login now!</p>
-                  <Button
-                    asChild
-                    className="mt-2 bg-white text-red-600 hover:bg-red-50 font-semibold px-6 py-2 rounded-full"
-                  >
-                    <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
-                      Access PRO Portal →
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </div>
   )
 }

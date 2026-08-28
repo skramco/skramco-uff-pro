@@ -1,9 +1,10 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { CheckCircle, ExternalLink, MapPin, Shield } from "lucide-react"
+import { CheckCircle, ExternalLink } from "lucide-react"
 import Link from "next/link"
 import { USMap } from "@/components/us-map"
+import { PageHero } from "@/components/page-hero"
 import {
   COMPANY_ADDRESS_LINES,
   COMPANY_PHONE,
@@ -521,68 +522,29 @@ export default function LicensingPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-red-600 text-white">Regulatory Compliance</Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">Licensing & Compliance</h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-300 leading-relaxed">
-              United Fidelity Funding Corp is licensed and regulated in multiple states, ensuring compliance with all
-              applicable mortgage lending laws and regulations.
-            </p>
-          </div>
-        </div>
-      </section>
+      <PageHero eyebrow="Licensing" title="Licensing & disclosures">
+        <p>
+          United Fidelity Funding Corp is licensed in multiple states. NMLS ID #{NMLS_ID}. Equal Housing Lender.
+        </p>
+      </PageHero>
 
       {/* Overview Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Shield className="h-8 w-8 text-red-600" />
-                  </div>
-                  <CardTitle>Licensed in {activeLicensedStates.length} States</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    We maintain active licenses across {activeLicensedStates.length} states, providing comprehensive
-                    coverage for our broker partners.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="h-8 w-8 text-red-600" />
-                  </div>
-                  <CardTitle>Fully Compliant</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    All licenses are current and in good standing with respective state regulatory authorities.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <MapPin className="h-8 w-8 text-red-600" />
-                  </div>
-                  <CardTitle>Nationwide Coverage</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">
-                    Our licensing footprint covers the majority of the U.S. mortgage market, serving brokers coast to
-                    coast.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="mb-12 grid grid-cols-1 gap-3 md:grid-cols-3">
+              <div className="panel p-5">
+                <p className="data-num text-2xl font-medium">{activeLicensedStates.length}</p>
+                <p className="mt-1 text-sm">Active licensed states</p>
+              </div>
+              <div className="panel p-5">
+                <p className="font-medium">NMLS #{NMLS_ID}</p>
+                <p className="mt-1 text-sm text-ink-muted">Equal Housing Lender</p>
+              </div>
+              <div className="panel p-5">
+                <p className="font-medium">Kansas City, MO</p>
+                <p className="mt-1 text-sm text-ink-muted">Corporate headquarters</p>
+              </div>
             </div>
 
             <div className="text-center mb-12">
@@ -767,29 +729,18 @@ export default function LicensingPage() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-20 bg-red-600 text-white">
+      <section className="band-nav">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Questions About Our Licensing?</h2>
-            <p className="text-xl mb-8 text-red-100">
-              Our compliance team is available to answer any questions about our licensing and regulatory status.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-red-600 hover:bg-red-50">
-                <Link href="/contact">Contact Compliance Team</Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="border-white text-white hover:bg-white hover:text-red-600 bg-transparent"
-              >
-                <Link href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener noreferrer">
-                  View NMLS Database
-                </Link>
-              </Button>
-            </div>
+          <h2 className="text-white">Questions about licensing?</h2>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild>
+              <Link href="/contact">Contact compliance</Link>
+            </Button>
+            <Button asChild variant="outline" className="btn-on-dark">
+              <Link href="https://www.nmlsconsumeraccess.org/" target="_blank" rel="noopener noreferrer">
+                NMLS Consumer Access
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

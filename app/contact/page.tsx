@@ -1,25 +1,52 @@
 "use client"
 
-import { useState } from "react"
+import { Suspense, useMemo, useState, type FormEvent } from "react"
+import { useSearchParams } from "next/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { Phone, Mail, MapPin, Clock, Users, Headphones } from "lucide-react"
+import { Clock, Users, Headphones } from "lucide-react"
 import { Captcha } from "@/components/ui/captcha" // Import Captcha
 import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
+import { PageHero } from "@/components/page-hero"
 
 export default function ContactPage() {
+  return (
+    <Suspense fallback={null}>
+      <ContactPageInner />
+    </Suspense>
+  )
+}
+
+function ContactPageInner() {
+  const searchParams = useSearchParams()
   const [isCaptchaValid, setIsCaptchaValid] = useState(false) // New state for CAPTCHA validity
+  const scenarioMessage = useMemo(() => {
+    if (searchParams.get("topic") !== "scenario") return ""
+    const product = searchParams.get("productName") || searchParams.get("product") || ""
+    const loanAmount = searchParams.get("loanAmount") || ""
+    const fico = searchParams.get("fico") || ""
+    const ltv = searchParams.get("ltv") || ""
+    const occupancy = searchParams.get("occupancy") || ""
+    return [
+      `Scenario check${product ? ` — ${product}` : ""}`,
+      loanAmount ? `Loan amount: ${loanAmount}` : null,
+      fico ? `FICO: ${fico}` : null,
+      ltv ? `LTV: ${ltv}` : null,
+      occupancy ? `Occupancy: ${occupancy}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n")
+  }, [searchParams])
 
   const handleCaptchaChange = (isValid: boolean) => {
     setIsCaptchaValid(isValid)
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     if (!isCaptchaValid) {
       alert("Please complete the CAPTCHA.")
@@ -31,65 +58,31 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-700 text-white py-20">
+      <PageHero eyebrow="Contact" title="Contact United Fidelity Funding">
+        <p>Kansas City operations. For mortgage professionals only.</p>
+      </PageHero>
+
+      <section className="section-pad border-b border-hairline">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/20 text-white border-white/30">Get In Touch</Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">Contact United Fidelity Funding</h1>
-            <p className="text-xl md:text-2xl mb-8 text-red-100 leading-relaxed">
-              Ready to partner with us? Have questions about our services? Our team is here to help you succeed.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Information */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Phone className="h-8 w-8 text-red-600" />
-                </div>
-                <CardTitle>Phone Support</CardTitle>
-                <CardDescription>Speak with our team directly</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold text-red-600 mb-2">(855) 95-EAGLE</p>
-                <p className="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM CST</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Mail className="h-8 w-8 text-red-600" />
-                </div>
-                <CardTitle>Email Support</CardTitle>
-                <CardDescription>Get help via email</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-lg font-semibold text-red-600 mb-2">support@uff.loans</p>
-                <p className="text-gray-600">We respond within 2 business hours</p>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <MapPin className="h-8 w-8 text-red-600" />
-                </div>
-                <CardTitle>Corporate Headquarters</CardTitle>
-                <CardDescription>Visit us in Kansas City</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="font-semibold text-gray-900 mb-1">1300 NW Briarcliff Pkwy #275</p>
-                <p className="text-gray-600 mb-2">Kansas City, MO 64116</p>
-                <p className="text-sm text-gray-500">NMLS ID: #34381</p>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+            <div className="panel p-5">
+              <p className="caption">Phone</p>
+              <p className="data-num mt-2 text-lg font-medium">(855) 95-EAGLE</p>
+              <p className="mt-1 text-sm text-ink-muted">Monday–Friday, 8:00 AM–6:00 PM CT</p>
+            </div>
+            <div className="panel p-5">
+              <p className="caption">Email</p>
+              <p className="mt-2 font-medium">support@uff.loans</p>
+            </div>
+            <div className="panel p-5">
+              <p className="caption">Headquarters</p>
+              <p className="mt-2 text-sm">
+                1300 NW Briarcliff Pkwy #275
+                <br />
+                Kansas City, MO 64116
+              </p>
+              <p className="caption mt-2">NMLS #34381</p>
+            </div>
           </div>
         </div>
       </section>
@@ -131,11 +124,12 @@ export default function ContactPage() {
 
                 <div>
                   <Label htmlFor="inquiry-type">Inquiry Type *</Label>
-                  <Select>
+                  <Select defaultValue={searchParams.get("topic") === "scenario" ? "scenario" : undefined}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select inquiry type" />
                     </SelectTrigger>
                     <SelectContent>
+                      <SelectItem value="scenario">Scenario desk</SelectItem>
                       <SelectItem value="partnership">Partnership Inquiry</SelectItem>
                       <SelectItem value="support">Technical Support</SelectItem>
                       <SelectItem value="rates">Rate Information</SelectItem>
@@ -148,7 +142,12 @@ export default function ContactPage() {
 
                 <div>
                   <Label htmlFor="message">Message *</Label>
-                  <Textarea id="message" placeholder="Tell us how we can help you..." rows={5} />
+                  <Textarea
+                    id="message"
+                    placeholder="Tell us how we can help you..."
+                    rows={5}
+                    defaultValue={scenarioMessage}
+                  />
                 </div>
 
                 {/* CAPTCHA */}
@@ -226,7 +225,7 @@ export default function ContactPage() {
                       <h4 className="font-semibold text-gray-900 mb-2">PRO Portal Access</h4>
                       <Button
                         asChild
-                        className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold rounded-full"
+                        className="w-full"
                       >
                         <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
                           Log in to PRO Portal
@@ -257,34 +256,19 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="section-pad border-t border-hairline">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Visit Our Headquarters</h2>
-            <p className="text-xl text-gray-600">Located in the heart of Kansas City, Missouri</p>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white p-8 rounded-lg shadow-lg">
-              <div className="aspect-[16/9] bg-gray-100 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold text-gray-700 mb-2">Interactive Map</h3>
-                  <p className="text-gray-600">1300 NW Briarcliff Pkwy #275, Kansas City, MO 64116</p>
-                  <Button asChild className="mt-4 bg-red-600 hover:bg-red-700">
-                    <a
-                      href="https://www.google.com/maps/search/?api=1&query=1300+NW+Briarcliff+Pkwy+%23275%2C+Kansas+City%2C+MO+64116"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Get Directions
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <h2>Headquarters</h2>
+          <p className="prose-body mt-3">1300 NW Briarcliff Pkwy #275, Kansas City, MO 64116</p>
+          <Button asChild className="mt-4">
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=1300+NW+Briarcliff+Pkwy+%23275%2C+Kansas+City%2C+MO+64116"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get directions
+            </a>
+          </Button>
         </div>
       </section>
 

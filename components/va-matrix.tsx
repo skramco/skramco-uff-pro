@@ -240,7 +240,7 @@ export default function VAMatrix() {
       </div>
 
       {/* IRRRL Details */}
-      <div className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg">
+      <div className="border border-hairline bg-surface-raised p-6">
         <h3 className="text-xl font-semibold text-gray-900 mb-4">VA IRRRL (Interest Rate Reduction Refinance Loan)</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>

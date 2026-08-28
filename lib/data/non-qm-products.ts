@@ -8,7 +8,7 @@ export type NonQmMatrixListing = {
   status: NonQmMatrixStatus
 }
 
-/** Non-QM investor matrices shown on /loan-products (Non-QM tab). Add a row here as each investor group goes live. */
+/** Non-QM investor matrices shown on /products/non-qm. Add a row here as each investor group goes live. */
 export const NON_QM_MATRICES: NonQmMatrixListing[] = [
   {
     id: "non-qm-core",

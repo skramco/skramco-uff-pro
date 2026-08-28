@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation"
 import NonQmIncomeAnalysisTool from "@/components/non-qm-income-analysis"
-import { Badge } from "@/components/ui/badge"
 import { isNonQmIncomeAnalysisEnabled } from "@/lib/feature-flags"
 import { pageMetadata } from "@/lib/seo"
+import { PageHero } from "@/components/page-hero"
 import { Calculator, FileSpreadsheet, TrendingUp } from "lucide-react"
 
 export const metadata = pageMetadata({
@@ -19,16 +19,11 @@ export default function NonQmIncomeAnalysisPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-700 text-white py-16">
-        <div className="container mx-auto px-4">
-          <Badge className="mb-4 bg-white/20 text-white hover:bg-white/20">Broker Tool</Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Non-QM Income Analysis</h1>
-          <p className="text-xl text-red-100 max-w-3xl">
-            Upload a MISMO 3.4 export to evaluate asset depletion income, bank statement income, and
-            No Ratio eligibility. Restructure dead Agency files into viable Non-QM scenarios.
-          </p>
-        </div>
-      </section>
+      <PageHero eyebrow="Broker tool" title="Non-QM Income Analysis">
+        <p>
+          Upload a MISMO 3.4 export to evaluate asset depletion income, bank statement income, and No Ratio eligibility.
+        </p>
+      </PageHero>
 
       <section className="container mx-auto px-4 py-8">
         <div className="mb-8 grid gap-4 md:grid-cols-3">

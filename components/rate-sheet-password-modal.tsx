@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Lock } from "lucide-react"
+import { rateSheetById } from "@/content/rate-sheets"
 
 interface RateSheetPasswordModalProps {
   isOpen: boolean
@@ -29,8 +30,8 @@ export function RateSheetPasswordModal({ isOpen, onClose }: RateSheetPasswordMod
 
     // Check password (case sensitive)
     if (password === CORRECT_PASSWORD) {
-      // Open the rate sheet in a new tab
-      window.open("https://uffwest.com/rates/UFF-RatesWest.pdf", "_blank", "noopener,noreferrer")
+      const west = rateSheetById("west")
+      window.open(west?.href ?? "https://uffwest.com/rates/UFF-RatesWest.pdf", "_blank", "noopener,noreferrer")
 
       // Reset and close
       setPassword("")

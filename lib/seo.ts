@@ -22,7 +22,6 @@ export function pageMetadata({ title, description, path }: PageSeo): Metadata {
       url,
       siteName: "United Fidelity Funding",
       type: "website",
-      // TODO(UFF): dedicated 1200x630 OG image
       images: [{ url: `${SITE_URL}/images/uff-logo.svg`, alt: "United Fidelity Funding Corp" }],
     },
     twitter: {

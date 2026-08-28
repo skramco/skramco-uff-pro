@@ -2,9 +2,9 @@ import type { ReactNode } from "react"
 import { pageMetadata } from "@/lib/seo"
 
 export const metadata = pageMetadata({
-  title: "PRO Portal — Price, Lock & Submit | UFF Wholesale",
+  title: "PRO Portal for Mortgage Brokers | UFF Wholesale",
   description:
-    "PRO Portal lets brokers self-sign up, price scenarios, lock rates, and submit loans. Immediate access — no multi-day approval queue.",
+    "PRO Portal is how mortgage brokers originate, underwrite, and fund with UFF. Self-sign up, same-day access. Docs, conditions, COCs, post-lock, and live status on every file.",
   path: "/pro-portal",
 })
 

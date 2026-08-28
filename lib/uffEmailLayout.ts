@@ -21,7 +21,7 @@ const NMLS_URL =
 export const PRO_SITE_FOOTER_LINKS = [
   { href: SITE, label: "Home" },
   { href: `${SITE}/contact`, label: "Contact" },
-  { href: `${SITE}/get-approved`, label: "Get approved" },
+  { href: "https://go.uff.pro/signup", label: "Create your account" },
   { href: `${SITE}/licensing`, label: "Licensing" },
   { href: `${SITE}/pro-portal`, label: "PRO Portal" },
 ] as const;
