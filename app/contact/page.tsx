@@ -79,7 +79,7 @@ function ContactPageInner() {
               <p className="mt-2 text-sm">
                 1300 NW Briarcliff Pkwy #275
                 <br />
-                Kansas City, MO 64116
+                Kansas City, MO 64150
               </p>
               <p className="caption mt-2">NMLS #34381</p>
             </div>
@@ -259,10 +259,10 @@ function ContactPageInner() {
       <section className="section-pad border-t border-hairline">
         <div className="container mx-auto px-4">
           <h2>Headquarters</h2>
-          <p className="prose-body mt-3">1300 NW Briarcliff Pkwy #275, Kansas City, MO 64116</p>
+          <p className="prose-body mt-3">1300 NW Briarcliff Pkwy #275, Kansas City, MO 64150</p>
           <Button asChild className="mt-4">
             <a
-              href="https://www.google.com/maps/search/?api=1&query=1300+NW+Briarcliff+Pkwy+%23275%2C+Kansas+City%2C+MO+64116"
+              href="https://www.google.com/maps/search/?api=1&query=1300+NW+Briarcliff+Pkwy+%23275%2C+Kansas+City%2C+MO+64150"
               target="_blank"
               rel="noopener noreferrer"
             >

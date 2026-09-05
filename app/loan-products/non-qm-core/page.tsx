@@ -116,7 +116,7 @@ export default function InvestorMatrixPage() {
             <span>NMLS ID #34381</span>
             <span>(855) 95-EAGLE</span>
             <span>support@uff.loans</span>
-            <span>1300 NW Briarcliff Pkwy #275, Kansas City, MO 64116</span>
+            <span>1300 NW Briarcliff Pkwy #275, Kansas City, MO 64150</span>
           </div>
           <h4 className="mb-2 mt-0 font-archivo text-[10.5px] uppercase tracking-[0.16em] text-white">Disclosures</h4>
           <p className="mb-2.5 max-w-[104ch] text-[11.5px] leading-[1.65]">

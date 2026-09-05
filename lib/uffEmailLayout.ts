@@ -99,7 +99,7 @@ export function wrapUffBrokerEmail(opts: {
               </p>
               <p style="margin:0;font-family:${FONT};font-size:11px;line-height:1.6;color:${MUTED};">
                 United Fidelity Funding Corp. · NMLS #34381 · Equal Housing Lender<br />
-                1300 NW Briarcliff Pkwy #275, Kansas City, MO 64116<br />
+                1300 NW Briarcliff Pkwy #275, Kansas City, MO 64150<br />
                 Licensed in 39 states. &copy; ${year} United Fidelity Funding Corp. All rights reserved.
               </p>
             </td>

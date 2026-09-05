@@ -11,7 +11,7 @@ export const CFPB_URL = "https://www.consumerfinance.gov"
 
 export const COMPANY_ADDRESS_LINES = [
   "1300 NW Briarcliff Pkwy #275",
-  "Kansas City, MO 64116",
+  "Kansas City, MO 64150",
 ] as const
 
 export const COMPANY_PHONE = "(855) 95-EAGLE"
@@ -40,7 +40,7 @@ export const FOOTER_LEGAL = {
   equalHousing:
     "It is the policy of United Fidelity Funding Corp. to treat all consumers and prospective consumers consistently and equally without regard to race, color, religion, national origin, sex, marital status, age (provided the applicant has the capacity to enter into a binding contract), receipt of income from any public assistance program, familial status, disability, or the exercise of any right under the Consumer Credit Protection Act. United Fidelity Funding Corp. complies with all applicable fair lending laws and regulations, including the Equal Credit Opportunity Act (ECOA) and the Fair Housing Act (FHA).",
   corporate:
-    "United Fidelity Funding Corp., NMLS #34381. Principal office: 1300 NW Briarcliff Pkwy #275, Kansas City, MO 64116. Phone: (855) 95-EAGLE. Not all products are available in all states. A United Fidelity Funding Corp. loan originator may only originate mortgage loans on real property located in a state where both the company and the originator are licensed to transact mortgage business.",
+    "United Fidelity Funding Corp., NMLS #34381. Principal office: 1300 NW Briarcliff Pkwy #275, Kansas City, MO 64150. Phone: (855) 95-EAGLE. Not all products are available in all states. A United Fidelity Funding Corp. loan originator may only originate mortgage loans on real property located in a state where both the company and the originator are licensed to transact mortgage business.",
   important:
     "This is not a commitment to lend or an offer to enter into an agreement. Not all customers will qualify. Rates, terms, programs, information, and conditions are subject to change without notice. All loan programs are subject to borrower and property qualifications, including credit, income, property appraisal, and other applicable criteria. Not all products are available in all states or for all dollar amounts. Monthly payment estimates include principal, interest, estimated taxes, and estimated homeowner's insurance. Actual amounts may differ. PMI may be required for down payments below 20%. While refinancing may reduce your monthly payment, total finance charges may be higher over the life of the loan. Other restrictions and limitations may apply.",
   consumerProtection:
@@ -54,7 +54,7 @@ export const FOOTER_LEGAL = {
   illinois: "Illinois Residential Mortgage License #MB.6760568.",
   kansas:
     "Licensed Mortgage Company, License #MC.0025426. Licensed by the Kansas Office of the State Bank Commissioner.",
-  texasCompany: "United Fidelity Funding Corp., NMLS #34381. 1300 NW Briarcliff Pkwy #275, Kansas City, MO 64116.",
+  texasCompany: "United Fidelity Funding Corp., NMLS #34381. 1300 NW Briarcliff Pkwy #275, Kansas City, MO 64150.",
   washington:
     "United Fidelity Funding Corp. d/b/a UFF West Funding Corp. Consumer Loan Company License #CL-34381. Licensed by the Washington Department of Financial Institutions.",
 } as const
