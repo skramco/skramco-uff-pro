@@ -103,25 +103,30 @@ export default function RootLayout({
                             Non-QM Income Analysis
                           </Link>
                         ) : null}
-                      </div>
-                    </div>
-                    <div className="relative group">
-                      <button className="flex items-center gap-1 text-ink-muted duration-150 hover:text-ink">
-                        Cheat Sheets
-                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </button>
-                      <div className="invisible absolute left-0 top-full z-50 mt-1 w-52 rounded-md border border-hairline bg-surface-raised opacity-0 duration-150 group-hover:visible group-hover:opacity-100">
-                        {cheatSheets.map((sheet) => (
-                          <Link
-                            key={sheet.href}
-                            href={sheet.href}
-                            className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
-                          >
-                            {sheet.label}
-                          </Link>
-                        ))}
+                        <div className="relative group/cheats">
+                          <p className="flex cursor-default items-center justify-between px-4 py-2 text-ink-muted duration-150 group-hover/cheats:bg-muted group-hover/cheats:text-ink">
+                            Cheat Sheets
+                            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                          </p>
+                          <div className="invisible absolute left-full top-0 z-50 -ml-1 w-52 rounded-md border border-hairline bg-surface-raised py-1 pl-1 opacity-0 duration-150 group-hover/cheats:visible group-hover/cheats:opacity-100">
+                            {cheatSheets.map((sheet) => (
+                              <Link
+                                key={sheet.href}
+                                href={sheet.href}
+                                className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
+                              >
+                                {sheet.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <Link href="/contact" className="text-ink-muted duration-150 hover:text-ink">
