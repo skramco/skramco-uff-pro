@@ -82,12 +82,6 @@ export default function RootLayout({
                         >
                           Resource library
                         </Link>
-                        <a
-                          href="/resources/non-qm-dscr-cheat-sheet"
-                          className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
-                        >
-                          Non-QM / DSCR cheat sheet
-                        </a>
                         <Link
                           href="/industry-news"
                           className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
@@ -108,6 +102,23 @@ export default function RootLayout({
                             Non-QM Income Analysis
                           </Link>
                         ) : null}
+                        <div className="mt-1 border-t border-hairline pt-1">
+                          <p className="px-4 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-wide text-ink-muted">
+                            Cheat Sheets
+                          </p>
+                          <Link
+                            href="/resources/cheat-sheets/non-qm"
+                            className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
+                          >
+                            Non-QM
+                          </Link>
+                          <Link
+                            href="/resources/cheat-sheets/dscr"
+                            className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
+                          >
+                            DSCR
+                          </Link>
+                        </div>
                       </div>
                     </div>
                     <Link href="/contact" className="text-ink-muted duration-150 hover:text-ink">

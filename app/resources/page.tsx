@@ -101,9 +101,9 @@ export default function ResourcesPage() {
                   <CardHeader className="border-b border-hairline bg-surface">
                     <CardTitle className="flex items-center gap-3 text-lg font-medium">
                       <Table2 className="h-5 w-5 text-accent" />
-                      Product guides
+                      Cheat Sheets
                       <Badge variant="outline" className="ml-auto">
-                        {filteredGuides.length} {filteredGuides.length === 1 ? "guide" : "guides"}
+                        {filteredGuides.length} {filteredGuides.length === 1 ? "sheet" : "sheets"}
                       </Badge>
                     </CardTitle>
                   </CardHeader>
@@ -129,7 +129,7 @@ export default function ResourcesPage() {
                           </div>
                           <div className="flex-shrink-0">
                             <Button size="sm" asChild className="bg-red-600 hover:bg-red-700">
-                              <a href={guide.href}>Open guide</a>
+                              <Link href={guide.href}>Open guide</Link>
                             </Button>
                           </div>
                         </div>

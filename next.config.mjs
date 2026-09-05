@@ -60,7 +60,12 @@ const nextConfig = {
       },
       {
         source: "/guides/uff-nonqm-dscr-cheat-sheet.html",
-        destination: "/resources/non-qm-dscr-cheat-sheet",
+        destination: "/resources/cheat-sheets/non-qm",
+        statusCode: 301,
+      },
+      {
+        source: "/resources/non-qm-dscr-cheat-sheet",
+        destination: "/resources/cheat-sheets/non-qm",
         statusCode: 301,
       },
     ]

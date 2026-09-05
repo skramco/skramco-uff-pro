@@ -1,0 +1,454 @@
+.cheat-sheet {
+  --cs-ink: #17171b;
+  --cs-slate: #585864;
+  --cs-line: #e3e3e8;
+  --cs-paper: #ffffff;
+  --cs-panel: #f7f7f8;
+  --cs-red: #d42b1e;
+  --cs-red-tint: #fbebe9;
+  --cs-win: #177245;
+  --cs-win-bg: #eaf5ee;
+  --cs-warn: #8a5a00;
+  --cs-warn-bg: #fbf3dc;
+  color: var(--cs-ink);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.cheat-sheet .wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.cheat-sheet .sheet-head {
+  border-bottom: 3px solid var(--cs-ink);
+  padding: 28px 0 18px;
+}
+
+.cheat-sheet .hdr-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cheat-sheet .sheet-switch {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.cheat-sheet .sheet-switch a {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--cs-slate);
+  text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--cs-line);
+}
+
+.cheat-sheet .sheet-switch a:hover {
+  color: var(--cs-ink);
+  border-color: var(--cs-ink);
+}
+
+.cheat-sheet .sheet-switch a.is-active {
+  color: #fff;
+  background: var(--cs-ink);
+  border-color: var(--cs-ink);
+}
+
+.cheat-sheet .sheet-head h1 {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.cheat-sheet .sheet-head h1 span {
+  color: var(--cs-red);
+}
+
+.cheat-sheet .hdr-sub {
+  color: var(--cs-slate);
+  font-size: 13.5px;
+  margin-top: 4px;
+  max-width: 640px;
+}
+
+.cheat-sheet .versions {
+  font-size: 12px;
+  color: var(--cs-slate);
+  text-align: right;
+  line-height: 1.7;
+}
+
+.cheat-sheet .versions b {
+  color: var(--cs-ink);
+  font-weight: 600;
+}
+
+.cheat-sheet .legend {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  padding: 12px 0 0;
+  font-size: 12.5px;
+  color: var(--cs-slate);
+  align-items: center;
+}
+
+.cheat-sheet .legend .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cheat-sheet .chip .sw {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  border: 1px solid var(--cs-line);
+  display: inline-block;
+}
+
+.cheat-sheet .sw.win {
+  background: var(--cs-win-bg);
+  border-color: #bedcc8;
+}
+
+.cheat-sheet .sw.watch {
+  background: var(--cs-warn-bg);
+  border-color: #e8d9a8;
+}
+
+.cheat-sheet .sw.blank {
+  background: repeating-linear-gradient(-45deg, #fff, #fff 3px, #f1f1f3 3px, #f1f1f3 5px);
+}
+
+.cheat-sheet .legend .star {
+  color: var(--cs-win);
+  font-weight: 700;
+}
+
+.cheat-sheet .router {
+  background: var(--cs-ink);
+  color: #fff;
+  border-radius: 10px;
+  margin: 26px 0 8px;
+  padding: 26px 28px 20px;
+}
+
+.cheat-sheet .router h2 {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.cheat-sheet .router h2 em {
+  color: #ff6a5c;
+  font-style: normal;
+}
+
+.cheat-sheet .router p.lead {
+  color: #b9b9c2;
+  font-size: 13px;
+  margin: 6px 0 18px;
+  max-width: 760px;
+}
+
+.cheat-sheet .routes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 0 34px;
+}
+
+.cheat-sheet .route {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid #2c2c33;
+  align-items: baseline;
+}
+
+.cheat-sheet .route:last-child {
+  border-bottom: none;
+}
+
+.cheat-sheet .route .to {
+  flex: 0 0 58px;
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: #ff6a5c;
+}
+
+.cheat-sheet .route .why {
+  font-size: 13px;
+  color: #e8e8ec;
+}
+
+.cheat-sheet .route .why small {
+  display: block;
+  color: #8e8e99;
+  font-size: 11.5px;
+  margin-top: 1px;
+}
+
+.cheat-sheet section {
+  margin-top: 44px;
+}
+
+.cheat-sheet .sec-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  border-bottom: 3px solid var(--cs-ink);
+  padding-bottom: 10px;
+  margin-bottom: 0;
+}
+
+.cheat-sheet .sec-head .kicker {
+  background: var(--cs-red);
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+
+.cheat-sheet .sec-head h2 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.cheat-sheet .sec-head .note {
+  color: var(--cs-slate);
+  font-size: 12.5px;
+  margin-left: auto;
+}
+
+.cheat-sheet .tblwrap {
+  overflow-x: auto;
+  border: 1px solid var(--cs-line);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+}
+
+.cheat-sheet table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  min-width: 1080px;
+}
+
+.cheat-sheet th,
+.cheat-sheet td {
+  padding: 9px 12px;
+  vertical-align: top;
+  font-size: 12.8px;
+  border-bottom: 1px solid var(--cs-line);
+  border-right: 1px solid var(--cs-line);
+}
+
+.cheat-sheet th:last-child,
+.cheat-sheet td:last-child {
+  border-right: none;
+}
+
+.cheat-sheet thead th {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 5;
+  border-bottom: 2px solid var(--cs-ink);
+  padding-top: 12px;
+  padding-bottom: 10px;
+}
+
+.cheat-sheet thead .pname {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.cheat-sheet thead .pdesc {
+  font-weight: 500;
+  color: var(--cs-slate);
+  font-size: 11.5px;
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+.cheat-sheet thead .prule {
+  height: 3px;
+  border-radius: 2px;
+  margin-bottom: 7px;
+}
+
+.cheat-sheet col.item {
+  width: 190px;
+}
+
+.cheat-sheet td.item,
+.cheat-sheet thead th.item {
+  position: sticky;
+  left: 0;
+  background: #fff;
+  z-index: 4;
+  font-weight: 600;
+  color: var(--cs-ink);
+  border-right: 2px solid var(--cs-line);
+  min-width: 170px;
+  max-width: 200px;
+}
+
+.cheat-sheet thead th.item {
+  z-index: 6;
+}
+
+.cheat-sheet tr.group td {
+  background: var(--cs-panel);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--cs-ink);
+  border-top: 2px solid var(--cs-ink);
+  padding: 8px 12px;
+  position: sticky;
+  left: 0;
+}
+
+.cheat-sheet tr.group td span {
+  color: var(--cs-slate);
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+.cheat-sheet td.win {
+  background: var(--cs-win-bg);
+}
+
+.cheat-sheet td.win .star {
+  color: var(--cs-win);
+  font-weight: 800;
+  margin-right: 4px;
+}
+
+.cheat-sheet td.watch {
+  background: var(--cs-warn-bg);
+}
+
+.cheat-sheet td.blank {
+  background: repeating-linear-gradient(-45deg, #fff, #fff 3px, #f4f4f6 3px, #f4f4f6 5px);
+}
+
+.cheat-sheet td b {
+  font-weight: 700;
+}
+
+.cheat-sheet td .sub {
+  display: block;
+  color: var(--cs-slate);
+  font-size: 11.6px;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.cheat-sheet td .fig {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.cheat-sheet tbody tr:hover td {
+  background-color: #fcfcfd;
+}
+
+.cheat-sheet tbody tr:hover td.win {
+  background-color: #e2f0e7;
+}
+
+.cheat-sheet tbody tr:hover td.watch {
+  background-color: #f6edcf;
+}
+
+.cheat-sheet tbody tr:hover td.blank {
+  background: repeating-linear-gradient(-45deg, #fff, #fff 3px, #f0f0f3 3px, #f0f0f3 5px);
+}
+
+.cheat-sheet .foot {
+  margin: 40px 0 60px;
+  border-top: 3px solid var(--cs-ink);
+  padding-top: 16px;
+  color: var(--cs-slate);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.cheat-sheet .foot b {
+  color: var(--cs-ink);
+}
+
+.cheat-sheet .foot .disc {
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: var(--cs-red-tint);
+  border-left: 3px solid var(--cs-red);
+  color: #7a2018;
+  border-radius: 0 6px 6px 0;
+}
+
+@media print {
+  .cheat-sheet {
+    font-size: 11px;
+  }
+  .cheat-sheet .sheet-switch {
+    display: none;
+  }
+  .cheat-sheet .router {
+    background: #fff;
+    color: var(--cs-ink);
+    border: 2px solid var(--cs-ink);
+  }
+  .cheat-sheet .router p.lead,
+  .cheat-sheet .route .why small {
+    color: #444;
+  }
+  .cheat-sheet .route .to {
+    color: var(--cs-red);
+  }
+  .cheat-sheet .route .why {
+    color: var(--cs-ink);
+  }
+  .cheat-sheet .tblwrap {
+    overflow: visible;
+    border-radius: 0;
+  }
+  .cheat-sheet table {
+    min-width: 0;
+  }
+  .cheat-sheet thead th,
+  .cheat-sheet td.item {
+    position: static;
+  }
+  .cheat-sheet section {
+    break-inside: auto;
+  }
+  .cheat-sheet tr {
+    break-inside: avoid;
+  }
+}
+
+@media (max-width: 720px) {
+  .cheat-sheet .sheet-head h1 {
+    font-size: 21px;
+  }
+  .cheat-sheet .versions {
+    text-align: left;
+  }
+}
