@@ -4,7 +4,7 @@ import { pageMetadata } from "@/lib/seo"
 export const metadata = pageMetadata({
   title: "Broker Resources, Forms & Rate Sheets | UFF Wholesale",
   description:
-    "Rate sheets, product guidelines, and downloadable forms for United Fidelity Funding wholesale broker partners.",
+    "Non-QM and DSCR cheat sheet, product guidelines, and downloadable forms for United Fidelity Funding wholesale broker partners.",
   path: "/resources",
 })
 

@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UFF Non-QM &amp; DSCR Product Cheat Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#17171B; --slate:#585864; --line:#E3E3E8; --paper:#FFFFFF; --panel:#F7F7F8;
+  --red:#D42B1E; --red-tint:#FBEBE9;
+  --win:#177245; --win-bg:#EAF5EE;
+  --warn:#8A5A00; --warn-bg:#FBF3DC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter Tight',-apple-system,sans-serif;color:var(--ink);background:var(--paper);font-size:14px;line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+
+.site-back{border-bottom:1px solid var(--line);padding:10px 0;font-size:13px}
+.site-back a{color:var(--slate);text-decoration:none;font-weight:500}
+.site-back a:hover{color:var(--ink)}
+@media print{.site-back{display:none}}
+
+/* header */
+header{border-bottom:3px solid var(--ink);padding:22px 0 18px}
+.hdr-row{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.hdr-left img{height:40px;display:block}
+h1{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-top:10px}
+h1 span{color:var(--red)}
+.hdr-sub{color:var(--slate);font-size:13.5px;margin-top:4px;max-width:640px}
+.versions{font-size:12px;color:var(--slate);text-align:right;line-height:1.7}
+.versions b{color:var(--ink);font-weight:600}
+
+/* legend */
+.legend{display:flex;gap:22px;flex-wrap:wrap;padding:12px 0;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--slate);align-items:center}
+.legend .chip{display:inline-flex;align-items:center;gap:7px}
+.chip .sw{width:14px;height:14px;border-radius:3px;border:1px solid var(--line);display:inline-block}
+.sw.win{background:var(--win-bg);border-color:#BEDCC8}
+.sw.watch{background:var(--warn-bg);border-color:#E8D9A8}
+.sw.blank{background:repeating-linear-gradient(-45deg,#fff,#fff 3px,#F1F1F3 3px,#F1F1F3 5px)}
+.legend .star{color:var(--win);font-weight:700}
+
+/* router */
+.router{background:var(--ink);color:#fff;border-radius:10px;margin:26px 0 8px;padding:26px 28px 20px}
+.router h2{font-size:19px;font-weight:700;letter-spacing:-.01em}
+.router h2 em{color:#FF6A5C;font-style:normal}
+.router p.lead{color:#B9B9C2;font-size:13px;margin:6px 0 18px;max-width:760px}
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 34px}
+.route{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #2C2C33;align-items:baseline}
+.route:last-child{border-bottom:none}
+.route .to{flex:0 0 58px;font-weight:800;font-size:13px;letter-spacing:.02em;color:#FF6A5C}
+.route .why{font-size:13px;color:#E8E8EC}
+.route .why small{display:block;color:#8E8E99;font-size:11.5px;margin-top:1px}
+
+/* section headings */
+section{margin-top:44px}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:3px solid var(--ink);padding-bottom:10px;margin-bottom:0}
+.sec-head .kicker{background:var(--red);color:#fff;font-weight:700;font-size:12px;padding:3px 9px;border-radius:4px;letter-spacing:.03em}
+.sec-head h2{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.sec-head .note{color:var(--slate);font-size:12.5px;margin-left:auto}
+
+/* comparison table */
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-top:none;border-radius:0 0 8px 8px}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:1080px}
+th,td{padding:9px 12px;vertical-align:top;font-size:12.8px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+th:last-child,td:last-child{border-right:none}
+thead th{position:sticky;top:0;background:#fff;z-index:5;border-bottom:2px solid var(--ink);padding-top:12px;padding-bottom:10px}
+thead .pname{font-size:15px;font-weight:800;letter-spacing:-.01em}
+thead .pdesc{font-weight:500;color:var(--slate);font-size:11.5px;margin-top:2px;line-height:1.35}
+thead .prule{height:3px;border-radius:2px;margin-bottom:7px}
+col.item{width:190px}
+td.item, thead th.item{position:sticky;left:0;background:#fff;z-index:4;font-weight:600;color:var(--ink);border-right:2px solid var(--line);min-width:170px;max-width:200px}
+thead th.item{z-index:6}
+tr.group td{background:var(--panel);font-weight:700;font-size:13px;color:var(--ink);border-top:2px solid var(--ink);padding:8px 12px;position:sticky;left:0}
+tr.group td span{color:var(--slate);font-weight:500;font-size:12px;margin-left:8px}
+td.win{background:var(--win-bg)}
+td.win .star{color:var(--win);font-weight:800;margin-right:4px}
+td.watch{background:var(--warn-bg)}
+td.blank{background:repeating-linear-gradient(-45deg,#fff,#fff 3px,#F4F4F6 3px,#F4F4F6 5px)}
+td b{font-weight:700}
+td .sub{display:block;color:var(--slate);font-size:11.6px;margin-top:2px;line-height:1.4}
+td .fig{font-variant-numeric:tabular-nums;font-weight:700}
+tbody tr:hover td{background-color:#FCFCFD}
+tbody tr:hover td.win{background-color:#E2F0E7}
+tbody tr:hover td.watch{background-color:#F6EDCF}
+tbody tr:hover td.blank{background:repeating-linear-gradient(-45deg,#fff,#fff 3px,#F0F0F3 3px,#F0F0F3 5px)}
+
+/* footnotes */
+.foot{margin:40px 0 60px;border-top:3px solid var(--ink);padding-top:16px;color:var(--slate);font-size:12px;line-height:1.6}
+.foot b{color:var(--ink)}
+.foot .disc{margin-top:10px;padding:12px 14px;background:var(--red-tint);border-left:3px solid var(--red);color:#7A2018;border-radius:0 6px 6px 0}
+
+@media print{
+  body{font-size:11px}
+  .router{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+  .router p.lead,.route .why small{color:#444}
+  .route .to{color:var(--red)}
+  .route .why{color:var(--ink)}
+  .tblwrap{overflow:visible;border-radius:0}
+  table{min-width:0}
+  thead th, td.item{position:static}
+  section{break-inside:auto}
+  tr{break-inside:avoid}
+}
+@media (max-width:720px){
+  h1{font-size:21px}
+  .versions{text-align:left}
+}
+</style>
+</head>
+<body>
+
+<div class="site-back"><div class="wrap"><a href="/resources">&larr; Broker resources</a></div></div>
+
+<header>
+  <div class="wrap">
+    <div class="hdr-row">
+      <div class="hdr-left">
+        <img src="/images/uff-logo.svg" alt="United Fidelity Funding Corp">
+        <h1>Non-QM &amp; DSCR Product Cheat Sheet <span>· Broker Edition</span></h1>
+        <div class="hdr-sub">Line-item guideline comparison across UFF's four Non-QM executions. Use it to place the loan in the right bucket before you price it. Every figure is pulled directly from the current underwriting guides listed at right.</div>
+      </div>
+      <div class="versions">
+        <b>Den</b> — Non-QM UW Guidelines v1.1 (May 18, 2026)<br>
+        <b>Core</b> — Non-QM Guides v07.15.2026 + 1-Yr P&amp;L supplement (eff. 09.22.2025)<br>
+        <b>Pace</b> — Non-QM Guide v17 + DSCR Guide v16 (Jul 28, 2026)<br>
+        <b>Crest</b> — Seller Program Guidelines v9.0 (Aug 3, 2026)
+      </div>
+    </div>
+    <div class="legend">
+      <span class="chip"><span class="sw win"></span><span><span class="star">★</span> Standout advantage — best or unique in the lineup</span></span>
+      <span class="chip"><span class="sw watch"></span> Watch-out — materially tighter than the others</span>
+      <span class="chip"><span class="sw blank"></span> Blank — the guide does not address this topic</span>
+      <span class="chip">LTV figures are LTV/CLTV unless noted</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="router">
+  <h2>Route the loan <em>in ten seconds</em></h2>
+  <p class="lead">Fastest-path placement based on the single attribute driving the file. Confirm against the full grid below — layered risk (FICO × LTV × event seasoning) always prices and qualifies off the matrix.</p>
+  <div class="routes">
+    <div>
+      <div class="route"><div class="to">DEN</div><div class="why">Recent credit event — BK, FC, short sale inside 4 years<small>Eligible from day 1 out of BK (purchase, primary, 70% LTV, $1MM). Nobody else goes inside 24 months.</small></div></div>
+      <div class="route"><div class="to">DEN</div><div class="why">ITIN, DACA, EAD-only, or foreign-national wage earner<small>ITIN to 90% LTV full doc primary — only ITIN execution in the lineup.</small></div></div>
+      <div class="route"><div class="to">DEN</div><div class="why">FICO 600–659 on full doc / bank statements<small>Den floors at 600; Pace at 620 (NQM3); Core &amp; Crest stop at 660.</small></div></div>
+      <div class="route"><div class="to">DEN</div><div class="why">Condotel, mixed-use, manufactured, or co-op collateral<small>Only guide that takes condotels (75%) and mixed-use (DSCR ≥1.15).</small></div></div>
+      <div class="route"><div class="to">DEN</div><div class="why">Lean-expense service business on bank statements<small>15% expense factor for zero-employee service businesses.</small></div></div>
+    </div>
+    <div>
+      <div class="route"><div class="to">CORE</div><div class="why">DSCR purchase on a vacant / unleased property<small>No LTV reduction on unleased purchases; qualifies off market rent.</small></div></div>
+      <div class="route"><div class="to">CORE</div><div class="why">Thin credit with a 700+ score<small>Tradeline requirement waived entirely at 700+ qualifying FICO.</small></div></div>
+      <div class="route"><div class="to">CORE</div><div class="why">Reserve-sensitive borrower with lots of REO<small>Reserves on subject property only — zero reserves for other REO, both programs.</small></div></div>
+      <div class="route"><div class="to">PACE</div><div class="why">Jumbo checks to $4.5MM — Non-QM or DSCR<small>NQM3 and DSCR3 both reach $4.5MM; NQM3 adds unlimited cash-in-hand.</small></div></div>
+      <div class="route"><div class="to">PACE</div><div class="why">Reserve-light DSCR to $2.5MM<small>DSCR3 requires zero reserves at ≤80% LTV — nobody else goes to none.</small></div></div>
+      <div class="route"><div class="to">CREST</div><div class="why">No-Ratio DSCR or a short-term-rental refi<small>Only No-Ratio execution in the lineup — dedicated grid to 75% LTV.</small></div></div>
+      <div class="route"><div class="to">CREST</div><div class="why">DTI to 55% on a strong-credit primary<small>Expanded Prime Plus: 55% DTI at 700+/80% with 1.5x residual income.</small></div></div>
+    </div>
+  </div>
+</div>
+
+<section id="nonqm">
+  <div class="sec-head">
+    <span class="kicker">Part 1</span>
+    <h2>Non-QM — Full Doc &amp; Alt Doc (personal income qualification)</h2>
+    <div class="note">Den · Core · Pace · Crest — consumer-purpose executions</div>
+  </div>
+  <div class="tblwrap">
+  <table>
+    <colgroup><col class="item"><col><col><col><col></colgroup>
+    <thead>
+      <tr>
+        <th class="item">Line item</th>
+        <th><div class="prule" style="background:#17171B"></div><div class="pname">DEN</div><div class="pdesc">Full Doc · Bank Stmt · 1099 · P&amp;L · WVOE · Asset Qualifier</div></th>
+        <th><div class="prule" style="background:#D42B1E"></div><div class="pname">CORE</div><div class="pdesc">Residential NQM · Full Doc · Bank Stmt · Asset Depletion · No Ratio · 1-Yr P&amp;L</div></th>
+        <th><div class="prule" style="background:#585864"></div><div class="pname">PACE</div><div class="pdesc">6 matrices (NQM 1/2/3/4/13/15) · Full Doc · Bank Stmt · 1099 · P&amp;L · WVOE</div></th>
+        <th><div class="prule" style="background:#8A5A00"></div><div class="pname">CREST</div><div class="pdesc">Expanded Prime Plus · Sharp A+ · Sharp A− · full &amp; alt doc</div></th>
+      </tr>
+    </thead>
+    <tbody>
+
+<tr class="group"><td colspan="5">Program shape at a glance</td></tr>
+<tr>
+  <td class="item">Doc types offered</td>
+  <td class="win"><span class="star">★</span>Widest menu: Full Doc, 12/24-mo Bank Stmts, 1099 Only, P&amp;L Only, WVOE Only, Asset Qualifier, Asset Utilization<span class="sub">Plus ITIN/DACA/EAD and Foreign National overlays on most doc types</span></td>
+  <td>Full Doc (wage &amp; SE), 12-mo Bank Stmts (personal / business / blended), Asset Depletion, No Ratio, 1-Yr P&amp;L (per supplement)<span class="sub">No 1099-only, no WVOE-only, no ITIN</span></td>
+  <td>24-mo Full Doc, 12/24-mo Bank Stmts, 1/2-yr 1099, 12-mo P&amp;L (± bank stmts), WVOE<span class="sub">Availability varies by matrix — e.g. WVOE not allowed on NQM1/2/4/15; no asset-only program</span></td>
+  <td>Full Doc (incl. 1099), Streamline 1-yr Doc (incl. 1099), 12/24-mo Bank Stmts, 12-mo P&amp;L, WVOE, Asset Depletion, Asset Qualifier<span class="sub">Sharp A− drops P&amp;L, WVOE and asset programs</span></td>
+</tr>
+<tr>
+  <td class="item">Credit grading concept</td>
+  <td>One program; risk handled through LTV/loan-size matrix + doc-type overlays</td>
+  <td>Two matrices: Residential (consumer) and Investor (DSCR)</td>
+  <td>Six parallel rate sheets — best execution auto-selects by profile</td>
+  <td class="win"><span class="star">★</span>Tiered credit grades: Expanded Prime Plus → Sharp A+ → Sharp A− with progressively looser housing history<span class="sub">Grade drops = seasoning drops (48 → 36 → 24 mo)</span></td>
+</tr>
+
+<tr class="group"><td colspan="5">Loan amount, LTV &amp; score <span>headline matrix numbers</span></td></tr>
+<tr>
+  <td class="item">Max LTV — primary purchase</td>
+  <td><span class="fig">90%</span> to $2MM @ 740 (DTI ≤43) or $1MM @ 700<span class="sub">Full Doc / Bank Stmt / 1099 / Asset Qualifier grid; 85% to $2MM @ 720</span></td>
+  <td><span class="fig">90%</span> (max 89.99%) @ 720 to $1.5MM<span class="sub">85% @ 680–700 to $2MM</span></td>
+  <td><span class="fig">90%</span> @ 700 to $2.5MM (NQM3) / $2MM (NQM13)<span class="sub">85% @ 680 across NQM1/2/3/13</span></td>
+  <td><span class="fig">90%</span> @ 720–740 to $1MM (EPP &amp; Sharp A+, full or alt doc)<span class="sub">85% to $1.5–2MM at 700+</span></td>
+</tr>
+<tr>
+  <td class="item">Minimum FICO</td>
+  <td class="win"><span class="star">★</span><span class="fig">600</span> (full doc, 65%, $1MM, DTI ≤40)<span class="sub">620 standard bottom tier; 1-score / no-score borrowers possible to 75% w/ overlays</span></td>
+  <td><span class="fig">660</span></td>
+  <td><span class="fig">620</span> (NQM3, to 65–75%)<span class="sub">640–660 floors elsewhere</span></td>
+  <td><span class="fig">660</span> all grades</td>
+</tr>
+<tr>
+  <td class="item">Max loan amount</td>
+  <td><span class="fig">$4.0MM</span> @ 60% LTV, 740<span class="sub">$3.5MM @ 70%; Asset Qualifier capped $3MM; P&amp;L/WVOE capped $2MM</span></td>
+  <td><span class="fig">$3.5MM</span> @ 70%, 700 (primary purch/R&amp;T only)<span class="sub">$3MM tier @ 75–80%</span></td>
+  <td class="win"><span class="star">★</span><span class="fig">$4.5MM</span> @ 70–75%, 720 (NQM3, all occupancies)<span class="sub">Largest Non-QM check in the lineup</span></td>
+  <td><span class="fig">$3.5MM</span> @ 60–65%, 720+ (EPP)<span class="sub">Sharp A+ $3MM · Sharp A− $2MM</span></td>
+</tr>
+<tr>
+  <td class="item">Minimum loan amount</td>
+  <td><span class="fig">$100k</span></td>
+  <td><span class="fig">$100k</span></td>
+  <td><span class="fig">$100k</span> (NQM1/2/3/13) · $150k NQM15 · $200k NQM4</td>
+  <td><span class="fig">$150k</span></td>
+</tr>
+<tr>
+  <td class="item">Max LTV — primary cash-out</td>
+  <td><span class="fig">80%</span> @ 720 to $1.5MM</td>
+  <td><span class="fig">80%</span> @ 720 to $1.5MM</td>
+  <td class="win"><span class="star">★</span><span class="fig">85%</span> @ 700 to $2.5MM (NQM3)</td>
+  <td><span class="fig">80%</span> @ 740 to $1MM (EPP)</td>
+</tr>
+<tr>
+  <td class="item">Max cash-in-hand</td>
+  <td>Unlimited ≤75% LTV; <span class="fig">$500k</span> above 75%<span class="sub">P&amp;L/WVOE-only grid: unlimited</span></td>
+  <td>Primary/2nd: unlimited ≤65%, $1MM above · Investment $1MM<span class="sub">Cash-out proceeds may count toward reserves</span></td>
+  <td class="win"><span class="star">★</span>No limit on NQM3 at any LTV<span class="sub">Other sheets: $500k–$2MM tiered; NQM1/15 unlimited ≤70%</span></td>
+  <td>Unlimited ≤60% LTV; above 60%: $750k EPP / $500k A+ / $250k A−<span class="sub">Cash-out counts toward reserves</span></td>
+</tr>
+<tr>
+  <td class="item">Max DTI</td>
+  <td><span class="fig">50%</span> (43% above 85% LTV); full doc to <span class="fig">55%</span> w/ 680+, ≤70%, purch/R&amp;T &amp; residual income</td>
+  <td><span class="fig">50%</span></td>
+  <td><span class="fig">50%</span> (45% above 85% LTV on NQM13; NQM15: 43% below 680)</td>
+  <td><span class="fig">55%</span> on EPP w/ 700+, ≤80%, primary, no FTHB, 1.5x residual<span class="sub">Sharp A+ 50% · Sharp A− 45%</span></td>
+</tr>
+<tr>
+  <td class="item">Residual income test</td>
+  <td>DTI &gt;50: greater of $2,000/mo or 0.5% of loan, else +6 mo reserves</td>
+  <td>$2,500 program limitation (per matrix)</td>
+  <td class="blank"></td>
+  <td>DTI &gt;43 or HPML: $1,500 (1 in household) / $2,500 (2) + $150 each add'l</td>
+</tr>
+
+<tr class="group"><td colspan="5">Bank statement program</td></tr>
+<tr>
+  <td class="item">Statement options</td>
+  <td>12 or 24 mo · personal or business · comingled treated as business</td>
+  <td>12 mo · personal, business, or blended accounts<span class="sub">24-mo underwrite can substitute for 2-yr business-existence proof</span></td>
+  <td>12 or 24 mo · personal &amp; business</td>
+  <td>12 or 24 mo · personal or business<span class="sub">Laminr auto-calc plus Greenline / AccountChek accepted</span></td>
+</tr>
+<tr>
+  <td class="item">Personal-statement income calc</td>
+  <td>100% eligible deposits ÷ months; 3 mo business stmts to verify source<span class="sub">Pre-tax paycheck amounts usable</span></td>
+  <td>Total eligible deposits ÷ 12; business-to-personal transfers OK w/ recent biz stmt</td>
+  <td>Total eligible deposits ÷ 12 or 24; 2 mo business stmts required to prove separation</td>
+  <td class="watch">Lowest of statement average or 1003-disclosed income; 2 mo business stmts; comingling pushes file to business-statement rules</td>
+</tr>
+<tr>
+  <td class="item">Business expense factor</td>
+  <td class="win"><span class="star">★</span>Tiered service-business factors: <span class="fig">15% / 30% / 50%</span> by employee count (0 / 1–5 / &gt;5); product businesses 50%<span class="sub">Or P&amp;L method (75% deposit support) or CPA-letter ratio</span></td>
+  <td>50% default; lower to <span class="fig">10%</span> floor w/ CPA/EA/CTEC letter or P&amp;L</td>
+  <td>50% fixed, or third-party expense statement to <span class="fig">10%</span> floor</td>
+  <td>Service <span class="fig">15/30/50%</span>; product <span class="fig">25/50/85%</span> by employees<span class="sub">P&amp;L or 3rd-party ratio options floored at 15%; ratios below 15% get bumped to 15%</span></td>
+</tr>
+<tr>
+  <td class="item">NSF / overdraft policy</td>
+  <td>No hard count — LOE + credit-management escalation if "excessive" (UW discretion)</td>
+  <td class="blank"></td>
+  <td>Max <span class="fig">3</span> instances per 12 mo / 6 per 24 mo; same-day NSFs count once</td>
+  <td>Max <span class="fig">3</span> per 12 mo; up to 6 allowed if zero in last 3 mo; LOE</td>
+</tr>
+<tr>
+  <td class="item">Large-deposit trigger</td>
+  <td>Deposits abnormal in form/amount/frequency (guide example: &gt;50% of avg) must be sourced</td>
+  <td>Non-business-source deposits deducted (SSI, transfers, refunds)</td>
+  <td>&gt;50% of average monthly deposits → LOE; if LOE sufficient, no sourcing needed</td>
+  <td class="win"><span class="star">★</span>Trigger only above <span class="fig">100%</span> of monthly income — most forgiving threshold; LOE, no sourcing if consistent</td>
+</tr>
+<tr>
+  <td class="item">Self-employment history</td>
+  <td>2 yrs same business; 18–23 mo OK w/ max 80% + 6 mo extra reserves; 12–18 mo by exception<span class="sub">Passive-income investors &amp; tip-industry earners also eligible (24-mo stmts)</span></td>
+  <td>2 yrs; or 1+ yr w/ 1 yr prior same line of work (VOE)</td>
+  <td>2 yrs; 1–2 yrs OK w/ +6 mo reserves and 2 yrs same line of work</td>
+  <td>2 yrs existence validated (license, tax-preparer letter, SoS filing)<span class="sub">Passive/portfolio-only income borrowers ineligible</span></td>
+</tr>
+<tr>
+  <td class="item">Declining-deposit rule</td>
+  <td>No fixed cap; stability must be rationalized or 12 more months required</td>
+  <td class="blank"></td>
+  <td class="watch">12-mo: &gt;10% decline 6-over-6 needs 12 more months · 24-mo: &gt;10% YoY decline is ineligible</td>
+  <td>Declining on 24-mo file → qualify on last 12 mo only; LOE</td>
+</tr>
+
+<tr class="group"><td colspan="5">1099-only qualification</td></tr>
+<tr>
+  <td class="item">Program &amp; expense factor</td>
+  <td>Dedicated 1099 Only product; 1–2 yrs of 1099s less flat <span class="fig">10%</span> expense ratio<span class="sub">24-mo average if stable/increasing; 12-mo if declining</span></td>
+  <td class="blank"></td>
+  <td>1–2 yr 1099s; borrower-narrative expense factor, <span class="fig">10%</span> minimum</td>
+  <td class="win"><span class="star">★</span>1099s run through Full Doc/Streamline — as low as <span class="fig">0%</span> expense factor if employer confirms no job-related expenses (else 10%)</td>
+</tr>
+<tr>
+  <td class="item">1099 verification</td>
+  <td>1099/W-2 transcripts required — documented fallback path (90% bank-stmt receipts or issuer WVOE) if unavailable</td>
+  <td class="blank"></td>
+  <td>1099 transcripts required; entity-issued 1099s need CPA letter confirming 2 yrs Schedule C</td>
+  <td>Transcripts required; entity-issued 1099s need 100% ownership documented; YTD proof within 10% of qualifying income</td>
+</tr>
+
+<tr class="group"><td colspan="5">P&amp;L-only &amp; WVOE-only</td></tr>
+<tr>
+  <td class="item">P&amp;L-only program</td>
+  <td>12- or 24-mo P&amp;L by CPA/EA/CTEC who filed borrower's returns; preparer add-backs allowed<span class="sub">Overlays: 680 min, 0x30x12, no derog events in 4 yrs, $2MM cap, 80% purch / 75% refi</span></td>
+  <td>1-Yr P&amp;L (supplement): 2 yrs SE, 50% min ownership, US business ≥2 yrs; 2-mo biz stmts within 35% tolerance if preparer didn't file returns</td>
+  <td>12-mo P&amp;L standalone or w/ 2-mo bank stmts (deposits ≥90% of P&amp;L revenue; up to 6 mo)<span class="sub">Sheet-dependent: NQM3 to 85% @ 700+; NQM2 requires bank-stmt version; NQM15 720 min</span></td>
+  <td>12-mo P&amp;L: EPP/Sharp A+ only, 80%/75% caps, 660 min; P&amp;L end-date ≤60 days old; lower of P&amp;L or 1003 income<span class="sub">Borrowers who file their own returns ineligible</span></td>
+</tr>
+<tr>
+  <td class="item">WVOE-only program</td>
+  <td>2 yrs same employer, no family; 2-mo bank stmts showing ≥60% of stated wage; 0x30x24; 680 min; $2MM cap<span class="sub">FTHB capped 70%; no gifts when all borrowers are FTHB</span></td>
+  <td class="blank"></td>
+  <td class="watch">Matrix-restricted: owner-occupied only on NQM3/13 (80% FTHB cap); not allowed on NQM1/2/4/15<span class="sub">FNMA 1005, 2-yr history, 1 yr at current job, no family employers</span></td>
+  <td>EPP/Sharp A+ only: 80%/75% caps, 660 min; 1005 direct from employer; 2 yrs industry + 1 yr current job; no family employers</td>
+</tr>
+
+<tr class="group"><td colspan="5">Asset-based qualification</td></tr>
+<tr>
+  <td class="item">Program design</td>
+  <td class="win"><span class="star">★</span>Asset Qualifier — 3 calc methods (125% of all mortgage debt · 110% of loan + 25% other debt · 100% of loan + 36 mo debt service); no DTI; $1,500/mo residual; $3MM cap</td>
+  <td>Asset Depletion (income = assets ÷ 36 mo; ÷ 84 if sole income source) + No Ratio (assets ≥ 100% of note + reserves + 12 mo payments)</td>
+  <td class="blank"></td>
+  <td>Asset Depletion (÷ 84 mo as income, DTI applies; min $1MM assets or 125% of loan) + Asset Qualifier (÷ 84 residual test, 125% of loan)<span class="sub">85% max, 700 min, OO only, no cash-out, no gifts / business / foreign assets</span></td>
+</tr>
+<tr>
+  <td class="item">Asset haircuts</td>
+  <td>Cash 100% · securities 90% · retirement 80% (90% at retirement age) · liquidated crypto 100%</td>
+  <td>Cash 100% · stocks/bonds/funds 70% · retirement 70% (100% at 59.5+)</td>
+  <td class="blank"></td>
+  <td>Cash 100% · stocks/bonds/funds 80% · retirement 70% · <b>crypto 60%</b> (Coinbase valuation ≤30 days)<span class="sub">Only program with an unliquidated-crypto haircut path</span></td>
+</tr>
+
+<tr class="group"><td colspan="5">Credit profile</td></tr>
+<tr>
+  <td class="item">Housing history</td>
+  <td>1x30x12 allowed (LLPA + 80% cap); VOR waived on primary ≤75%; rent-free eligible w/ overlays</td>
+  <td>1x30x12; less-than-12-mo history OK w/ 6 mo reserves + 10% borrower contribution (primary/2nd)</td>
+  <td class="watch">0x30x12 required; rent-free borrowers ineligible (narrow ≤3-mo exception)</td>
+  <td class="win"><span class="star">★</span>Graded: 0x30x12 (EPP) → 1x30x12 (A+) → <b>2x30x12 + 1x60x24</b> (A−) — deepest mortgage-late tolerance<span class="sub">Rent-free permitted as documented family dependent</span></td>
+</tr>
+<tr>
+  <td class="item">BK / FC / SS / DIL seasoning</td>
+  <td class="win"><span class="star">★</span>Tiered from <b>0 months</b>: BK 0–12 mo (purch, primary, 70%, $1MM) · other events 13–24 mo · all events 2–4 yrs (75%, $1.5MM) · standard past 4 yrs</td>
+  <td>48 months seasoned</td>
+  <td class="watch">4 years; <b>7 years if multiple events</b></td>
+  <td>48 mo (EPP) → 36 mo (Sharp A+) → <b>24 mo (Sharp A−)</b><span class="sub">Multiple bankruptcies not permitted; 120+ day lates count as housing events</span></td>
+</tr>
+<tr>
+  <td class="item">Forbearance exit</td>
+  <td>Reinstated + 3 timely payments post-forbearance (if payments were missed)</td>
+  <td class="blank"></td>
+  <td>0x30 in the 12 months since exiting forbearance, servicer-documented</td>
+  <td class="blank"></td>
+</tr>
+<tr>
+  <td class="item">Tradelines</td>
+  <td>3 tradelines, 24-mo depth, 1 active in last 6 mo, 1 seasoned 24 mo; alternative-credit bridges; 1-score/no-score path (75% cap, $1MM, DTI 36)</td>
+  <td class="win"><span class="star">★</span>3×12-mo or 2×24-mo — <b>waived entirely at 700+ qualifying FICO</b></td>
+  <td>2 tradelines 24-mo w/ activity in 12 mo, or 3 combined across borrowers</td>
+  <td>2 tradelines w/ 12-mo history in last 24 mo, or 3 combined; non-income borrowers exempt</td>
+</tr>
+<tr>
+  <td class="item">Collections &amp; charge-offs</td>
+  <td>May stay open: individual ≤$2,500 and aggregate ≤$10k (medical unlimited); larger OK if no title impact</td>
+  <td>May stay open &lt;$2,500 or past statute of limitations; larger offset via reserves or 5% payment in DTI</td>
+  <td>Pay off if &gt;$5,000 individually or aggregate (medical exempt)</td>
+  <td>Pay off if &gt;$5,000 within 3 yrs (title items always); medical &lt;$15k exempt</td>
+</tr>
+<tr>
+  <td class="item">Judgments &amp; tax liens</td>
+  <td>May remain open ≤$25k aggregate if no title effect; repayment-plan path w/ 6-mo history</td>
+  <td>Judgments must be paid; tax liens survivable on purchases w/ 3-mo plan history</td>
+  <td>IRS plans OK if current and no property lien</td>
+  <td>Title-affecting items paid; IRS plans OK if current, no lien</td>
+</tr>
+<tr>
+  <td class="item">Qualifying score logic</td>
+  <td>Primary income earner, middle of 3 / lower of 2</td>
+  <td class="win"><span class="star">★</span>Primary wage earner — but 50/50 bank-statement business partners may use the <b>higher</b> mid-FICO</td>
+  <td>Primary income earner; lowest score if incomes equal</td>
+  <td>Primary wage earner, middle of 3 / lower of 2</td>
+</tr>
+
+<tr class="group"><td colspan="5">Borrower types</td></tr>
+<tr>
+  <td class="item">ITIN / DACA / EAD</td>
+  <td class="win"><span class="star">★</span>ITIN eligible to <span class="fig">90%</span> full-doc primary purchase (85% bank stmt/1099); DACA &amp; EAD-without-visa paths; dedicated Exhibit F grids</td>
+  <td class="blank"></td>
+  <td class="blank"></td>
+  <td class="blank"></td>
+</tr>
+<tr>
+  <td class="item">Non-permanent residents</td>
+  <td>Eligible on visa or EAD; broad visa list</td>
+  <td>Eligible with US credit</td>
+  <td>Sheet-dependent: no overlays NQM1/2/3 · not allowed NQM4 · 75% cap NQM15 · 80% purch/R&amp;T only NQM13</td>
+  <td>80% cap (EPP) / 75% (Sharp), purchase &amp; R&amp;T only — no cash-out</td>
+</tr>
+<tr>
+  <td class="item">Foreign nationals (income-doc side)</td>
+  <td>FN eligible via Asset Qualifier (150% post-close liquidity) — wage/bank-stmt docs ineligible; 2nd-home purchase + investor<span class="sub">See DSCR table for FN cash-flow loans</span></td>
+  <td class="watch">FN restricted to DSCR program only</td>
+  <td class="blank"></td>
+  <td>FN Plus program: qualify on foreign wage or SE income (translated), 65%, $1MM, 45% DTI, 12-mo reserves; 2nd home &amp; investment only</td>
+</tr>
+<tr>
+  <td class="item">First-time homebuyers</td>
+  <td>Eligible; payment shock ≤350% when DTI &gt;43 (waivable); no 12-mo rent history → primary only, 80% cap, 10% own funds<span class="sub">Lookback: 5 years</span></td>
+  <td class="watch">FTHB may not purchase investment homes (matrix limitation)</td>
+  <td>NQM1/2/3: no overlays · NQM4: OO-only, 1-unit, no IO · NQM15: no IO + DTI 43 cap<span class="sub">Rent-free FTHB ineligible (housing-history rule)</span></td>
+  <td>3-yr lookback; payment shock ≤250%; DTI ≤50; no interest-only; rent-free FTHB permitted with no credit exception</td>
+</tr>
+<tr>
+  <td class="item">Non-occupant co-borrowers</td>
+  <td>Allowed (doc types other than DSCR)</td>
+  <td>Allowed; occupying-borrower DTI &gt;60% triggers LTV caps (80/75 by FICO)</td>
+  <td class="blank"></td>
+  <td class="watch">Immediate relative only; 1-unit primary; DTI ≤43; +6 mo reserves; occupant must earn ≥75% of PITIA; purch/R&amp;T only</td>
+</tr>
+
+<tr class="group"><td colspan="5">Assets, gifts &amp; reserves</td></tr>
+<tr>
+  <td class="item">Gift funds</td>
+  <td>Allowed for closing (not reserves); own-funds minimums by grid — 0% primary ≤80%, 5% above 80%, 10% investment/ITIN/FN<span class="sub">Gift of equity: primary &amp; 2nd only, 75% LTV cap</span></td>
+  <td>5% own funds on purchases — waived on primary &lt;80% LTV; gifts usable for reserves w/ family letter<span class="sub">Gift of equity allowed at cash-out LTV limits, 6 mo own-fund reserves</span></td>
+  <td>Allowed from relatives; 5% own funds required above 80% LTV; not on investment properties; never toward reserves</td>
+  <td>100% gift OK below 75% LTV; ≥75% needs 5% own funds; not on 2nd/investor &gt;80%; never toward reserves; not with asset programs</td>
+</tr>
+<tr>
+  <td class="item">Reserves (subject)</td>
+  <td>4 mo ≤$1MM · 6 mo to $2MM · 12 mo to $4MM<span class="sub">+2 mo per other REO; +2 mo above 80% LTV; doc-type adders (e.g. DTI&gt;50, short SE history)</span></td>
+  <td>6 mo to $2MM · 9 mo @ $2.5MM · 12 mo @ $3MM+<span class="sub">Subject property only — cash-out proceeds count</span></td>
+  <td>NQM3: 3 mo ≤$1.5MM scaling to 12 mo &gt;$3MM · NQM1: 6/9/12 · NQM13/15: flat 6 mo<span class="sub">Cash-out counts; gifts &amp; undrawn HELOCs do not</span></td>
+  <td class="win"><span class="star">★</span>Sharp A− flat <b>3 mo</b> at every tier; A+ 3/3/6/9; EPP 6/6/9/12<span class="sub">+2 mo per financed property, capped 12 mo total; cash-out counts</span></td>
+</tr>
+
+<tr class="group"><td colspan="5">Property &amp; collateral</td></tr>
+<tr>
+  <td class="item">Property menu</td>
+  <td class="win"><span class="star">★</span>SFR, PUD, condo, 2–4, non-warrantable (80%), <b>condotel (75%)</b>, co-op, manufactured, log, seasonal, <b>mixed-use</b></td>
+  <td>SFR, PUD, TH, 2–4, condo, non-warrantable (80%)<span class="sub">No condotel, co-op, manufactured, mixed-use, 5+ units</span></td>
+  <td>1-unit + 2-unit OO; 1-unit 2nd homes; 1–4 investor; warrantable + limited non-warrantable (not in FL); NY-metro co-ops<span class="sub">No condotels, manufactured, mixed-use, log, leaseholds</span></td>
+  <td>SFR + ADU, 2–4, PUD, TH, leasehold, warrantable + non-warrantable condos, OO co-ops<span class="sub">No condotels, manufactured, mixed-use, log, 5+ units</span></td>
+</tr>
+<tr>
+  <td class="item">Acreage / rural</td>
+  <td>Urban ≤10 ac; rural ≤20 ac (10+ must be typical); hard stop 50 ac</td>
+  <td class="watch">Rural: 15 ac primary/2nd, <b>5 ac investment</b>; matrix caps rural at 75% purch / 70% refi; investor sign-off required</td>
+  <td>20 ac max; &gt;10 ac needs two similar-acreage comps; NQM15 rural = OO only, 70%, purch/R&amp;T</td>
+  <td>20 ac max; agricultural zoning by exception only</td>
+</tr>
+<tr>
+  <td class="item">Non-warrantable condo terms</td>
+  <td>One non-warrantable feature to 80%; condotel/hotel-features to 75%; priced as NWC</td>
+  <td>Up to 40% commercial, 70% investor concentration, 30% single entity, 30% presale; 80% LTV cap</td>
+  <td>NQM3: 80% purch/R&amp;T, 75% CO · NQM13: 85/80/75 · not allowed NQM1/4/15; FL condos must be fully warrantable</td>
+  <td>80% cap (EPP) / 75% (Sharp); FL SB-4D structural-review projects by exception</td>
+</tr>
+<tr>
+  <td class="item">Declining market</td>
+  <td class="blank"></td>
+  <td>Max LTV −5% per appraisal flag</td>
+  <td>Per guide section (appraisal-flagged)</td>
+  <td>Max LTV −5% per appraisal flag</td>
+</tr>
+<tr>
+  <td class="item">Second appraisal trigger</td>
+  <td class="blank"></td>
+  <td>Loan &gt; $2MM (lower value governs); CU/LCA ≤2.5 or AVM/CDA support below $2MM</td>
+  <td class="blank"></td>
+  <td>Third-party review (CU/LCA ≤2.5, CDA, ARR) within −10% (−5% above 85% LTV)</td>
+</tr>
+
+<tr class="group"><td colspan="5">Terms &amp; transaction mechanics</td></tr>
+<tr>
+  <td class="item">Products / IO / 40-yr</td>
+  <td>15/30-yr fixed, ARMs, 10-yr IO; 40-yr term w/ IO (680+, ≤80%)<span class="sub">IO qualifies over remaining amortized term (20 or 30 yr)</span></td>
+  <td>30 &amp; 40-yr fixed; 40-yr fixed 10-yr IO<span class="sub">IO qualifies over full 360-mo amortization — friendliest IO qual payment</span></td>
+  <td>Sheet-dependent: 15/30/40 fixed, 5/6–10/6 ARMs, fixed IO; NQM4 no IO; NQM15 IO needs 700+/80%</td>
+  <td>3/6–10/6 ARMs, 15/30-yr fixed, 40-yr fixed IO; IO needs 700+ and 85% (EPP)/80% (A+); no IO on Sharp A−</td>
+</tr>
+<tr>
+  <td class="item">Interest-only cap</td>
+  <td>680 min FICO, 80% max</td>
+  <td>80% LTV overlay (matrix)</td>
+  <td>NQM1 −5% LTV · NQM2 80% · NQM3 85% · NQM13 no overlay · NQM15 700+/80%</td>
+  <td>700 min; 85% (EPP) / 80% (A+); none on A−</td>
+</tr>
+<tr>
+  <td class="item">Escrows</td>
+  <td>Required &gt;80% LTV (89.99% CA) and HPML; otherwise waivable</td>
+  <td>HPML only; LTV &gt;85% per matrix</td>
+  <td class="blank"></td>
+  <td>HPML (5 yrs) and Foreign National loans</td>
+</tr>
+<tr>
+  <td class="item">Seller concessions</td>
+  <td class="blank"></td>
+  <td>6% (Residential program)</td>
+  <td class="blank"></td>
+  <td class="blank"></td>
+</tr>
+<tr>
+  <td class="item">Max financed properties</td>
+  <td>&gt;15 blocks new 2nd-home/investment consumer loans; no limit via DSCR</td>
+  <td class="win"><span class="star">★</span>No limit on financed properties<span class="sub">Exposure cap: 10 properties / $10MM to one borrower</span></td>
+  <td class="watch">&gt;20 financed properties = borrower ineligible</td>
+  <td>20 residential max; $7.5MM / 10-property exposure cap per guarantor</td>
+</tr>
+<tr>
+  <td class="item">Property-flip rule</td>
+  <td class="blank"></td>
+  <td>HPML re-appraisal rules apply (Residential); Investor program: seller on title 180+ days</td>
+  <td>Loan seasoning: close-to-lock ≤90 days</td>
+  <td class="blank"></td>
+</tr>
+<tr>
+  <td class="item">State / geography notes</td>
+  <td>Texas 50(a)(6) home equity supported with detailed urban/rural tests</td>
+  <td class="blank"></td>
+  <td class="watch">Sheet-level exclusions — e.g. NQM15 blocks investor loans in several DE/MD/NJ/PA counties; NY subprime test on NQM2</td>
+  <td>All 50 states + DC; no territories</td>
+</tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="dscr">
+  <div class="sec-head">
+    <span class="kicker">Part 2</span>
+    <h2>DSCR — Investor Cash-Flow Programs</h2>
+    <div class="note">Den · Core · Pace · Crest — business-purpose, investment-only executions</div>
+  </div>
+  <div class="tblwrap">
+  <table>
+    <colgroup><col class="item"><col><col><col><col></colgroup>
+    <thead>
+      <tr>
+        <th class="item">Line item</th>
+        <th><div class="prule" style="background:#17171B"></div><div class="pname">DEN — Investor Cash Flow</div><div class="pdesc">Business-purpose · investment only · Exhibit D grid</div></th>
+        <th><div class="prule" style="background:#D42B1E"></div><div class="pname">CORE — Investor NQM</div><div class="pdesc">Investor matrix · business purpose · investment only</div></th>
+        <th><div class="prule" style="background:#585864"></div><div class="pname">PACE — DSCR</div><div class="pdesc">7 rate sheets (DSCR 1/2/3/4/11/13/15) · experienced investors only · DSCR Guide v16</div></th>
+        <th><div class="prule" style="background:#8A5A00"></div><div class="pname">CREST — DSCR Plus</div><div class="pdesc">+ FN Plus DSCR (foreign national)</div></th>
+      </tr>
+    </thead>
+    <tbody>
+
+<tr class="group"><td colspan="5">Ratio &amp; qualification</td></tr>
+<tr>
+  <td class="item">Minimum DSCR</td>
+  <td class="win"><span class="star">★</span><b>No minimum DSCR</b> ≤70% LTV @ 680+ (purchase) or ≤75% @ 720+; 0.75 tier; 1.00 above 75%<span class="sub">DSCR &lt;0.75 → $250k min loan; all refis ≥1.00 unless 680+/≤70% no-min purchase path</span></td>
+  <td><span class="fig">0.75</span> floor ($1.5–2MM tiers); <span class="fig">1.00</span> at $2.5MM tier<span class="sub">DSCR &lt;1.00: min 680 FICO, $200k min loan, 5% LTV reduction</span></td>
+  <td><span class="fig">0.75</span> floor on DSCR2/3/13 grids — e.g. 75% @ 700 ≤$1MM (DSCR2)<span class="sub">Lowest-FICO tiers require 1.20; DSCR4 flat 1.00; DSCR15 1.00–1.20</span></td>
+  <td class="win"><span class="star">★</span><span class="fig">0.75</span> floor <b>or full No-Ratio DSCR</b> — dedicated no-ratio grid to 75% LTV<span class="sub">No-ratio: purchase to 75% @ 740 ≤$1MM; not IO-eligible</span></td>
+</tr>
+<tr>
+  <td class="item">DSCR formula</td>
+  <td>Gross rents ÷ PITIA; IO payment usable when ≤75% LTV and 700+ FICO<span class="sub">Qualified at start rate, 30-yr term</span></td>
+  <td>Gross rents ÷ PITIA; IO loans use <b>ITIA</b> (matrix-standard)</td>
+  <td>Gross rents ÷ PITIA; <b>IO qualifies at the ITIA payment</b> on every sheet; ARMs at note rate</td>
+  <td>Gross rents ÷ PITIA (amortizing) or ITIA (IO); always qualified at note rate</td>
+</tr>
+<tr>
+  <td class="item">Gross-rent determination</td>
+  <td>Lesser of lease or market; lease above market usable to 110% of market; 25% rent bump path for planned increases (≤70%, +6 mo reserves)</td>
+  <td>Lower of lease or 1007/1025; higher lease OK w/ 3 mo receipts; aged leases OK if appraisal shows tenant + market rent</td>
+  <td>Lower of lease or appraisal market rent; lease usable to <b>115%</b> of market w/ 2 mo consecutive receipts<span class="sub">Security deposit doesn't count as a receipt</span></td>
+  <td>Lower of lease or 1007; higher lease OK w/ 3 consecutive months' receipts</td>
+</tr>
+<tr>
+  <td class="item">Vacant / unleased subject</td>
+  <td>Purchase: 100% market rent · Refi: −5% LTV (max 70%) R&amp;T, −10% cash-out; renovation carve-out<span class="sub">Unit-count vacancy definitions for 2–4s</span></td>
+  <td class="win"><span class="star">★</span>Purchase: <b>no LTV reduction</b>, market rents · Refi: max 70% LTV; 2+ units max 1 vacant unit on refis</td>
+  <td class="watch">Purchase: appraisal market rent, no LTV cut · Refi: unexpired executed leases required for all units at closing — vacant refis effectively ineligible</td>
+  <td class="watch">Vacant refis ineligible — only exception is a documented just-renovated property re-entering the rental market (1007 rents OK)</td>
+</tr>
+
+<tr class="group"><td colspan="5">Leverage &amp; loan size</td></tr>
+<tr>
+  <td class="item">Max LTV — purchase</td>
+  <td class="win"><span class="star">★</span><span class="fig">85%</span> @ 720 to $1.5MM<span class="sub">80% @ 680–700; floor 620 @ 65%</span></td>
+  <td><span class="fig">80%</span> @ 700–740 to $1.5MM<span class="sub">75% @ 660–680</span></td>
+  <td><span class="fig">85%</span> @ 740 to $1.5MM (DSCR3)<span class="sub">80% @ 680–700 to $2–3MM across sheets</span></td>
+  <td><span class="fig">80%</span> @ 720–740 ≤$1MM (DSCR ≥1.00)<span class="sub">75% tiers below; 0.75x grid tops at 75%</span></td>
+</tr>
+<tr>
+  <td class="item">Max LTV — cash-out</td>
+  <td><span class="fig">75%</span> @ 700 to $1.5MM</td>
+  <td><span class="fig">75%</span> @ 700–740 to $1.5MM</td>
+  <td><span class="fig">75%</span> @ 680 to $2MM (DSCR3)</td>
+  <td><span class="fig">75%</span> @ 740 ≤$1MM</td>
+</tr>
+<tr>
+  <td class="item">Loan amounts</td>
+  <td><span class="fig">$100k – $3.5MM</span> (@60%, 720)</td>
+  <td><span class="fig">$100k – $2.5MM</span></td>
+  <td class="win"><span class="star">★</span><span class="fig">$100k – $4.5MM</span> (DSCR3 @ 70%, 720)<span class="sub">Largest DSCR check in the lineup; $4.5MM cash-out @ 60%; DSCR4 min $200k</span></td>
+  <td><span class="fig">$100k – $3.0MM</span><span class="sub">FN Plus $150k–$1MM</span></td>
+</tr>
+<tr>
+  <td class="item">Minimum FICO</td>
+  <td class="win"><span class="star">★</span><span class="fig">620</span> (65% LTV, $1MM)</td>
+  <td><span class="fig">660</span></td>
+  <td class="win"><span class="star">★</span><span class="fig">620</span> (DSCR3, 60–65% LTV)<span class="sub">640–660 floors on most tiers</span></td>
+  <td><span class="fig">660</span></td>
+</tr>
+<tr>
+  <td class="item">Max cash-in-hand</td>
+  <td class="win"><span class="star">★</span>No stated proceeds cap on the DSCR grid (grid caps loan at $3MM @60% CO)</td>
+  <td>$1MM ≤65% LTV; $500k above 65%</td>
+  <td>DSCR3: unlimited ≤65% LTV, $1MM above · other sheets $500k–$1.75MM tiered<span class="sub">Cash-out may fund reserves</span></td>
+  <td>Unlimited ≤60% LTV; $500k above; $2MM max CO loan size; 6-mo ownership seasoning</td>
+</tr>
+
+<tr class="group"><td colspan="5">Short-term rental (Airbnb / VRBO)</td></tr>
+<tr>
+  <td class="item">STR income eligibility</td>
+  <td class="win"><span class="star">★</span>Purchases can qualify on <b>AirDNA projections</b> — no rental history needed: 80% of AirDNA/1007 STR rents, 20% expense factor, ≥50% projected occupancy, 5 comps<span class="sub">Min DSCR 1.00 (1.15 above 75% LTV); 80% LTV ceiling; refis average actual 12-mo receipts (−5% LTV, max 70%)</span></td>
+  <td>12-mo actual ST-rent history required (bank stmts or Airbnb/VRBO ledger); average rents less management fees<span class="sub">Vacant STR falls back to market rents on appraisal</span></td>
+  <td class="win"><span class="star">★</span>AirDNA purchase qualification (DSCR2/3/11; DSCR13 needs ≥1.25): lower of AirDNA projection &amp; appraiser analysis, 50% occupancy, 4 same-zip comps, market score 60+<span class="sub">Refis: 12-mo actual online-platform history; no STR purchases on DSCR1, none at all on DSCR4/15</span></td>
+  <td>Purchase or refi; <b>70% CLTV cap, 1.00 min DSCR, $2MM cap</b>; appraiser STR supplement; refis use lower of 1007/supplement vs 100% of actual 12-mo history</td>
+</tr>
+
+<tr class="group"><td colspan="5">Investor experience &amp; borrower</td></tr>
+<tr>
+  <td class="item">Landlord history requirement</td>
+  <td>12 mo owning/managing rentals within last 3 yrs — <b>waivable</b> via property-management agreement (700+/70%) or strong-file waiver (680+, 1.00 DSCR, 0x30x12, owns primary, ≤80%)</td>
+  <td>First-time investors allowed — defined as no 12-mo rental history; capped 75% LTV (overlay)</td>
+  <td class="watch">Experienced investors only — 12 mo ownership &amp; management of income-producing RE within past 24 mo; no first-timer path</td>
+  <td>Professional investors (12 mo in last 36); first-timers OK if DSCR &gt;1.0, FICO &gt;700, $2MM cap, no exceptions, and not a FTHB</td>
+</tr>
+<tr>
+  <td class="item">First-time homebuyer on DSCR</td>
+  <td class="watch">All-FTHB files: exception-only</td>
+  <td class="blank"></td>
+  <td class="watch">First-time homebuyers ineligible program-wide</td>
+  <td class="watch">First-time investor may not be a FTHB</td>
+</tr>
+<tr>
+  <td class="item">Qualifying FICO logic</td>
+  <td>Standard primary-earner logic</td>
+  <td class="win"><span class="star">★</span><b>Highest</b> mid-score of any applicant</td>
+  <td class="watch">Middle of 3 / lower of 2; multiple borrowers use the <b>lowest</b> representative score; minimum 2 scores per borrower</td>
+  <td>Highest-ownership-percentage guarantor's score (lower of two if 50/50)</td>
+</tr>
+<tr>
+  <td class="item">Foreign-national DSCR</td>
+  <td class="win"><span class="star">★</span>FN grid to <span class="fig">75%</span> purchase / 65% cash-out, $3MM; no US credit needed (999 FICO); purchase DSCR: none ≤70%, 0.75 to 75%; AirDNA allowed<span class="sub">+reserve schedule: 6 mo ≤$2MM, 12 mo to $3MM; escrows mandatory</span></td>
+  <td>FN eligible at <span class="fig">65%</span> LTV overlay; foreign-credit path (3 accounts, 2-yr history, 0x30 housing)</td>
+  <td class="watch">Foreign nationals &amp; ITIN-only borrowers ineligible; non-permanent residents OK w/ 2-yr US credit, no foreign funds</td>
+  <td>FN Plus DSCR: <span class="fig">65%</span> / $1MM / 1.00 min DSCR; 680+ or qualifying foreign credit; 12-mo reserves; no IO; escrows required</td>
+</tr>
+<tr>
+  <td class="item">Entity vesting (LLC / Corp)</td>
+  <td>LLC / partnership / corp OK; max 4 members; manager must be applicant; layered entities documented; all applicants sign note individually</td>
+  <td>Entity OK; ≥50% of ownership must be borrowers on the loan; standard entity docs + good standing</td>
+  <td>LLC / partnership / corp; guarantors holding ≥51% combined sign personal guarantees (max 4); layered entities traced to individuals; spousal consent in community-property states; no POA at closing</td>
+  <td>Max 4 owners; guarantors ≥25% combined + managing member; <b>personal guaranty required</b>; layered entities to 2 levels (no trusts in the chain); consent-of-spouse in community-property states</td>
+</tr>
+<tr>
+  <td class="item">Primary-residence test</td>
+  <td>Each applicant's primary must be superior to subject; all applicants must own their primary when DSCR &lt;0.75</td>
+  <td>All borrowers must maintain a primary; proof of ownership or active lease; rent-free needs family-residence evidence</td>
+  <td>Housing history verified on primary + all financed properties on credit; rent-free OK only for experienced investors</td>
+  <td>Housing history verified on subject + borrower primary regardless of note/title status</td>
+</tr>
+
+<tr class="group"><td colspan="5">Credit profile</td></tr>
+<tr>
+  <td class="item">Housing history</td>
+  <td>1x30x12 program standard (LLPA, 80% cap); non-subject investor mortgages off-credit can skip verification if public-records search is clean</td>
+  <td>0x30x12</td>
+  <td>0x30x12 on subject, primary &amp; all financed properties; mortgage current within 45 days of report</td>
+  <td>0x30x12</td>
+</tr>
+<tr>
+  <td class="item">Credit event seasoning</td>
+  <td class="win"><span class="star">★</span>Same tiered ladder as Non-QM side — events inside 4 yrs remain placeable w/ LTV/size caps</td>
+  <td><span class="fig">36 mo</span> seasoned</td>
+  <td class="watch">4 years from completion to application — <b>modifications count</b>; 7 years if multiple events</td>
+  <td><span class="fig">36 mo</span> (DSCR Plus) · 48 mo (FN Plus)</td>
+</tr>
+<tr>
+  <td class="item">Tradelines</td>
+  <td>3 tradelines / 24-mo history for all applicants</td>
+  <td>3×12 or 2×24 — waived at 700+</td>
+  <td>2 tradelines (one 24-mo open + active in 6 mo, one rated 12 mo); no authorized-user or non-traditional credit; 2 credit scores required</td>
+  <td>Standard 2/3-tradeline test applies to DSCR borrowers &amp; guarantors (no exemption)</td>
+</tr>
+
+<tr class="group"><td colspan="5">Structure, reserves &amp; costs</td></tr>
+<tr>
+  <td class="item">Reserves</td>
+  <td>4/6/12-mo schedule by loan size; +6 mo if LTV &gt;80%; +3 mo if DSCR &lt;1.00; <b>no reserves for other REO</b></td>
+  <td><b>3 mo</b> ≤$1MM / 6 mo &gt;$1MM; DSCR &lt;1.00 → 6 mo; subject only; cash-out counts</td>
+  <td class="win"><span class="star">★</span><b>None</b> on DSCR3 ≤$2.5MM at ≤80% LTV — only zero-reserve DSCR in the lineup<span class="sub">Other sheets 3/6/9 mo; DSCR3 above 80% LTV 6 mo, &gt;$2.5MM 12–18 mo</span></td>
+  <td>3 mo ≤$500k / 6 mo to $2MM / 9 mo to $3MM; subject only; cash-out counts</td>
+</tr>
+<tr>
+  <td class="item">Interest-only</td>
+  <td>IO payment may compute the DSCR at ≤75% LTV + 700 FICO; IO product 680+/≤80%</td>
+  <td>IO available; overlay: min DSCR 1.00 + 75% LTV cap</td>
+  <td class="win"><span class="star">★</span>Every sheet qualifies IO at the IO payment; DSCR3 IO carries <b>no overlay</b> (other sheets 700 min / −5% LTV)</td>
+  <td>700+/75% (DSCR ≥1.00) or 700+/70% (0.75 grid); no IO on No-Ratio; size-based CLTV steps above $2MM</td>
+</tr>
+<tr>
+  <td class="item">Prepayment penalty</td>
+  <td>Allowed on investment (business purpose); DSCR &lt;1.00 with LTV &gt;70% <b>must carry ≥1-yr PPP</b></td>
+  <td>Flat 5% or stepdown structures 5-4-3-2-1 yr (5,4,3,2,1%); state matrix governs</td>
+  <td>6-months-interest or 1–5 yr fixed/declining structures (5-4-3-2-1 etc.); price adjustment if none; not allowed in AK/IL/NM; LA/MI/MN/MS/NJ/OH/PA restrictions</td>
+  <td>Permissible per applicable state law</td>
+</tr>
+<tr>
+  <td class="item">Rent-loss insurance</td>
+  <td class="blank"></td>
+  <td>Required — 6 mo PITIA (shortfall may be offset with extra reserves)</td>
+  <td>Required — 6 months minimum</td>
+  <td>Required — 6 mo of local average rents; blanket policies OK</td>
+</tr>
+<tr>
+  <td class="item">Escrows</td>
+  <td>Waivable ≤80% (mandatory HPML / FN)</td>
+  <td class="win"><span class="star">★</span>Not required</td>
+  <td>Permitted (taxes, insurance, assessments); HFIAA flood escrows enforced; escrow holdbacks not allowed</td>
+  <td>Required for FN loans; otherwise standard</td>
+</tr>
+<tr>
+  <td class="item">Seller concessions</td>
+  <td class="blank"></td>
+  <td>2% (Investor program)</td>
+  <td>3% max interested-party contributions (closing costs/prepaids only); excess deducted from price</td>
+  <td class="blank"></td>
+</tr>
+<tr>
+  <td class="item">Eligible payoffs (cash-out use)</td>
+  <td>Business purpose required; personal-use proceeds kill business-purpose status</td>
+  <td>Any mortgage lien, property taxes &amp; insurance — including delinquent taxes/prepaids on <b>any</b> rental property</td>
+  <td>Business purpose only — personal-use proceeds ineligible; cash-out can fund reserves; R&amp;T cash to borrower ≤$5,000</td>
+  <td>Business purpose only; LOE on use; renovation-scale rehab of subject not permitted from proceeds</td>
+</tr>
+
+<tr class="group"><td colspan="5">Collateral &amp; portfolio</td></tr>
+<tr>
+  <td class="item">Property types</td>
+  <td class="win"><span class="star">★</span>1–4, condos, non-warrantable, condotel (75%), <b>mixed-use (min DSCR 1.15)</b>; accessory units usable</td>
+  <td>SFR, PUD, TH, 2–4, condos, non-warrantable (75% cap); rural 65% cap, 10 ac, long-term rents only, DSCR &gt;1.0<span class="sub">No condotels, mixed-use, 5+</span></td>
+  <td>1–4 + permitted ADU (no ADU rental income), PUD, warrantable + single-feature NWC (FL fully warrantable only); 20 ac max; 750 sqft min<span class="sub">No condotels, mixed-use, co-ops, manufactured, log, leasehold, rural/ag zoning</span></td>
+  <td>SFR + ADU, 2–4, PUD, TH, leasehold, warrantable + non-warrantable (75%, $2MM); 20 ac<span class="sub">No condotels, mixed-use, co-ops, 5+ units</span></td>
+</tr>
+<tr>
+  <td class="item">Flip / seasoning rules</td>
+  <td class="blank"></td>
+  <td class="watch">Flips not allowed — seller must be on title 180+ days</td>
+  <td>90-day title rule on purchases (lesser of prior/current price); cash-out needs 6-mo title seasoning; close-to-lock ≤90 days</td>
+  <td>Cash-out needs 6-mo ownership; builder-affiliated new-construction restrictions</td>
+</tr>
+<tr>
+  <td class="item">Max financed properties</td>
+  <td class="win"><span class="star">★</span>No limit for DSCR borrowers</td>
+  <td>No limit (10 properties / $10MM single-borrower exposure cap)</td>
+  <td>No limit on financed properties<span class="sub">Exposure cap: 10 loans / $5MM per borrower — tightest dollar cap</span></td>
+  <td>20 residential; $7.5MM / 10-property exposure cap</td>
+</tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<div class="foot">
+  <b>How to read this sheet.</b> Green-starred cells mark the strongest or only execution for that line item; amber cells flag terms materially tighter than the rest of the lineup; hatched blank cells mean the underwriting guide is silent on the topic — it neither permits nor prohibits, so treat it as a scenario-desk question. Pace figures reference the specific rate sheet (NQM 1/2/3/4/13/15 · DSCR 1/2/3/4/11/13/15) where terms differ; the best-execution sheet is selected at pricing. Crest figures reference the credit grade (Expanded Prime Plus / Sharp A+ / Sharp A−) where terms differ.
+  <br><br>
+  <b>Sources.</b> Den Non-QM Program Underwriting Guidelines v1.1 (May 18, 2026, incl. Exhibits B–F matrices) · Core Non-QM Underwriting Guides v07.15.2026 (Residential &amp; Investor NQM matrices eff. 7/15/26) plus 1-Year P&amp;L supplement §8.5 (eff. 9/22/2025) · Pace Non-QM Program Guide v17 + DSCR Program Guide v16 (July 28, 2026, Appendix B/C matrices) · Crest Seller Program Underwriting Guidelines v9.0 (Aug 3, 2026, §16 matrices).
+  <div class="disc"><b>Internal broker reference only — not a commitment to lend.</b> United Fidelity Funding Corp, NMLS #34381. All terms subject to the full underwriting guidelines, current rate sheets, LLPAs, and state restrictions in effect at lock. Where this sheet and the source guide conflict, the guide governs. Business-purpose (DSCR) loans are not for personal, family, or household use.</div>
+</div>
+
+</div>
+</body>
+</html>

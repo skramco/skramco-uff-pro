@@ -20,6 +20,8 @@ type FooterLink = {
   label: string
   href: string
   external?: boolean
+  /** Full HTML document — use a real navigation, not a Next.js client transition. */
+  document?: boolean
 }
 
 type DisclosureFooterProps = {
@@ -31,6 +33,13 @@ function FooterNavLink({ link }: { link: FooterLink }) {
   if (link.external) {
     return (
       <a href={link.href} target="_blank" rel="noopener noreferrer" className={className}>
+        {link.label}
+      </a>
+    )
+  }
+  if (link.document) {
+    return (
+      <a href={link.href} className={className}>
         {link.label}
       </a>
     )
@@ -75,6 +84,7 @@ export function DisclosureFooter({ showNonQmIncomeAnalysis }: DisclosureFooterPr
       heading: "Resources",
       links: [
         { label: "Resources", href: "/resources" },
+        { label: "Non-QM / DSCR cheat sheet", href: "/resources/non-qm-dscr-cheat-sheet", document: true },
         { label: "Contact", href: "/contact" },
         ...(showNonQmIncomeAnalysis
           ? [{ label: "Non-QM Income Analysis", href: "/non-qm-income-analysis" }]

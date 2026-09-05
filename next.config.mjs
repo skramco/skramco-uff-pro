@@ -58,9 +58,13 @@ const nextConfig = {
         destination: "/products",
         statusCode: 301,
       },
+      {
+        source: "/guides/uff-nonqm-dscr-cheat-sheet.html",
+        destination: "/resources/non-qm-dscr-cheat-sheet",
+        statusCode: 301,
+      },
     ]
   },
- 
 }
 
 export default nextConfig

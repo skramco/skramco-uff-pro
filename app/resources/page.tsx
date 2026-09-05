@@ -18,12 +18,14 @@ import {
   Star,
   Edit3,
   ExternalLink,
+  Table2,
 } from "lucide-react"
 import Link from "next/link"
 import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
 import { FHACaseNumberForm } from "@/components/fha-case-number-form"
 import { PageHero } from "@/components/page-hero"
 import { formSections } from "@/content/forms"
+import { resourceGuides } from "@/content/resource-guides"
 
 const SECTION_ICONS = {
   general: FileText,
@@ -55,22 +57,28 @@ export default function ResourcesPage() {
     }
   }
 
-  // Filter forms based on search query
+  const query = searchQuery.toLowerCase()
+
+  const filteredGuides = resourceGuides.filter(
+    (guide) => guide.name.toLowerCase().includes(query) || guide.description.toLowerCase().includes(query),
+  )
+
   const filteredSections = formSections
     .map((section) => ({
       ...section,
       forms: section.forms.filter(
-        (form) =>
-          form.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          form.description.toLowerCase().includes(searchQuery.toLowerCase()),
+        (form) => form.name.toLowerCase().includes(query) || form.description.toLowerCase().includes(query),
       ),
     }))
     .filter((section) => section.forms.length > 0)
 
   return (
     <div className="min-h-screen">
-      <PageHero eyebrow="Broker resources" title="Form library">
-        <p>Forms and documents for processing loans, including official agency sources and UFF PDFs.</p>
+      <PageHero eyebrow="Broker resources" title="Forms & guides">
+        <p>
+          Product cheat sheets, forms, and documents for processing loans, including official agency sources and UFF
+          PDFs.
+        </p>
       </PageHero>
 
       <section className="section-pad">
@@ -87,8 +95,50 @@ export default function ResourcesPage() {
               />
             </div>
 
-            {/* Forms Grid */}
             <div className="space-y-8">
+              {filteredGuides.length > 0 ? (
+                <Card className="overflow-hidden">
+                  <CardHeader className="border-b border-hairline bg-surface">
+                    <CardTitle className="flex items-center gap-3 text-lg font-medium">
+                      <Table2 className="h-5 w-5 text-accent" />
+                      Product guides
+                      <Badge variant="outline" className="ml-auto">
+                        {filteredGuides.length} {filteredGuides.length === 1 ? "guide" : "guides"}
+                      </Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="divide-y">
+                      {filteredGuides.map((guide) => (
+                        <div
+                          key={guide.href}
+                          className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors gap-4"
+                        >
+                          <div className="flex items-start gap-3 flex-1 min-w-0">
+                            <Table2 className="h-5 w-5 text-gray-400 flex-shrink-0 mt-1" />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <p className="font-medium text-gray-900">{guide.name}</p>
+                                <Badge variant="outline" className="text-xs flex-shrink-0">
+                                  UFF
+                                </Badge>
+                              </div>
+                              <p className="text-sm text-gray-600 leading-relaxed">{guide.description}</p>
+                              <p className="caption mt-1">Updated {guide.lastUpdated}</p>
+                            </div>
+                          </div>
+                          <div className="flex-shrink-0">
+                            <Button size="sm" asChild className="bg-red-600 hover:bg-red-700">
+                              <a href={guide.href}>Open guide</a>
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ) : null}
+
               {filteredSections.map((section) => {
                 const IconComponent = SECTION_ICONS[section.id as keyof typeof SECTION_ICONS] ?? FileText
                 return (
@@ -164,7 +214,7 @@ export default function ResourcesPage() {
                 )
               })}
 
-              {filteredSections.length === 0 && (
+              {filteredGuides.length === 0 && filteredSections.length === 0 && (
                 <div className="text-center py-12">
                   <FileText className="h-16 w-16 text-gray-300 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold text-gray-600 mb-2">No forms found</h3>

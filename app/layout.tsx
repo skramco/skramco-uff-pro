@@ -75,13 +75,19 @@ export default function RootLayout({
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
-                      <div className="invisible absolute left-0 top-full z-50 mt-1 w-52 rounded-md border border-hairline bg-surface-raised opacity-0 duration-150 group-hover:visible group-hover:opacity-100">
+                      <div className="invisible absolute left-0 top-full z-50 mt-1 w-64 rounded-md border border-hairline bg-surface-raised opacity-0 duration-150 group-hover:visible group-hover:opacity-100">
                         <Link
                           href="/resources"
                           className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
                         >
                           Resource library
                         </Link>
+                        <a
+                          href="/resources/non-qm-dscr-cheat-sheet"
+                          className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
+                        >
+                          Non-QM / DSCR cheat sheet
+                        </a>
                         <Link
                           href="/industry-news"
                           className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
