@@ -22,6 +22,12 @@ export const investor: ProductDetail = {
   extraMatrices: [
     matrixPdf("UFF-NonQM-Core-DSCR-Program-Matrix.pdf", "Core DSCR", "104 KB"),
     matrixPdf("UFF-NonQM-Crest-DSCR-Program-Matrix.pdf", "Crest DSCR", "107 KB"),
+    matrixPdf("UFF-Pace-1-DSCR-Program-Matrix.pdf", "Pace 1 DSCR", "25 KB"),
+    matrixPdf("UFF-Pace-2-DSCR-Program-Matrix.pdf", "Pace 2 DSCR", "25 KB"),
+    matrixPdf("UFF-Pace-3-DSCR-Program-Matrix.pdf", "Pace 3 DSCR", "25 KB"),
+    matrixPdf("UFF-Pace-4-DSCR-Program-Matrix.pdf", "Pace 4 DSCR", "25 KB"),
+    matrixPdf("UFF-Pace-13-DSCR-Program-Matrix.pdf", "Pace 13 DSCR", "25 KB"),
+    matrixPdf("UFF-Pace-15-DSCR-Program-Matrix.pdf", "Pace 15 DSCR", "25 KB"),
   ],
   parameters: [
     { label: "Program", value: "DSCR (Non-QM)" },
