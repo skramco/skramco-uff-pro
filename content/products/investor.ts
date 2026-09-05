@@ -1,3 +1,4 @@
+import { matrixPdf } from "./matrices"
 import type { ProductDetail } from "./types"
 
 export const investor: ProductDetail = {
@@ -17,12 +18,11 @@ export const investor: ProductDetail = {
     src: "/images/products/investor.png",
     alt: "An investor standing in front of a duplex rental property",
   },
-  matrix: {
-    href: "/pdfs/uff-matrix-nonqm-dscr-2025.pdf",
-    label: "DSCR matrix",
-    fileSize: "PDF",
-    lastUpdated: "August 1, 2026",
-  },
+  matrix: matrixPdf("UFF-NonQM-Den-DSCR-Program-Matrix.pdf", "Den DSCR", "107 KB"),
+  extraMatrices: [
+    matrixPdf("UFF-NonQM-Core-DSCR-Program-Matrix.pdf", "Core DSCR", "104 KB"),
+    matrixPdf("UFF-NonQM-Crest-DSCR-Program-Matrix.pdf", "Crest DSCR", "107 KB"),
+  ],
   parameters: [
     { label: "Program", value: "DSCR (Non-QM)" },
     { label: "Occupancy", value: "Investment" },

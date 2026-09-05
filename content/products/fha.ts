@@ -1,4 +1,5 @@
 import { formatUsd, loanLimits } from "../loan-limits"
+import { matrixPdf } from "./matrices"
 import type { ProductDetail } from "./types"
 
 export const fha: ProductDetail = {
@@ -12,12 +13,8 @@ export const fha: ProductDetail = {
   idealBorrowerProfile:
     "First-time and repeat buyers who need 3.5% down, gift funds, or a 580+ FICO. Primary residence. Use this when conventional overlays would decline the file and you still have a documented income story.",
   keyLimit: `${formatUsd(loanLimits.fhaLowCostFloor)} floor (${loanLimits.year})`,
-  matrix: {
-    href: "/pdfs/uff-matrix-fha-2025.pdf",
-    label: "FHA matrix",
-    fileSize: "1.6 MB",
-    lastUpdated: "August 15, 2026",
-  },
+  matrix: matrixPdf("UFF-FHA-Standard-High-Balance-Program-Matrix.pdf", "Standard / High Balance", "137 KB"),
+  extraMatrices: [matrixPdf("UFF-FHA-Streamline-Program-Matrix.pdf", "Streamline", "130 KB")],
   parameters: [
     { label: `Low-cost floor (${loanLimits.year})`, value: formatUsd(loanLimits.fhaLowCostFloor) },
     { label: `High-cost ceiling (${loanLimits.year})`, value: formatUsd(loanLimits.highCostCeiling) },

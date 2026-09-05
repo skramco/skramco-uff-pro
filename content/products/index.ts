@@ -17,6 +17,9 @@ export const products: ProductListing[] = productCatalog.map((product) => ({
   offerings: product.offerings,
   summary: product.summary,
   image: product.image,
+  matrices: [product.matrix, ...(product.extraMatrices ?? [])].filter(
+    (matrix): matrix is NonNullable<typeof matrix> => Boolean(matrix),
+  ),
 }))
 
 export function getProduct(slug: string): ProductDetail | undefined {

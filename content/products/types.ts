@@ -32,4 +32,6 @@ export type ProductDetail = {
   relatedSlugs: string[]
 }
 
-export type ProductListing = Pick<ProductDetail, "slug" | "name" | "offerings" | "summary" | "image">
+export type ProductListing = Pick<ProductDetail, "slug" | "name" | "offerings" | "summary" | "image"> & {
+  matrices: ProductMatrix[]
+}

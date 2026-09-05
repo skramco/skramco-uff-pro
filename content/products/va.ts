@@ -1,4 +1,5 @@
 import { formatUsd, loanLimits } from "../loan-limits"
+import { matrixPdf } from "./matrices"
 import type { ProductDetail } from "./types"
 
 export const va: ProductDetail = {
@@ -12,12 +13,8 @@ export const va: ProductDetail = {
   idealBorrowerProfile:
     "Veterans, active duty, Guard/Reserve, and eligible surviving spouses. Primary residence. Use this when the borrower has a Certificate of Eligibility and you want $0 down with no PMI.",
   keyLimit: `${formatUsd(loanLimits.conforming)} conforming reference (${loanLimits.year})`,
-  matrix: {
-    href: "/pdfs/uff-matrix-va-2025.pdf",
-    label: "VA matrix",
-    fileSize: "1.4 MB",
-    lastUpdated: "August 15, 2026",
-  },
+  matrix: matrixPdf("UFF-VA-Standard-High-Balance-Program-Matrix.pdf", "Standard / High Balance", "134 KB"),
+  extraMatrices: [matrixPdf("UFF-VA-IRRRL-Program-Matrix.pdf", "IRRRL", "129 KB")],
   parameters: [
     { label: `Conforming reference (${loanLimits.year})`, value: formatUsd(loanLimits.conforming) },
     { label: `High-cost ceiling (${loanLimits.year})`, value: formatUsd(loanLimits.highCostCeiling) },

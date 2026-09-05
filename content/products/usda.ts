@@ -1,3 +1,4 @@
+import { matrixPdf } from "./matrices"
 import type { ProductDetail } from "./types"
 
 export const usda: ProductDetail = {
@@ -11,7 +12,8 @@ export const usda: ProductDetail = {
   idealBorrowerProfile:
     "Borrowers buying a primary residence in a USDA-eligible area who can meet area income limits. Use this when the property maps as eligible and the borrower needs 100% financing with a published guarantee fee.",
   keyLimit: "100% LTV · 115% AMI",
-  matrix: null,
+  matrix: matrixPdf("UFF-USDA-Program-Matrix.pdf", "USDA", "139 KB"),
+  extraMatrices: [matrixPdf("UFF-USDA-Streamlined-Assist-Program-Matrix.pdf", "Streamlined Assist", "125 KB")],
   parameters: [
     { label: "Maximum loan amount", value: "No set USDA dollar cap" },
     { label: "Income limit", value: "115% of area median income" },

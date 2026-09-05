@@ -1,4 +1,5 @@
 import { formatUsd, loanLimits } from "../loan-limits"
+import { matrixPdf } from "./matrices"
 import type { ProductDetail } from "./types"
 
 export const conventional: ProductDetail = {
@@ -12,20 +13,8 @@ export const conventional: ProductDetail = {
   idealBorrowerProfile:
     "Borrowers with documented income and a credit score typically 620 or higher. Purchase or refinance on primary, second-home, or investment property. Standard, high balance, first-time homebuyer, and affordable housing options sit in this family.",
   keyLimit: `${formatUsd(loanLimits.conforming)} conforming (${loanLimits.year})`,
-  matrix: {
-    href: "/pdfs/uff-matrix-conventional-fanniemae-2025.pdf",
-    label: "Fannie Mae matrix",
-    fileSize: "2.1 MB",
-    lastUpdated: "August 15, 2026",
-  },
-  extraMatrices: [
-    {
-      href: "/pdfs/uff-matrix-conventional-freddiemac-2025.pdf",
-      label: "Freddie Mac matrix",
-      fileSize: "1.9 MB",
-      lastUpdated: "August 15, 2026",
-    },
-  ],
+  matrix: matrixPdf("UFF-Conventional-DU-Program-Matrix.pdf", "DU", "108 KB"),
+  extraMatrices: [matrixPdf("UFF-Conventional-LPA-Program-Matrix.pdf", "LPA", "103 KB")],
   parameters: [
     { label: `Conforming limit (${loanLimits.year})`, value: formatUsd(loanLimits.conforming) },
     { label: "High-cost ceiling", value: formatUsd(loanLimits.highCostCeiling) },

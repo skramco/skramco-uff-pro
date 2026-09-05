@@ -1,3 +1,4 @@
+import { matrixPdf } from "./matrices"
 import type { ProductDetail } from "./types"
 
 export const nonQm: ProductDetail = {
@@ -11,12 +12,16 @@ export const nonQm: ProductDetail = {
   idealBorrowerProfile:
     "Self-employed borrowers and files that will not fit agency documentation. Use full doc, bank statements (personal and/or business), P&L, or asset depletion. Investor DSCR is its own family.",
   keyLimit: "See Non-QM Core matrix",
-  matrix: {
-    href: "/loan-products/non-qm-core",
-    label: "Non-QM Core matrix",
-    fileSize: "HTML",
-    lastUpdated: "August 1, 2026",
-  },
+  matrix: matrixPdf("UFF-NonQM-Den-Program-Matrix.pdf", "Den", "122 KB"),
+  extraMatrices: [
+    matrixPdf("UFF-NonQM-Core-Program-Matrix.pdf", "Core", "107 KB"),
+    matrixPdf("UFF-NonQM-Pace1-Program-Matrix.pdf", "Pace 1", "102 KB"),
+    matrixPdf("UFF-NonQM-Pace2-Program-Matrix.pdf", "Pace 2", "102 KB"),
+    matrixPdf("UFF-NonQM-Pace3-Program-Matrix.pdf", "Pace 3", "106 KB"),
+    matrixPdf("UFF-NonQM-Pace4-Program-Matrix.pdf", "Pace 4", "102 KB"),
+    matrixPdf("UFF-NonQM-Pace13-Program-Matrix.pdf", "Pace 13", "103 KB"),
+    matrixPdf("UFF-NonQM-Pace15-Program-Matrix.pdf", "Pace 15", "105 KB"),
+  ],
   parameters: [
     { label: "Loan amounts", value: "Up to $3M+" },
     { label: "Down payment", value: "10%–25%" },
@@ -32,14 +37,6 @@ export const nonQm: ProductDetail = {
     src: "/images/products/non-qm.png",
     alt: "A self-employed business owner reviewing paperwork in a workshop",
   },
-  extraMatrices: [
-    {
-      href: "/pdfs/uff-matrix-nonqm-residential-2025.pdf",
-      label: "Non-QM residential matrix",
-      fileSize: "PDF",
-      lastUpdated: "August 1, 2026",
-    },
-  ],
   documentation: [
     "Bank statements (personal or business, 12 or 24 months)",
     "DSCR: lease and rent documentation",

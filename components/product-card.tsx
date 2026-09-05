@@ -21,6 +21,25 @@ export function ProductCard({ product }: { product: ProductListing }) {
           ))}
         </ul>
         <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-muted">{product.summary}</p>
+        {product.matrices.length > 0 ? (
+          <div className="mt-4 border-t border-hairline pt-4">
+            <p className="caption">Matrices</p>
+            <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+              {product.matrices.map((matrix) => (
+                <li key={matrix.href}>
+                  <a
+                    href={matrix.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium text-accent hover:underline duration-150"
+                  >
+                    {matrix.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </div>
     </article>
   )
