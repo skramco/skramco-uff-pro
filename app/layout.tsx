@@ -11,6 +11,7 @@ import { pageMetadata } from "@/lib/seo"
 import { UtilityBar } from "@/components/utility-bar"
 import { DisclosureFooter } from "@/components/disclosure-footer"
 import { PRO_PORTAL_LOGIN_URL, PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-url"
+import { cheatSheets } from "@/content/cheat-sheets"
 
 const sans = Inter({
   subsets: ["latin"],
@@ -102,23 +103,25 @@ export default function RootLayout({
                             Non-QM Income Analysis
                           </Link>
                         ) : null}
-                        <div className="mt-1 border-t border-hairline pt-1">
-                          <p className="px-4 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-wide text-ink-muted">
-                            Cheat Sheets
-                          </p>
+                      </div>
+                    </div>
+                    <div className="relative group">
+                      <button className="flex items-center gap-1 text-ink-muted duration-150 hover:text-ink">
+                        Cheat Sheets
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      <div className="invisible absolute left-0 top-full z-50 mt-1 w-52 rounded-md border border-hairline bg-surface-raised opacity-0 duration-150 group-hover:visible group-hover:opacity-100">
+                        {cheatSheets.map((sheet) => (
                           <Link
-                            href="/resources/cheat-sheets/non-qm"
+                            key={sheet.href}
+                            href={sheet.href}
                             className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
                           >
-                            Non-QM
+                            {sheet.label}
                           </Link>
-                          <Link
-                            href="/resources/cheat-sheets/dscr"
-                            className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
-                          >
-                            DSCR
-                          </Link>
-                        </div>
+                        ))}
                       </div>
                     </div>
                     <Link href="/contact" className="text-ink-muted duration-150 hover:text-ink">

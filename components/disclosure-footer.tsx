@@ -75,6 +75,7 @@ export function DisclosureFooter({ showNonQmIncomeAnalysis }: DisclosureFooterPr
       heading: "Resources",
       links: [
         { label: "Resources", href: "/resources" },
+        { label: "DU vs LPA cheat sheet", href: "/resources/cheat-sheets/du-vs-lpa" },
         { label: "Non-QM cheat sheet", href: "/resources/cheat-sheets/non-qm" },
         { label: "DSCR cheat sheet", href: "/resources/cheat-sheets/dscr" },
         { label: "Contact", href: "/contact" },

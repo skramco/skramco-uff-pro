@@ -14,7 +14,15 @@ export const conventional: ProductDetail = {
     "Borrowers with documented income and a credit score typically 620 or higher. Purchase or refinance on primary, second-home, or investment property. Standard, high balance, first-time homebuyer, and affordable housing options sit in this family.",
   keyLimit: `${formatUsd(loanLimits.conforming)} conforming (${loanLimits.year})`,
   matrix: matrixPdf("UFF-Conventional-DU-Program-Matrix.pdf", "DU", "108 KB"),
-  extraMatrices: [matrixPdf("UFF-Conventional-LPA-Program-Matrix.pdf", "LPA", "103 KB")],
+  extraMatrices: [
+    matrixPdf("UFF-Conventional-LPA-Program-Matrix.pdf", "LPA", "103 KB"),
+    {
+      href: "/resources/cheat-sheets/du-vs-lpa",
+      label: "DU vs LPA",
+      fileSize: "HTML",
+      lastUpdated: "September 4, 2026",
+    },
+  ],
   parameters: [
     { label: `Conforming limit (${loanLimits.year})`, value: formatUsd(loanLimits.conforming) },
     { label: "High-cost ceiling", value: formatUsd(loanLimits.highCostCeiling) },

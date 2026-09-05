@@ -1,7 +1,8 @@
 import type { ReactNode } from "react"
 import Link from "next/link"
+import { cheatSheets } from "@/content/cheat-sheets"
 
-export type CheatSheetId = "non-qm" | "dscr"
+export type CheatSheetId = "du-lpa" | "non-qm" | "dscr"
 
 type CheatSheetViewProps = {
   id: CheatSheetId
@@ -14,10 +15,16 @@ type CheatSheetViewProps = {
   footnotes: ReactNode
 }
 
-const SHEETS: { id: CheatSheetId; href: string; label: string }[] = [
-  { id: "non-qm", href: "/resources/cheat-sheets/non-qm", label: "Non-QM" },
-  { id: "dscr", href: "/resources/cheat-sheets/dscr", label: "DSCR" },
-]
+const SHEETS: { id: CheatSheetId; href: string; label: string }[] = cheatSheets.map((sheet) => ({
+  id:
+    sheet.href === "/resources/cheat-sheets/du-vs-lpa"
+      ? "du-lpa"
+      : sheet.href === "/resources/cheat-sheets/non-qm"
+        ? "non-qm"
+        : "dscr",
+  href: sheet.href,
+  label: sheet.label,
+}))
 
 export function CheatSheetView({
   id,

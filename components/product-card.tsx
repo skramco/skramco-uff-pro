@@ -25,18 +25,21 @@ export function ProductCard({ product }: { product: ProductListing }) {
           <div className="mt-4 border-t border-hairline pt-4">
             <p className="caption">Matrices</p>
             <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
-              {product.matrices.map((matrix) => (
-                <li key={matrix.href}>
-                  <a
-                    href={matrix.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium text-accent hover:underline duration-150"
-                  >
-                    {matrix.label}
-                  </a>
-                </li>
-              ))}
+              {product.matrices.map((matrix) => {
+                const isPdf = matrix.href.endsWith(".pdf")
+                return (
+                  <li key={matrix.href}>
+                    <a
+                      href={matrix.href}
+                      target={isPdf ? "_blank" : undefined}
+                      rel={isPdf ? "noopener noreferrer" : undefined}
+                      className="text-sm font-medium text-accent hover:underline duration-150"
+                    >
+                      {matrix.label}
+                    </a>
+                  </li>
+                )
+              })}
             </ul>
           </div>
         ) : null}
