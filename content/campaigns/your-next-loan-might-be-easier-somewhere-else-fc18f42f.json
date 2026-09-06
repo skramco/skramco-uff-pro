@@ -1,0 +1,61 @@
+{
+  "slug": "your-next-loan-might-be-easier-somewhere-else-fc18f42f",
+  "title": "Experience the Difference: Your Next Loan Could Be Simpler",
+  "subtitle": "Explore UFF's PRO Portal and Piper for a seamless loan-closing experience. Price it, submit it, track it, and close it with ease.",
+  "campaignId": "fc18f42f-9c15-4c31-9406-71a7293ac0a4",
+  "campaignType": "custom_prompt",
+  "publishedAt": "2026-09-06T06:41:11.788Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/fc18f42f-9c15-4c31-9406-71a7293ac0a4/openai-1788672735743.png",
+  "keyTakeaways": [
+    "Price your next loan scenario with PRO Portal for competitive options.",
+    "Submit loans swiftly and track progress without unnecessary friction.",
+    "Utilize Piper for insights and guidance throughout the loan process.",
+    "Experience seamless pipeline management and loan closing with UFF.",
+    "Test UFF's service with one loan and see the difference."
+  ],
+  "sections": [
+    {
+      "heading": "Price It: Discover Competitive Loan Options",
+      "body": "With PRO Portal, pricing your loan scenarios has never been easier. Get live rate updates and explore multiple pricing scenarios to find the best fit for your client. Take advantage of customizable pricing worksheets to align with borrower needs.",
+      "bullets": [
+        "Live rate updates throughout the day",
+        "Multiple pricing scenarios for diverse client needs"
+      ]
+    },
+    {
+      "heading": "Submit It: A Frictionless Transition",
+      "body": "Move seamlessly from pricing to submission with PRO Portal. Enjoy the efficiency of a smooth loan application process with built-in compliance checks and the ability to save and resume applications at any time.",
+      "bullets": [
+        "Built-in compliance checks ensure accuracy",
+        "Save and resume applications with ease"
+      ]
+    },
+    {
+      "heading": "Track It: Stay Informed at Every Stage",
+      "body": "Stay on top of your loan pipeline with PRO Portal's visual dashboard. Track milestone progress and receive automated status updates to keep your clients informed and your workflow efficient.",
+      "bullets": [
+        "Visual pipeline dashboard for easy tracking",
+        "Automated status updates for real-time insights"
+      ]
+    },
+    {
+      "heading": "Ask Piper: Guidance and Clarity",
+      "body": "Use Piper to understand what's happening at each phase of the loan process. Piper provides clarity and actionable steps, ensuring you and your clients are always in the know.",
+      "bullets": [
+        "Get insights on loan status and next steps",
+        "Enhance decision-making with Piper's guidance"
+      ]
+    },
+    {
+      "heading": "Close It: Supported by a Dedicated Team",
+      "body": "Close your loans with confidence, backed by UFF's dedicated team of experts. We understand that service matters, and we're here to support you every step of the way.",
+      "bullets": [
+        "Expert support from UFF's dedicated team",
+        "Focus on service and successful loan closing"
+      ]
+    }
+  ],
+  "ctaLabel": "Price a Loan",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Discover seamless loan closing with UFF's PRO Portal. Price, track, and close loans effortlessly post-Labor Day."
+}
