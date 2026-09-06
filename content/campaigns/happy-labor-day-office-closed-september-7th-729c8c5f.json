@@ -1,0 +1,39 @@
+{
+  "slug": "happy-labor-day-office-closed-september-7th-729c8c5f",
+  "title": "Happy Labor Day! Office Closed September 7th",
+  "subtitle": "United Fidelity Funding Corp. will be closed on September 7, 2026, in observance of Labor Day. We will resume normal operations on September 8, 2026.",
+  "campaignId": "729c8c5f-4f7d-418b-8a67-99f1c12e6961",
+  "campaignType": "custom_prompt",
+  "publishedAt": "2026-09-06T05:23:22.098Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/729c8c5f-4f7d-418b-8a67-99f1c12e6961/openai-1788672158245.png",
+  "keyTakeaways": [
+    "UFF offices are closed on Monday, September 7, 2026.",
+    "Normal operations resume on Tuesday, September 8, 2026.",
+    "Submit urgent loan documents before the holiday.",
+    "Plan your pipeline management around the holiday closure.",
+    "Ensure all necessary communications are completed ahead of time."
+  ],
+  "sections": [
+    {
+      "heading": "Plan Ahead for the Holiday",
+      "body": "As UFF offices will be closed on September 7, it's crucial to manage your loan pipeline and client communications accordingly. Ensure all critical tasks are completed before the holiday to avoid any delays.",
+      "bullets": [
+        "Review your current loan applications in PRO Portal.",
+        "Submit any urgent documentation by September 6, 2026.",
+        "Coordinate with your team to handle any pending conditions."
+      ]
+    },
+    {
+      "heading": "Post-Holiday Workflow",
+      "body": "We will resume our normal business hours on September 8, 2026. Take this time to refresh and prepare for a productive start after the holiday. Use the PRO Portal to efficiently manage your pipeline and upcoming tasks.",
+      "bullets": [
+        "Access live rate updates and pricing scenarios in PRO Portal.",
+        "Upload and categorize documents easily with drag-and-drop features.",
+        "Track loan conditions and prioritize resolutions efficiently."
+      ]
+    }
+  ],
+  "ctaLabel": "View Holiday Details",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "UFF closed on September 7 for Labor Day. Back on September 8. Enjoy the holiday!"
+}
