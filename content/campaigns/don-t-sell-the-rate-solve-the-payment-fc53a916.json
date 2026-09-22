@@ -1,0 +1,45 @@
+{
+  "slug": "don-t-sell-the-rate-solve-the-payment-fc53a916",
+  "title": "Don't Sell the Rate. Solve the Payment.",
+  "subtitle": "Shift from waiting for rate drops to crafting strategic financing solutions today. Use UFF's PRO Portal and Piper to navigate the market with confidence.",
+  "campaignId": "fc53a916-ed75-44cc-97d0-c97d00b39410",
+  "campaignType": "custom_prompt",
+  "publishedAt": "2026-09-22T22:11:06.911Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/fc53a916-ed75-44cc-97d0-c97d00b39410/openai-1790114992776.png",
+  "keyTakeaways": [
+    "Focus on client comfort by discussing monthly payment goals.",
+    "Leverage seller concessions, lender credits, and buydowns.",
+    "Utilize UFF's PRO Portal for efficient loan origination and management.",
+    "Employ Piper to stay informed and prioritize pipeline actions.",
+    "Shift from rate predictions to proactive planning."
+  ],
+  "sections": [
+    {
+      "heading": "Strategize Beyond Rates",
+      "body": "Rates may rise, but your ability to create winning financing strategies shouldn't waver. Engage clients in conversations about their ideal monthly payments and explore various financial tools to meet their needs. Your expertise can turn today's challenges into opportunities.",
+      "bullets": [
+        "Ask about client's comfortable payment amount.",
+        "Explore creative financing options like buydowns."
+      ]
+    },
+    {
+      "heading": "Utilize PRO Portal for Success",
+      "body": "UFF's PRO Portal acts as your mortgage command center, helping you craft tailored financing strategies. From creating loans to locking rates and managing documents, this tool keeps you on top of your game, ensuring you can deliver solutions that align with your clients' financial goals.",
+      "bullets": [
+        "Price scenarios with live rate updates.",
+        "Lock rates efficiently with automated confirmations."
+      ]
+    },
+    {
+      "heading": "Leverage Piper for Pipeline Mastery",
+      "body": "With Piper, your AI-powered sidekick, stay ahead of the game by monitoring your pipeline effortlessly. Prioritize tasks that matter most and keep your deals moving forward. Piper ensures you're always in tune with your business priorities, helping you adapt and thrive.",
+      "bullets": [
+        "Track loan conditions and receive status updates.",
+        "Utilize performance analytics for better decision-making."
+      ]
+    }
+  ],
+  "ctaLabel": "Run the scenario with UFF",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Transform financing strategies with UFF's PRO Portal. Focus on payments, not rates. Adapt and close loans effectively."
+}
