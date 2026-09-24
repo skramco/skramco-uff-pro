@@ -1,0 +1,45 @@
+{
+  "slug": "7-didn-t-cancel-homeownership-53806462",
+  "title": "7% Didn't Cancel Homeownership",
+  "subtitle": "Discover why homebuyers continue to move despite rising rates. Shift your focus from numbers to narratives with UFF's support.",
+  "campaignId": "53806462-8fc1-4d8a-94e6-d5ccea211e63",
+  "campaignType": "custom_prompt",
+  "publishedAt": "2026-09-24T18:10:45.539Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/53806462-8fc1-4d8a-94e6-d5ccea211e63/openai-1790273025489.png",
+  "keyTakeaways": [
+    "Focus on client goals, not just rates.",
+    "Use PRO Portal to explore multiple loan scenarios.",
+    "Align financial strategies with life events.",
+    "Guide clients to see beyond current market conditions."
+  ],
+  "sections": [
+    {
+      "heading": "Understanding Client Motivations",
+      "body": "In today's market, it's essential to understand that interest rates are not the sole factor driving home purchases. Clients' life events often dictate their decisions. Engage them in conversations about their long-term goals to better align financial strategies with their needs.",
+      "bullets": [
+        "Ask clients about their life goals.",
+        "Discuss how homeownership fits into their broader plans."
+      ]
+    },
+    {
+      "heading": "Leveraging PRO Portal for Effective Strategies",
+      "body": "PRO Portal equips you with the tools to navigate complex financial scenarios. Use it to price loans, lock rates, and manage conditions effectively, ensuring you provide clients with the best options suited to their unique situations.",
+      "bullets": [
+        "Create and price multiple loan scenarios.",
+        "Track underwriting conditions seamlessly.",
+        "Utilize live rate updates for informed decisions."
+      ]
+    },
+    {
+      "heading": "From Rates to Reasons: A New Conversation",
+      "body": "Shift the focus from merely discussing rates to understanding the reasons behind your clients' decisions. This approach not only strengthens your client relationships but also positions you as a valuable advisor in their homebuying journey.",
+      "bullets": [
+        "Encourage open discussions about financial realities.",
+        "Guide clients in aligning homebuying with life events."
+      ]
+    }
+  ],
+  "ctaLabel": "Log in to PRO Portal",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Explore how brokers can guide clients through life-driven homebuying in a 7% rate market with UFF's PRO Portal."
+}
