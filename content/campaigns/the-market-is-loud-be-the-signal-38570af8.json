@@ -1,0 +1,45 @@
+{
+  "slug": "the-market-is-loud-be-the-signal-38570af8",
+  "title": "Lost in Mortgage Noise? Be the Broker with the Megaphone!",
+  "subtitle": "Navigate economic uncertainty with clarity. Transform headlines into actionable insights for your borrowers using UFF's PRO Portal.",
+  "campaignId": "38570af8-3ef3-4e55-8e9b-3546336f19d6",
+  "campaignType": "custom_prompt",
+  "publishedAt": "2026-09-25T15:39:58.097Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/38570af8-3ef3-4e55-8e9b-3546336f19d6/openai-1790350578042.png",
+  "keyTakeaways": [
+    "Leverage live rate updates to provide accurate pricing scenarios.",
+    "Utilize automated lock confirmations to secure favorable rates swiftly.",
+    "Organize and resolve underwriting conditions with real-time updates.",
+    "Streamline document management for efficient loan processing.",
+    "Visualize your pipeline to prioritize borrower needs effectively."
+  ],
+  "sections": [
+    {
+      "heading": "Turn Market Noise into Clarity",
+      "body": "In a world saturated with financial headlines, your role is to provide clarity. Use UFF's PRO Portal to transform complex data into simple, actionable steps that guide your borrowers with confidence.",
+      "bullets": [
+        "Access live rate updates to stay informed and competitive.",
+        "Create multiple pricing scenarios to tailor solutions for clients."
+      ]
+    },
+    {
+      "heading": "Simplify Loan Management",
+      "body": "The PRO Portal streamlines your loan processes, allowing you to focus on client relationships. From document uploads to condition tracking, manage everything in one place to enhance efficiency.",
+      "bullets": [
+        "Drag-and-drop document uploads for seamless processing.",
+        "Track loan conditions with priority-based organization."
+      ]
+    },
+    {
+      "heading": "Guide Borrowers with Confidence",
+      "body": "Be the trusted advisor your clients need by turning economic complexity into actionable insights. Use the tools at your disposal to provide clear, concise guidance that empowers borrowers.",
+      "bullets": [
+        "Utilize automated status updates for transparency.",
+        "Visualize your pipeline to manage borrower expectations."
+      ]
+    }
+  ],
+  "ctaLabel": "Log in to PRO Portal",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Empower brokers to cut through mortgage noise with UFF's PRO Portal. Simplify market chaos and guide borrowers with confidence."
+}
