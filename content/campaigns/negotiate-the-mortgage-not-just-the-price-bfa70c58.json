@@ -1,0 +1,53 @@
+{
+  "slug": "negotiate-the-mortgage-not-just-the-price-bfa70c58",
+  "title": "Negotiate the Mortgage, Not Just the Price",
+  "subtitle": "Unlock the potential of seller flexibility by focusing on strategic mortgage structuring, not just price cuts. Leverage UFF's expertise to empower your buyers.",
+  "campaignId": "bfa70c58-97f0-4b45-b05f-436af7acf3f6",
+  "campaignType": "custom_prompt",
+  "publishedAt": "2026-10-06T18:58:43.973Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/bfa70c58-97f0-4b45-b05f-436af7acf3f6/openai-1791313036083.png",
+  "keyTakeaways": [
+    "Identify buyer priorities: payment reduction, cash to close, or reserves.",
+    "Model financing options comparing price reduction vs. seller-paid costs.",
+    "Use seller concessions on closing costs, discount points, or buydowns.",
+    "Collaborate with Realtors to craft impactful offers.",
+    "Utilize UFF's PRO Portal for streamlined loan origination and scenario modeling."
+  ],
+  "sections": [
+    {
+      "heading": "Understand Buyer Goals",
+      "body": "Start by identifying what your buyer values most—whether it's lower monthly payments, reduced cash to close, or preserving their reserves. These goals will guide your negotiation strategy.",
+      "bullets": [
+        "Discuss with the buyer's agent to ascertain priorities.",
+        "Focus on long-term financial benefits rather than immediate price reductions."
+      ]
+    },
+    {
+      "heading": "Model Financing Scenarios",
+      "body": "Utilize the PRO Portal to create and compare various loan scenarios. Determine how a $10,000 concession can be maximized through closing cost coverage, discount points, or temporary buydowns.",
+      "bullets": [
+        "Use PRO Portal's pricing tools to evaluate multiple scenarios.",
+        "Customize worksheets to reflect different buyer needs and market conditions."
+      ]
+    },
+    {
+      "heading": "Collaborate with Realtors",
+      "body": "Share your financing insights with the Realtor to help them craft a compelling offer. Emphasize the strategic use of seller concessions over mere price reductions to enhance buyer affordability.",
+      "bullets": [
+        "Communicate clearly how financing adjustments benefit the buyer.",
+        "Work together to present a unified, attractive offer to sellers."
+      ]
+    },
+    {
+      "heading": "Leverage UFF's Expertise",
+      "body": "As a UFF partner, you have access to a range of loan products and expert scenario desk support. Use these resources to confidently structure loans that align with market conditions and client needs.",
+      "bullets": [
+        "Explore UFF's portfolio: Conventional, FHA, VA, USDA, Non-QM, and more.",
+        "Consult with UFF's scenario desk for complex or unique borrower situations."
+      ]
+    }
+  ],
+  "ctaLabel": "Run the financing",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Shift focus from price cuts to strategic mortgage structuring with UFF's guidance. Maximize buyer affordability today."
+}
