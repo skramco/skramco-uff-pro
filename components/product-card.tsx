@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import type { ProductListing } from "@/content/products"
 
 export function ProductCard({ product }: { product: ProductListing }) {
@@ -21,6 +22,13 @@ export function ProductCard({ product }: { product: ProductListing }) {
           ))}
         </ul>
         <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-muted">{product.summary}</p>
+        {product.slug === "non-qm" ? (
+          <p className="mt-3">
+            <Link href="/non-qm/core/blended-income" className="text-sm font-medium text-accent hover:underline">
+              Blended income calculator
+            </Link>
+          </p>
+        ) : null}
         {product.matrices.length > 0 ? (
           <div className="mt-4 border-t border-hairline pt-4">
             <p className="caption">Matrices</p>

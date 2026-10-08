@@ -24,6 +24,7 @@ import Link from "next/link"
 import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
 import { FHACaseNumberForm } from "@/components/fha-case-number-form"
 import { PageHero } from "@/components/page-hero"
+import { calculators } from "@/content/calculators"
 import { formSections } from "@/content/forms"
 import { resourceGuides } from "@/content/resource-guides"
 
@@ -61,6 +62,11 @@ export default function ResourcesPage() {
 
   const filteredGuides = resourceGuides.filter(
     (guide) => guide.name.toLowerCase().includes(query) || guide.description.toLowerCase().includes(query),
+  )
+
+  const filteredCalculators = calculators.filter(
+    (calculator) =>
+      calculator.label.toLowerCase().includes(query) || calculator.description.toLowerCase().includes(query),
   )
 
   const filteredSections = formSections
@@ -130,6 +136,49 @@ export default function ResourcesPage() {
                           <div className="flex-shrink-0">
                             <Button size="sm" asChild className="bg-red-600 hover:bg-red-700">
                               <Link href={guide.href}>Open guide</Link>
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ) : null}
+
+              {filteredCalculators.length > 0 ? (
+                <Card className="overflow-hidden">
+                  <CardHeader className="border-b border-hairline bg-surface">
+                    <CardTitle className="flex items-center gap-3 text-lg font-medium">
+                      <Table2 className="h-5 w-5 text-accent" />
+                      Calculators
+                      <Badge variant="outline" className="ml-auto">
+                        {filteredCalculators.length}{" "}
+                        {filteredCalculators.length === 1 ? "calculator" : "calculators"}
+                      </Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="divide-y">
+                      {filteredCalculators.map((calculator) => (
+                        <div
+                          key={calculator.href}
+                          className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors gap-4"
+                        >
+                          <div className="flex items-start gap-3 flex-1 min-w-0">
+                            <Table2 className="h-5 w-5 text-gray-400 flex-shrink-0 mt-1" />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <p className="font-medium text-gray-900">{calculator.label}</p>
+                                <Badge variant="outline" className="text-xs flex-shrink-0">
+                                  UFF
+                                </Badge>
+                              </div>
+                              <p className="text-sm text-gray-600 leading-relaxed">{calculator.description}</p>
+                            </div>
+                          </div>
+                          <div className="flex-shrink-0">
+                            <Button size="sm" asChild className="bg-red-600 hover:bg-red-700">
+                              <Link href={calculator.href}>Open calculator</Link>
                             </Button>
                           </div>
                         </div>
@@ -214,7 +263,7 @@ export default function ResourcesPage() {
                 )
               })}
 
-              {filteredGuides.length === 0 && filteredSections.length === 0 && (
+              {filteredGuides.length === 0 && filteredCalculators.length === 0 && filteredSections.length === 0 && (
                 <div className="text-center py-12">
                   <FileText className="h-16 w-16 text-gray-300 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold text-gray-600 mb-2">No forms found</h3>

@@ -11,6 +11,7 @@ import { pageMetadata } from "@/lib/seo"
 import { UtilityBar } from "@/components/utility-bar"
 import { DisclosureFooter } from "@/components/disclosure-footer"
 import { PRO_PORTAL_LOGIN_URL, PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-url"
+import { calculators } from "@/content/calculators"
 import { cheatSheets } from "@/content/cheat-sheets"
 
 const sans = Inter({
@@ -62,6 +63,9 @@ export default function RootLayout({
                     </Link>
                     <Link href="/products" className="text-ink-muted duration-150 hover:text-ink">
                       Products
+                    </Link>
+                    <Link href="/non-qm/core/blended-income" className="text-ink-muted duration-150 hover:text-ink">
+                      Non-QM Core
                     </Link>
                     <Link href="/pro-portal" className="text-ink-muted duration-150 hover:text-ink">
                       PRO Portal
@@ -123,6 +127,30 @@ export default function RootLayout({
                                 className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
                               >
                                 {sheet.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="relative group/calculators">
+                          <p className="flex cursor-default items-center justify-between px-4 py-2 text-ink-muted duration-150 group-hover/calculators:bg-muted group-hover/calculators:text-ink">
+                            Calculators
+                            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                          </p>
+                          <div className="invisible absolute left-full top-0 z-50 -ml-1 w-52 rounded-md border border-hairline bg-surface-raised py-1 pl-1 opacity-0 duration-150 group-hover/calculators:visible group-hover/calculators:opacity-100">
+                            {calculators.map((calculator) => (
+                              <Link
+                                key={calculator.href}
+                                href={calculator.href}
+                                className="block px-4 py-2 text-ink-muted duration-150 hover:bg-muted hover:text-ink"
+                              >
+                                {calculator.label}
                               </Link>
                             ))}
                           </div>
