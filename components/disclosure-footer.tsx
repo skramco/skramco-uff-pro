@@ -77,7 +77,7 @@ export function DisclosureFooter({ showNonQmIncomeAnalysis }: DisclosureFooterPr
         { label: "Resources", href: "/resources" },
         { label: "DU vs LPA cheat sheet", href: "/resources/cheat-sheets/du-vs-lpa" },
         { label: "Non-QM cheat sheet", href: "/resources/cheat-sheets/non-qm" },
-        { label: "Non-QM blended income", href: "/non-qm/core/blended-income" },
+        { label: "Non-QM blended income", href: "/calculators/non-qm/core/blended-income" },
         { label: "DSCR cheat sheet", href: "/resources/cheat-sheets/dscr" },
         { label: "Contact", href: "/contact" },
         ...(showNonQmIncomeAnalysis

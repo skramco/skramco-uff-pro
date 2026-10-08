@@ -68,6 +68,11 @@ const nextConfig = {
         destination: "/resources/cheat-sheets/non-qm",
         statusCode: 301,
       },
+      {
+        source: "/non-qm/core/blended-income",
+        destination: "/calculators/non-qm/core/blended-income",
+        statusCode: 301,
+      },
     ]
   },
 }

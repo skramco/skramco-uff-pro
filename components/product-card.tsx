@@ -24,7 +24,7 @@ export function ProductCard({ product }: { product: ProductListing }) {
         <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-muted">{product.summary}</p>
         {product.slug === "non-qm" ? (
           <p className="mt-3">
-            <Link href="/non-qm/core/blended-income" className="text-sm font-medium text-accent hover:underline">
+            <Link href="/calculators/non-qm/core/blended-income" className="text-sm font-medium text-accent hover:underline">
               Blended income calculator
             </Link>
           </p>

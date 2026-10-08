@@ -8,7 +8,7 @@ export const metadata = pageMetadata({
   title: "Non-QM Core: Blended Income with Asset Depletion | UFF Wholesale",
   description:
     "Combine 12-month bank statement or full-doc income with asset depletion over 36 months on Non-QM Core. Built for mortgage professionals.",
-  path: "/non-qm/core/blended-income",
+  path: "/calculators/non-qm/core/blended-income",
 })
 
 const ASSET_ROWS = [

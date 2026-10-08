@@ -64,9 +64,6 @@ export default function RootLayout({
                     <Link href="/products" className="text-ink-muted duration-150 hover:text-ink">
                       Products
                     </Link>
-                    <Link href="/non-qm/core/blended-income" className="text-ink-muted duration-150 hover:text-ink">
-                      Non-QM Core
-                    </Link>
                     <Link href="/pro-portal" className="text-ink-muted duration-150 hover:text-ink">
                       PRO Portal
                     </Link>
