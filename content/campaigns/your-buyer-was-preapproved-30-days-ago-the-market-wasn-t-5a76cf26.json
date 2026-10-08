@@ -1,0 +1,46 @@
+{
+  "slug": "your-buyer-was-preapproved-30-days-ago-the-market-wasn-t-5a76cf26",
+  "title": "YOUR BUYER WAS PREAPPROVED 30 DAYS AGO. THE MARKET WASN'T.",
+  "subtitle": "Reassess payment scenarios to ensure your buyers are prepared for today's market conditions. Stay proactive with UFF's PRO Portal.",
+  "campaignId": "5a76cf26-8b16-4897-b0f8-d5a9251ddb05",
+  "campaignType": "custom_prompt",
+  "publishedAt": "2026-10-08T03:51:25.814Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/5a76cf26-8b16-4897-b0f8-d5a9251ddb05/openai-1791410572440.png",
+  "keyTakeaways": [
+    "Verify current home prices before proceeding.",
+    "Run updated financing scenarios in PRO Portal.",
+    "Present new estimated payments to borrowers.",
+    "Ensure borrower comfort with current payments.",
+    "Utilize PRO Portal for seamless scenario updates."
+  ],
+  "sections": [
+    {
+      "heading": "Why Refresh Scenarios?",
+      "body": "The market can shift significantly in 30 days. A preapproval is not immune to these changes. Use PRO Portal to ensure your clients are aligned with current market realities.",
+      "bullets": [
+        "Market rates can affect affordability.",
+        "Align buyer perception with market conditions."
+      ]
+    },
+    {
+      "heading": "Steps to Update Financing Scenarios",
+      "body": "Log into PRO Portal to access live rate updates and price loans with accuracy. Utilize this tool to ensure all aspects of the loan align with today's rates and conditions.",
+      "bullets": [
+        "Input current home prices.",
+        "Run accurate financing scenarios.",
+        "Lock in rates with confidence."
+      ]
+    },
+    {
+      "heading": "Ensuring Borrower Comfort",
+      "body": "Beyond qualification, comfort with the payment is key. Discuss updated payment estimates with your clients and address any concerns.",
+      "bullets": [
+        "Discuss comfort, not just qualification.",
+        "Ensure long-term payment sustainability."
+      ]
+    }
+  ],
+  "ctaLabel": "Refresh Payment Now",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Refresh borrower scenarios in UFF's PRO Portal to align with current market conditions. Ensure comfort beyond preapproval."
+}
