@@ -1,3 +1,6 @@
+// The header "updated" stamp is not stored here. formatTurnTimeAsOf computes
+// the latest weekday 8:00 AM CT when the page is viewed.
+
 export type TurnTimeStatus = "on-time" | "extended" | "unknown"
 
 export type TurnTimeRow = {
@@ -8,7 +11,6 @@ export type TurnTimeRow = {
 }
 
 export const turnTimes = {
-  asOf: "August 27, 2026, 8:00 AM CT",
   rows: [
     {
       product: "All products",

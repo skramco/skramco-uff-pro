@@ -1,5 +1,6 @@
+import { TurnTimeUpdated } from "@/components/turn-time-updated"
 import { lockDesk } from "@/content/lock-desk"
-import { underwritingTurnTime, turnTimes } from "@/content/turn-times"
+import { underwritingTurnTime } from "@/content/turn-times"
 import { PROFESSIONAL_USE_NOTICE } from "@/content/disclosures"
 
 export function UtilityBar() {
@@ -12,7 +13,7 @@ export function UtilityBar() {
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1 tabular-nums">
           <span>
             UW turn time: <span className="font-semibold text-white">{uw?.value ?? "-"}</span>
-            <span className="ml-1 text-white/50">updated {turnTimes.asOf}</span>
+            <TurnTimeUpdated className="ml-1 text-white/50" />
           </span>
           <span className="hidden text-white/30 sm:inline" aria-hidden>
             ·
