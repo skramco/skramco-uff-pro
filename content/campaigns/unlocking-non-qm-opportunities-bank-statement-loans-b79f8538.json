@@ -1,0 +1,54 @@
+{
+  "slug": "unlocking-non-qm-opportunities-bank-statement-loans-b79f8538",
+  "title": "Unlocking Non-QM Opportunities: Bank Statement Loans",
+  "subtitle": "Empower your self-employed clients by leveraging 12/24-month bank statement loans. Learn to identify, calculate, and close these lucrative opportunities.",
+  "campaignId": "b79f8538-34e3-466b-bd7e-070ed3ba3b85",
+  "campaignType": "non_qm_product_spotlight",
+  "publishedAt": "2026-07-24T15:41:39.027Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/b79f8538-34e3-466b-bd7e-070ed3ba3b85/openai-1783694747786.png",
+  "keyTakeaways": [
+    "Identify self-employed borrowers with strong cash flow and inconsistent tax returns.",
+    "Calculate income by averaging deposits over 12/24 months for a truer cash flow picture.",
+    "Ensure business-related deposits only and gather essential documentation.",
+    "Consider seasonal income fluctuations in your analysis.",
+    "Use PRO Portal for scenario pricing and pipeline management."
+  ],
+  "sections": [
+    {
+      "heading": "Spotting the Opportunity",
+      "body": "Identify self-employed clients who show strong cash flow but have inconsistent tax returns. These borrowers often deposit income into personal or business accounts, and traditional documentation may not reflect their true earnings.",
+      "bullets": [
+        "Look for keywords like 'self-employed' and 'fluctuating income' in your pipeline.",
+        "Assess if tax returns are affected by expenses or reinvestments."
+      ]
+    },
+    {
+      "heading": "Understanding the Calculation",
+      "body": "For bank statement loans, income is calculated by averaging monthly deposits over 12 or 24 months. Choose between personal or business bank statements based on which provides a clearer income picture.",
+      "bullets": [
+        "Consider using a CPA-prepared Profit & Loss statement if it supports income calculations.",
+        "Exclude transfers from the income calculation."
+      ]
+    },
+    {
+      "heading": "Avoiding Common Mistakes",
+      "body": "Avoid pitfalls like misinterpreting deposits or overlooking necessary documentation. Ensure that income calculations reflect true business activity.",
+      "bullets": [
+        "Gather 12-24 months of bank statements and any required CPA letters or business licenses.",
+        "Consider seasonal income variations in cash flow analysis."
+      ]
+    },
+    {
+      "heading": "Action Steps for Brokers",
+      "body": "Implement these steps to convert self-employed client files into closed deals.",
+      "bullets": [
+        "Search your pipeline using relevant keywords to spot potential candidates.",
+        "Verify documentation readiness, including bank statements for analysis.",
+        "Log in to PRO Portal to price these scenarios and manage your pipeline."
+      ]
+    }
+  ],
+  "ctaLabel": "Explore Non-QM Options",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Discover how to turn self-employed clients' files into closed deals with 12/24-month bank statement loans. Identify, calculate, and succeed."
+}

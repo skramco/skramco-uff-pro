@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Lock, AlertCircle } from "lucide-react"
+import { rateSheetById } from "@/content/rate-sheets"
 
 interface RatesheetPasswordDialogProps {
   open: boolean
@@ -14,9 +15,6 @@ interface RatesheetPasswordDialogProps {
 
 const WEST_PASSWORD = "UFFWEST2026"
 const EAST_PASSWORD = "UFFEAST2026"
-
-const WEST_RATESHEET_URL = "https://uffrates.github.io/UFFWest-Ratesheet.pdf"
-const EAST_RATESHEET_URL = "https://uffrates.github.io/UFFEast-Ratesheet.pdf"
 
 export function RatesheetPasswordDialog({ open, onOpenChange }: RatesheetPasswordDialogProps) {
   const [password, setPassword] = useState("")
@@ -33,14 +31,12 @@ export function RatesheetPasswordDialog({ open, onOpenChange }: RatesheetPasswor
       const trimmedPassword = password.trim()
 
       if (trimmedPassword === WEST_PASSWORD) {
-        // Open West ratesheet
-        window.open(WEST_RATESHEET_URL, '_blank', 'noopener,noreferrer')
+        window.open(rateSheetById("west")?.href, "_blank", "noopener,noreferrer")
         setPassword("")
         setIsLoading(false)
         onOpenChange(false)
       } else if (trimmedPassword === EAST_PASSWORD) {
-        // Open East ratesheet
-        window.open(EAST_RATESHEET_URL, '_blank', 'noopener,noreferrer')
+        window.open(rateSheetById("east")?.href, "_blank", "noopener,noreferrer")
         setPassword("")
         setIsLoading(false)
         onOpenChange(false)

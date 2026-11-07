@@ -1,0 +1,44 @@
+{
+  "slug": "the-market-sees-a-jobs-report-your-borrower-sees-a-paycheck-be280f67",
+  "title": "The Market Sees a Jobs Report. Your Borrower Sees a Paycheck.",
+  "subtitle": "Shift the narrative from market movements to borrower stability. Discover how to align financial strategies with your borrowers' real-life scenarios.",
+  "campaignId": "be280f67-883f-4ed6-8043-924e753f7dec",
+  "campaignType": "custom_prompt",
+  "publishedAt": "2026-10-02T20:48:41.682Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/be280f67-883f-4ed6-8043-924e753f7dec/openai-1790974048733.png",
+  "keyTakeaways": [
+    "Shift client conversations from rates to payment comfort.",
+    "Use borrower income stability as a key assessment metric.",
+    "Leverage PRO Portal for precise borrower scenario alignment.",
+    "Encourage borrowers to assess financial well-being, not just rates."
+  ],
+  "sections": [
+    {
+      "heading": "Understanding the Bigger Picture",
+      "body": "The latest jobs report may have caused a stir in financial markets, but as brokers, our primary focus should be on the borrower's financial stability. This stability is rooted in their job security and income consistency.",
+      "bullets": [
+        "Discuss job security and income growth with borrowers.",
+        "Address any concerns about their long-term financial plans."
+      ]
+    },
+    {
+      "heading": "Align Mortgage Strategies with Borrower Needs",
+      "body": "Use tools like PRO Portal to effectively align your borrowers' scenarios with their financial strategies. This ensures the mortgage fits into their current lifestyle and financial goals.",
+      "bullets": [
+        "Utilize PRO Portal for live rate updates and scenario pricing.",
+        "Track borrower conditions with UFF's automated systems."
+      ]
+    },
+    {
+      "heading": "Foster Long-term Client Relationships",
+      "body": "By focusing on your client's financial comfort and stability, you build trust and foster long-term relationships. Encourage them to look beyond market headlines and consider their personal financial health.",
+      "bullets": [
+        "Regularly check in with clients about their payment comfort.",
+        "Guide them to make informed decisions based on their financial situation."
+      ]
+    }
+  ],
+  "ctaLabel": "Check the Borrower",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Focus on borrower stability beyond market reactions. Use UFF tools to align mortgage strategies with borrower needs."
+}

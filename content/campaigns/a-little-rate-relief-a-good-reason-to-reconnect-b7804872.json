@@ -1,0 +1,46 @@
+{
+  "slug": "a-little-rate-relief-a-good-reason-to-reconnect-b7804872",
+  "title": "A Little Rate Relief. A Good Reason to Reconnect.",
+  "subtitle": "Explore modest rate relief opportunities and revive paused scenarios for your clients. Stay ahead with economic insights and proactive outreach.",
+  "campaignId": "b7804872-b8fe-4fd5-869a-23ee68066b24",
+  "campaignType": "custom_prompt",
+  "publishedAt": "2026-09-21T15:29:02.565Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/b7804872-b8fe-4fd5-869a-23ee68066b24/openai-1790004487321.png",
+  "keyTakeaways": [
+    "Monitor current borrower-specific pricing in PRO Portal for new opportunities.",
+    "Stay informed on economic events affecting mortgage pricing this week.",
+    "Revisit paused scenarios for potential client savings and engagement.",
+    "Utilize personalized outreach to reopen conversations with past prospects.",
+    "Leverage partnerships with real estate professionals to expand your pipeline."
+  ],
+  "sections": [
+    {
+      "heading": "Monitor and Revive Opportunities",
+      "body": "With recent rate relief, it's a prime time to reassess active and paused scenarios. Utilize PRO Portal to check current pricing and refresh borrower-specific scenarios, potentially uncovering new opportunities for your clients.",
+      "bullets": [
+        "Log in to PRO Portal to refresh borrower scenarios.",
+        "Use updated pricing to offer clients a new perspective."
+      ]
+    },
+    {
+      "heading": "Economic Events to Watch",
+      "body": "Stay informed on key economic events this week, such as manufacturing surveys and jobless claims, that could influence mortgage pricing. Being aware of these can help you make informed decisions and advise your clients effectively.",
+      "bullets": [
+        "Richmond Fed manufacturing survey: Sept 22, 10:00 a.m.",
+        "S&P Global flash PMIs: Sept 23, 9:45 a.m.",
+        "Initial jobless claims: Sept 24, 8:30 a.m."
+      ]
+    },
+    {
+      "heading": "Proactive Client Outreach",
+      "body": "Reopen conversations with buyers who paused due to payment concerns. Select prospects from the past 60–90 days, refresh their scenarios with current pricing, and provide an updated payment-and-cost comparison.",
+      "bullets": [
+        "Engage with past clients using refreshed numbers.",
+        "Collaborate with real estate partners for broader outreach."
+      ]
+    }
+  ],
+  "ctaLabel": "Log in to PRO Portal",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Discover rate relief opportunities and economic updates to drive your mortgage business forward with UFF."
+}

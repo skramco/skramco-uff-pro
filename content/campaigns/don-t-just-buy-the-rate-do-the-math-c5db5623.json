@@ -1,0 +1,44 @@
+{
+  "slug": "don-t-just-buy-the-rate-do-the-math-c5db5623",
+  "title": "DON'T JUST BUY THE RATE. DO THE MATH.",
+  "subtitle": "Empower your borrowers with the knowledge to make informed rate buydown decisions based on their financial goals.",
+  "campaignId": "c5db5623-0e47-4f91-8ff8-d397fdd17d21",
+  "campaignType": "custom_prompt",
+  "publishedAt": "2026-10-06T00:04:19.516Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/c5db5623-0e47-4f91-8ff8-d397fdd17d21/openai-1791244967886.png",
+  "keyTakeaways": [
+    "Explain the break-even formula: Cost ÷ Monthly Savings = Break-Even Period.",
+    "Guide borrowers in assessing mortgage duration versus break-even period.",
+    "Discuss alternatives for upfront costs like increasing down payment.",
+    "Highlight the importance of strategic financial planning over rate chasing."
+  ],
+  "sections": [
+    {
+      "heading": "Understanding the Break-Even Point",
+      "body": "Help borrowers evaluate whether buying down a rate is beneficial by calculating how long it takes to recoup the cost via monthly savings. Use the break-even formula as a tool to transform rate questions into strategic decisions.",
+      "bullets": [
+        "Calculate cost versus savings.",
+        "Assess mortgage duration alignment."
+      ]
+    },
+    {
+      "heading": "Strategic Financial Choices",
+      "body": "Encourage borrowers to consider broader financial strategies. Discuss where else they could allocate funds, such as additional down payments or maintaining reserves, to paint a complete financial picture.",
+      "bullets": [
+        "Explore alternative uses for upfront funds.",
+        "Align rate decisions with broader financial goals."
+      ]
+    },
+    {
+      "heading": "Empowering Borrowers with Clarity",
+      "body": "By equipping borrowers with clear, factual insights, you enable them to make confident decisions. It's not just about the immediate rate but understanding the long-term value and alignment with their financial objectives.",
+      "bullets": [
+        "Focus on informed, confident decision-making.",
+        "Promote long-term financial alignment."
+      ]
+    }
+  ],
+  "ctaLabel": "Evaluate Your Scenario",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Guide borrowers to evaluate discount points and rate buydowns with break-even analysis for smarter mortgage decisions."
+}

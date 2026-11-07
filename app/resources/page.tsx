@@ -8,8 +8,6 @@ import { Input } from "@/components/ui/input"
 import {
   FileText,
   Download,
-  Calculator,
-  BookOpen,
   Users,
   TrendingUp,
   Search,
@@ -20,335 +18,32 @@ import {
   Star,
   Edit3,
   ExternalLink,
+  Table2,
 } from "lucide-react"
 import Link from "next/link"
 import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
-import { MortgageCalculator } from "@/components/mortgage-calculator"
 import { FHACaseNumberForm } from "@/components/fha-case-number-form"
-import { RateSheetPasswordModal } from "@/components/rate-sheet-password-modal"
+import { PageHero } from "@/components/page-hero"
+import { calculators } from "@/content/calculators"
+import { formSections } from "@/content/forms"
+import { resourceGuides } from "@/content/resource-guides"
 
-// Form data structure
-const formSections = [
-  {
-    id: "general",
-    title: "General Forms",
-    icon: FileText,
-    color: "blue",
-    forms: [
-      {
-        name: "Uniform Residential Loan Application (URLA 1003)",
-        description:
-          "Standard mortgage application form required by Fannie Mae and Freddie Mac for all residential loan applications",
-        url: "https://selling-guide.fanniemae.com/Selling-Guide/Origination-thru-Closing/Subpart-B3-Underwriting-Borrowers/Chapter-B3-6-Underwriting-Property/1032999861/B3-6-05-Freddie-Mac-Form-65-Uniform-Residential-Loan-Application-07-05-2021.htm",
-        source: "Fannie Mae",
-      },
-      {
-        name: "Broker Compensation Acknowledgement & Agreement",
-        description:
-          "Agreement form for borrower to elect whether broker compensation will be paid by borrower or lender, including certification of compensation disclosure",
-        apiUrl: "/api/forms/broker-comp-agreement",
-        source: "UFF",
-      },
-      {
-        name: "Inquiry Letter",
-        description:
-          "Letter template for brokers to formally inquire about loan products, programs, or specific transaction scenarios with United Fidelity Funding",
-        apiUrl: "/api/forms/inquiry-letter",
-        source: "UFF",
-      },
-      {
-        name: "Borrower Acknowledgment of Intent to Proceed",
-        description:
-          "Borrower certification confirming receipt of Loan Estimate and intent to proceed with the loan application according to disclosed terms",
-        apiUrl: "/api/forms/borrower-acknowledgment",
-        source: "UFF",
-      },
-      {
-        name: "Initial Borrower Contact Form",
-        description: "Document initial contact with borrowers and capture preliminary loan information for processing",
-        comingSoon: true,
-      },
-      {
-        name: "Loan Estimate Request Form",
-        description:
-          "Request form for obtaining a Loan Estimate with detailed terms and estimated costs for the mortgage",
-        comingSoon: true,
-      },
-      {
-        name: "Income & Asset Documentation Checklist",
-        description: "Comprehensive list of required income and asset documents needed for loan underwriting",
-        comingSoon: true,
-      },
-    ],
-  },
-  {
-    id: "disclosure",
-    title: "Disclosure Forms",
-    icon: Shield,
-    color: "red",
-    forms: [
-      {
-        name: "Loan Estimate (LE) Sample",
-        description: "Three-page form that provides borrowers with important details about the requested mortgage loan",
-        url: "https://www.consumerfinance.gov/owning-a-home/loan-estimate/",
-        source: "CFPB",
-      },
-      {
-        name: "Closing Disclosure (CD) Sample",
-        description:
-          "Five-page form detailing the final terms and costs of the mortgage, provided at least 3 days before closing",
-        url: "https://www.consumerfinance.gov/owning-a-home/closing-disclosure/",
-        source: "CFPB",
-      },
-      {
-        name: "TRID Disclosure Forms Package",
-        description: "Complete package of TILA-RESPA Integrated Disclosure forms required for mortgage transactions",
-        comingSoon: true,
-      },
-      {
-        name: "Privacy Notice Template",
-        description: "Required notice explaining how borrower financial information is collected, used, and protected",
-        comingSoon: true,
-      },
-      {
-        name: "ECOA/Adverse Action Notice Information",
-        description:
-          "Information about Equal Credit Opportunity Act rights and adverse action notification requirements",
-        url: "https://www.consumerfinance.gov/compliance/compliance-resources/mortgage-resources/tila-respa-integrated-disclosures/trid-overview/",
-        source: "CFPB",
-      },
-    ],
-  },
-  {
-    id: "fha",
-    title: "FHA Forms",
-    icon: Users,
-    color: "green",
-    forms: [
-      {
-        name: "FHA Connection Information",
-        description: "Access FHA Connection portal for case number requests, appraisal ordering, and loan processing",
-        url: "https://www.hud.gov/program_offices/housing/sfh/lender/lendmail",
-        source: "HUD",
-      },
-      {
-        name: "FHA Amendatory Clause & Real Estate Certification",
-        description: "Required FHA form certifying property value and protecting borrowers in purchase transactions",
-        url: "https://www.hud.gov/sites/dfiles/OCHCO/documents/92900b.pdf",
-        source: "HUD",
-      },
-      {
-        name: "FHA Case Number Request Form",
-        description:
-          "Submit request to obtain an FHA case number for new loan applications through United Fidelity Funding",
-        apiUrl: "/api/forms/fha-case-number",
-        isForm: true,
-        source: "UFF",
-      },
-      {
-        name: "FHA Borrower Certification & Authorization",
-        description: "Borrower certifies occupancy intent and authorizes FHA to verify information for loan approval",
-        comingSoon: true,
-      },
-      {
-        name: "FHA Identity of Interest Certification",
-        description: "Discloses any identity of interest relationships between parties in the transaction",
-        comingSoon: true,
-      },
-    ],
-  },
-  {
-    id: "va",
-    title: "VA Forms",
-    icon: Star,
-    color: "purple",
-    forms: [
-      {
-        name: "VA Form 26-1880 - Request for Certificate of Eligibility",
-        description:
-          "Apply for VA loan eligibility certificate to determine entitlement for VA-guaranteed home loan benefits",
-        url: "https://www.va.gov/find-forms/about-form-26-1880/",
-        source: "VA",
-      },
-      {
-        name: "VA Form 26-1802a - HUD/VA Addendum to URLA",
-        description: "Required addendum to the standard loan application for VA-guaranteed loans",
-        url: "https://www.va.gov/find-forms/about-form-26-1802a/",
-        source: "VA",
-      },
-      {
-        name: "VA Funding Fee Information",
-        description: "Details about VA funding fee rates, exemptions, and payment options for VA loans",
-        url: "https://www.va.gov/housing-assistance/home-loans/funding-fee-and-closing-costs/",
-        source: "VA",
-      },
-      {
-        name: "VA Nearest Living Relative Statement",
-        description:
-          "Required form for veterans to provide name, address, and contact information of their nearest living relative for VA loan processing",
-        apiUrl: "/api/forms/va-nearest-relative",
-        source: "UFF",
-      },
-      {
-        name: "VA Allowable Closing Costs",
-        description:
-          "Comprehensive guide detailing allowable and unallowable closing costs for VA loans, including fee limitations and restrictions based on origination fee",
-        apiUrl: "/api/forms/va-allowable-closing-costs",
-        source: "UFF",
-      },
-      {
-        name: "VA Sponsorship Form",
-        description:
-          "Application form for mortgage brokers to obtain VA sponsorship through United Fidelity Funding, including state licensing information and $100 fee",
-        apiUrl: "/api/forms/va-sponsorship",
-        source: "UFF",
-      },
-      {
-        name: "VA Occupancy Certification",
-        description: "Borrower certifies intent to occupy the property as primary residence for VA loan eligibility",
-        comingSoon: true,
-      },
-    ],
-  },
-  {
-    id: "appraisal",
-    title: "Appraisal Forms",
-    icon: Home,
-    color: "orange",
-    forms: [
-      {
-        name: "Uniform Residential Appraisal Report (Form 1004)",
-        description: "Standard appraisal form for single-family properties, detailing property value and condition",
-        url: "https://singlefamily.fanniemae.com/appraisal-forms-and-documents",
-        source: "Fannie Mae",
-      },
-      {
-        name: "Appraisal Transfer & Independence Certification",
-        description:
-          "Lender certification form confirming compliance with appraisal independence regulations (AIR) and federal/state laws, including attestation of no improper influence on appraisal process",
-        apiUrl: "/api/forms/appraisal-transfer",
-        source: "UFF",
-      },
-      {
-        name: "Appraisal Order Form",
-        description: "Order professional property appraisal with detailed property information and loan requirements",
-        comingSoon: true,
-      },
-      {
-        name: "Property Inspection Waiver (PIW) Request",
-        description: "Request waiver of physical property inspection when eligible based on data and risk assessment",
-        comingSoon: true,
-      },
-      {
-        name: "Desktop Appraisal Request",
-        description: "Request desktop appraisal using public records and MLS data without physical property inspection",
-        comingSoon: true,
-      },
-    ],
-  },
-  {
-    id: "condo",
-    title: "Condo Forms",
-    icon: Building,
-    color: "indigo",
-    forms: [
-      {
-        name: "Fannie Mae Condo Project Manager",
-        description: "Search and verify FHA and Fannie Mae approved condominium projects for loan eligibility",
-        url: "https://www.fanniemae.com/singlefamily/condo-project-manager",
-        source: "Fannie Mae",
-      },
-      {
-        name: "Condo Project Questionnaire (Form 1076)",
-        description: "Detailed questionnaire about condo project for determining financing eligibility and approval",
-        comingSoon: true,
-      },
-      {
-        name: "Condo/PUD Rider",
-        description: "Mortgage addendum for condominium or planned unit development properties with specific terms",
-        comingSoon: true,
-      },
-      {
-        name: "HOA Certification Form",
-        description: "Homeowners association provides certification of fees, insurance, and project financial health",
-        comingSoon: true,
-      },
-    ],
-  },
-  {
-    id: "nonqm",
-    title: "Non-QM Forms",
-    icon: TrendingUp,
-    color: "teal",
-    forms: [
-      {
-        name: "Business Narrative Form",
-        description:
-          "Required form for self-employed borrowers to document their business profile, operations, revenue generation, and any recent disruptions for Ability to Repay (ATR) calculation",
-        apiUrl: "/api/forms/business-narrative",
-        source: "UFF",
-      },
-    ],
-  },
-  {
-    id: "other",
-    title: "Other Forms",
-    icon: File,
-    color: "gray",
-    forms: [
-      {
-        name: "Credit Report Inquiry Certification",
-        description:
-          "Borrower certification form documenting all recent credit inquiries within 120 days, including creditor names, dates, purposes, and whether new accounts were opened",
-        apiUrl: "/api/forms/credit-inquiry",
-        source: "UFF",
-      },
-      {
-        name: "Power of Attorney (POA) Form",
-        description: "Legal document authorizing someone to act on borrower's behalf during loan closing process",
-        comingSoon: true,
-      },
-      {
-        name: "Gift Letter Template",
-        description: "Document verifying that down payment funds are a gift, not a loan, from family or approved donor",
-        comingSoon: true,
-      },
-      {
-        name: "Explanation of Credit Letter Template",
-        description:
-          "Template for borrowers to explain credit issues, late payments, or derogatory items on credit report",
-        comingSoon: true,
-      },
-      {
-        name: "Subordination Agreement",
-        description: "Legal agreement changing lien priority when refinancing with existing second mortgage or HELOC",
-        comingSoon: true,
-      },
-      {
-        name: "Rate Lock Agreement",
-        description: "Agreement securing specific interest rate for defined period during loan processing",
-        comingSoon: true,
-      },
-    ],
-  },
-]
+const SECTION_ICONS = {
+  general: FileText,
+  disclosure: Shield,
+  fha: Users,
+  va: Star,
+  appraisal: Home,
+  condo: Building,
+  nonqm: TrendingUp,
+  other: File,
+} as const
 
 export default function ResourcesPage() {
-  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false)
   const [isFHAFormOpen, setIsFHAFormOpen] = useState(false)
-  const [isRateSheetPasswordOpen, setIsRateSheetPasswordOpen] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
 
-  const handleCalculatorClick = () => {
-    setIsCalculatorOpen(true)
-  }
-
-  const handleRateSheetClick = () => {
-    setIsRateSheetPasswordOpen(true)
-  }
-
   const handleDownload = (url: string, formName: string, source: string) => {
-    // Open the official government form URL in a new tab
     window.open(url, "_blank", "noopener,noreferrer")
   }
 
@@ -363,185 +58,145 @@ export default function ResourcesPage() {
     }
   }
 
-  // Filter forms based on search query
+  const query = searchQuery.toLowerCase()
+
+  const filteredGuides = resourceGuides.filter(
+    (guide) => guide.name.toLowerCase().includes(query) || guide.description.toLowerCase().includes(query),
+  )
+
+  const filteredCalculators = calculators.filter(
+    (calculator) =>
+      calculator.label.toLowerCase().includes(query) || calculator.description.toLowerCase().includes(query),
+  )
+
   const filteredSections = formSections
     .map((section) => ({
       ...section,
       forms: section.forms.filter(
-        (form) =>
-          form.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          form.description.toLowerCase().includes(searchQuery.toLowerCase()),
+        (form) => form.name.toLowerCase().includes(query) || form.description.toLowerCase().includes(query),
       ),
     }))
     .filter((section) => section.forms.length > 0)
 
-  const getColorClasses = (color: string) => {
-    const colors = {
-      blue: "bg-blue-100 text-blue-800 border-blue-200",
-      red: "bg-red-100 text-red-800 border-red-200",
-      green: "bg-green-100 text-green-800 border-green-200",
-      purple: "bg-purple-100 text-purple-800 border-purple-200",
-      orange: "bg-orange-100 text-orange-800 border-orange-200",
-      indigo: "bg-indigo-100 text-indigo-800 border-indigo-200",
-      teal: "bg-teal-100 text-teal-800 border-teal-200",
-      gray: "bg-gray-100 text-gray-800 border-gray-200",
-    }
-    return colors[color as keyof typeof colors] || colors.gray
-  }
-
-  const getIconColorClasses = (color: string) => {
-    const colors = {
-      blue: "text-blue-600",
-      red: "text-red-600",
-      green: "text-green-600",
-      purple: "text-purple-600",
-      orange: "text-orange-600",
-      indigo: "text-indigo-600",
-      teal: "text-teal-600",
-      gray: "text-gray-600",
-    }
-    return colors[color as keyof typeof colors] || colors.gray
-  }
-
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-700 text-white py-20">
+      <PageHero eyebrow="Broker resources" title="Forms & guides">
+        <p>
+          Product cheat sheets, forms, and documents for processing loans, including official agency sources and UFF
+          PDFs.
+        </p>
+      </PageHero>
+
+      <section className="section-pad">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/20 text-white border-white/30">Broker Resources</Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">Form Library</h1>
-            <p className="text-xl md:text-2xl mb-8 text-red-100 leading-relaxed">
-              Access all the forms and documents you need to process loans efficiently. Download directly from official
-              government sources.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Access Tools */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Quick Access Tools</h2>
-            <p className="text-xl text-gray-600">Essential tools for your daily operations</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <TrendingUp className="h-8 w-8 text-red-600" />
-                </div>
-                <CardTitle>Current Rate Sheet</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">Today's competitive rates and pricing</p>
-                <Button onClick={handleRateSheetClick} className="w-full bg-red-600 hover:bg-red-700">
-                  <Download className="mr-2 h-4 w-4" />
-                  Download PDF
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Calculator className="h-8 w-8 text-red-600" />
-                </div>
-                <CardTitle>Loan Calculators</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">Calculate payments and scenarios</p>
-                <Button
-                  onClick={handleCalculatorClick}
-                  variant="outline"
-                  className="w-full border-red-600 text-red-600 hover:bg-red-50 bg-transparent"
-                >
-                  Open Calculator
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="h-8 w-8 text-red-600" />
-                </div>
-                <CardTitle>Guidelines</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">Product guidelines and overlays</p>
-                <br />
-                <Button
-                  asChild
-                  variant="outline"
-                  className="w-full border-red-600 text-red-600 hover:bg-red-50 bg-transparent"
-                >
-                  <Link href="/loan-products">View Guidelines</Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            <Card className="text-center hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-8 w-8 text-red-600" />
-                </div>
-                <CardTitle>PRO Portal Login</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600 mb-4">Access your loan management platform</p>
-                <Button
-                  asChild
-                  className="w-full bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white font-semibold shadow-lg"
-                >
-                  <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
-                    🚀 Login to PRO Portal
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Forms Library Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Downloadable Forms</h2>
-              <p className="text-xl text-gray-600 mb-8">
-                All the forms you need for efficient loan processing, organized by category
-              </p>
-
-              {/* Search Bar */}
-              <div className="max-w-md mx-auto relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <Input
-                  type="text"
-                  placeholder="Search forms..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 py-6 text-lg"
-                />
-              </div>
+          <div className="max-w-6xl">
+            <div className="relative mb-10 max-w-md">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted" />
+              <Input
+                type="text"
+                placeholder="Search forms..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10"
+              />
             </div>
 
-            {/* Forms Grid */}
             <div className="space-y-8">
+              {filteredGuides.length > 0 ? (
+                <Card className="overflow-hidden">
+                  <CardHeader className="border-b border-hairline bg-surface">
+                    <CardTitle className="flex items-center gap-3 text-lg font-medium">
+                      <Table2 className="h-5 w-5 text-accent" />
+                      Cheat Sheets
+                      <Badge variant="outline" className="ml-auto">
+                        {filteredGuides.length} {filteredGuides.length === 1 ? "sheet" : "sheets"}
+                      </Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="divide-y">
+                      {filteredGuides.map((guide) => (
+                        <div
+                          key={guide.href}
+                          className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors gap-4"
+                        >
+                          <div className="flex items-start gap-3 flex-1 min-w-0">
+                            <Table2 className="h-5 w-5 text-gray-400 flex-shrink-0 mt-1" />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <p className="font-medium text-gray-900">{guide.name}</p>
+                                <Badge variant="outline" className="text-xs flex-shrink-0">
+                                  UFF
+                                </Badge>
+                              </div>
+                              <p className="text-sm text-gray-600 leading-relaxed">{guide.description}</p>
+                              <p className="caption mt-1">Updated {guide.lastUpdated}</p>
+                            </div>
+                          </div>
+                          <div className="flex-shrink-0">
+                            <Button size="sm" asChild className="bg-red-600 hover:bg-red-700">
+                              <Link href={guide.href}>Open guide</Link>
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ) : null}
+
+              {filteredCalculators.length > 0 ? (
+                <Card className="overflow-hidden">
+                  <CardHeader className="border-b border-hairline bg-surface">
+                    <CardTitle className="flex items-center gap-3 text-lg font-medium">
+                      <Table2 className="h-5 w-5 text-accent" />
+                      Calculators
+                      <Badge variant="outline" className="ml-auto">
+                        {filteredCalculators.length}{" "}
+                        {filteredCalculators.length === 1 ? "calculator" : "calculators"}
+                      </Badge>
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="divide-y">
+                      {filteredCalculators.map((calculator) => (
+                        <div
+                          key={calculator.href}
+                          className="flex items-center justify-between p-4 hover:bg-gray-50 transition-colors gap-4"
+                        >
+                          <div className="flex items-start gap-3 flex-1 min-w-0">
+                            <Table2 className="h-5 w-5 text-gray-400 flex-shrink-0 mt-1" />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-1">
+                                <p className="font-medium text-gray-900">{calculator.label}</p>
+                                <Badge variant="outline" className="text-xs flex-shrink-0">
+                                  UFF
+                                </Badge>
+                              </div>
+                              <p className="text-sm text-gray-600 leading-relaxed">{calculator.description}</p>
+                            </div>
+                          </div>
+                          <div className="flex-shrink-0">
+                            <Button size="sm" asChild className="bg-red-600 hover:bg-red-700">
+                              <Link href={calculator.href}>Open calculator</Link>
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ) : null}
+
               {filteredSections.map((section) => {
-                const IconComponent = section.icon
+                const IconComponent = SECTION_ICONS[section.id as keyof typeof SECTION_ICONS] ?? FileText
                 return (
                   <Card key={section.id} className="overflow-hidden">
-                    <CardHeader className={`${getColorClasses(section.color)} border-b`}>
-                      <CardTitle className="flex items-center gap-3 text-xl">
-                        <div className="bg-white/20 p-2 rounded-lg">
-                          <IconComponent className={`h-6 w-6 ${getIconColorClasses(section.color)}`} />
-                        </div>
+                    <CardHeader className="border-b border-hairline bg-surface">
+                      <CardTitle className="flex items-center gap-3 text-lg font-medium">
+                        <IconComponent className="h-5 w-5 text-accent" />
                         {section.title}
-                        <Badge variant="outline" className="ml-auto bg-white/50">
+                        <Badge variant="outline" className="ml-auto">
                           {section.forms.length} forms
                         </Badge>
                       </CardTitle>
@@ -565,6 +220,9 @@ export default function ResourcesPage() {
                                   )}
                                 </div>
                                 <p className="text-sm text-gray-600 leading-relaxed">{form.description}</p>
+                                {form.lastUpdated ? (
+                                  <p className="caption mt-1">Updated {form.lastUpdated}</p>
+                                ) : null}
                               </div>
                             </div>
                             <div className="flex-shrink-0">
@@ -577,10 +235,6 @@ export default function ResourcesPage() {
                                   <Edit3 className="mr-2 h-4 w-4" />
                                   Fill Out Form
                                 </Button>
-                              ) : form.comingSoon ? (
-                                <Badge variant="secondary" className="text-gray-600">
-                                  Coming Soon
-                                </Badge>
                               ) : form.apiUrl ? (
                                 <Button
                                   size="sm"
@@ -609,7 +263,7 @@ export default function ResourcesPage() {
                 )
               })}
 
-              {filteredSections.length === 0 && (
+              {filteredGuides.length === 0 && filteredCalculators.length === 0 && filteredSections.length === 0 && (
                 <div className="text-center py-12">
                   <FileText className="h-16 w-16 text-gray-300 mx-auto mb-4" />
                   <h3 className="text-xl font-semibold text-gray-600 mb-2">No forms found</h3>
@@ -621,31 +275,23 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Support Section */}
-      <section className="py-20 bg-red-600 text-white">
+      <section className="band-nav">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">Need Additional Resources?</h2>
-            <p className="text-xl mb-8 text-red-100">
-              Can't find what you're looking for? Our support team is here to help you access the resources you need.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-white text-red-600 hover:bg-red-50">
-                <Link href="/contact">Contact Support</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-red-600 bg-transparent">
-                <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
-                  Access PRO Portal
-                </a>
-              </Button>
-            </div>
+          <h2 className="text-white">Need something else?</h2>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild>
+              <Link href="/contact">Contact support</Link>
+            </Button>
+            <Button asChild variant="outline" className="btn-on-dark">
+              <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                Log in to PRO Portal
+              </a>
+            </Button>
           </div>
         </div>
       </section>
 
-      <MortgageCalculator isOpen={isCalculatorOpen} onClose={() => setIsCalculatorOpen(false)} />
       <FHACaseNumberForm isOpen={isFHAFormOpen} onClose={() => setIsFHAFormOpen(false)} />
-      <RateSheetPasswordModal isOpen={isRateSheetPasswordOpen} onClose={() => setIsRateSheetPasswordOpen(false)} />
     </div>
   )
 }

@@ -1,10 +1,9 @@
 import Link from "next/link"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle2, ArrowRight } from "lucide-react"
 import type { CampaignLandingPageData } from "@/lib/campaign-landing-types"
-import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
+import { PRO_PORTAL_LOGIN_URL, PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-url"
 
 interface Props {
   data: CampaignLandingPageData
@@ -12,29 +11,24 @@ interface Props {
 
 export function CampaignLandingPage({ data }: Props) {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <section className="bg-gradient-to-br from-red-600 via-red-700 to-gray-900 text-white py-16 md:py-24">
+    <div className="min-h-screen bg-surface">
+      <section className="page-hero">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/15 text-white border-white/20 hover:bg-white/20">
-              UFF Wholesale · Broker Resource
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">{data.title}</h1>
-            <p className="text-xl text-red-100 mb-8 leading-relaxed">{data.subtitle}</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="bg-white text-red-600 hover:bg-red-50 font-semibold">
+          <div className="max-w-3xl">
+            <p className="caption mb-4">UFF Wholesale · Broker resource</p>
+            <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">{data.title}</h1>
+            <p className="prose-body mt-4">{data.subtitle}</p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild>
                 <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
                   {data.ctaLabel}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-white text-white hover:bg-white/10 bg-transparent"
-              >
-                <Link href="/get-approved">{data.secondaryCtaLabel ?? "Become a Partner"}</Link>
+              <Button asChild variant="outline">
+                <a href={PRO_PORTAL_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+                  {data.secondaryCtaLabel ?? "Create your account"}
+                </a>
               </Button>
             </div>
           </div>
@@ -43,7 +37,7 @@ export function CampaignLandingPage({ data }: Props) {
 
       {data.heroImageUrl && (
         <section className="container mx-auto px-4 -mt-10 relative z-10">
-          <div className="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl border-4 border-white">
+          <div className="max-w-4xl overflow-hidden border border-hairline">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={data.heroImageUrl} alt={data.title} className="w-full h-auto object-cover" />
           </div>
@@ -98,19 +92,19 @@ export function CampaignLandingPage({ data }: Props) {
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+      <section className="band-nav">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to put this into action?</h2>
-          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
+          <h2 className="text-white">Ready to put this into action?</h2>
+          <p className="mx-auto mb-8 mt-4 max-w-2xl text-white/70">
             Log in to PRO Portal to submit loans, track conditions, and access UFF&apos;s full wholesale toolkit.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg" className="bg-red-600 hover:bg-red-700">
+            <Button asChild size="lg">
               <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
                 {data.ctaLabel}
               </a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-gray-500 text-white hover:bg-white/10">
+            <Button asChild size="lg" variant="outline" className="btn-on-dark">
               <Link href="/pro-portal">Learn about PRO Portal</Link>
             </Button>
           </div>

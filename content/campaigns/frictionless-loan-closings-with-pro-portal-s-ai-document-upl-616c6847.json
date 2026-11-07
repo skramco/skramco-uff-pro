@@ -1,0 +1,38 @@
+{
+  "slug": "frictionless-loan-closings-with-pro-portal-s-ai-document-upl-616c6847",
+  "title": "Frictionless Loan Closings with PRO Portal's AI Document Uploads",
+  "subtitle": "Streamline your loan process with PRO Portal's advanced document upload feature, designed to help you close loans faster and more efficiently.",
+  "campaignId": "616c6847-ace4-43f0-bbbd-bd48d62f161a",
+  "campaignType": "pro_portal_feature_spotlight",
+  "publishedAt": "2026-07-28T17:35:40.937Z",
+  "heroImageUrl": "https://pvzqgboffydqeqzeiysx.supabase.co/storage/v1/object/public/marketing-assets/campaigns/616c6847-ace4-43f0-bbbd-bd48d62f161a/openai-1785258891481.png",
+  "keyTakeaways": [
+    "Utilize drag-and-drop for quick document uploads.",
+    "AI categorization reduces manual errors.",
+    "Automatic anomaly detection ensures data accuracy.",
+    "Accelerate loan closure by managing documents efficiently."
+  ],
+  "sections": [
+    {
+      "heading": "Revolutionize Your Loan Process",
+      "body": "Incorporate the power of AI with PRO Portal's document upload feature. This tool not only simplifies document management but also speeds up loan processing by automatically categorizing and checking documents for anomalies.",
+      "bullets": [
+        "Log in to PRO Portal to begin.",
+        "Drag and drop documents with ease.",
+        "AI categorization prevents misclassification."
+      ]
+    },
+    {
+      "heading": "Enhance Efficiency and Accuracy",
+      "body": "By using PRO Portal's AI-driven document upload, brokers can minimize manual handling errors and ensure all documents are correctly classified and analyzed against loan data. This significantly reduces the time to close loans.",
+      "bullets": [
+        "Identify missing documents quickly.",
+        "Ensure data consistency across all files.",
+        "Boost client satisfaction with faster processes."
+      ]
+    }
+  ],
+  "ctaLabel": "Log in to PRO Portal",
+  "secondaryCtaLabel": "Become a UFF Partner",
+  "metaDescription": "Speed up loan closings with PRO Portal's AI document uploads, reducing errors and delays. Enhance efficiency and client satisfaction today."
+}
