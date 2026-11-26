@@ -11,29 +11,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { formatHoursMinutesValue, formatTurnTimeTileValue } from "@/lib/turn-times-display"
+import {
+  formatTurnTimeRangeSegment,
+  formatTurnTimeTileValue,
+  formatTurnTimeUnitLabel,
+} from "@/lib/turn-times-display"
 import { cn } from "@/lib/utils"
-
-function formatUnitLabel(unit: string): string {
-  if (unit === "hours:minutes") return "hours"
-  if (unit === "business days") return "business days"
-  return unit
-}
-
-function formatRangeSegment(value: string, unit: string): string {
-  if (unit === "hours:minutes") {
-    return formatHoursMinutesValue(value)
-  }
-  if (unit === "business days") {
-    return `${value} business days`
-  }
-  return value
-}
 
 function TurnTimeTileCard({ tile }: { tile: TurnTimesData["tiles"][number] }) {
   const displayValue = formatTurnTimeTileValue(tile.value, tile.unit)
-  const unitLabel = tile.unit === "hours:minutes" ? null : formatUnitLabel(tile.unit)
-  const rangeText = `${formatRangeSegment(tile.rangeLow, tile.rangeUnit)}–${formatRangeSegment(tile.rangeHigh, tile.rangeUnit)}`
+  const unitLabel = formatTurnTimeUnitLabel(tile.unit)
+  const rangeText = `${formatTurnTimeRangeSegment(tile.rangeLow, tile.rangeUnit)}–${formatTurnTimeRangeSegment(tile.rangeHigh, tile.rangeUnit)}`
 
   return (
     <article
@@ -58,27 +46,31 @@ type TurnTimesDialogProps = {
   data: TurnTimesData
   triggerClassName?: string
   triggerContent?: ReactNode
+  /** Fully custom trigger element (e.g. a proof card). Overrides `triggerContent` and the default button styling. */
+  trigger?: ReactNode
 }
 
-export function TurnTimesDialog({ data, triggerClassName, triggerContent }: TurnTimesDialogProps) {
+export function TurnTimesDialog({ data, triggerClassName, triggerContent, trigger }: TurnTimesDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button
-          type="button"
-          className={cn(
-            "inline-flex items-center gap-1.5 font-semibold text-white underline-offset-2 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--nav)]",
-            triggerClassName,
-          )}
-          aria-haspopup="dialog"
-        >
-          {triggerContent ?? (
-            <>
-              <Clock className="h-3.5 w-3.5 shrink-0 opacity-80" aria-hidden />
-              Recent UW turn times
-            </>
-          )}
-        </button>
+        {trigger ?? (
+          <button
+            type="button"
+            className={cn(
+              "inline-flex items-center gap-1.5 font-semibold text-white underline-offset-2 transition-colors hover:text-white hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--nav)]",
+              triggerClassName,
+            )}
+            aria-haspopup="dialog"
+          >
+            {triggerContent ?? (
+              <>
+                <Clock className="h-3.5 w-3.5 shrink-0 opacity-80" aria-hidden />
+                Recent UW turn times
+              </>
+            )}
+          </button>
+        )}
       </DialogTrigger>
       <DialogContent
         className="max-h-[90vh] max-w-3xl overflow-y-auto border-hairline bg-surface-raised p-6 sm:max-w-4xl"

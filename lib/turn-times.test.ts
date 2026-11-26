@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { loadTurnTimesData, turnTimesDataSchema } from "../content/turn-times"
-import { formatHoursMinutesValue, formatTurnTimeTileValue } from "./turn-times-display"
+import { formatHoursMinutesValue, formatTurnTimeTileValue, turnTimeRangeBarPercent } from "./turn-times-display"
 
 const validPayload = {
   asOf: "2026-11-25",
@@ -52,6 +52,36 @@ describe("turn-times display formatting", () => {
   it("leaves non-colon values unchanged", () => {
     expect(formatHoursMinutesValue("12.1")).toBe("12.1")
     expect(formatTurnTimeTileValue("12.1", "business days")).toBe("12.1")
+  })
+})
+
+describe("turn-times range bar math", () => {
+  it("places an hours:minutes value proportionally between its range endpoints", () => {
+    // 4:15 (255m) to 9:22 (562m), value 6:13 (373m) -> (373-255)/(562-255) ≈ 38.4%
+    expect(turnTimeRangeBarPercent("6:13", "4:15", "9:22", "hours:minutes")).toBeCloseTo(38.44, 1)
+  })
+
+  it("places a business-days value proportionally between its range endpoints", () => {
+    // 8.3 to 15.3, value 12.1 -> (12.1-8.3)/(15.3-8.3) ≈ 54.3%
+    expect(turnTimeRangeBarPercent("12.1", "8.3", "15.3", "business days")).toBeCloseTo(54.29, 1)
+  })
+
+  it("clamps the percent to [0, 100] when the value sits outside its own range", () => {
+    expect(turnTimeRangeBarPercent("0:30", "1:00", "2:00", "hours:minutes")).toBe(0)
+    expect(turnTimeRangeBarPercent("3:00", "1:00", "2:00", "hours:minutes")).toBe(100)
+  })
+
+  it("returns the midpoint when the range has no width", () => {
+    expect(turnTimeRangeBarPercent("5:00", "5:00", "5:00", "hours:minutes")).toBe(50)
+  })
+
+  it("matches the committed turn-times.json tiles without throwing", () => {
+    const data = loadTurnTimesData()
+    for (const tile of data.tiles) {
+      const percent = turnTimeRangeBarPercent(tile.value, tile.rangeLow, tile.rangeHigh, tile.rangeUnit)
+      expect(percent).toBeGreaterThanOrEqual(0)
+      expect(percent).toBeLessThanOrEqual(100)
+    }
   })
 })
 
