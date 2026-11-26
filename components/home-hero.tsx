@@ -15,7 +15,7 @@ export function HomeHero() {
         <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-8">
           <div className="max-w-[40rem]">
             <p className="home-hero-kicker">For mortgage brokers</p>
-            <h1 className="home-hero-title">Approved in minutes. Not weeks.</h1>
+            <h1 className="home-hero-title">Fast AUS turn times. Less waiting around.</h1>
             <p className="mt-5 max-w-[36rem] text-[17px] leading-relaxed text-white/75">
               If you broker with UFF, you start with the product. Originate it in PRO Portal. Piper stays on the file
               from first price through funded.
