@@ -61,11 +61,8 @@ export default function RootLayout({
                   </Link>
 
                   <nav className="hidden items-center gap-6 text-nav lg:flex">
-                    <Link href="/" className="text-ink-muted duration-150 hover:text-ink">
-                      Home
-                    </Link>
                     <Link href="/products" className="text-ink-muted duration-150 hover:text-ink">
-                      Products
+                      Loan products
                     </Link>
                     <Link href="/pro-portal" className="text-ink-muted duration-150 hover:text-ink">
                       PRO Portal
