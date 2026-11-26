@@ -21,6 +21,8 @@ const sans = Inter({
   display: "swap",
 })
 
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   ...pageMetadata({
     title: "Wholesale Mortgage Lending for Brokers | United Fidelity Funding",

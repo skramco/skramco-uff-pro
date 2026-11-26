@@ -1,0 +1,39 @@
+{
+  "asOf": "2026-11-25",
+  "asOfLabel": "November 25, 2026",
+  "tiles": [
+    {
+      "key": "setup",
+      "title": "Setup to underwriting",
+      "value": "2:45",
+      "unit": "hours:minutes",
+      "basis": "typical business time",
+      "description": "File set up and in front of an underwriter",
+      "rangeLow": "1:01",
+      "rangeHigh": "7:14",
+      "rangeUnit": "hours:minutes"
+    },
+    {
+      "key": "uw",
+      "title": "Underwriting decision",
+      "value": "6:13",
+      "unit": "hours:minutes",
+      "basis": "typical business time",
+      "description": "From submission to first decision",
+      "rangeLow": "4:15",
+      "rangeHigh": "9:22",
+      "rangeUnit": "hours:minutes"
+    },
+    {
+      "key": "ctc",
+      "title": "Clear to close",
+      "value": "12.1",
+      "unit": "business days",
+      "basis": "typical business time",
+      "description": "After approval, once conditions are received",
+      "rangeLow": "8.3",
+      "rangeHigh": "15.3",
+      "rangeUnit": "business days"
+    }
+  ]
+}
