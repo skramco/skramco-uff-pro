@@ -24,7 +24,7 @@
     },
     {
       "heading": "Seamless Document Submission",
-      "body": "PRO Portal's drag-and-drop functionality simplifies the document upload process, saving time and reducing the likelihood of errors. Once documents are uploaded, they are automatically categorized, ensuring a smooth transition into the loan processing workflow.",
+      "body": "PRO Portal's drag-and-drop functionality simplifies the document upload process, saving time and reducing the likelihood of errors. Once documents are uploaded, they are automatically categorized to help files move into the loan processing workflow.",
       "bullets": [
         "Drag-and-drop for quick uploads.",
         "Automatic categorization enhances accuracy."
@@ -32,9 +32,9 @@
     },
     {
       "heading": "Maintain Up-to-Date Documentation",
-      "body": "Version control within PRO Portal ensures that you and your team are always working with the latest borrower documents. This feature minimizes confusion and errors, keeping your loan pipeline on track.",
+      "body": "Version control within PRO Portal helps you and your team work from the latest borrower documents. This feature minimizes confusion and errors, keeping your loan pipeline on track.",
       "bullets": [
-        "Track document versions to ensure currency.",
+        "Track document versions to help spot outdated files.",
         "Resolve discrepancies with ease."
       ]
     },

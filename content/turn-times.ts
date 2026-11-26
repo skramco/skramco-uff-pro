@@ -1,15 +1,6 @@
 import { z } from "zod"
 import turnTimesJson from "./turn-times.json"
 
-export type TurnTimeStatus = "on-time" | "extended" | "unknown"
-
-export type TurnTimeRow = {
-  product: string
-  milestone: string
-  value: string
-  status: TurnTimeStatus
-}
-
 const tileKeySchema = z.enum(["setup", "uw", "ctc"])
 
 const turnTimeTileSchema = z.object({
@@ -38,41 +29,3 @@ export function loadTurnTimesData(raw: unknown = turnTimesJson): TurnTimesData {
 }
 
 export const turnTimesData = loadTurnTimesData()
-
-function tileDisplayValue(tile: TurnTimeTile): string {
-  if (tile.unit === "hours:minutes") {
-    return tile.value
-  }
-  if (tile.unit === "business days") {
-    return `${tile.value} days`
-  }
-  return tile.value
-}
-
-function rowFromTile(tile: TurnTimeTile, milestone: string): TurnTimeRow {
-  return {
-    product: "All products",
-    milestone,
-    value: tileDisplayValue(tile),
-    status: "on-time",
-  }
-}
-
-const uwTile = turnTimesData.tiles.find((tile) => tile.key === "uw")
-const ctcTile = turnTimesData.tiles.find((tile) => tile.key === "ctc")
-
-/** @deprecated Legacy row shape; values are derived from `turn-times.json`. */
-export const turnTimes = {
-  rows: [
-    ...(uwTile ? [rowFromTile(uwTile, "Underwriting")] : []),
-    ...(ctcTile ? [rowFromTile(ctcTile, "Clear to close")] : []),
-  ] satisfies TurnTimeRow[],
-}
-
-export function underwritingTurnTime(): TurnTimeRow | undefined {
-  return turnTimes.rows.find((row) => row.milestone === "Underwriting")
-}
-
-export function clearToCloseTurnTime(): TurnTimeRow | undefined {
-  return turnTimes.rows.find((row) => row.milestone === "Clear to close")
-}

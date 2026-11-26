@@ -9,7 +9,7 @@
   "keyTakeaways": [
     "Utilize drag-and-drop for quick document uploads.",
     "AI categorization reduces manual errors.",
-    "Automatic anomaly detection ensures data accuracy.",
+    "Automatic anomaly detection helps catch data issues early.",
     "Accelerate loan closure by managing documents efficiently."
   ],
   "sections": [
@@ -24,10 +24,10 @@
     },
     {
       "heading": "Enhance Efficiency and Accuracy",
-      "body": "By using PRO Portal's AI-driven document upload, brokers can minimize manual handling errors and ensure all documents are correctly classified and analyzed against loan data. This significantly reduces the time to close loans.",
+      "body": "By using PRO Portal's AI-driven document upload, brokers can minimize manual handling errors and help flag documents for review against loan data. This can help files keep moving.",
       "bullets": [
         "Identify missing documents quickly.",
-        "Ensure data consistency across all files.",
+        "Use built-in checks to help spot data inconsistencies.",
         "Boost client satisfaction with faster processes."
       ]
     }

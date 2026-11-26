@@ -1,12 +1,17 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { HomeHeroTurnTimeNote } from "@/components/home-hero-turn-time-note"
+import { loadTurnTimesData } from "@/content/turn-times"
 import { portalScreens } from "@/content/portal-screens"
+import { formatTurnTimeTileValue } from "@/lib/turn-times-display"
 import { PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-url"
 
 export function HomeHero() {
   const pipeline = portalScreens[0]
   const pricing = portalScreens.find((shot) => shot.label === "Pricing") ?? portalScreens[3]
+  const uwTile = loadTurnTimesData().tiles.find((tile) => tile.key === "uw")
+  const uwDisplayValue = uwTile ? formatTurnTimeTileValue(uwTile.value, uwTile.unit) : "—"
 
   return (
     <section className="home-hero">
@@ -16,6 +21,7 @@ export function HomeHero() {
           <div className="max-w-[40rem]">
             <p className="home-hero-kicker">For mortgage brokers</p>
             <h1 className="home-hero-title">Fast underwriting turn times. Less waiting around.</h1>
+            <HomeHeroTurnTimeNote uwDisplayValue={uwDisplayValue} />
             <p className="mt-5 max-w-[36rem] text-[17px] leading-relaxed text-white/75">
               If you broker with UFF, you start with the product. Originate it in PRO Portal. Piper stays on the file
               from first price through funded.
