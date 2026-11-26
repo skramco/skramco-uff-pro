@@ -101,7 +101,10 @@
     background: radial-gradient(ellipse at center, rgba(225, 4, 4, 0.28) 0%, rgba(225, 4, 4, 0) 62%);
   }
   .home-hero-kicker {
-    @apply mb-4 inline-flex items-center rounded-pill border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-white/80;
+    @apply mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-white/80;
+  }
+  .home-hero-kicker-dash {
+    @apply inline-block h-[2px] w-[18px] bg-accent;
   }
   .home-hero-title {
     font-size: clamp(var(--type-3xl), 5.4vw, var(--type-5xl));
@@ -109,74 +112,6 @@
     letter-spacing: -0.035em;
     line-height: 0.98;
     color: #ffffff;
-  }
-  .home-hero-stage {
-    position: relative;
-    min-height: 18rem;
-    padding-bottom: 3.5rem;
-  }
-  .home-hero-window {
-    overflow: hidden;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: #11181c;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45), 0 2px 16px rgba(225, 4, 4, 0.12);
-  }
-  .home-hero-chrome {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    background: #1b2429;
-    padding: 8px 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-  .home-hero-dot:first-child {
-    background: #e10404;
-  }
-  .home-hero-chrome-title {
-    margin-left: 8px;
-    font-size: var(--type-caption);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: rgba(255, 255, 255, 0.55);
-  }
-  .home-hero-float {
-    position: absolute;
-  }
-  .home-hero-float-pricing {
-    right: -6%;
-    bottom: -8%;
-    width: 52%;
-    transform: rotate(3.5deg);
-    z-index: 2;
-  }
-  .home-hero-float-pricing .home-hero-window {
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
-  }
-  .home-hero-float-piper {
-    left: 4%;
-    bottom: 0.5rem;
-    z-index: 3;
-    width: min(18rem, 70%);
-    border-radius: 10px;
-    border: 1px solid rgba(225, 4, 4, 0.45);
-    background: rgba(31, 10, 10, 0.88);
-    padding: 12px 14px;
-    backdrop-filter: blur(8px);
-  }
-  @media (max-width: 1023px) {
-    .home-hero-stage {
-      padding-bottom: 2rem;
-    }
-    .home-hero-float-pricing {
-      right: -2%;
-      bottom: -4%;
-      width: 48%;
-    }
-    .home-hero-float-piper {
-      left: 3%;
-      bottom: 0;
-    }
   }
   .section-pad {
     @apply py-12;
