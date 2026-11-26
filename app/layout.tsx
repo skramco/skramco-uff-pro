@@ -13,6 +13,7 @@ import { DisclosureFooter } from "@/components/disclosure-footer"
 import { PRO_PORTAL_LOGIN_URL, PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-url"
 import { calculators } from "@/content/calculators"
 import { cheatSheets } from "@/content/cheat-sheets"
+import { MobileNav } from "@/components/mobile-nav"
 
 const sans = Inter({
   subsets: ["latin"],
@@ -172,11 +173,7 @@ export default function RootLayout({
                   </nav>
 
                   <div className="flex items-center gap-2 lg:hidden">
-                    <Button asChild size="sm" variant="outline">
-                      <a href={PRO_PORTAL_LOGIN_URL} target="_blank" rel="noopener noreferrer">
-                        Log in
-                      </a>
-                    </Button>
+                    <MobileNav showNonQmIncomeAnalysis={showNonQmIncomeAnalysis} />
                     <Button asChild size="sm">
                       <a href={PRO_PORTAL_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
                         Create your account
