@@ -4,7 +4,7 @@ import type { ProductDetail } from "./types"
 export const investor: ProductDetail = {
   slug: "investor",
   name: "Investor loans",
-  href: "/products/investor",
+  href: "/loan-products/investor",
   positioning: "DSCR investor loans underwritten to the property's cash flow, not W-2 income.",
   summary:
     "Investor loans are for real-estate investors, not owner-occupants. Qualification is based on the property's rental cash flow (DSCR), not the borrower's personal DTI, and interest-only is available. Use this when the file is an investment property and rents, not W-2s, tell the story.",

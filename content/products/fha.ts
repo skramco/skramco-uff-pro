@@ -5,7 +5,7 @@ import type { ProductDetail } from "./types"
 export const fha: ProductDetail = {
   slug: "fha",
   name: "FHA",
-  href: "/products/fha",
+  href: "/loan-products/fha",
   positioning: "FHA purchase, streamline, renovation, and Section 184. 3.5% down and credit as low as 580 on 203(b).",
   summary:
     "FHA is built for first-time and repeat buyers who need a lower down payment and more flexible credit than conventional. 203(b) covers standard and high-balance purchases. Streamlines, 203(k) renovation, and Section 184 Indian Housing serve refinance, rehab, and Native American housing files that will not fit a vanilla agency box.",
