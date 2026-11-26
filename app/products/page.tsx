@@ -44,8 +44,8 @@ export default function ProductsPage() {
       <section className="section-pad">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {products.map((product) => (
-              <ProductCard key={product.slug} product={product} />
+            {products.map((product, index) => (
+              <ProductCard key={product.slug} product={product} priority={index === 0} />
             ))}
           </div>
         </div>
