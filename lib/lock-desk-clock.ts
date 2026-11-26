@@ -194,6 +194,35 @@ export function getLockDeskClock(now = new Date()): LockDeskClock {
   }
 }
 
+export type LockDeskStatus = {
+  kind: "open" | "closed"
+  /** ms timestamp of the next state change: close time if open, next open time if closed. */
+  changeAtMs: number
+}
+
+/** Lighter-weight sibling of {@link getLockDeskClock} for display spots that only need open/closed plus the next change time (no live countdown). */
+export function getLockDeskStatus(now = new Date()): LockDeskStatus {
+  const p = getZonedParts(now)
+  const todayClosed = isDeskClosedAllDay(p.year, p.month, p.day)
+  const close = closeHourFor(p.year, p.month, p.day)
+  const openMs = zonedLocalToUtcMs(p.year, p.month, p.day, lockDesk.openHour, lockDesk.openMinute)
+  const closeMs = zonedLocalToUtcMs(p.year, p.month, p.day, close.hour, close.minute)
+  const nowMs = now.getTime()
+
+  if (!todayClosed && nowMs >= openMs && nowMs < closeMs) {
+    return { kind: "open", changeAtMs: closeMs }
+  }
+
+  let openDay = { year: p.year, month: p.month, day: p.day }
+  if (todayClosed || nowMs >= closeMs) {
+    const tomorrow = addCalendarDays(p.year, p.month, p.day, 1)
+    openDay = nextOpenDay(tomorrow.year, tomorrow.month, tomorrow.day)
+  }
+
+  const nextOpenMs = zonedLocalToUtcMs(openDay.year, openDay.month, openDay.day, lockDesk.openHour, lockDesk.openMinute)
+  return { kind: "closed", changeAtMs: nextOpenMs }
+}
+
 export function getMonthEndCountdown(now = new Date()) {
   const p = getZonedParts(now)
   const lastDay = new Date(Date.UTC(p.year, p.month, 0)).getUTCDate()
