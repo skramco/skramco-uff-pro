@@ -17,15 +17,15 @@ function ProofTile({ tile }: { tile: TurnTimesData["tiles"][number] }) {
 
   return (
     <div>
-      <p className="text-[10.5px] font-semibold uppercase tracking-[0.04em] text-ink-muted">{tile.title}</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.04em] text-ink-muted">{tile.title}</p>
       <p className="mt-1.5 text-xl font-extrabold tabular-nums tracking-tight text-ink sm:text-2xl">
         {displayValue}
-        {unitLabel ? <span className="ml-1 text-[11px] font-semibold text-ink-muted">{unitLabel}</span> : null}
+        {unitLabel ? <span className="ml-1 text-xs font-semibold text-ink-muted">{unitLabel}</span> : null}
       </p>
       <div className="mt-3 h-1.5 overflow-hidden rounded-pill bg-muted" aria-hidden>
         <span className="block h-full rounded-pill bg-accent" style={{ width: `${rangePercent}%` }} />
       </div>
-      <p className="mt-1.5 text-[10.5px] tabular-nums text-ink-muted">
+      <p className="mt-1.5 text-xs tabular-nums text-ink-muted">
         {formatTurnTimeRangeSegment(tile.rangeLow, tile.rangeUnit)}–
         {formatTurnTimeRangeSegment(tile.rangeHigh, tile.rangeUnit)}
       </p>

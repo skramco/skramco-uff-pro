@@ -4,6 +4,18 @@
 
 /* Piper / PRO Portal tokens — keep uff.pro visually aligned with the product. */
 :root {
+  /* Global type scale (px) */
+  --type-caption: 12px;
+  --type-sm: 14px;
+  --type-body: 16px;
+  --type-nav: 15px;
+  --type-lg: 18px;
+  --type-xl: 22px;
+  --type-2xl: 28px;
+  --type-3xl: 36px;
+  --type-4xl: 48px;
+  --type-5xl: 60px;
+
   --surface: #f5f6f8;
   --surface-raised: #ffffff;
   --ink: #1f292e;
@@ -48,7 +60,7 @@
     @apply bg-surface text-ink antialiased;
   }
   body {
-    @apply bg-surface text-ink font-sans text-[15px] leading-relaxed;
+    @apply bg-surface text-ink font-sans text-base leading-relaxed;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
   h1,
@@ -61,10 +73,10 @@
   }
   h1,
   .display {
-    font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+    font-size: clamp(var(--type-2xl), 3.6vw, var(--type-3xl));
   }
   h2 {
-    font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+    font-size: clamp(var(--type-xl), 2.2vw, var(--type-2xl));
     font-weight: 700;
     letter-spacing: -0.015em;
   }
@@ -89,10 +101,10 @@
     background: radial-gradient(ellipse at center, rgba(225, 4, 4, 0.28) 0%, rgba(225, 4, 4, 0) 62%);
   }
   .home-hero-kicker {
-    @apply mb-4 inline-flex items-center rounded-pill border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-white/80;
+    @apply mb-4 inline-flex items-center rounded-pill border border-white/15 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-white/80;
   }
   .home-hero-title {
-    font-size: clamp(2.35rem, 5.4vw, 4.15rem);
+    font-size: clamp(var(--type-3xl), 5.4vw, var(--type-5xl));
     font-weight: 800;
     letter-spacing: -0.035em;
     line-height: 0.98;
@@ -123,7 +135,7 @@
   }
   .home-hero-chrome-title {
     margin-left: 8px;
-    font-size: 11px;
+    font-size: var(--type-caption);
     font-weight: 600;
     letter-spacing: 0.02em;
     color: rgba(255, 255, 255, 0.55);
@@ -178,13 +190,13 @@
     color: #ffffff;
   }
   .caption {
-    @apply text-[10.5px] font-semibold uppercase tracking-[0.04em] text-ink-muted;
+    @apply text-xs font-semibold uppercase tracking-[0.04em] text-ink-muted;
   }
   .data-num {
     @apply tabular-nums tracking-tight;
   }
   .prose-body {
-    @apply max-w-[68ch] text-[15px] leading-relaxed text-ink-muted;
+    @apply max-w-[68ch] text-base leading-relaxed text-ink-muted;
   }
   .panel {
     @apply rounded-card border border-hairline bg-surface-raised;

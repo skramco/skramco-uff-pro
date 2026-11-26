@@ -31,7 +31,7 @@ export function ProgramTabs({ dscrPanel, fullPanel }: Props) {
             className="mr-8 inline-flex h-auto flex-col items-start rounded-none border-b-[3px] border-transparent bg-transparent px-0 py-3 text-left text-sm font-bold tracking-[0.02em] text-ink-muted shadow-none ring-offset-0 data-[state=active]:border-uff-red data-[state=active]:bg-transparent data-[state=active]:text-uff-ink data-[state=active]:shadow-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-uff-red focus-visible:ring-0"
           >
             DSCR — Investor NQM
-            <span className="mt-[3px] block text-[11px] font-normal uppercase tracking-[0.04em] text-ink-muted">
+            <span className="mt-[3px] block text-xs font-normal uppercase tracking-[0.04em] text-ink-muted">
               No income · No employment
             </span>
           </TabsTrigger>
@@ -42,7 +42,7 @@ export function ProgramTabs({ dscrPanel, fullPanel }: Props) {
             className="mr-8 inline-flex h-auto flex-col items-start rounded-none border-b-[3px] border-transparent bg-transparent px-0 py-3 text-left text-sm font-bold tracking-[0.02em] text-ink-muted shadow-none ring-offset-0 data-[state=active]:border-uff-red data-[state=active]:bg-transparent data-[state=active]:text-uff-ink data-[state=active]:shadow-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[3px] focus-visible:outline-uff-red focus-visible:ring-0"
           >
             Full Doc — Residential NQM
-            <span className="mt-[3px] block text-[11px] font-normal uppercase tracking-[0.04em] text-ink-muted">
+            <span className="mt-[3px] block text-xs font-normal uppercase tracking-[0.04em] text-ink-muted">
               Primary, second home &amp; investment
             </span>
           </TabsTrigger>

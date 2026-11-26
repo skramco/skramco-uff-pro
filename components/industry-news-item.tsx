@@ -29,7 +29,7 @@ export function IndustryNewsItem({
             </div>
           )}
           {isVideo ? (
-            <span className="absolute bottom-3 left-3 inline-flex items-center gap-1 rounded-md bg-nav/80 px-2 py-1 text-[10.5px] font-semibold uppercase tracking-[0.04em] text-white">
+            <span className="absolute bottom-3 left-3 inline-flex items-center gap-1 rounded-md bg-nav/80 px-2 py-1 text-xs font-semibold uppercase tracking-[0.04em] text-white">
               <Play className="h-3 w-3" aria-hidden />
               Video
             </span>

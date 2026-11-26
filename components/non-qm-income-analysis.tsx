@@ -75,7 +75,7 @@ function SummaryMetric({
 
   return (
     <div className="rounded border border-gray-300 bg-white px-3 py-2 min-w-[140px]">
-      <p className="text-[11px] uppercase tracking-wide text-gray-500">{label}</p>
+      <p className="text-xs uppercase tracking-wide text-gray-500">{label}</p>
       <p className={`text-sm font-medium ${valueClass}`}>{value}</p>
     </div>
   )
@@ -491,7 +491,7 @@ export default function NonQmIncomeAnalysisTool() {
               <Plus className="mr-2 h-4 w-4" />
               Add Business Row
             </Button>
-            <p className="mt-3 text-[11px] text-gray-600">
+            <p className="mt-3 text-xs text-gray-600">
               Expense Factor Business Bank Accounts: CPA Letter only required for an expense factor
               &lt; 50%. Personal Bank Accounts: Set Expense Factor at 0%.
             </p>
@@ -735,7 +735,7 @@ export default function NonQmIncomeAnalysisTool() {
                 <div className="rounded bg-gray-50 p-2">
                   <p className="text-xs text-gray-600">No Ratio Results (required total eligible assets)</p>
                   <p className="text-base font-semibold">{formatCurrency(results.noRatioRequiredAssets)}</p>
-                  <p className="mt-1 text-[11px] text-gray-500">
+                  <p className="mt-1 text-xs text-gray-500">
                     Formula: Note Amount + (PITIA × Reserve Months)
                   </p>
                 </div>

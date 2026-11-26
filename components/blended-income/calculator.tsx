@@ -104,7 +104,7 @@ function verdict(result: BlendedIncomeResult): { tone: "pass" | "fail" | "idle";
 
 function FieldLabel({ id, children }: { id: string; children: string }) {
   return (
-    <label htmlFor={id} className="mb-1.5 block text-[13px] font-semibold text-[var(--bi-ink)]">
+    <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-[var(--bi-ink)]">
       {children}
     </label>
   )

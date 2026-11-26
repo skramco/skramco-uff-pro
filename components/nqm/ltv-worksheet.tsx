@@ -14,7 +14,7 @@ import {
 
 const fieldClass =
   "w-full rounded-md border border-white/18 bg-white/[.07] px-[11px] py-2.5 text-sm text-white focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-uff-red"
-const labelClass = "mb-1.5 block text-[10.5px] uppercase tracking-[0.14em] text-[#9C9CA3]"
+const labelClass = "mb-1.5 block text-xs uppercase tracking-[0.14em] text-[#9C9CA3]"
 const selectClass = `${fieldClass} appearance-none bg-[length:5px_5px,5px_5px] bg-[position:calc(100%-18px)_50%,calc(100%-13px)_50%] bg-no-repeat [background-image:linear-gradient(45deg,transparent_50%,#9C9CA3_50%),linear-gradient(135deg,#9C9CA3_50%,transparent_50%)]`
 
 export function LtvWorksheet({ program }: { program: ProgramId }) {
@@ -51,10 +51,10 @@ export function LtvWorksheet({ program }: { program: ProgramId }) {
   return (
     <div className="nqm-worksheet mb-11 mt-[26px] overflow-hidden rounded-card text-white shadow-[0_1px_2px_rgba(19,19,19,.05),0_8px_22px_rgba(19,19,19,.06)] bg-uff-ink print:hidden">
       <div className="flex flex-wrap items-center gap-3.5 border-b border-white/12 px-[22px] py-4">
-        <h2 className="m-0 text-[19px] font-extrabold uppercase tracking-[-0.01em]">
+        <h2 className="m-0 text-lg font-extrabold uppercase tracking-[-0.01em]">
           Max LTV <span className="text-uff-red">Worksheet</span>
         </h2>
-        <p className="m-0 text-[12.5px] text-[#9C9CA3]">
+        <p className="m-0 text-xs text-[#9C9CA3]">
           Enter the scenario. The ledger shows the base LTV from the grid, then every cap and reduction applied.
         </p>
       </div>
@@ -140,12 +140,12 @@ export function LtvWorksheet({ program }: { program: ProgramId }) {
             ) : null}
           </div>
 
-          <div className="mb-2 mt-[18px] text-[10.5px] uppercase tracking-[0.14em] text-[#9C9CA3]">
+          <div className="mb-2 mt-[18px] text-xs uppercase tracking-[0.14em] text-[#9C9CA3]">
             Caps &amp; adjustments
           </div>
           <div className="grid grid-cols-1 gap-x-4 gap-y-[7px] min-[480px]:grid-cols-2">
             {adjustments.map((a) => (
-              <label key={a.id} className="flex cursor-pointer items-start gap-2 text-[12.5px] leading-[1.35] text-[#E4E4E7]">
+              <label key={a.id} className="flex cursor-pointer items-start gap-2 text-xs leading-[1.35] text-[#E4E4E7]">
                 <input
                   type="checkbox"
                   className="mt-0.5 accent-uff-red"
@@ -166,18 +166,18 @@ export function LtvWorksheet({ program }: { program: ProgramId }) {
                 : "border-[#6E6E75] border-l-[#6E6E75] bg-white/5"
             }`}
           >
-            <div className="text-[10.5px] uppercase tracking-[0.14em] text-[#F3B3B0]">Maximum LTV</div>
-            <div className="mt-1 text-[54px] font-extrabold leading-none tracking-[-0.03em]">
+            <div className="text-xs uppercase tracking-[0.14em] text-[#F3B3B0]">Maximum LTV</div>
+            <div className="mt-1 text-5xl font-extrabold leading-none tracking-[-0.03em]">
               {result.ok ? (
                 <>
                   {formatPct(result.ltv).replace("%", "")}
-                  <small className="text-[22px] tracking-normal text-uff-red">%</small>
+                  <small className="text-xl tracking-normal text-uff-red">%</small>
                 </>
               ) : (
                 "—"
               )}
             </div>
-            <div className="mt-[7px] text-[12.5px] text-[#DEDEE2]">{result.ok ? result.note : result.message}</div>
+            <div className="mt-[7px] text-xs text-[#DEDEE2]">{result.ok ? result.note : result.message}</div>
           </div>
 
           <div className="mt-4 flex-1 text-xs">
@@ -207,7 +207,7 @@ export function LtvWorksheet({ program }: { program: ProgramId }) {
                 ))
               : null}
           </div>
-          <p className="mt-3.5 text-[11.5px] leading-[1.45] text-[#8A8A91]">
+          <p className="mt-3.5 text-xs leading-[1.45] text-[#8A8A91]">
             Guide only — not a credit decision, commitment to lend, or rate lock. Program guidelines and UFF
             underwriting govern in all cases.
           </p>

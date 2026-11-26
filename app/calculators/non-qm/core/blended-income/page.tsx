@@ -45,10 +45,10 @@ export default function BlendedIncomePage() {
         <div className="container mx-auto grid grid-cols-1 items-start gap-10 px-4 py-12 min-[961px]:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
           <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[var(--bi-brand-text)]">Non-QM Core</p>
-            <h1 className="mt-3 max-w-[16ch] text-[clamp(2rem,5vw,3.25rem)] font-extrabold leading-[1.02] tracking-[-0.03em] text-[var(--bi-ink)]">
+            <h1 className="mt-3 max-w-[16ch] text-[clamp(var(--type-2xl),5vw,var(--type-4xl))] font-extrabold leading-[1.02] tracking-[-0.03em] text-[var(--bi-ink)]">
               Stack income streams. Bring the DTI back under 50%.
             </h1>
-            <p className="mt-4 max-w-[62ch] text-[15.5px] leading-relaxed text-[var(--bi-muted)]">
+            <p className="mt-4 max-w-[62ch] text-base leading-relaxed text-[var(--bi-muted)]">
               Pair 12-month bank statement or full-doc income with asset depletion. On Non-QM Core, those assets are
               divided by 36 months instead of 84, which is how a file sitting over 50% DTI gets back under the line.
             </p>
@@ -91,7 +91,7 @@ export default function BlendedIncomePage() {
       <section className="bg-[var(--bi-wash)]">
         <div className="container mx-auto grid grid-cols-1 items-center gap-8 px-4 py-12 min-[961px]:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
           <div className="min-w-0">
-            <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-[var(--bi-ink)]">
+            <h2 className="text-[clamp(var(--type-xl),3vw,var(--type-2xl))] font-extrabold tracking-tight text-[var(--bi-ink)]">
               The divisor is where the income comes from.
             </h2>
             <p className="mt-3 max-w-[48ch] text-[var(--bi-muted)]">
@@ -119,7 +119,7 @@ export default function BlendedIncomePage() {
 
       <section>
         <div className="container mx-auto px-4 py-12">
-          <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-[var(--bi-ink)]">
+          <h2 className="text-[clamp(var(--type-xl),3vw,var(--type-2xl))] font-extrabold tracking-tight text-[var(--bi-ink)]">
             What counts, and at what value
           </h2>
           <div className="mt-6 overflow-x-auto">
@@ -147,7 +147,7 @@ export default function BlendedIncomePage() {
 
       <section id="calculator" className="scroll-mt-24 border-t border-[var(--bi-rule)] bg-[var(--bi-wash)]">
         <div className="container mx-auto px-4 py-12">
-          <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-[var(--bi-ink)]">
+          <h2 className="text-[clamp(var(--type-xl),3vw,var(--type-2xl))] font-extrabold tracking-tight text-[var(--bi-ink)]">
             Blended income calculator
           </h2>
           <p className="mt-3 max-w-[68ch] text-[var(--bi-muted)]">
@@ -163,7 +163,7 @@ export default function BlendedIncomePage() {
       <section>
         <div className="container mx-auto grid grid-cols-1 items-start gap-8 px-4 py-12 min-[961px]:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
           <div className="min-w-0">
-            <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-[var(--bi-ink)]">
+            <h2 className="text-[clamp(var(--type-xl),3vw,var(--type-2xl))] font-extrabold tracking-tight text-[var(--bi-ink)]">
               When the assets cover everything, skip the income.
             </h2>
             <p className="mt-3 text-[var(--bi-muted)]">
@@ -187,7 +187,7 @@ export default function BlendedIncomePage() {
 
       <section id="guidelines" className="scroll-mt-24 bg-[var(--bi-wash)]">
         <div className="container mx-auto px-4 py-12">
-          <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-extrabold tracking-tight text-[var(--bi-ink)]">
+          <h2 className="text-[clamp(var(--type-xl),3vw,var(--type-2xl))] font-extrabold tracking-tight text-[var(--bi-ink)]">
             Guideline notes
           </h2>
           <ul className="mt-6 grid grid-cols-1 gap-3 min-[961px]:grid-cols-2">

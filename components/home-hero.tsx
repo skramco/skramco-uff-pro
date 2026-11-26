@@ -21,7 +21,7 @@ export function HomeHero() {
 
             <HomeHeroProofCard />
 
-            <p className="mt-5 max-w-[36rem] text-[17px] leading-relaxed text-white/75">
+            <p className="mt-5 max-w-[36rem] text-lg leading-relaxed text-white/75">
               If you broker with UFF, you start with the product. Originate it in PRO Portal. Piper stays on the file
               from first price through funded.
             </p>
