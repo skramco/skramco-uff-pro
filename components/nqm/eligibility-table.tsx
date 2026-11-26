@@ -14,21 +14,21 @@ type FullProps = {
 
 export function EligibilityTable(props: DscrProps | FullProps) {
   return (
-    <div className="overflow-hidden rounded-[3px] border border-[#E3E3E6] bg-white shadow-[0_1px_2px_rgba(19,19,19,.05),0_8px_22px_rgba(19,19,19,.06)]">
-      <div className="bg-uff-ink px-3.5 py-[11px] font-archivo text-[11px] font-bold uppercase tracking-[0.16em] text-white print:print-color-adjust-exact">
+    <div className="overflow-hidden rounded-card border border-hairline bg-surface-raised shadow-[0_1px_2px_rgba(19,19,19,.05),0_8px_22px_rgba(19,19,19,.06)]">
+      <div className="bg-uff-ink px-3.5 py-[11px] text-[11px] font-bold uppercase tracking-[0.16em] text-white print:print-color-adjust-exact">
         Program eligibility · Max LTV
       </div>
-      <div className="table-scroll max-[900px]:overflow-x-auto">
+      <div className="overflow-x-auto">
         {props.variant === "dscr" ? <DscrGrid tiers={props.tiers} /> : <FullGrid tiers={props.tiers} />}
       </div>
-      <div className="border-t border-[#E3E3E6] bg-[#FAFAFB] px-3.5 py-2.5 text-xs text-[#6B6B71]">{props.note}</div>
+      <div className="border-t border-hairline bg-surface px-3.5 py-2.5 text-xs text-ink-muted">{props.note}</div>
     </div>
   )
 }
 
 function DscrGrid({ tiers }: { tiers: DscrTier[] }) {
   return (
-    <table className="w-full border-collapse text-[13.5px] max-[900px]:min-w-[660px] [&_tbody_tr:last-child_td]:border-b-0">
+    <table className="w-full min-w-[660px] border-collapse text-[13.5px] [&_tbody_tr:last-child_td]:border-b-0">
       <thead>
         <tr>
           <th rowSpan={2} className={thClass}>
@@ -86,7 +86,7 @@ function DscrGrid({ tiers }: { tiers: DscrTier[] }) {
 
 function FullGrid({ tiers }: { tiers: FullTier[] }) {
   return (
-    <table className="w-full border-collapse text-[13.5px] max-[900px]:min-w-[660px] [&_tbody_tr:last-child_td]:border-b-0">
+    <table className="w-full min-w-[660px] border-collapse text-[13.5px] [&_tbody_tr:last-child_td]:border-b-0">
       <thead>
         <tr>
           <th rowSpan={2} className={thClass}>
@@ -146,10 +146,10 @@ function FullGrid({ tiers }: { tiers: FullTier[] }) {
                   </td>
                 ) : null}
                 <td className={`${numCell} font-semibold`}>{row.fico}</td>
-                <td className={`${numCell} ${pPrt.na ? "text-[#A5A5AC]" : ""}`}>{pPrt.text}</td>
-                <td className={`${numCell} ${pCo.na ? "text-[#A5A5AC]" : ""}`}>{pCo.text}</td>
-                <td className={`${invCell} ${iPrt.na ? "text-[#A5A5AC]" : ""}`}>{iPrt.text}</td>
-                <td className={`${invCell} ${iCo.na ? "text-[#A5A5AC]" : ""}`}>{iCo.text}</td>
+                <td className={`${numCell} ${pPrt.na ? "text-ink-muted" : ""}`}>{pPrt.text}</td>
+                <td className={`${numCell} ${pCo.na ? "text-ink-muted" : ""}`}>{pCo.text}</td>
+                <td className={`${invCell} ${iPrt.na ? "text-ink-muted" : ""}`}>{iPrt.text}</td>
+                <td className={`${invCell} ${iCo.na ? "text-ink-muted" : ""}`}>{iCo.text}</td>
               </tr>
             )
           }),
@@ -160,16 +160,15 @@ function FullGrid({ tiers }: { tiers: FullTier[] }) {
 }
 
 const thClass =
-  "whitespace-nowrap border-b border-[#E3E3E6] bg-[#EFEFF1] px-2.5 py-[9px] text-center font-archivo text-[10.5px] font-bold uppercase tracking-[0.1em] text-uff-ink"
+  "whitespace-nowrap border-b border-hairline bg-muted px-2.5 py-[9px] text-center text-[10.5px] font-bold uppercase tracking-[0.1em] text-uff-ink"
 
-const numCell =
-  "border-b border-[#EEEEF0] px-2.5 py-[9px] text-center font-plex text-[13px] group-hover:bg-[#F6F6F7]"
+const numCell = "border-b border-hairline px-2.5 py-[9px] text-center text-[13px] group-hover:bg-muted"
 
 const invCell =
-  "border-b border-[#EEEEF0] bg-[#FFF8F8] px-2.5 py-[9px] text-center font-plex text-[13px] group-hover:bg-uff-red-tint"
+  "border-b border-hairline bg-uff-red-tint/60 px-2.5 py-[9px] text-center text-[13px] group-hover:bg-uff-red-tint"
 
 const tierCell =
-  "border-b border-[#EEEEF0] border-l-4 border-l-uff-red bg-[#FAFAFB] px-2.5 py-[9px] text-left align-middle font-archivo text-[14.5px] font-bold tracking-[-0.01em] group-hover:bg-[#F1F1F3]"
+  "border-b border-hairline border-l-4 border-l-uff-red bg-surface px-2.5 py-[9px] text-left align-middle text-[14.5px] font-bold tracking-[-0.01em] group-hover:bg-muted"
 
 const midCell =
-  "border-b border-[#EEEEF0] bg-[#FAFAFB] px-2.5 py-[9px] text-center align-middle font-plex text-[13px] font-medium text-uff-ink-2 group-hover:bg-[#F1F1F3]"
+  "border-b border-hairline bg-surface px-2.5 py-[9px] text-center align-middle text-[13px] font-medium text-uff-ink-2 group-hover:bg-muted"

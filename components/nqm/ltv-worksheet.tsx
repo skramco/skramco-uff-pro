@@ -13,8 +13,8 @@ import {
 } from "@/lib/data/nqm-matrix"
 
 const fieldClass =
-  "w-full rounded-[2px] border border-white/18 bg-white/[.07] px-[11px] py-2.5 font-plex text-sm text-white focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-uff-red"
-const labelClass = "mb-1.5 block font-plex text-[10.5px] uppercase tracking-[0.14em] text-[#9C9CA3]"
+  "w-full rounded-md border border-white/18 bg-white/[.07] px-[11px] py-2.5 text-sm text-white focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-uff-red"
+const labelClass = "mb-1.5 block text-[10.5px] uppercase tracking-[0.14em] text-[#9C9CA3]"
 const selectClass = `${fieldClass} appearance-none bg-[length:5px_5px,5px_5px] bg-[position:calc(100%-18px)_50%,calc(100%-13px)_50%] bg-no-repeat [background-image:linear-gradient(45deg,transparent_50%,#9C9CA3_50%),linear-gradient(135deg,#9C9CA3_50%,transparent_50%)]`
 
 export function LtvWorksheet({ program }: { program: ProgramId }) {
@@ -49,9 +49,9 @@ export function LtvWorksheet({ program }: { program: ProgramId }) {
   }
 
   return (
-    <div className="nqm-worksheet mb-11 mt-[26px] overflow-hidden rounded text-white shadow-[0_1px_2px_rgba(19,19,19,.05),0_8px_22px_rgba(19,19,19,.06)] bg-uff-ink print:hidden">
+    <div className="nqm-worksheet mb-11 mt-[26px] overflow-hidden rounded-card text-white shadow-[0_1px_2px_rgba(19,19,19,.05),0_8px_22px_rgba(19,19,19,.06)] bg-uff-ink print:hidden">
       <div className="flex flex-wrap items-center gap-3.5 border-b border-white/12 px-[22px] py-4">
-        <h2 className="m-0 font-archivo text-[19px] font-extrabold uppercase tracking-[-0.01em]">
+        <h2 className="m-0 text-[19px] font-extrabold uppercase tracking-[-0.01em]">
           Max LTV <span className="text-uff-red">Worksheet</span>
         </h2>
         <p className="m-0 text-[12.5px] text-[#9C9CA3]">
@@ -140,7 +140,7 @@ export function LtvWorksheet({ program }: { program: ProgramId }) {
             ) : null}
           </div>
 
-          <div className="mb-2 mt-[18px] font-plex text-[10.5px] uppercase tracking-[0.14em] text-[#9C9CA3]">
+          <div className="mb-2 mt-[18px] text-[10.5px] uppercase tracking-[0.14em] text-[#9C9CA3]">
             Caps &amp; adjustments
           </div>
           <div className="grid grid-cols-1 gap-x-4 gap-y-[7px] min-[480px]:grid-cols-2">
@@ -160,14 +160,14 @@ export function LtvWorksheet({ program }: { program: ProgramId }) {
 
         <div className="flex flex-col border-t border-white/10 bg-[#1B1B1F] px-[22px] pb-6 pt-5 min-[901px]:border-l min-[901px]:border-t-0">
           <div
-            className={`rounded-[2px] border border-l-[5px] px-4 py-3.5 ${
+            className={`rounded-md border border-l-[5px] px-4 py-3.5 ${
               result.ok
                 ? "border-uff-red bg-[rgba(213,20,15,.12)]"
                 : "border-[#6E6E75] border-l-[#6E6E75] bg-white/5"
             }`}
           >
-            <div className="font-plex text-[10.5px] uppercase tracking-[0.14em] text-[#F3B3B0]">Maximum LTV</div>
-            <div className="mt-1 font-archivo text-[54px] font-extrabold leading-none tracking-[-0.03em]">
+            <div className="text-[10.5px] uppercase tracking-[0.14em] text-[#F3B3B0]">Maximum LTV</div>
+            <div className="mt-1 text-[54px] font-extrabold leading-none tracking-[-0.03em]">
               {result.ok ? (
                 <>
                   {formatPct(result.ltv).replace("%", "")}
@@ -180,7 +180,7 @@ export function LtvWorksheet({ program }: { program: ProgramId }) {
             <div className="mt-[7px] text-[12.5px] text-[#DEDEE2]">{result.ok ? result.note : result.message}</div>
           </div>
 
-          <div className="mt-4 flex-1 font-plex text-xs">
+          <div className="mt-4 flex-1 text-xs">
             {result.ok
               ? result.ledger.map((line, i) => (
                   <div

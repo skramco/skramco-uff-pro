@@ -1,11 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
-import type { ProductListing } from "@/content/products"
+import { getProduct, type ProductListing } from "@/content/products"
 
 export function ProductCard({ product, priority = false }: { product: ProductListing; priority?: boolean }) {
+  const detailHref = getProduct(product.slug)?.href ?? `/loan-products/${product.slug}`
+
   return (
     <article className="panel flex h-full flex-col overflow-hidden">
-      <div className="aspect-[16/10] overflow-hidden bg-muted">
+      <Link href={detailHref} className="aspect-[16/10] overflow-hidden bg-muted">
         <Image
           src={product.image.src}
           alt={product.image.alt}
@@ -15,15 +17,24 @@ export function ProductCard({ product, priority = false }: { product: ProductLis
           priority={priority}
           className="h-full w-full object-cover"
         />
-      </div>
+      </Link>
       <div className="flex flex-1 flex-col p-5">
-        <h3 className="text-lg font-semibold tracking-tight text-ink">{product.name}</h3>
+        <h3 className="text-lg font-semibold tracking-tight text-ink">
+          <Link href={detailHref} className="hover:text-accent duration-150">
+            {product.name}
+          </Link>
+        </h3>
         <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-ink">
           {product.offerings.map((item) => (
             <li key={item}>{item}</li>
           ))}
         </ul>
         <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-muted">{product.summary}</p>
+        <p className="mt-3">
+          <Link href={detailHref} className="text-sm font-semibold text-accent hover:underline duration-150">
+            View program details
+          </Link>
+        </p>
         {product.slug === "non-qm" ? (
           <p className="mt-3">
             <Link href="/calculators/non-qm/core/blended-income" className="text-sm font-medium text-accent hover:underline">

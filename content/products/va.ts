@@ -5,7 +5,7 @@ import type { ProductDetail } from "./types"
 export const va: ProductDetail = {
   slug: "va",
   name: "VA",
-  href: "/products/va",
+  href: "/loan-products/va",
   positioning: "VA purchase and IRRRL for veterans and active duty. $0 down with full entitlement.",
   summary:
     "VA is for veterans, active duty, Guard and Reserve, and eligible surviving spouses. Purchase and high-balance work when entitlement supports a $0-down primary residence. IRRRLs refinance an existing VA loan in Standard and High Balance, Fixed and ARM.",

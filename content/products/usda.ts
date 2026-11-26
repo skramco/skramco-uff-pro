@@ -4,7 +4,7 @@ import type { ProductDetail } from "./types"
 export const usda: ProductDetail = {
   slug: "usda",
   name: "USDA",
-  href: "/products/usda",
+  href: "/loan-products/usda",
   positioning: "USDA Rural Development — 100% financing on eligible rural and suburban properties.",
   summary:
     "USDA is for buyers of a primary home in a USDA-eligible rural or suburban area who meet area income limits. Standard and high-balance give $0-down financing when the property maps as eligible. Streamline and Streamline-Assist serve borrowers who already have a USDA loan and need a simpler refinance.",

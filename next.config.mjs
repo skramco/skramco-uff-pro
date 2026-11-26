@@ -60,8 +60,38 @@ const nextConfig = {
         statusCode: 301,
       },
       {
-        source: "/products/:slug",
-        destination: "/products",
+        source: "/products/conventional",
+        destination: "/loan-products/conventional",
+        statusCode: 301,
+      },
+      {
+        source: "/products/fha",
+        destination: "/loan-products/fha",
+        statusCode: 301,
+      },
+      {
+        source: "/products/va",
+        destination: "/loan-products/va",
+        statusCode: 301,
+      },
+      {
+        source: "/products/usda",
+        destination: "/loan-products/usda",
+        statusCode: 301,
+      },
+      {
+        source: "/products/non-qm",
+        destination: "/loan-products/non-qm",
+        statusCode: 301,
+      },
+      {
+        source: "/products/investor",
+        destination: "/loan-products/investor",
+        statusCode: 301,
+      },
+      {
+        source: "/products/hfa",
+        destination: "/loan-products/hfa",
         statusCode: 301,
       },
       {
