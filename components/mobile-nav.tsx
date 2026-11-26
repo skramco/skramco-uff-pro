@@ -47,7 +47,7 @@ export function MobileNav({ showNonQmIncomeAnalysis }: MobileNavProps) {
           </SheetClose>
           <SheetClose asChild>
             <Link href="/products" className={linkClassName}>
-              Products
+              Loan products
             </Link>
           </SheetClose>
           <SheetClose asChild>

@@ -1,58 +1,74 @@
-import { CircleDollarSign, FileCheck2, UserPlus } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import type { ReactNode } from "react"
+import { productCatalog } from "@/content/products"
 import { PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-url"
 
-const steps = [
-  {
-    icon: UserPlus,
-    title: "Create your account",
-    description: "Self sign-up in PRO Portal. There is no application queue to wait on.",
-  },
-  {
-    icon: FileCheck2,
-    title: "Get approved and set up",
-    description: "Complete broker approval and company setup inside PRO Portal.",
-  },
-  {
-    icon: CircleDollarSign,
-    title: "Price and lock in PRO Portal",
-    description: "Run a scenario, compare Piper's Pick, and lock from the same screen.",
-  },
-] as const
+function StepBadge({ children }: { children: ReactNode }) {
+  return (
+    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-quiet text-sm font-bold text-accent-dark">
+      {children}
+    </span>
+  )
+}
 
-/** Below-the-fold onboarding strip. No approval or timing promises — just the three steps brokers move through. */
+/** Below-the-fold "get started" strip: create an account, find the product, price and submit — all in PRO Portal. */
 export function HomeStartSteps() {
   return (
     <section className="section-pad border-t border-hairline">
       <div className="container mx-auto px-4">
-        <div className="mb-8 max-w-[46rem]">
-          <p className="caption">Getting started</p>
-          <h2 className="mt-3">Start brokering with UFF</h2>
-          <p className="prose-body mt-3">Self sign-up. From account to your first lock, all in PRO Portal.</p>
+        <div className="max-w-[46rem]">
+          <h2>Start brokering with UFF</h2>
+          <p className="prose-body mt-3">
+            Three steps from this page to a priced file. No guesswork about where to go next.
+          </p>
         </div>
 
-        <ol className="grid gap-4 sm:grid-cols-3">
-          {steps.map(({ icon: Icon, title, description }, index) => (
-            <li key={title} className="panel relative overflow-hidden p-5">
-              <span className="absolute inset-y-0 left-0 w-1 bg-accent" aria-hidden />
-              <div className="flex items-center gap-2.5">
-                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent-quiet text-xs font-extrabold text-accent">
-                  {index + 1}
-                </span>
-                <Icon className="h-4 w-4 text-accent" aria-hidden />
-              </div>
-              <h3 className="mt-4 text-base font-bold tracking-tight">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-muted">{description}</p>
-            </li>
-          ))}
-        </ol>
-
-        <div className="mt-6">
-          <Button asChild>
-            <a href={PRO_PORTAL_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
-              Create your broker account
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          <div className="panel p-5">
+            <StepBadge>1</StepBadge>
+            <h3 className="mt-3.5 text-lg font-bold tracking-tight text-ink">Create your account</h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">
+              Self sign-up for PRO Portal. Have your company NMLS ID and licensing details handy.
+            </p>
+            <a
+              href={PRO_PORTAL_SIGNUP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block text-sm font-semibold text-accent-dark hover:underline"
+            >
+              Create account →
             </a>
-          </Button>
+          </div>
+
+          <div className="panel p-5">
+            <StepBadge>2</StepBadge>
+            <h3 className="mt-3.5 text-lg font-bold tracking-tight text-ink">Find the product</h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">
+              Matrices, key parameters and overlays for every program, in one place.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {productCatalog.map((product) => (
+                <Link
+                  key={product.slug}
+                  href={product.href}
+                  className="inline-flex items-center rounded-pill bg-muted px-2.5 py-1 text-xs font-semibold text-ink-secondary duration-150 hover:bg-accent-quiet hover:text-accent-dark"
+                >
+                  {product.name}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <div className="panel p-5">
+            <StepBadge>3</StepBadge>
+            <h3 className="mt-3.5 text-lg font-bold tracking-tight text-ink">Price and submit</h3>
+            <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">
+              Price, lock and upload in PRO Portal. Piper flags the next step you own on every file.
+            </p>
+            <Link href="/pro-portal" className="mt-3 inline-block text-sm font-semibold text-accent-dark hover:underline">
+              See PRO Portal →
+            </Link>
+          </div>
         </div>
       </div>
     </section>

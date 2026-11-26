@@ -1,26 +1,24 @@
-import Image from "next/image"
 import Link from "next/link"
+import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { HomeHeroProofCard } from "@/components/home-hero-proof-card"
+import { HomeTurnTimesCard } from "@/components/home-turn-times-card"
 import { NMLS_ID } from "@/content/disclosures"
-import { portalScreens } from "@/content/portal-screens"
 import { PRO_PORTAL_LOGIN_URL, PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-url"
 
-export function HomeHero() {
-  const pipeline = portalScreens[0]
-  const pricing = portalScreens.find((shot) => shot.label === "Pricing") ?? portalScreens[3]
+const trustItems = [`Self sign-up`, `United Fidelity Funding Corp · NMLS #${NMLS_ID}`] as const
 
+export function HomeHero() {
   return (
     <section className="home-hero">
       <div className="home-hero-glow" aria-hidden />
       <div className="container relative mx-auto px-4">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-8">
+        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-12">
           <div className="max-w-[40rem]">
-            <p className="home-hero-kicker">For mortgage brokers</p>
+            <p className="home-hero-kicker">
+              <span className="home-hero-kicker-dash" aria-hidden />
+              UFF Wholesale · For mortgage brokers
+            </p>
             <h1 className="home-hero-title">Fast underwriting turn times. Less waiting around.</h1>
-
-            <HomeHeroProofCard />
-
             <p className="mt-5 max-w-[36rem] text-lg leading-relaxed text-white/75">
               If you broker with UFF, you start with the product. Originate it in PRO Portal. Piper stays on the file
               from first price through funded.
@@ -33,8 +31,8 @@ export function HomeHero() {
                     Create your broker account
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="ghost" className="text-white hover:bg-white/10 hover:text-white">
-                  <Link href="/products">See loan products</Link>
+                <Button asChild size="lg" variant="outline" className="btn-on-dark">
+                  <Link href="/loan-products">See loan products</Link>
                 </Button>
               </div>
               <a
@@ -47,51 +45,23 @@ export function HomeHero() {
               </a>
             </div>
 
-            <p className="mt-5 text-sm text-white/55">
-              Self sign-up · NMLS #{NMLS_ID} ·{" "}
-              <Link href="/licensing" className="underline decoration-white/40 underline-offset-2 hover:text-white">
-                Licensing by state
-              </Link>
-            </p>
+            <ul className="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/70">
+              {trustItems.map((item) => (
+                <li key={item} className="flex items-center gap-2">
+                  <Check className="h-4 w-4 shrink-0 text-white" aria-hidden />
+                  {item}
+                </li>
+              ))}
+              <li className="flex items-center gap-2">
+                <Check className="h-4 w-4 shrink-0 text-white" aria-hidden />
+                <Link href="/licensing" className="underline decoration-white/40 underline-offset-2 hover:text-white">
+                  Licensing by state
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          <div className="home-hero-stage hidden md:block">
-            <div className="home-hero-window">
-              <div className="home-hero-chrome">
-                <span className="home-hero-dot" />
-                <span className="home-hero-dot" />
-                <span className="home-hero-dot" />
-                <span className="home-hero-chrome-title">PRO Portal · Pipeline</span>
-              </div>
-              <Image
-                src={pipeline.src}
-                alt={pipeline.alt}
-                width={1440}
-                height={860}
-                priority
-                className="h-auto w-full"
-              />
-            </div>
-
-            <div className="home-hero-float home-hero-float-pricing">
-              <div className="home-hero-window">
-                <div className="home-hero-chrome">
-                  <span className="home-hero-dot" />
-                  <span className="home-hero-dot" />
-                  <span className="home-hero-dot" />
-                  <span className="home-hero-chrome-title">Pricing · Piper&apos;s Pick</span>
-                </div>
-                <Image src={pricing.src} alt={pricing.alt} width={900} height={540} className="h-auto w-full" />
-              </div>
-            </div>
-
-            <div className="home-hero-float home-hero-float-piper">
-              <p className="caption text-white/55">Piper</p>
-              <p className="mt-1 text-sm font-semibold leading-snug text-white">
-                On every file. She tells you the next step you own.
-              </p>
-            </div>
-          </div>
+          <HomeTurnTimesCard />
         </div>
       </div>
     </section>
