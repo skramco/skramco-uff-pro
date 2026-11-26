@@ -16,7 +16,7 @@ import { calculators } from '@/content/calculators'
 import { cheatSheets } from '@/content/cheat-sheets'
 
 const linkClassName =
-  'flex min-h-11 items-center px-1 text-sm text-ink-muted duration-150 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
+  'flex min-h-11 items-center px-1 text-nav text-ink-muted duration-150 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
 
 type MobileNavProps = {
   showNonQmIncomeAnalysis: boolean

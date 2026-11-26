@@ -79,7 +79,7 @@ export function RateLockAdvisorModal({ open, onOpenChange }: RateLockAdvisorModa
           </div>
         </div>
 
-        <p className="text-[11px] text-ink-muted">
+        <p className="text-xs text-ink-muted">
           Rate recommendations are informational only and do not constitute financial advice. Data from FRED. Live
           numbers run inside PRO Portal after you create an account.
         </p>

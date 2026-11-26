@@ -70,7 +70,7 @@ export function PiperHero() {
                 {piperPrompts.slice(0, 3).map((prompt) => (
                   <li
                     key={prompt}
-                    className="rounded-pill border border-hairline bg-surface-raised px-2.5 py-1 text-[12px] font-semibold text-ink-secondary"
+                    className="rounded-pill border border-hairline bg-surface-raised px-2.5 py-1 text-xs font-semibold text-ink-secondary"
                   >
                     {prompt}
                   </li>

@@ -72,9 +72,19 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        archivo: ["var(--font-sans)", "system-ui", "sans-serif"],
         data: ["var(--font-sans)", "system-ui", "sans-serif"],
-        plex: ["var(--font-sans)", "system-ui", "sans-serif"],
+      },
+      fontSize: {
+        xs: ["var(--type-caption)", { lineHeight: "1rem" }],
+        sm: ["var(--type-sm)", { lineHeight: "1.25rem" }],
+        base: ["var(--type-body)", { lineHeight: "1.625" }],
+        nav: ["var(--type-nav)", { lineHeight: "1.5rem" }],
+        lg: ["var(--type-lg)", { lineHeight: "1.75rem" }],
+        xl: ["var(--type-xl)", { lineHeight: "1.75rem" }],
+        "2xl": ["var(--type-2xl)", { lineHeight: "2rem" }],
+        "3xl": ["var(--type-3xl)", { lineHeight: "2.25rem" }],
+        "4xl": ["var(--type-4xl)", { lineHeight: "1.1" }],
+        "5xl": ["var(--type-5xl)", { lineHeight: "1.05" }],
       },
       borderRadius: {
         lg: "var(--radius-card)",

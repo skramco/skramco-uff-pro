@@ -8,7 +8,7 @@ export function GuidelineList({ blocks }: { blocks: GuidelineBlock[] }) {
           key={block.title}
           className="mt-[18px] overflow-hidden rounded-card border border-hairline bg-surface-raised shadow-[0_1px_2px_rgba(19,19,19,.05),0_8px_22px_rgba(19,19,19,.06)] print:break-inside-avoid print:shadow-none"
         >
-          <h3 className="m-0 bg-uff-ink px-3.5 py-[11px] text-[11px] font-bold uppercase tracking-[0.16em] text-white print:print-color-adjust-exact">
+          <h3 className="m-0 bg-uff-ink px-3.5 py-[11px] text-xs font-bold uppercase tracking-[0.16em] text-white print:print-color-adjust-exact">
             {block.title}
           </h3>
           <dl className="m-0">
@@ -17,10 +17,10 @@ export function GuidelineList({ blocks }: { blocks: GuidelineBlock[] }) {
                 key={entry.term}
                 className="grid grid-cols-1 border-b border-hairline last:border-b-0 min-[901px]:grid-cols-[214px_1fr]"
               >
-                <dt className="border-b border-hairline bg-surface px-3.5 py-[11px] text-[13px] font-semibold min-[901px]:border-b-0 min-[901px]:border-r">
+                <dt className="border-b border-hairline bg-surface px-3.5 py-[11px] text-sm font-semibold min-[901px]:border-b-0 min-[901px]:border-r">
                   {entry.term}
                 </dt>
-                <dd className="m-0 px-3.5 py-[11px] text-[13.5px] text-ink">
+                <dd className="m-0 px-3.5 py-[11px] text-sm text-ink">
                   {entry.spans ? <Spans spans={entry.spans} /> : null}
                   {entry.text
                     ? entry.text.split("\n").map((line, i) => (
@@ -56,7 +56,7 @@ function Spans({ spans }: { spans: GuidelineSpan[] }) {
         typeof span === "string" ? (
           <span key={i}>{span}</span>
         ) : (
-          <span key={i} className="text-[12.5px] font-semibold text-uff-ink">
+          <span key={i} className="text-xs font-semibold text-uff-ink">
             {span.em}
           </span>
         ),

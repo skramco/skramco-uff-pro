@@ -34,7 +34,7 @@ export const metadata = pageMetadata({
 
 export default function InvestorMatrixPage() {
   return (
-    <div className="bg-surface-raised text-[15px] leading-normal text-uff-ink antialiased">
+    <div className="bg-surface-raised text-base leading-normal text-uff-ink antialiased">
       <div className="border-b-4 border-uff-red bg-surface-raised">
         <div className="mx-auto flex max-w-[1180px] flex-wrap items-center gap-3 px-6 py-3 min-[640px]:gap-[22px]">
           <Image
@@ -49,7 +49,7 @@ export default function InvestorMatrixPage() {
             Wholesale <span className="text-uff-red">·</span> {PRODUCT_NAME}
           </span>
           <span className="flex-1" />
-          <span className="whitespace-nowrap rounded-md border border-hairline px-[11px] py-[7px] text-[11.5px] tracking-[0.03em] text-ink-muted">
+          <span className="whitespace-nowrap rounded-md border border-hairline px-[11px] py-[7px] text-xs tracking-[0.03em] text-ink-muted">
             Effective <b className="font-semibold text-uff-ink">{formatDateMdY(EFFECTIVE_DATE)}</b>
             {` · Rev. ${formatDateMdY(REVISED_DATE)}`}
           </span>
@@ -68,15 +68,15 @@ export default function InvestorMatrixPage() {
 
         <div className="grid grid-cols-1 items-end gap-[30px] pb-5 pt-5 min-[901px]:grid-cols-[1fr_auto]">
           <div>
-            <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-uff-red">
+            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-uff-red">
               Investment Property Lending
             </div>
-            <h1 className="mb-3.5 mt-3 text-[clamp(32px,5vw,50px)] font-extrabold leading-[1.02] tracking-[-0.025em]">
+            <h1 className="mb-3.5 mt-3 text-[clamp(var(--type-2xl),5vw,var(--type-4xl))] font-extrabold leading-[1.02] tracking-[-0.025em]">
               Investor Eligibility Matrix
               <br />
               <em className="not-italic text-uff-red">&amp;</em> Program Guidelines
             </h1>
-            <p className="m-0 max-w-[62ch] text-[15.5px] text-ink-muted">
+            <p className="m-0 max-w-[62ch] text-base text-ink-muted">
               Both UFF {PRODUCT_NAME} paths for investment property in one place: <strong>DSCR</strong> qualification
               on the property&apos;s own rents, and <strong>Full Doc</strong> qualification on borrower income. Pick a
               program, find the max LTV, and read the rules that move it.
@@ -96,7 +96,7 @@ export default function InvestorMatrixPage() {
         <div className="mb-7 grid grid-cols-1 items-center gap-6 rounded-card border border-hairline border-l-4 border-l-uff-red bg-surface-raised px-[22px] py-5 shadow-[0_1px_2px_rgba(19,19,19,.05),0_8px_22px_rgba(19,19,19,.06)] print:break-inside-avoid print:shadow-none min-[901px]:grid-cols-[1fr_auto]">
           <div>
             <h3 className="mb-1.5 mt-0 text-lg font-extrabold tracking-[-0.01em]">Run the scenario, not the spreadsheet</h3>
-            <p className="m-0 max-w-[70ch] text-[13.5px] text-ink-muted">
+            <p className="m-0 max-w-[70ch] text-sm text-ink-muted">
               Register the loan, price it, and lock it in PRO Portal — and ask Piper when a scenario sits between two
               boxes.
             </p>
@@ -119,21 +119,21 @@ export default function InvestorMatrixPage() {
             height={34}
             className="nqm-knock mb-4 h-[34px] w-auto brightness-0 invert"
           />
-          <div className="mb-[18px] flex flex-wrap gap-[26px] text-[11.5px] text-[#DEDEE2]">
+          <div className="mb-[18px] flex flex-wrap gap-[26px] text-xs text-[#DEDEE2]">
             <span>NMLS ID #34381</span>
             <span>(855) 95-EAGLE</span>
             <span>support@uff.loans</span>
             <span>1300 NW Briarcliff Pkwy #275, Kansas City, MO 64150</span>
           </div>
-          <h4 className="mb-2 mt-0 text-[10.5px] uppercase tracking-[0.16em] text-white">Disclosures</h4>
-          <p className="mb-2.5 max-w-[104ch] text-[11.5px] leading-[1.65]">
+          <h4 className="mb-2 mt-0 text-xs uppercase tracking-[0.16em] text-white">Disclosures</h4>
+          <p className="mb-2.5 max-w-[104ch] text-xs leading-[1.65]">
             For mortgage professionals only — not for distribution to consumers. This matrix is a summary of program
             parameters and does not replace the full UFF {PRODUCT_NAME} program guidelines, which govern in the event of
             any conflict. Programs, rates, terms and conditions are subject to change without notice. This is not a
             commitment to lend. All loans are subject to underwriting approval, credit and collateral approval, and
             property eligibility. Not all products are available in all states. Restrictions may apply.
           </p>
-          <p className="mb-2.5 max-w-[104ch] text-[11.5px] leading-[1.65]">
+          <p className="mb-2.5 max-w-[104ch] text-xs leading-[1.65]">
             United Fidelity Funding Corp. is an Equal Housing Lender. Source of record: Residential &amp; Investor NQM
             program matrices, effective 07/22/2026. Submit and manage scenarios in{" "}
             <Link href={PRO_PORTAL_LOGIN_URL} className="text-[#FF8C86]">
@@ -151,13 +151,13 @@ function DscrProgram() {
   return (
     <section className="mb-11 print:break-inside-avoid">
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <h2 className="m-0 text-[27px] font-extrabold tracking-[-0.02em]">
+        <h2 className="m-0 text-2xl font-extrabold tracking-[-0.02em]">
           DSCR <i className="text-uff-red">—</i> Investor NQM
         </h2>
         {DSCR_TAGS.map((tag) => (
           <span
             key={tag}
-            className="rounded-pill border border-hairline bg-surface-raised px-[11px] py-[5px] text-[10.5px] uppercase tracking-[0.1em] text-ink-muted"
+            className="rounded-pill border border-hairline bg-surface-raised px-[11px] py-[5px] text-xs uppercase tracking-[0.1em] text-ink-muted"
           >
             {tag}
           </span>
@@ -176,13 +176,13 @@ function FullDocProgram() {
   return (
     <section className="mb-11 print:break-inside-avoid">
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <h2 className="m-0 text-[27px] font-extrabold tracking-[-0.02em]">
+        <h2 className="m-0 text-2xl font-extrabold tracking-[-0.02em]">
           Full Doc <i className="text-uff-red">—</i> Residential NQM
         </h2>
         {FULL_DOC_TAGS.map((tag) => (
           <span
             key={tag}
-            className="rounded-pill border border-hairline bg-surface-raised px-[11px] py-[5px] text-[10.5px] uppercase tracking-[0.1em] text-ink-muted"
+            className="rounded-pill border border-hairline bg-surface-raised px-[11px] py-[5px] text-xs uppercase tracking-[0.1em] text-ink-muted"
           >
             {tag}
           </span>

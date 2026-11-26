@@ -15,7 +15,7 @@ type FullProps = {
 export function EligibilityTable(props: DscrProps | FullProps) {
   return (
     <div className="overflow-hidden rounded-card border border-hairline bg-surface-raised shadow-[0_1px_2px_rgba(19,19,19,.05),0_8px_22px_rgba(19,19,19,.06)]">
-      <div className="bg-uff-ink px-3.5 py-[11px] text-[11px] font-bold uppercase tracking-[0.16em] text-white print:print-color-adjust-exact">
+      <div className="bg-uff-ink px-3.5 py-[11px] text-xs font-bold uppercase tracking-[0.16em] text-white print:print-color-adjust-exact">
         Program eligibility · Max LTV
       </div>
       <div className="overflow-x-auto">
@@ -28,7 +28,7 @@ export function EligibilityTable(props: DscrProps | FullProps) {
 
 function DscrGrid({ tiers }: { tiers: DscrTier[] }) {
   return (
-    <table className="w-full min-w-[660px] border-collapse text-[13.5px] [&_tbody_tr:last-child_td]:border-b-0">
+    <table className="w-full min-w-[660px] border-collapse text-sm [&_tbody_tr:last-child_td]:border-b-0">
       <thead>
         <tr>
           <th rowSpan={2} className={thClass}>
@@ -86,7 +86,7 @@ function DscrGrid({ tiers }: { tiers: DscrTier[] }) {
 
 function FullGrid({ tiers }: { tiers: FullTier[] }) {
   return (
-    <table className="w-full min-w-[660px] border-collapse text-[13.5px] [&_tbody_tr:last-child_td]:border-b-0">
+    <table className="w-full min-w-[660px] border-collapse text-sm [&_tbody_tr:last-child_td]:border-b-0">
       <thead>
         <tr>
           <th rowSpan={2} className={thClass}>
@@ -160,15 +160,15 @@ function FullGrid({ tiers }: { tiers: FullTier[] }) {
 }
 
 const thClass =
-  "whitespace-nowrap border-b border-hairline bg-muted px-2.5 py-[9px] text-center text-[10.5px] font-bold uppercase tracking-[0.1em] text-uff-ink"
+  "whitespace-nowrap border-b border-hairline bg-muted px-2.5 py-[9px] text-center text-xs font-bold uppercase tracking-[0.1em] text-uff-ink"
 
-const numCell = "border-b border-hairline px-2.5 py-[9px] text-center text-[13px] group-hover:bg-muted"
+const numCell = "border-b border-hairline px-2.5 py-[9px] text-center text-sm group-hover:bg-muted"
 
 const invCell =
-  "border-b border-hairline bg-uff-red-tint/60 px-2.5 py-[9px] text-center text-[13px] group-hover:bg-uff-red-tint"
+  "border-b border-hairline bg-uff-red-tint/60 px-2.5 py-[9px] text-center text-sm group-hover:bg-uff-red-tint"
 
 const tierCell =
-  "border-b border-hairline border-l-4 border-l-uff-red bg-surface px-2.5 py-[9px] text-left align-middle text-[14.5px] font-bold tracking-[-0.01em] group-hover:bg-muted"
+  "border-b border-hairline border-l-4 border-l-uff-red bg-surface px-2.5 py-[9px] text-left align-middle text-sm font-bold tracking-[-0.01em] group-hover:bg-muted"
 
 const midCell =
-  "border-b border-hairline bg-surface px-2.5 py-[9px] text-center align-middle text-[13px] font-medium text-uff-ink-2 group-hover:bg-muted"
+  "border-b border-hairline bg-surface px-2.5 py-[9px] text-center align-middle text-sm font-medium text-uff-ink-2 group-hover:bg-muted"

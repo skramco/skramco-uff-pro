@@ -59,10 +59,10 @@ export function HomeEngageTiles() {
             Rate Lock Advisor
           </p>
           <div className="mt-3 flex gap-2">
-            <span className="inline-flex items-center rounded-md bg-accent px-2.5 py-1 text-[11px] font-extrabold tracking-wide text-white">
+            <span className="inline-flex items-center rounded-md bg-accent px-2.5 py-1 text-xs font-extrabold tracking-wide text-white">
               LOCK
             </span>
-            <span className="inline-flex items-center rounded-md border border-hairline bg-surface px-2.5 py-1 text-[11px] font-extrabold tracking-wide text-ink">
+            <span className="inline-flex items-center rounded-md border border-hairline bg-surface px-2.5 py-1 text-xs font-extrabold tracking-wide text-ink">
               FLOAT
             </span>
           </div>

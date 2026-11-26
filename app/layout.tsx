@@ -60,7 +60,7 @@ export default function RootLayout({
                     />
                   </Link>
 
-                  <nav className="hidden items-center gap-6 text-sm lg:flex">
+                  <nav className="hidden items-center gap-6 text-nav lg:flex">
                     <Link href="/" className="text-ink-muted duration-150 hover:text-ink">
                       Home
                     </Link>
