@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle2, ArrowRight } from "lucide-react"
@@ -40,8 +41,14 @@ export function CampaignLandingPage({ data }: Props) {
       {data.heroImageUrl && (
         <section className="container mx-auto px-4 -mt-10 relative z-10">
           <div className="max-w-4xl overflow-hidden border border-hairline">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={data.heroImageUrl} alt={data.title} className="w-full h-auto object-cover" />
+            <Image
+              src={data.heroImageUrl}
+              alt={data.title}
+              width={1536}
+              height={1024}
+              sizes="(min-width: 896px) 896px, 100vw"
+              className="w-full h-auto object-cover"
+            />
           </div>
         </section>
       )}

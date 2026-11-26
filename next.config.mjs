@@ -4,7 +4,13 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "pvzqgboffydqeqzeiysx.supabase.co",
+        pathname: "/storage/v1/object/public/marketing-assets/**",
+      },
+    ],
   },
   async redirects() {
     return [

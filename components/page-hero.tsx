@@ -41,7 +41,14 @@ export function PageHero({ eyebrow, title, children, actions, logo, image }: Pag
           </div>
           {image ? (
             <div className="shot-frame hidden overflow-hidden lg:block">
-              <Image src={image.src} alt={image.alt} width={900} height={720} className="h-auto w-full object-cover" />
+              <Image
+                src={image.src}
+                alt={image.alt}
+                width={900}
+                height={720}
+                sizes="22rem"
+                className="h-auto w-full object-cover"
+              />
             </div>
           ) : null}
         </div>

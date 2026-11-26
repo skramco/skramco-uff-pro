@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import type { ProductListing } from "@/content/products"
 
-export function ProductCard({ product }: { product: ProductListing }) {
+export function ProductCard({ product, priority = false }: { product: ProductListing; priority?: boolean }) {
   return (
     <article className="panel flex h-full flex-col overflow-hidden">
       <div className="aspect-[16/10] overflow-hidden bg-muted">
@@ -11,6 +11,8 @@ export function ProductCard({ product }: { product: ProductListing }) {
           alt={product.image.alt}
           width={960}
           height={600}
+          sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+          priority={priority}
           className="h-full w-full object-cover"
         />
       </div>
