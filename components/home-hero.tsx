@@ -1,17 +1,14 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { HomeHeroTurnTimeNote } from "@/components/home-hero-turn-time-note"
-import { loadTurnTimesData } from "@/content/turn-times"
+import { HomeHeroProofCard } from "@/components/home-hero-proof-card"
+import { NMLS_ID } from "@/content/disclosures"
 import { portalScreens } from "@/content/portal-screens"
-import { formatTurnTimeTileValue } from "@/lib/turn-times-display"
-import { PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-url"
+import { PRO_PORTAL_LOGIN_URL, PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-url"
 
 export function HomeHero() {
   const pipeline = portalScreens[0]
   const pricing = portalScreens.find((shot) => shot.label === "Pricing") ?? portalScreens[3]
-  const uwTile = loadTurnTimesData().tiles.find((tile) => tile.key === "uw")
-  const uwDisplayValue = uwTile ? formatTurnTimeTileValue(uwTile.value, uwTile.unit) : "—"
 
   return (
     <section className="home-hero">
@@ -21,24 +18,44 @@ export function HomeHero() {
           <div className="max-w-[40rem]">
             <p className="home-hero-kicker">For mortgage brokers</p>
             <h1 className="home-hero-title">Fast underwriting turn times. Less waiting around.</h1>
-            <HomeHeroTurnTimeNote uwDisplayValue={uwDisplayValue} />
+
+            <HomeHeroProofCard />
+
             <p className="mt-5 max-w-[36rem] text-[17px] leading-relaxed text-white/75">
               If you broker with UFF, you start with the product. Originate it in PRO Portal. Piper stays on the file
               from first price through funded.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg">
-                <a href={PRO_PORTAL_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
-                  Create your account
-                </a>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="btn-on-dark">
-                <Link href="/pro-portal">Learn more</Link>
-              </Button>
+
+            <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <div className="flex flex-wrap gap-3">
+                <Button asChild size="lg">
+                  <a href={PRO_PORTAL_SIGNUP_URL} target="_blank" rel="noopener noreferrer">
+                    Create your broker account
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="ghost" className="text-white hover:bg-white/10 hover:text-white">
+                  <Link href="/products">See loan products</Link>
+                </Button>
+              </div>
+              <a
+                href={PRO_PORTAL_LOGIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-semibold text-white/85 underline-offset-4 hover:text-white hover:underline"
+              >
+                Already a UFF broker? Log in
+              </a>
             </div>
+
+            <p className="mt-5 text-sm text-white/55">
+              Self sign-up · NMLS #{NMLS_ID} ·{" "}
+              <Link href="/licensing" className="underline decoration-white/40 underline-offset-2 hover:text-white">
+                Licensing by state
+              </Link>
+            </p>
           </div>
 
-          <div className="home-hero-stage">
+          <div className="home-hero-stage hidden md:block">
             <div className="home-hero-window">
               <div className="home-hero-chrome">
                 <span className="home-hero-dot" />
