@@ -6,6 +6,9 @@ import { PRO_PORTAL_LOGIN_URL, PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-ur
 import { HomeHero } from "@/components/home-hero"
 import { HomeEngageTiles } from "@/components/home-engage-tiles"
 
+/** Regenerate homepage HTML so header/metadata adjacent content can refresh on a schedule. */
+export const revalidate = 3600
+
 export default function HomePage() {
   return (
     <div>

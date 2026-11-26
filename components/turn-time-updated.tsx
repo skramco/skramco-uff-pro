@@ -12,8 +12,7 @@ export function TurnTimeUpdated({ className }: { className?: string }) {
     const node = ref.current
     if (!node) return
 
-    // React leaves a mismatched server date in the DOM under
-    // suppressHydrationWarning, so write the view-time stamp directly.
+    // Server HTML is empty; stamp is written only in the browser.
     const update = () => {
       node.textContent = `updated ${formatTurnTimeAsOf(new Date())}`
     }
@@ -23,9 +22,5 @@ export function TurnTimeUpdated({ className }: { className?: string }) {
     return () => window.clearInterval(id)
   }, [])
 
-  return (
-    <span ref={ref} className={className} suppressHydrationWarning>
-      updated {formatTurnTimeAsOf(new Date())}
-    </span>
-  )
+  return <span ref={ref} className={className} suppressHydrationWarning />
 }
