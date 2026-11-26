@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest"
 import { loadTurnTimesData, turnTimesDataSchema } from "../content/turn-times"
+import { formatHoursMinutesValue, formatTurnTimeTileValue } from "./turn-times-display"
 
 const validPayload = {
   asOf: "2026-11-25",
@@ -40,6 +41,19 @@ const validPayload = {
     },
   ],
 }
+
+describe("turn-times display formatting", () => {
+  it("formats hours:minutes values for display", () => {
+    expect(formatHoursMinutesValue("2:45")).toBe("2h 45m")
+    expect(formatHoursMinutesValue("6:13")).toBe("6h 13m")
+    expect(formatHoursMinutesValue("0:05")).toBe("0h 5m")
+  })
+
+  it("leaves non-colon values unchanged", () => {
+    expect(formatHoursMinutesValue("12.1")).toBe("12.1")
+    expect(formatTurnTimeTileValue("12.1", "business days")).toBe("12.1")
+  })
+})
 
 describe("turn-times.json loader", () => {
   it("parses the documented shape", () => {

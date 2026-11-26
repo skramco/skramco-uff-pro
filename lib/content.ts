@@ -1,7 +1,7 @@
 /** Single import surface for file-based content in `content/`. */
 export { companyStats } from "@/content/company-stats"
 export { loanLimits, formatUsd } from "@/content/loan-limits"
-export { turnTimes, underwritingTurnTime, clearToCloseTurnTime } from "@/content/turn-times"
+export { loadTurnTimesData, turnTimesData } from "@/content/turn-times"
 export { lockDesk } from "@/content/lock-desk"
 export { rateSheets, rateSheetById } from "@/content/rate-sheets"
 export { industryFeeds } from "@/content/industry-feeds"

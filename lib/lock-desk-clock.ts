@@ -208,7 +208,7 @@ export function getMonthEndCountdown(now = new Date()) {
       year: p.year,
       elapsedPct,
       headline: "Last day",
-      detail: `of ${monthName}. Fund files today and make this the best closing month since 2020.`,
+      detail: `of ${monthName}. Start the file in PRO Portal now.`,
     }
   }
 
@@ -218,6 +218,6 @@ export function getMonthEndCountdown(now = new Date()) {
     year: p.year,
     elapsedPct,
     headline: `${daysLeft} day${daysLeft === 1 ? "" : "s"}`,
-    detail: `left in ${monthName} to have your best closing month since 2020. Start the file in PRO Portal now.`,
+    detail: `left in ${monthName}. Start the file in PRO Portal now.`,
   }
 }

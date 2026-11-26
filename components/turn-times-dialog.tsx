@@ -1,5 +1,6 @@
 "use client"
 
+import type { ReactNode } from "react"
 import { Clock } from "lucide-react"
 import type { TurnTimesData } from "@/content/turn-times"
 import {
@@ -10,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { formatHoursMinutesValue, formatTurnTimeTileValue } from "@/lib/turn-times-display"
 import { cn } from "@/lib/utils"
 
 function formatUnitLabel(unit: string): string {
@@ -18,22 +20,35 @@ function formatUnitLabel(unit: string): string {
   return unit
 }
 
+function formatRangeSegment(value: string, unit: string): string {
+  if (unit === "hours:minutes") {
+    return formatHoursMinutesValue(value)
+  }
+  if (unit === "business days") {
+    return `${value} business days`
+  }
+  return value
+}
+
 function TurnTimeTileCard({ tile }: { tile: TurnTimesData["tiles"][number] }) {
-  const unitLabel = formatUnitLabel(tile.unit)
-  const rangeUnitLabel = formatUnitLabel(tile.rangeUnit)
+  const displayValue = formatTurnTimeTileValue(tile.value, tile.unit)
+  const unitLabel = tile.unit === "hours:minutes" ? null : formatUnitLabel(tile.unit)
+  const rangeText = `${formatRangeSegment(tile.rangeLow, tile.rangeUnit)}–${formatRangeSegment(tile.rangeHigh, tile.rangeUnit)}`
 
   return (
     <article
       className="flex flex-col rounded-[var(--radius-card)] border border-hairline bg-surface p-4 text-left"
-      aria-label={`${tile.title}: ${tile.value} ${unitLabel}`}
+      aria-label={`${tile.title}: ${displayValue}${unitLabel ? ` ${unitLabel}` : ""}`}
     >
       <h3 className="text-sm font-semibold text-ink">{tile.title}</h3>
-      <p className="mt-3 text-3xl font-extrabold tabular-nums tracking-tight text-ink">{tile.value}</p>
-      <p className="mt-1 text-xs font-medium uppercase tracking-wide text-ink-muted">{unitLabel}</p>
+      <p className="mt-3 text-3xl font-extrabold tabular-nums tracking-tight text-ink">{displayValue}</p>
+      {unitLabel ? (
+        <p className="mt-1 text-xs font-medium uppercase tracking-wide text-ink-muted">{unitLabel}</p>
+      ) : null}
       <p className="mt-2 text-xs text-ink-muted">{tile.basis}</p>
       <p className="mt-3 flex-1 text-sm leading-snug text-ink-secondary">{tile.description}</p>
       <p className="mt-4 text-xs text-ink-muted tabular-nums">
-        Most files: {tile.rangeLow}–{tile.rangeHigh} {rangeUnitLabel}
+        Middle half of files: {rangeText}
       </p>
     </article>
   )
@@ -42,9 +57,10 @@ function TurnTimeTileCard({ tile }: { tile: TurnTimesData["tiles"][number] }) {
 type TurnTimesDialogProps = {
   data: TurnTimesData
   triggerClassName?: string
+  triggerContent?: ReactNode
 }
 
-export function TurnTimesDialog({ data, triggerClassName }: TurnTimesDialogProps) {
+export function TurnTimesDialog({ data, triggerClassName, triggerContent }: TurnTimesDialogProps) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -56,8 +72,12 @@ export function TurnTimesDialog({ data, triggerClassName }: TurnTimesDialogProps
           )}
           aria-haspopup="dialog"
         >
-          <Clock className="h-3.5 w-3.5 shrink-0 opacity-80" aria-hidden />
-          Current UW turn times
+          {triggerContent ?? (
+            <>
+              <Clock className="h-3.5 w-3.5 shrink-0 opacity-80" aria-hidden />
+              Recent UW turn times
+            </>
+          )}
         </button>
       </DialogTrigger>
       <DialogContent
@@ -65,9 +85,13 @@ export function TurnTimesDialog({ data, triggerClassName }: TurnTimesDialogProps
         aria-describedby="turn-times-footnote"
       >
         <DialogHeader className="text-left">
-          <DialogTitle className="text-xl font-bold text-ink">Current turn times</DialogTitle>
+          <DialogTitle className="text-xl font-bold text-ink">Recent turn times</DialogTitle>
           <DialogDescription className="text-sm text-ink-muted">As of {data.asOfLabel}</DialogDescription>
         </DialogHeader>
+
+        <p className="text-xs leading-relaxed text-ink-muted">
+          Times are historical and not a guarantee of future turn times.
+        </p>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           {data.tiles.map((tile) => (
@@ -76,8 +100,8 @@ export function TurnTimesDialog({ data, triggerClassName }: TurnTimesDialogProps
         </div>
 
         <p id="turn-times-footnote" className="text-xs leading-relaxed text-ink-muted">
-          Typical = 60-day median. Most files = middle half of files. Business time = Mon–Fri, 8 AM–5 PM
-          Central, excluding federal holidays. Times are historical and not a guarantee of future turn times.
+          Typical = 60-day median. Middle half of files = middle half of files. Business time = Mon–Fri, 8 AM–5 PM
+          Central, excluding federal holidays.
         </p>
       </DialogContent>
     </Dialog>

@@ -31,7 +31,7 @@ export default function ProPortalPage() {
         }
       >
         <p>
-          Create an account and start the same day. Price, lock, originate, upload, clear conditions, request a COC,
+          Self sign-up. Many brokers can start pricing right away. Price, lock, originate, upload, clear conditions, request a COC,
           and take post-lock actions through funding. Piper is on the file the whole way.
         </p>
       </PageHero>
@@ -42,7 +42,7 @@ export default function ProPortalPage() {
         <div className="container mx-auto px-4">
           <h2 className="text-white">Create your account</h2>
           <p className="mt-3 max-w-[40rem] text-white/70">
-            UFF wholesale runs in PRO Portal. Self-sign up. Same-day access. Start a file today and take it through
+            UFF wholesale runs in PRO Portal. Self sign-up. Many brokers can start pricing right away. Start a file today and take it through
             funded.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
