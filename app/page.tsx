@@ -5,6 +5,10 @@ import { peoplePhotos } from "@/content/people-photos"
 import { PRO_PORTAL_LOGIN_URL, PRO_PORTAL_SIGNUP_URL } from "@/lib/pro-portal-url"
 import { HomeHero } from "@/components/home-hero"
 import { HomeEngageTiles } from "@/components/home-engage-tiles"
+import { HomeStartSteps } from "@/components/home-start-steps"
+import { HomeProductChips } from "@/components/home-product-chips"
+import { HomeAskAe } from "@/components/home-ask-ae"
+import { HomeLicensingFootprint } from "@/components/home-licensing-footprint"
 
 /** Regenerate homepage HTML so header/metadata adjacent content can refresh on a schedule. */
 export const revalidate = 3600
@@ -19,6 +23,10 @@ export default function HomePage() {
           <HomeEngageTiles />
         </div>
       </section>
+
+      <HomeStartSteps />
+
+      <HomeProductChips />
 
       <section className="section-pad">
         <div className="container mx-auto px-4">
@@ -54,6 +62,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <HomeAskAe />
+
+      <HomeLicensingFootprint />
 
       <section className="section-pad border-t border-hairline bg-surface-raised">
         <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
