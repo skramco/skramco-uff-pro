@@ -82,9 +82,10 @@ export function CampaignLandingPage({ data }: Props) {
             <p>
               <Link
                 href={product.href}
+                {...(product.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="text-sm font-semibold text-accent underline-offset-2 hover:underline"
               >
-                View {product.name} product details
+                View {product.name} matrices
                 <ArrowRight className="ml-1 inline h-4 w-4" aria-hidden />
               </Link>
             </p>

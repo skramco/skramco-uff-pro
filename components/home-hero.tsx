@@ -32,7 +32,7 @@ export function HomeHero() {
                   </a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="btn-on-dark">
-                  <Link href="/loan-products">See loan products</Link>
+                  <Link href="/products">See loan products</Link>
                 </Button>
               </div>
               <a

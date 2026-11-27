@@ -3,7 +3,7 @@ import Link from "next/link"
 import { getProduct, type ProductListing } from "@/content/products"
 
 export function ProductCard({ product, priority = false }: { product: ProductListing; priority?: boolean }) {
-  const detailHref = getProduct(product.slug)?.href ?? `/loan-products/${product.slug}`
+  const detailHref = getProduct(product.slug)?.href ?? "/products"
 
   return (
     <article className="panel flex h-full flex-col overflow-hidden">
@@ -30,11 +30,6 @@ export function ProductCard({ product, priority = false }: { product: ProductLis
           ))}
         </ul>
         <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-muted">{product.summary}</p>
-        <p className="mt-3">
-          <Link href={detailHref} className="text-sm font-semibold text-accent hover:underline duration-150">
-            View program details
-          </Link>
-        </p>
         {product.slug === "non-qm" ? (
           <p className="mt-3">
             <Link href="/calculators/non-qm/core/blended-income" className="text-sm font-medium text-accent hover:underline">

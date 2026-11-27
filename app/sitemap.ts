@@ -17,13 +17,6 @@ const STATIC_ROUTES = [
   "/resources/cheat-sheets/du-vs-lpa",
   "/resources/cheat-sheets/non-qm",
   "/calculators/non-qm/core/blended-income",
-  "/loan-products/conventional",
-  "/loan-products/fha",
-  "/loan-products/va",
-  "/loan-products/usda",
-  "/loan-products/non-qm",
-  "/loan-products/investor",
-  "/loan-products/hfa",
   "/loan-products/non-qm-core",
   "/matrix/va",
 ] as const
