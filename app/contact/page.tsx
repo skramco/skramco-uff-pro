@@ -1,7 +1,6 @@
 "use client"
 
-import { Suspense, useMemo, useState, type FormEvent } from "react"
-import { useSearchParams } from "next/navigation"
+import { useState, type FormEvent } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -14,33 +13,7 @@ import { PRO_PORTAL_LOGIN_URL } from "@/lib/pro-portal-url"
 import { PageHero } from "@/components/page-hero"
 
 export default function ContactPage() {
-  return (
-    <Suspense fallback={null}>
-      <ContactPageInner />
-    </Suspense>
-  )
-}
-
-function ContactPageInner() {
-  const searchParams = useSearchParams()
   const [isCaptchaValid, setIsCaptchaValid] = useState(false) // New state for CAPTCHA validity
-  const scenarioMessage = useMemo(() => {
-    if (searchParams.get("topic") !== "scenario") return ""
-    const product = searchParams.get("productName") || searchParams.get("product") || ""
-    const loanAmount = searchParams.get("loanAmount") || ""
-    const fico = searchParams.get("fico") || ""
-    const ltv = searchParams.get("ltv") || ""
-    const occupancy = searchParams.get("occupancy") || ""
-    return [
-      `Scenario check${product ? ` — ${product}` : ""}`,
-      loanAmount ? `Loan amount: ${loanAmount}` : null,
-      fico ? `FICO: ${fico}` : null,
-      ltv ? `LTV: ${ltv}` : null,
-      occupancy ? `Occupancy: ${occupancy}` : null,
-    ]
-      .filter(Boolean)
-      .join("\n")
-  }, [searchParams])
 
   const handleCaptchaChange = (isValid: boolean) => {
     setIsCaptchaValid(isValid)
@@ -124,12 +97,11 @@ function ContactPageInner() {
 
                 <div>
                   <Label htmlFor="inquiry-type">Inquiry Type *</Label>
-                  <Select defaultValue={searchParams.get("topic") === "scenario" ? "scenario" : undefined}>
+                  <Select>
                     <SelectTrigger>
                       <SelectValue placeholder="Select inquiry type" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="scenario">Scenario desk</SelectItem>
                       <SelectItem value="partnership">Partnership Inquiry</SelectItem>
                       <SelectItem value="support">Technical Support</SelectItem>
                       <SelectItem value="rates">Rate Information</SelectItem>
@@ -142,12 +114,7 @@ function ContactPageInner() {
 
                 <div>
                   <Label htmlFor="message">Message *</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us how we can help you..."
-                    rows={5}
-                    defaultValue={scenarioMessage}
-                  />
+                  <Textarea id="message" placeholder="Tell us how we can help you..." rows={5} />
                 </div>
 
                 {/* CAPTCHA */}

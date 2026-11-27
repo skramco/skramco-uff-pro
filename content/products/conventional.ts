@@ -5,7 +5,7 @@ import type { ProductDetail } from "./types"
 export const conventional: ProductDetail = {
   slug: "conventional",
   name: "Conventional",
-  href: "/loan-products/conventional",
+  href: "/products",
   positioning: "Agency fixed and ARM loans for documented W-2 and self-employed income, as little as 3% down.",
   summary:
     "Conventional is for borrowers who can document income the agency way: W-2s, tax returns, and a credit profile that supports full documentation. Standard and high-balance cover conforming and high-cost markets. First-time homebuyer and affordable housing executions help when the borrower needs a lower down payment or an income overlay conventional affordable programs allow.",

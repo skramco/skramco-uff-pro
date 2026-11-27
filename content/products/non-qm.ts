@@ -4,7 +4,7 @@ import type { ProductDetail } from "./types"
 export const nonQm: ProductDetail = {
   slug: "non-qm",
   name: "Non-QM",
-  href: "/loan-products/non-qm",
+  href: "/products",
   positioning: "Full doc, bank statement, P&L, and asset depletion for self-employed borrowers.",
   summary:
     "Non-QM is for self-employed and other borrowers whose income will not fit agency documentation. Full doc is available when they can document it. Bank statements (personal and/or business), P&L, and asset depletion cover files where tax returns understate cash flow, with interest-only available on these executions.",

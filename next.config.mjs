@@ -60,38 +60,73 @@ const nextConfig = {
         statusCode: 301,
       },
       {
+        source: "/loan-products/conventional",
+        destination: "/products",
+        statusCode: 301,
+      },
+      {
+        source: "/loan-products/fha",
+        destination: "/products",
+        statusCode: 301,
+      },
+      {
+        source: "/loan-products/usda",
+        destination: "/products",
+        statusCode: 301,
+      },
+      {
+        source: "/loan-products/non-qm",
+        destination: "/products",
+        statusCode: 301,
+      },
+      {
+        source: "/loan-products/va",
+        destination: "/matrix/va",
+        statusCode: 301,
+      },
+      {
+        source: "/loan-products/investor",
+        destination: "/loan-products/non-qm-core",
+        statusCode: 301,
+      },
+      {
+        source: "/loan-products/hfa",
+        destination: "https://go.uff.pro",
+        statusCode: 301,
+      },
+      {
         source: "/products/conventional",
-        destination: "/loan-products/conventional",
+        destination: "/products",
         statusCode: 301,
       },
       {
         source: "/products/fha",
-        destination: "/loan-products/fha",
-        statusCode: 301,
-      },
-      {
-        source: "/products/va",
-        destination: "/loan-products/va",
+        destination: "/products",
         statusCode: 301,
       },
       {
         source: "/products/usda",
-        destination: "/loan-products/usda",
+        destination: "/products",
         statusCode: 301,
       },
       {
         source: "/products/non-qm",
-        destination: "/loan-products/non-qm",
+        destination: "/products",
+        statusCode: 301,
+      },
+      {
+        source: "/products/va",
+        destination: "/matrix/va",
         statusCode: 301,
       },
       {
         source: "/products/investor",
-        destination: "/loan-products/investor",
+        destination: "/loan-products/non-qm-core",
         statusCode: 301,
       },
       {
         source: "/products/hfa",
-        destination: "/loan-products/hfa",
+        destination: "https://go.uff.pro",
         statusCode: 301,
       },
       {

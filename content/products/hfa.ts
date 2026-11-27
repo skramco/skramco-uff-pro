@@ -3,7 +3,7 @@ import type { ProductDetail } from "./types"
 export const hfa: ProductDetail = {
   slug: "hfa",
   name: "HFA programs",
-  href: "/loan-products/hfa",
+  href: "https://go.uff.pro",
   positioning: "Housing Finance Authority programs and down payment assistance for first-time and income-eligible buyers.",
   summary:
     "HFA programs are for first-time and income-eligible buyers who fit a participating Housing Finance Authority. Down payment assistance can cover part or all of the down payment when the HFA overlay allows it. Price the authority on the file in PRO Portal.",
